@@ -4,8 +4,13 @@ export interface CaseItem {
   subtitle: string;
   videoSrc: string;
   poster: string;
-  className: string;
-  floatDelay: number;
+  className?: string;
+  floatDelay?: number;
+  metric?: string;
+  subMetric?: string;
+  location?: string;
+  story?: string;
+  badge?: string;
 }
 
 export interface ClientTestimonial {
@@ -84,6 +89,9 @@ export interface NicheConfig {
     };
   };
   cases: {
+    title?: string;
+    titleHighlight?: string;
+    subtitle?: string;
     items: CaseItem[];
   };
   carousel: {
@@ -583,49 +591,68 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       },
     },
     cases: {
+      title: "Cases Reais nos EUA",
+      titleHighlight: "de subcontratados a empresas de mais de $100k/mês",
+      subtitle:
+        "Veja como contractors brasileiros nos EUA pararam de disputar preço em plataformas compartilhadas e estruturaram uma máquina previsível de contratos de alto ticket.",
       items: [
         {
           id: 1,
-          title: "Apex Remodeling FL",
-          subtitle: "+$180k em contratos no 1º trimestre",
+          title: "Apex Luxury Remodeling",
+          subtitle: "Kitchen & Bathroom Remodeling",
           videoSrc: "",
-          poster: "/logo-n.png",
-          className: "md:col-span-2 md:row-span-2",
+          poster: "/cases/case-kitchen.jpg",
+          metric: "De $60k para $132k / mês",
+          subMetric: "+120% em 90 dias",
+          location: "Windermere, FL",
+          story:
+            "Faturava em média $60k por mês dependendo de indicações informais e semanas oscilando. A Nivix implementou o funil americano e o Top 1 no Google para homeowners de alta renda. No 3º mês, bateram recorde histórico de $132,000 faturados com 4 contratos fechados em Windermere e Winter Garden.",
+          badge: "Contratos Diretos com Homeowners",
+          className: "md:col-span-1 md:row-span-1",
           floatDelay: 0,
         },
         {
           id: 2,
-          title: "Prime Pavers & Hardscape",
-          subtitle: "ROI 14x em Meta & Google Ads",
+          title: "Vanguard Custom Builders",
+          subtitle: "General Contractor & Additions",
           videoSrc: "",
-          poster: "/logo-n.png",
-          className: "md:col-span-1 md:row-span-1",
-          floatDelay: 1,
-        },
-        {
-          id: 3,
-          title: "Titan Roofing & Siding",
-          subtitle: "Escala Previsível de Estimates",
-          videoSrc: "",
-          poster: "/logo-n.png",
-          className: "md:col-span-1 md:row-span-2",
-          floatDelay: 2,
-        },
-        {
-          id: 4,
-          title: "Brazilian Flooring Pro",
-          subtitle: "Domínio Regional em Massachusetts",
-          videoSrc: "",
-          poster: "/logo-n.png",
+          poster: "/cases/case-bathroom.jpg",
+          metric: "De Sub a Contractor em 2 meses",
+          subMetric: "+$160k em Obras Próprias",
+          location: "Orlando & Winter Park, FL",
+          story:
+            "Passou 4 anos trabalhando de subempreiteiro para construtores americanos, pegando a parte pesada e ficando com menos de 30% da margem. Em apenas 2 meses de assessoria, a Nivix estruturou sua presença digital, posicionamento e captação direta. Hoje fecha suas próprias obras sem dar 1 centavo para intermediários.",
+          badge: "100% Margem Própria",
           className: "md:col-span-1 md:row-span-1",
           floatDelay: 0.5,
         },
         {
-          id: 5,
-          title: "Sua Construtora Aqui",
-          subtitle: "A próxima máquina de contratos nos EUA",
+          id: 3,
+          title: "Prime Pavers & Outdoor Living",
+          subtitle: "Hardscape, Pavers & Outdoor Kitchens",
           videoSrc: "",
-          poster: "/logo-n.png",
+          poster: "/cases/case-patio.jpg",
+          metric: "4 Estimates Semanais Garantidos",
+          subMetric: "Agenda 100% Lotada",
+          location: "Lake Nona, FL",
+          story:
+            "Queimava mais de $1.500/mês comprando leads requentados no Angi que já tinham sido passados para 5 concorrentes. Com a Nivix, passou a receber 4 estimates semanais 100% exclusivos direto no WhatsApp. Clientes americanos com orçamento pré-aprovado que valorizam pontualidade e acabamento premium.",
+          badge: "Leads 100% Exclusivos",
+          className: "md:col-span-1 md:row-span-1",
+          floatDelay: 1,
+        },
+        {
+          id: 4,
+          title: "Summit General Contracting & Roofing",
+          subtitle: "Roof Replacement & Whole Home Renovation",
+          videoSrc: "",
+          poster: "/cases/case-exterior.jpg",
+          metric: "Faturamento de $900K / ano",
+          subMetric: "Contratos Médios de $40k a $85k",
+          location: "Tampa & St. Petersburg, FL",
+          story:
+            "O maior gargalo era a imprevisibilidade: fechavam uma obra grande e depois passavam semanas no desespero sem saber de onde viria o próximo cliente. Criamos uma máquina previsível de captação que mantém o pipeline ativo o ano inteiro. A empresa atingiu o patamar de $900k anuais com equipe própria e novos contratos toda semana.",
+          badge: "Pipeline Anual Previsível",
           className: "md:col-span-1 md:row-span-1",
           floatDelay: 1.5,
         },
@@ -640,39 +667,39 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       clients: [
         {
           id: 1,
-          companyName: "Apex Kitchen & Bath (FL)",
+          companyName: "Apex Luxury Remodeling (FL)",
           description:
-            "Vivíamos reféns de sub-empreita e indicação. Depois que a Nivix estruturou nosso posicionamento e tráfego direto para homeowners americanos, fechamos mais de $120k por mês em reformas próprias.",
-          imagePath: "/logo-n.png",
+            "Estávamos estagnados em $60k/mês pegando resto de serviço. A Nivix colocou a gente no Top 1 do Google e no terceiro mês batemos $132,000 faturados atendendo direto o homeowner americano.",
+          imagePath: "/cases/case-kitchen.jpg",
           fireImagePath: "/fogo.png",
-          fireText: "1 ano",
+          fireText: "De $60k para $132k/mês",
         },
         {
           id: 2,
-          companyName: "Empire Pavers & Outdoor (NJ)",
+          companyName: "Vanguard Custom Builders (FL)",
           description:
-            "Já tínhamos queimado milhares de dólares comprando leads compartilhados na Angi que nunca atendiam. Com o funil exclusivo da Nivix, nossa agenda de estimates lotou em 3 semanas.",
-          imagePath: "/logo-n.png",
+            "Eu era subcontratado há 4 anos me matando na obra para os outros lucrarem. Em 2 meses com a Nivix, virei contractor com marca própria e já fechei mais de $160k em contratos diretos.",
+          imagePath: "/cases/case-bathroom.jpg",
           fireImagePath: "/fogo.png",
-          fireText: "2 anos",
+          fireText: "Sub a Contractor em 2 meses",
         },
         {
           id: 3,
-          companyName: "Master Flooring & Tile (MA)",
+          companyName: "Prime Pavers & Outdoor Living (FL)",
           description:
-            "Saímos da guerra de preço como subcontratados para atender diretamente o cliente final americano. O posicionamento visual e os anúncios em inglês mudaram o patamar da nossa empresa.",
-          imagePath: "/logo-n.png",
+            "Paramos de queimar dinheiro no Angi e Thumbtack com leads disputados. Agora temos 4 estimates semanais garantidos direto na nossa agenda, todos com homeowners qualificados de Lake Nona.",
+          imagePath: "/cases/case-patio.jpg",
           fireImagePath: "/fogo.png",
-          fireText: "9 meses",
+          fireText: "4 estimates semanais",
         },
         {
           id: 4,
-          companyName: "Vanguard Roofing & Framing (TX)",
+          companyName: "Summit Contracting & Roofing (FL)",
           description:
-            "Com o Google Local Services, SEO e tráfego pago gerido pela Nivix, dominamos nossa região. Hoje escolhemos as melhores obras e temos previsibilidade o ano inteiro.",
-          imagePath: "/logo-n.png",
+            "Saímos da montanha-russa de um mês bom e dois meses parados. Hoje nosso pipeline anual passa de $900K/year com equipe própria e contratos fechados todas as semanas.",
+          imagePath: "/cases/case-exterior.jpg",
           fireImagePath: "/fogo.png",
-          fireText: "1 ano e 6 meses",
+          fireText: "Faturamento de $900K/ano",
         },
       ],
     },
