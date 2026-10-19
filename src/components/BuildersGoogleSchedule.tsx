@@ -198,13 +198,13 @@ export default function BuildersGoogleSchedule() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
           {/* ======================================================== */}
-          {/* LADO 1: MOTION GOOGLE MEU NEGÓCIO NO TOP 1 */}
+          {/* LADO 1: MOTION GOOGLE MEU NEGÓCIO NO TOP 1 (TOP 1 AO TOP 3) */}
           {/* ======================================================== */}
-          <div className="bg-neutral-900/40 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between">
+          <div className="bg-neutral-900/40 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between space-y-4">
             <div>
-              {/* BARRA DE PESQUISA DO GOOGLE */}
-              <div className="flex items-center gap-3 p-3 bg-black/60 border border-neutral-800 rounded-2xl mb-5">
-                <FaGoogle className="text-white text-base shrink-0 ml-1" />
+              {/* BARRA DE PESQUISA DO GOOGLE COM DIGITAÇÃO ANIMADA */}
+              <div className="flex items-center gap-2.5 p-2.5 bg-black/60 border border-neutral-800 rounded-2xl mb-3.5">
+                <FaGoogle className="text-white text-sm shrink-0 ml-1" />
                 <div className="flex-1 flex items-center min-w-0">
                   <FaMagnifyingGlass className="text-neutral-500 text-xs mr-2 shrink-0" />
                   <span className="text-white text-xs sm:text-sm font-medium font-mono truncate">
@@ -215,106 +215,142 @@ export default function BuildersGoogleSchedule() {
               </div>
 
               {/* IDENTIFICAÇÃO DO GOOGLE MAPS / RESULTADOS LOCAIS */}
-              <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-3 px-1">
-                <span className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-2.5 px-1">
+                <span className="flex items-center gap-1.5 font-semibold text-neutral-300">
                   <FaLocationDot className="text-amber-400" />
-                  Google Meu Negócio • Empresas em Destaque
+                  Empresas no Google Maps (Top 3)
                 </span>
-                <span className="text-neutral-500">Perto de Orlando, FL</span>
+                <span className="text-neutral-500 font-mono text-[10px]">Orlando & Região</span>
               </div>
 
-              {/* CARD #1: PERFIL DO GOOGLE MEU NEGÓCIO NO TOP 1 DOURADO */}
-              <div className="p-5 bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-amber-500/30 rounded-2xl relative shadow-[0_0_30px_rgba(245,158,11,0.08)]">
+              {/* STACK DOS PERFIS: TOP 1 ATÉ TOP 3 */}
+              <div className="space-y-2.5">
                 
-                {/* TOPO COM EMBLEMA DOURADO #1 */}
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3">
-                    {/* Badge Dourado de #1 Lugar */}
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-300 via-amber-500 to-yellow-600 flex items-center justify-center text-black font-black text-sm shadow-[0_0_15px_rgba(245,158,11,0.35)] shrink-0">
-                      #1
-                    </div>
-                    <div>
-                      <div className="inline-flex items-center gap-1.5 text-amber-400 text-[10px] font-black uppercase tracking-wider">
-                        <FaCrown className="text-[10px]" />
-                        <span>Top 1 no Google Maps</span>
+                {/* 🥇 #1: SUA CONSTRUTORA (DESTAQUE ABSOLUTO DOURADO) */}
+                <div className="p-3.5 sm:p-4 bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-amber-500/40 rounded-2xl relative shadow-[0_0_25px_rgba(245,158,11,0.1)]">
+                  {/* Linha superior: #1 Dourado + Nome + Tag Top 1 */}
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-amber-300 via-amber-500 to-yellow-600 flex items-center justify-center text-black font-black text-[11px] shadow-sm shrink-0">
+                        #1
                       </div>
-                      <h4 className="text-white text-base sm:text-lg font-bold leading-tight">
+                      <h4 className="text-white text-sm sm:text-base font-bold truncate">
                         Sua Construtora • General Contractor
                       </h4>
                     </div>
+                    <span className="inline-flex items-center gap-1 text-[10px] text-amber-400 bg-amber-400/10 border border-amber-400/25 px-2 py-0.5 rounded-full font-bold shrink-0">
+                      <FaCrown className="text-[9px]" /> Top 1 Garantido
+                    </span>
                   </div>
 
-                  {/* Selo sutil verificado */}
-                  <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full font-medium shrink-0">
-                    <FaCheck className="text-[9px]" /> Verificado
-                  </span>
-                </div>
-
-                {/* AVALIAÇÃO COM 5 ESTRELAS DOURADAS */}
-                <div className="flex items-center gap-2 mb-3 text-xs">
-                  <div className="flex text-amber-400 text-xs">
-                    <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                  {/* Linha de avaliação: 5 Estrelas + 184 avaliações + Verificado */}
+                  <div className="flex items-center gap-1.5 text-xs mb-2">
+                    <div className="flex text-amber-400 text-[11px]">
+                      <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                    </div>
+                    <span className="text-white font-bold text-xs">5.0</span>
+                    <span className="text-neutral-400 text-[11px]">(184 reviews)</span>
+                    <span className="text-neutral-600">•</span>
+                    <span className="text-emerald-400 text-[11px] font-medium flex items-center gap-1">
+                      <FaCheck className="text-[9px]" /> Verificado
+                    </span>
                   </div>
-                  <span className="text-white font-bold">5.0</span>
-                  <span className="text-neutral-400">(184 avaliações reais)</span>
-                  <span className="text-neutral-600">•</span>
-                  <span className="text-neutral-300">Empresa de Construção</span>
-                </div>
 
-                {/* INFORMAÇÕES DO PERFIL LOCAL */}
-                <div className="space-y-1.5 text-xs text-neutral-400 py-3 border-y border-neutral-800/80">
-                  <p className="flex items-center gap-2">
-                    <FaLocationDot className="text-neutral-500 shrink-0 text-[11px]" />
-                    <span>Atende toda a Região Metropolitana (Orlando & Cidades Vizinhas)</span>
+                  {/* Detalhes de atendimento */}
+                  <p className="text-[11px] text-neutral-400 mb-3 truncate">
+                    📍 Orlando & Metrópole • <span className="text-emerald-400">Aberto</span> ⋅ Responde em minutos
                   </p>
-                  <p className="flex items-center gap-2">
-                    <FaClock className="text-neutral-500 shrink-0 text-[11px]" />
-                    <span className="text-emerald-400 font-medium">Aberto agora</span>
-                    <span className="text-neutral-500">⋅ Responde em menos de 15 minutos</span>
-                  </p>
-                  <p className="text-[11px] text-neutral-400 pt-1">
-                    Serviços: <strong className="text-neutral-200">Kitchens, Bathrooms, Flooring, Additions & Roofing</strong>
-                  </p>
+
+                  {/* Botões de Ação Rápida */}
+                  <div className="grid grid-cols-4 gap-1.5">
+                    <div className="py-1.5 rounded-lg bg-neutral-800/80 border border-neutral-700/40 flex items-center justify-center gap-1.5 text-center text-neutral-200">
+                      <FaPhone className="text-amber-400 text-[10px]" />
+                      <span className="text-[10px] font-medium">Ligar</span>
+                    </div>
+                    <div className="py-1.5 rounded-lg bg-neutral-800/80 border border-neutral-700/40 flex items-center justify-center gap-1.5 text-center text-neutral-200">
+                      <FaRoute className="text-neutral-400 text-[10px]" />
+                      <span className="text-[10px] font-medium">Rotas</span>
+                    </div>
+                    <div className="py-1.5 rounded-lg bg-neutral-800/80 border border-neutral-700/40 flex items-center justify-center gap-1.5 text-center text-neutral-200">
+                      <FaGlobe className="text-neutral-400 text-[10px]" />
+                      <span className="text-[10px] font-medium">Website</span>
+                    </div>
+                    <div className="py-1.5 rounded-lg bg-amber-400/15 border border-amber-400/35 flex items-center justify-center gap-1.5 text-center text-amber-300 font-bold">
+                      <FaCalendarCheck className="text-amber-400 text-[10px]" />
+                      <span className="text-[10px]">Estimate</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* BOTÕES DE AÇÃO RÁPIDA (GOOGLE BUSINESS PROFILE) */}
-                <div className="grid grid-cols-4 gap-2 pt-3">
-                  <div className="py-2 px-1 rounded-xl bg-neutral-800/60 border border-neutral-700/40 flex flex-col items-center justify-center text-center">
-                    <FaPhone className="text-amber-400 text-xs mb-1" />
-                    <span className="text-[10px] text-white font-medium">Ligar</span>
+                {/* 🥈 #2: CONCORRENTE REALISTA LOCAL */}
+                <div className="p-3 bg-neutral-900/40 border border-neutral-800/70 rounded-xl relative hover:border-neutral-700 transition-colors">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-5 h-5 rounded-md bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-400 font-bold text-[10px] shrink-0">
+                        #2
+                      </div>
+                      <p className="text-neutral-300 text-xs sm:text-sm font-semibold truncate">
+                        Apex Remodeling & Contractors LLC
+                      </p>
+                    </div>
+                    <span className="text-[10px] text-neutral-500 font-mono shrink-0">
+                      Concorrente
+                    </span>
                   </div>
-                  <div className="py-2 px-1 rounded-xl bg-neutral-800/60 border border-neutral-700/40 flex flex-col items-center justify-center text-center">
-                    <FaRoute className="text-neutral-300 text-xs mb-1" />
-                    <span className="text-[10px] text-white font-medium">Rotas</span>
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 mb-1">
+                    <div className="flex text-amber-400/70 text-[10px]">
+                      <FaStar /><FaStar /><FaStar /><FaStar />
+                    </div>
+                    <span className="text-neutral-300 font-medium">4.2</span>
+                    <span className="text-neutral-500">(27 reviews)</span>
+                    <span className="text-neutral-600">•</span>
+                    <span>Fecha às 17:00</span>
                   </div>
-                  <div className="py-2 px-1 rounded-xl bg-neutral-800/60 border border-neutral-700/40 flex flex-col items-center justify-center text-center">
-                    <FaGlobe className="text-neutral-300 text-xs mb-1" />
-                    <span className="text-[10px] text-white font-medium">Website</span>
-                  </div>
-                  <div className="py-2 px-1 rounded-xl bg-amber-400/15 border border-amber-400/30 flex flex-col items-center justify-center text-center">
-                    <FaCalendarCheck className="text-amber-400 text-xs mb-1" />
-                    <span className="text-[10px] text-amber-300 font-bold">Estimate</span>
+                  <div className="flex items-center justify-between text-[10px] text-neutral-500 pt-1 border-t border-neutral-800/60">
+                    <span>📍 Orlando, FL</span>
+                    <span className="text-neutral-500">65% menos cliques que o #1</span>
                   </div>
                 </div>
-              </div>
 
-              {/* CONCORRENTE #2 ABAIXO (MINIMALISTA E ESMAECIDO) */}
-              <div className="mt-3 p-3 bg-neutral-900/30 border border-neutral-800/50 rounded-xl flex items-center justify-between opacity-40 select-none">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-neutral-500 font-bold text-xs">#2</span>
-                  <div>
-                    <p className="text-neutral-300 text-xs font-medium">Concorrente Local B</p>
-                    <p className="text-neutral-500 text-[10px]">4.1 ★ (14 avaliações)</p>
+                {/* 🥉 #3: OUTRO CONCORRENTE REALISTA */}
+                <div className="p-3 bg-neutral-900/30 border border-neutral-800/60 rounded-xl relative opacity-85">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-5 h-5 rounded-md bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-400 font-bold text-[10px] shrink-0">
+                        #3
+                      </div>
+                      <p className="text-neutral-400 text-xs sm:text-sm font-medium truncate">
+                        Central Florida Builders Group
+                      </p>
+                    </div>
+                    <span className="text-[10px] text-neutral-500 font-mono shrink-0">
+                      Concorrente
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 mb-1">
+                    <div className="flex text-amber-400/60 text-[10px]">
+                      <FaStar /><FaStar /><FaStar /><FaStar />
+                    </div>
+                    <span className="text-neutral-400 font-medium">3.9</span>
+                    <span className="text-neutral-500">(14 reviews)</span>
+                    <span className="text-neutral-600">•</span>
+                    <span>Kissimmee, FL</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] text-neutral-500 pt-1 border-t border-neutral-800/60">
+                    <span>📍 Região Sul</span>
+                    <span className="text-neutral-500">Quase sem ligações</span>
                   </div>
                 </div>
-                <span className="text-[10px] text-neutral-500">80% menos visibilidade</span>
+
               </div>
             </div>
 
-            {/* NOTA DE RODAPÉ DO BLOCO GOOGLE */}
-            <p className="text-[11px] text-neutral-500 mt-4 text-center">
-              Quem pesquisa no Google está com o dinheiro na mão pronto para iniciar a obra.
-            </p>
+            {/* RODAPÉ ESTILO GOOGLE MAPS */}
+            <div className="pt-2 text-center border-t border-neutral-800/70">
+              <span className="text-[11px] text-neutral-500 font-medium">
+                Mais de 40 empresas locais disputam as posições invisíveis abaixo do Top 3
+              </span>
+            </div>
           </div>
 
           {/* ======================================================== */}
