@@ -5,6 +5,7 @@ import ContactForm from "./Form";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWpforms, FaWhatsapp, FaGem } from "react-icons/fa6";
 import { NicheConfig } from "@/data/niches";
+import BuildersGoogleSchedule from "../BuildersGoogleSchedule";
 
 type FormContainerData = NicheConfig["form"] & NicheConfig["method"] & { routePath?: string };
 
@@ -375,43 +376,48 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                 ))}
             </div>
 
-            {/* SEÇÃO: O MÉTODO NIVIX (A MÁQUINA DE ESCALA) */}
-            <div className="mt-8 w-full flex flex-col items-center">
-            <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full bg-neutral-900/60 border-2 border-neutral-700/50 backdrop-blur-3xl rounded-[40px] p-8 lg:p-16 shadow-2xl relative overflow-hidden"
-            >
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB400]/5 blur-[120px] -z-10"></div>
+            {/* SEÇÃO: O MÉTODO NIVIX (A MÁQUINA DE ESCALA / DOMÍNIO GOOGLE BUILDERS) */}
+            {data.routePath === "/builders" ? (
+              <div className="mt-8 w-full flex flex-col items-center">
+                <BuildersGoogleSchedule />
+              </div>
+            ) : (
+              <div className="mt-8 w-full flex flex-col items-center">
+                <motion.div 
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full bg-neutral-900/60 border-2 border-neutral-700/50 backdrop-blur-3xl rounded-[40px] p-8 lg:p-16 shadow-2xl relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB400]/5 blur-[120px] -z-10"></div>
 
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
-                {/* Texto de Impacto */}
-                <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left flex flex-col justify-center">
-                    <motion.div 
+                  <div className="flex flex-col lg:flex-row gap-16 items-center">
+                    {/* Texto de Impacto */}
+                    <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left flex flex-col justify-center">
+                      <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                         className="inline-flex items-center bg-[#00ff2a]/10 border border-[#00ff2a]/20 rounded-full px-4 py-1.5 text-[#00ff2a] text-[10px] font-black uppercase tracking-[0.2em] gap-2 w-fit mx-auto lg:mx-0"
-                    >
+                      >
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff2a] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00ff2a]"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff2a] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00ff2a]"></span>
                         </span>
                         <span>O Método de Escala Nivix</span>
-                    </motion.div>
+                      </motion.div>
 
-                    <h3 className="text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tight">
+                      <h3 className="text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tight">
                         Já imaginou gastar 
                         <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.4)] whitespace-nowrap mx-3">
-                            {data.cpaValue || "R$ 6"}
+                          {data.cpaValue || "R$ 6"}
                         </span> 
                         para voltar um <span className="text-[#00ff2a]">{data.hookTarget || "cliente novo"}</span> {data.hookAction || "fazendo pedido?"}
-                    </h3>
+                      </h3>
 
-                    <p className="text-neutral-400 text-lg leading-relaxed max-w-xl">
+                      <p className="text-neutral-400 text-lg leading-relaxed max-w-xl">
                         {data.description}
                         <br className="mt-2 block" />
                         <span
@@ -421,31 +427,32 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                               'Nossa engenharia de tráfego transforma cada <span class="text-white font-bold">R$ 6,00 investidos</span> em uma comanda batendo na sua cozinha.',
                           }}
                         />
-                    </p>
+                      </p>
 
-                    <div className="grid grid-cols-2 gap-4 max-w-md">
+                      <div className="grid grid-cols-2 gap-4 max-w-md">
                         <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
-                            <p className="text-[#FFB400] text-2xl font-black">{data.cpaFormatted || "R$ 6,00"}</p>
-                            <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">{data.cpaLabel || "Custo por Cliente"}</p>
+                          <p className="text-[#FFB400] text-2xl font-black">{data.cpaFormatted || "R$ 6,00"}</p>
+                          <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">{data.cpaLabel || "Custo por Cliente"}</p>
                         </div>
                         <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
-                            <p className="text-[#00ff2a] text-2xl font-black">100%</p>
-                            <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">Escalabilidade</p>
+                          <p className="text-[#00ff2a] text-2xl font-black">100%</p>
+                          <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">Escalabilidade</p>
                         </div>
+                      </div>
                     </div>
-                </div>
 
-                {/* Calculadora ROI Interativa */}
-                <div className="w-full lg:w-1/2">
-                    <RoiCalculator
-                      footer={data.footer}
-                      currencySymbol={data.currencySymbol}
-                      roiConfig={data.roiConfig}
-                    />
-                </div>
-            </div>
-            </motion.div>
-            </div>
+                    {/* Calculadora ROI Interativa */}
+                    <div className="w-full lg:w-1/2">
+                      <RoiCalculator
+                        footer={data.footer}
+                        currencySymbol={data.currencySymbol}
+                        roiConfig={data.roiConfig}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
 
             <motion.a 
             href="#form" 
