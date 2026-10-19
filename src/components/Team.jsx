@@ -12,7 +12,7 @@ const Team = ({ data }) => {
       {
         icon: <FaRocket />,
         title: "Resultados e Escala",
-        desc: "Nosso objetivo é sempre a performance máxima do seu negócio. Focamos em lotar o seu app de pedidos!"
+        desc: data?.resultsValueDesc || "Nosso objetivo é sempre a performance máxima do seu negócio. Focamos em lotar o seu app de pedidos!"
       },
       {
         icon: <FaHandshake />,

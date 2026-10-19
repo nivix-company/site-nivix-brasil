@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Header = () => {
+const Header = ({ homeHref = "#" }: { homeHref?: string }) => {
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
@@ -18,7 +18,9 @@ const Header = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center lg:justify-start w-full lg:w-fit"
         >
-          <img src="/logo.png" alt="Logo Nivix" className="w-40 lg:w-34" />
+          <a href={homeHref}>
+            <img src="/logo.png" alt="Logo Nivix" className="w-40 lg:w-34" />
+          </a>
         </motion.div>
 
         {/* Menu */}

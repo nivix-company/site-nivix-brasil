@@ -1,22 +1,33 @@
-"use client";''
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function CadastroConcluido() {
+  const [returnHref, setReturnHref] = useState("/");
 
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "Lead"); // Ou outro evento: 'Lead', 'CompleteRegistration', etc.
+    if (typeof window !== "undefined") {
+      if ((window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const from = params.get("from");
+      const savedVertical = localStorage.getItem("nivix_vertical");
+      if (from && from.startsWith("/")) {
+        setReturnHref(from);
+      } else if (savedVertical && savedVertical.startsWith("/")) {
+        setReturnHref(savedVertical);
+      }
     }
   }, []);
 
   return (
     <div className="flex items-center h-screen justify-center">
         <div className="flex flex-col items-center mb-15">
-            <Link href="/">
+            <Link href={returnHref}>
             <Image
               src="/logo.png"
               alt="Logo da empresa"

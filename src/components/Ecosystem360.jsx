@@ -31,7 +31,7 @@ const Ecosystem360 = ({ data }) => {
         { icon: <FaChartLine />, title: "Growth" },
         { icon: <FaPenNib />, title: "Copywriting" },
         { icon: <FaMobileScreenButton />, title: "UX Design" },
-        { icon: <FaCubesStacked />, title: "Menu Eng." },
+        { icon: <FaCubesStacked />, title: data?.specialCardTitle || "Menu Eng." },
         { icon: <FaWhatsapp />, title: "Sales Chat" },
         { icon: <FaEnvelopeOpenText />, title: "E-mail Mkt" },
         { icon: <FaGoogle />, title: "Google Ads" },
@@ -135,7 +135,7 @@ const Ecosystem360 = ({ data }) => {
                                 <span className="text-[#FFB400]">Lead Elite Plataform</span>
                             </h3>
                             <p className="text-neutral-400 text-base md:text-xl leading-relaxed max-w-2xl">
-                                Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da {data.platformTitle}.
+                                {data.platformDesc || `Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da ${data.platformTitle}.`}
                             </p>
                         </div>
                         

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 interface HeadlineProps {
     data: {
         highlight: string;
+        locationSuffix?: string;
         subtext: string;
     }
 }
@@ -40,7 +41,7 @@ const Headline = ({ data }: HeadlineProps) => {
                 <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
                     {data.highlight}
                 </span> <br className="md:hidden" />
-                do Brasil
+                {data.locationSuffix || "do Brasil"}
             </motion.h1>
 
             <motion.p 

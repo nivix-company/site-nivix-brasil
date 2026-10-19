@@ -3,14 +3,40 @@
 import React, { useRef } from "react";
 import ContactForm from "./Form";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWpforms, FaWhatsapp, FaGem, FaRocket, FaChartLine } from "react-icons/fa6";
+import { FaWpforms, FaWhatsapp, FaGem } from "react-icons/fa6";
+import { NicheConfig } from "@/data/niches";
+
+type FormContainerData = NicheConfig["form"] & NicheConfig["method"] & { routePath?: string };
 
 // SUB-COMPONENTE: CALCULADORA DE ROI
-const RoiCalculator = ({ footer }: { footer: string }) => {
-  const [invest, setInvest] = React.useState(1600);
-  const [ticket, setTicket] = React.useState(115);
-  
-  const orders = Math.floor(invest / 6);
+const RoiCalculator = ({
+  footer,
+  currencySymbol = "R$",
+  roiConfig,
+}: {
+  footer: string;
+  currencySymbol?: string;
+  roiConfig?: NicheConfig["method"]["roiConfig"];
+}) => {
+  const cfg = roiConfig || {
+    defaultInvest: 1600,
+    minInvest: 600,
+    maxInvest: 10000,
+    stepInvest: 100,
+    defaultTicket: 115,
+    minTicket: 20,
+    maxTicket: 200,
+    stepTicket: 5,
+    cpaDivisor: 6,
+    ticketLabel: "Seu Ticket Médio",
+    ordersLabel: "Novos Pedidos",
+    revenueLabel: "Faturamento Est.",
+  };
+
+  const [invest, setInvest] = React.useState(cfg.defaultInvest);
+  const [ticket, setTicket] = React.useState(cfg.defaultTicket);
+
+  const orders = Math.floor(invest / cfg.cpaDivisor);
   const revenue = orders * ticket;
 
   return (
@@ -24,13 +50,13 @@ const RoiCalculator = ({ footer }: { footer: string }) => {
             <div className="space-y-4">
                 <div className="flex justify-between items-center">
                     <label className="text-white text-xs font-bold uppercase tracking-widest">Investimento Mensal</label>
-                    <span className="text-[#FFB400] font-black text-xl">R$ {invest.toLocaleString()}</span>
+                    <span className="text-[#FFB400] font-black text-xl">{currencySymbol} {invest.toLocaleString()}</span>
                 </div>
                 <input 
                     type="range" 
-                    min="600" 
-                    max="10000" 
-                    step="100" 
+                    min={cfg.minInvest} 
+                    max={cfg.maxInvest} 
+                    step={cfg.stepInvest} 
                     value={invest}
                     onChange={(e) => setInvest(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-[#FFB400]"
@@ -40,14 +66,14 @@ const RoiCalculator = ({ footer }: { footer: string }) => {
             {/* Input Ticket Médio */}
             <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                    <label className="text-white text-xs font-bold uppercase tracking-widest">Seu Ticket Médio</label>
-                    <span className="text-[#FFB400] font-black text-xl">R$ {ticket.toLocaleString()}</span>
+                    <label className="text-white text-xs font-bold uppercase tracking-widest">{cfg.ticketLabel}</label>
+                    <span className="text-[#FFB400] font-black text-xl">{currencySymbol} {ticket.toLocaleString()}</span>
                 </div>
                 <input 
                     type="range" 
-                    min="20" 
-                    max="200" 
-                    step="5" 
+                    min={cfg.minTicket} 
+                    max={cfg.maxTicket} 
+                    step={cfg.stepTicket} 
                     value={ticket}
                     onChange={(e) => setTicket(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-[#FFB400]"
@@ -61,13 +87,13 @@ const RoiCalculator = ({ footer }: { footer: string }) => {
             {/* Resultado Final */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-1">
-                    <p className="text-neutral-500 text-[10px] font-black uppercase tracking-widest">Novos Pedidos</p>
+                    <p className="text-neutral-500 text-[10px] font-black uppercase tracking-widest">{cfg.ordersLabel}</p>
                     <p className="text-white text-4xl font-black tabular-nums">{orders}</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-[#00ff2a] text-[10px] font-black uppercase tracking-widest">Faturamento Est.</p>
-                    <p className="text-[#00ff2a] text-4xl font-black tabular-nums drop-shadow-[0_0_15px_rgba(0,255,42,0.4)]">
-                        R$ {revenue.toLocaleString()}
+                    <p className="text-[#00ff2a] text-[10px] font-black uppercase tracking-widest">{cfg.revenueLabel}</p>
+                    <p className="text-[#00ff2a] text-3xl lg:text-4xl font-black tabular-nums drop-shadow-[0_0_15px_rgba(0,255,42,0.4)]">
+                        {currencySymbol} {revenue.toLocaleString()}
                     </p>
                 </div>
             </div>
@@ -82,7 +108,7 @@ const RoiCalculator = ({ footer }: { footer: string }) => {
   );
 };
 
-export default function FormContainer({ data }: { data: { methodSubtitle: string, authorityText: string, riskZeroText: string, description: string, footer: string } }) {
+export default function FormContainer({ data }: { data: FormContainerData }) {
   const [spots, setSpots] = React.useState(14);
   const lastProcessedId = useRef<number | null>(null);
 
@@ -239,7 +265,7 @@ export default function FormContainer({ data }: { data: { methodSubtitle: string
             {/* Coluna Direita: O FORMULÁRIO */}
             <div className="w-full lg:w-[48%] mt-12 lg:mt-0 relative flex items-center">
                 <div className="w-full relative">
-                  <ContactForm />
+                  <ContactForm config={data} />
                 </div>
             </div>  
         </div>
@@ -306,7 +332,7 @@ export default function FormContainer({ data }: { data: { methodSubtitle: string
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="text-center md:text-2xl mt-2 max-w-4xl px-6 text-white/90 leading-relaxed"
                 >
-                  Cada minuto que você hesita é um pedido que cai no caixa do seu concorrente. 
+                  {data.remarketingSubtext || "Cada minuto que você hesita é um pedido que cai no caixa do seu concorrente."}
                   <span className="text-white font-bold ml-1">Recupere o controle da sua operação hoje.</span>
                 </motion.p>
             </div>
@@ -346,79 +372,89 @@ export default function FormContainer({ data }: { data: { methodSubtitle: string
                         <h4 className="text-white text-xl font-bold mb-4 tracking-tight">{item.title}</h4>
                         <p className="text-neutral-400 text-sm md:text-base font-medium leading-relaxed">{item.text}</p>
                     </motion.div>
-                    ))}
-                    </div>
+                ))}
+            </div>
 
-                    {/* SEÇÃO: O MÉTODO NIVIX (A MÁQUINA DE ESCALA) */}
-                    <div className="mt-8 w-full flex flex-col items-center">
+            {/* SEÇÃO: O MÉTODO NIVIX (A MÁQUINA DE ESCALA) */}
+            <div className="mt-8 w-full flex flex-col items-center">
+            <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full bg-neutral-900/60 border-2 border-neutral-700/50 backdrop-blur-3xl rounded-[40px] p-8 lg:p-16 shadow-2xl relative overflow-hidden"
+            >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB400]/5 blur-[120px] -z-10"></div>
+
+            <div className="flex flex-col lg:flex-row gap-16 items-center">
+                {/* Texto de Impacto */}
+                <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left flex flex-col justify-center">
                     <motion.div 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full bg-neutral-900/60 border-2 border-neutral-700/50 backdrop-blur-3xl rounded-[40px] p-8 lg:p-16 shadow-2xl relative overflow-hidden"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        className="inline-flex items-center bg-[#00ff2a]/10 border border-[#00ff2a]/20 rounded-full px-4 py-1.5 text-[#00ff2a] text-[10px] font-black uppercase tracking-[0.2em] gap-2 w-fit mx-auto lg:mx-0"
                     >
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB400]/5 blur-[120px] -z-10"></div>
-
-                    <div className="flex flex-col lg:flex-row gap-16 items-center">
-                        {/* Texto de Impacto - O Gancho de R$ 6 */}
-                        <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left flex flex-col justify-center">
-                            <motion.div 
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                                className="inline-flex items-center bg-[#00ff2a]/10 border border-[#00ff2a]/20 rounded-full px-4 py-1.5 text-[#00ff2a] text-[10px] font-black uppercase tracking-[0.2em] gap-2 w-fit mx-auto lg:mx-0"
-                            >
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff2a] opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00ff2a]"></span>
-                                </span>
-                                <span>O Método de Escala Nivix</span>
-                            </motion.div>
-
-                            <h3 className="text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tight">
-                                Já imaginou gastar 
-                                <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.4)] whitespace-nowrap mx-3">
-                                    R$ 6
-                                </span> 
-                                para voltar um <span className="text-[#00ff2a]">cliente novo</span> fazendo pedido?
-                            </h3>
-
-                            <p className="text-neutral-400 text-lg leading-relaxed max-w-xl">
-                                {data.description}
-                                <br className="mt-2 block" />
-                                Nossa engenharia de tráfego transforma cada <span className="text-white font-bold">R$ 6,00 investidos</span> em uma comanda batendo na sua cozinha.
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-4 max-w-md">
-                                <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
-                                    <p className="text-[#FFB400] text-2xl font-black">R$ 6,00</p>
-                                    <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">Custo por Cliente</p>
-                                </div>
-                                <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
-                                    <p className="text-[#00ff2a] text-2xl font-black">100%</p>
-                                    <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">Escalabilidade</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Calculadora ROI Interativa */}
-                        <div className="w-full lg:w-1/2">
-                            <RoiCalculator footer={data.footer} />
-                        </div>
-                    </div>
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff2a] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00ff2a]"></span>
+                        </span>
+                        <span>O Método de Escala Nivix</span>
                     </motion.div>
-                    </div>
 
-                    <motion.a 
-                    href="#form" 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="mt-16 w-full max-w-md text-center text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg"
-                    >
-                    Quero meu diagnóstico gratuito
-                    </motion.a>
+                    <h3 className="text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tight">
+                        Já imaginou gastar 
+                        <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.4)] whitespace-nowrap mx-3">
+                            {data.cpaValue || "R$ 6"}
+                        </span> 
+                        para voltar um <span className="text-[#00ff2a]">{data.hookTarget || "cliente novo"}</span> {data.hookAction || "fazendo pedido?"}
+                    </h3>
+
+                    <p className="text-neutral-400 text-lg leading-relaxed max-w-xl">
+                        {data.description}
+                        <br className="mt-2 block" />
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              data.subDescription ||
+                              'Nossa engenharia de tráfego transforma cada <span class="text-white font-bold">R$ 6,00 investidos</span> em uma comanda batendo na sua cozinha.',
+                          }}
+                        />
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4 max-w-md">
+                        <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
+                            <p className="text-[#FFB400] text-2xl font-black">{data.cpaFormatted || "R$ 6,00"}</p>
+                            <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">{data.cpaLabel || "Custo por Cliente"}</p>
+                        </div>
+                        <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl">
+                            <p className="text-[#00ff2a] text-2xl font-black">100%</p>
+                            <p className="text-neutral-500 text-[9px] font-bold uppercase tracking-widest mt-1">Escalabilidade</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Calculadora ROI Interativa */}
+                <div className="w-full lg:w-1/2">
+                    <RoiCalculator
+                      footer={data.footer}
+                      currencySymbol={data.currencySymbol}
+                      roiConfig={data.roiConfig}
+                    />
+                </div>
+            </div>
+            </motion.div>
+            </div>
+
+            <motion.a 
+            href="#form" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-16 w-full max-w-md text-center text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg"
+            >
+            Quero meu diagnóstico gratuito
+            </motion.a>
             {/* SOFT-BREAK (APENAS CONTINUIDADE) */}
             <div className="mt-20 w-full flex flex-col items-center">
                 <motion.div 

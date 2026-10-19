@@ -2,17 +2,23 @@
 import { motion } from "framer-motion";
 import { FaCheck, FaUnlock, FaShieldHalved, FaArrowTrendUp, FaUsersViewfinder } from "react-icons/fa6";
 
+const defaultFeatures = [
+    { title: "Tráfego de Conversão", desc: "Anúncios segmentados de alta conversão." },
+    { title: "Social Media Essencial", desc: "Suas redes sociais profissionais que vão dar água na boca." },
+    { title: "Engenharia de Cardápio", desc: "Seu cardápio vira uma máquina de pedidos." },
+    { title: "Análise de Dados", desc: "Relatórios semanais e mensal pra você ver o progresso." },
+    { title: "CRM e Recorrência", desc: "Estratégias para reter a base de clientes e fazê-los pedir sempre." },
+    { title: "Automação de Vendas", desc: "IA e Chatbots para não perder pedidos por demora." },
+    { title: "Consultoria de Elite", desc: "Squad dedicado para otimizar toda sua operação." },
+    { title: "Suporte VIP 24/7", desc: "Acesso direto ao seu gestor via WhatsApp a qualquer hora." }
+];
+
 const Plano = ({ data }) => {
-    const features = [
-        { title: "Tráfego de Conversão", desc: "Anúncios segmentados de alta conversão." },
-        { title: "Social Media Essencial", desc: "Suas redes sociais profissionais que vão dar água na boca." },
-        { title: "Engenharia de Cardápio", desc: "Seu cardápio vira uma máquina de pedidos." },
-        { title: "Análise de Dados", desc: "Relatórios semanais e mensal pra você ver o progresso." },
-        { title: "CRM e Recorrência", desc: "Estratégias para reter a base de clientes e fazê-los pedir sempre." },
-        { title: "Automação de Vendas", desc: "IA e Chatbots para não perder pedidos por demora." },
-        { title: "Consultoria de Elite", desc: "Squad dedicado para otimizar toda sua operação." },
-        { title: "Suporte VIP 24/7", desc: "Acesso direto ao seu gestor via WhatsApp a qualquer hora." }
-    ];
+    const features = data?.features || defaultFeatures;
+    const currency = data?.currency || "R$";
+    const marketAnchor = data?.marketAnchor || "R$ 2.600/mês";
+    const price = data?.price || "800";
+    const annualSavings = data?.annualSavings || "R$ 21.600/ano";
 
     return (
         <section id="planos" className="relative flex flex-col items-center justify-center px-4 py-12 w-full overflow-hidden">
@@ -64,16 +70,16 @@ const Plano = ({ data }) => {
                         <div className="w-full lg:w-[35%] flex flex-col items-center justify-center lg:border-r border-neutral-800 lg:pr-12">
                             <div className="text-center w-full">
                                 <div className="relative inline-block mb-4">
-                                    <span className="text-red-500/80 text-sm font-black line-through block uppercase tracking-widest">Mercado: R$ 2.600/mês</span>
+                                    <span className="text-red-500/80 text-sm font-black line-through block uppercase tracking-widest">Mercado: {marketAnchor}</span>
                                     <div className="absolute -right-16 -top-2 bg-red-600 text-white text-[8px] font-black px-2 py-0.5 rounded-full rotate-12 shadow-lg animate-pulse">
                                         ARMADILHA
                                     </div>
                                 </div>
 
                                 <div className="flex items-end gap-1 justify-center relative">
-                                    <span className="text-white text-3xl font-bold mb-6">R$</span>
+                                    <span className="text-white text-3xl font-bold mb-6">{currency}</span>
                                     <span className="text-9xl md:text-[10rem] font-black bg-gradient-to-b from-white via-white to-neutral-600 bg-clip-text text-transparent tracking-tighter leading-none">
-                                        800
+                                        {price}
                                     </span>
                                     <div className="flex flex-col items-start mb-6">
                                         <span className="text-[#00ff2a] text-xl font-bold leading-none">/mês</span>
@@ -89,7 +95,7 @@ const Plano = ({ data }) => {
 
                                 <div className="mt-8 flex flex-col items-center gap-2">
                                     <p className="text-[#FFB400] text-xs font-black tracking-[0.2em] uppercase flex items-center gap-2">
-                                        <FaArrowTrendUp className="animate-bounce" /> Economia de R$ 21.600/ano
+                                        <FaArrowTrendUp className="animate-bounce" /> Economia de {annualSavings}
                                     </p>
                                     <div className="h-0.5 w-12 bg-neutral-800 rounded-full"></div>
                                 </div>
@@ -189,7 +195,7 @@ const Plano = ({ data }) => {
                         <div className="space-y-1.5 relative z-10">
                              <p className="text-white font-bold text-xl leading-tight group-hover:text-[#FFB400] transition-colors">Chega de contratos abusivos</p>
                              <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">
-                                Você não precisa ficar preso a contratos de 6 meses pagando <span className="text-white font-semibold">R$ 2.600/mês</span> para ter um marketing de elite.
+                                Você não precisa ficar preso a contratos de 6 meses pagando <span className="text-white font-semibold">{marketAnchor}</span> para ter um marketing de elite.
                              </p>
                         </div>
                     </motion.div>

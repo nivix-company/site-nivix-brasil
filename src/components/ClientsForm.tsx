@@ -1,34 +1,38 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { clients } from "../data/clientsData";
+import { clients as defaultClients } from "../data/clientsData";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFire, FaChevronLeft, FaChevronRight, FaArrowTrendUp } from "react-icons/fa6";
+import { FaFire, FaArrowTrendUp } from "react-icons/fa6";
+import { NicheConfig } from "@/data/niches";
 
-export default function ClientsCarousel() {
+export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel"] }) {
+  const clientsList = data?.clients || defaultClients;
+  const initialCount = data?.activeClientsCount ?? 621;
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [clientes, setClientes] = useState(621);
+  const [clientes, setClientes] = useState(initialCount);
 
-  // Contador animado fake
   useEffect(() => {
+    setClientes(initialCount);
     const timer = setTimeout(() => {
-      setClientes(622);
+      setClientes(initialCount + 1);
     }, 40000); 
     return () => clearTimeout(timer);
-  }, []);
+  }, [initialCount]);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % clients.length);
+    setCurrentIndex((prev) => (prev + 1) % clientsList.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + clients.length) % clients.length);
+    setCurrentIndex((prev) => (prev - 1 + clientsList.length) % clientsList.length);
   };
 
   // Autoplay
   useEffect(() => {
     const interval = setInterval(nextSlide, 7000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, clientsList.length]);
 
   // Handler para o gesto de drag
   const handleDragEnd = (event: any, info: any) => {
@@ -58,13 +62,13 @@ export default function ClientsCarousel() {
         </motion.div>
 
         <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-          De pizzarias de bairro a <br className="hidden md:block" /> 
+          {data?.titleLine1 || "De pizzarias de bairro a"} <br className="hidden md:block" /> 
           <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.5)]">
-            grandes franquias
+            {data?.titleHighlight || "grandes franquias"}
           </span>
         </h2>
         <p className="text-lg md:text-2xl mt-4 text-neutral-400 max-w-2xl px-6">
-          Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação.
+          {data?.subtitle || "Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação."}
         </p>
       </div>
 
@@ -75,10 +79,10 @@ export default function ClientsCarousel() {
           <div className="relative h-[550px] flex items-center justify-center">
             
             <AnimatePresence mode="popLayout" initial={false}>
-              {clients.map((client, index) => {
+              {clientsList.map((client, index) => {
                 let position = index - currentIndex;
-                if (position < -1) position += clients.length;
-                if (position > (clients.length - 2)) position -= clients.length;
+                if (position < -1) position += clientsList.length;
+                if (position > (clientsList.length - 2)) position -= clientsList.length;
                 if (position < -1 || position > 1) return null;
 
                 const isCenter = position === 0;
@@ -131,7 +135,7 @@ export default function ClientsCarousel() {
         {/* Minimalist Controls */}
         <div className="flex flex-col items-center gap-8 mt-4">
            <div className="flex gap-2">
-              {clients.map((_, i) => (
+              {clientsList.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentIndex(i)}

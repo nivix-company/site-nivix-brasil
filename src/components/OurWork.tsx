@@ -1,67 +1,77 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { FaArrowRight, FaChartLine, FaRocket, FaShieldHalved, FaMoneyBillTrendUp, FaStore, FaClock, FaChevronDown } from "react-icons/fa6";
+import { FaArrowRight, FaChartLine, FaRocket, FaMoneyBillTrendUp, FaStore, FaChevronDown } from "react-icons/fa6";
+import { NicheConfig } from "@/data/niches";
 
-const OurWork = () => {
+const iconMap = {
+    store: <FaStore />,
+    money: <FaMoneyBillTrendUp />,
+    rocket: <FaRocket />,
+    chart: <FaChartLine />,
+};
+
+const defaultMainQuestions = [
+    {
+        id: 1,
+        iconKey: "store" as const,
+        title: 'Meu restaurante é pequeno ou está "bagunçado", serve para mim?',
+        answer: 'Sim. Não somos apenas tráfego; ajudamos a organizar sua Engenharia de Cardápio e Fluxo de Atendimento. Preparamos sua casa para receber a demanda e escalar sem que o marketing se torne um balde furado.',
+        size: 'md:col-span-2',
+        color: '#FFB400'
+    },
+    {
+        id: 2,
+        iconKey: "money" as const,
+        title: 'É um gasto ou investimento?',
+        answer: 'Você não precisa de post bonitinho, precisa de mesa cheia. A Nivix foca em ROI real. Se não entregarmos resultado, seu dinheiro volta.',
+        size: 'md:col-span-1',
+        color: '#00ff2a'
+    },
+    {
+        id: 3,
+        iconKey: "rocket" as const,
+        title: 'Quanto investir?',
+        answer: 'Temos cases de faturamento de 30k com 1.5k de tráfego. Com a Nivix, cada real vai para onde traz retorno real.',
+        size: 'md:col-span-1',
+        color: '#FFB400'
+    },
+    {
+        id: 4,
+        iconKey: "chart" as const,
+        title: 'Vai aumentar o número de pedidos?',
+        answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Já fizemos pizzarias saltarem de 12 para 97 pedidos em 21 dias com estratégias validadas de performance.',
+        size: 'md:col-span-2',
+        color: '#FFEA00'
+    }
+];
+
+const defaultTechnicalQuestions = [
+    {
+        id: 5,
+        question: 'O que exatamente a Nivix faz no dia a dia do meu negócio?',
+        answer: 'Cuidamos de toda a inteligência de crescimento: gestão de tráfego (Meta/Google), criação de artes e vídeos para anúncios, otimização do seu cardápio digital e análise semanal de métricas para garantir que o lucro esteja subindo.'
+    },
+    {
+        id: 6,
+        question: 'Preciso assinar um contrato de fidelidade de longo prazo?',
+        answer: 'Não. Nosso contrato é livre de amarras porque acreditamos no resultado. Se você está lucrando e satisfeito com o serviço, você fica. Você tem total liberdade para cancelar quando quiser, sem multas abusivas.'
+    },
+    {
+        id: 7,
+        question: 'Como eu acompanho os resultados e o que está sendo feito?',
+        answer: 'Transparência total. Você terá acesso a um grupo exclusivo no WhatsApp com seu gestor e receberá relatórios semanais e mensais detalhando cada centavo investido e o retorno em pedidos gerado.'
+    },
+    {
+        id: 8,
+        question: 'Além do valor da Nivix, quanto devo investir em anúncios?',
+        answer: 'O investimento em anúncios (Meta/Google) é pago diretamente às plataformas. Recomendamos começar com um valor que faça sentido para sua realidade atual e escalar conforme o lucro for voltando para o caixa.'
+    }
+];
+
+const OurWork = ({ data }: { data?: NicheConfig["faq"] }) => {
     const [openQuestion, setOpenQuestion] = useState<number | null>(null);
-
-    const mainQuestions = [
-        {
-            id: 1,
-            icon: <FaStore />,
-            title: 'Meu restaurante é pequeno ou está "bagunçado", serve para mim?',
-            answer: 'Sim. Não somos apenas tráfego; ajudamos a organizar sua Engenharia de Cardápio e Fluxo de Atendimento. Preparamos sua casa para receber a demanda e escalar sem que o marketing se torne um balde furado.',
-            size: 'md:col-span-2',
-            color: '#FFB400'
-        },
-        {
-            id: 2,
-            icon: <FaMoneyBillTrendUp />,
-            title: 'É um gasto ou investimento?',
-            answer: 'Você não precisa de post bonitinho, precisa de mesa cheia. A Nivix foca em ROI real. Se não entregarmos resultado, seu dinheiro volta.',
-            size: 'md:col-span-1',
-            color: '#00ff2a'
-        },
-        {
-            id: 3,
-            icon: <FaRocket />,
-            title: 'Quanto investir?',
-            answer: 'Temos cases de faturamento de 30k com 1.5k de tráfego. Com a Nivix, cada real vai para onde traz retorno real.',
-            size: 'md:col-span-1',
-            color: '#FFB400'
-        },
-        {
-            id: 4,
-            icon: <FaChartLine />,
-            title: 'Vai aumentar o número de pedidos?',
-            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Já fizemos pizzarias saltarem de 12 para 97 pedidos em 21 dias com estratégias validadas de performance.',
-            size: 'md:col-span-2',
-            color: '#FFEA00'
-        }
-    ];
-
-    const technicalQuestions = [
-        {
-            id: 5,
-            question: 'O que exatamente a Nivix faz no dia a dia do meu negócio?',
-            answer: 'Cuidamos de toda a inteligência de crescimento: gestão de tráfego (Meta/Google), criação de artes e vídeos para anúncios, otimização do seu cardápio digital e análise semanal de métricas para garantir que o lucro esteja subindo.'
-        },
-        {
-            id: 6,
-            question: 'Preciso assinar um contrato de fidelidade de longo prazo?',
-            answer: 'Não. Nosso contrato é livre de amarras porque acreditamos no resultado. Se você está lucrando e satisfeito com o serviço, você fica. Você tem total liberdade para cancelar quando quiser, sem multas abusivas.'
-        },
-        {
-            id: 7,
-            question: 'Como eu acompanho os resultados e o que está sendo feito?',
-            answer: 'Transparência total. Você terá acesso a um grupo exclusivo no WhatsApp com seu gestor e receberá relatórios semanais e mensais detalhando cada centavo investido e o retorno em pedidos gerado.'
-        },
-        {
-            id: 8,
-            question: 'Além do valor da Nivix, quanto devo investir em anúncios?',
-            answer: 'O investimento em anúncios (Meta/Google) é pago diretamente às plataformas. Recomendamos começar com um valor que faça sentido para sua realidade atual e escalar conforme o lucro for voltando para o caixa.'
-        }
-    ];
+    const mainQuestions = data?.mainQuestions || defaultMainQuestions;
+    const technicalQuestions = data?.technicalQuestions || defaultTechnicalQuestions;
 
     return (
         <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center pb-16 pt-4">  
@@ -108,7 +118,7 @@ const OurWork = () => {
                             <div className="absolute inset-0 bg-gradient-to-br from-[#FFB400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div>
                                 <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-xl mb-6 border border-neutral-700/50 group-hover:scale-110 transition-transform duration-500 ease-out" style={{ color: item.color }}>
-                                    {item.icon}
+                                    {iconMap[item.iconKey] || <FaStore />}
                                 </div>
                                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#FFB400] transition-colors duration-300">
                                     {item.title}

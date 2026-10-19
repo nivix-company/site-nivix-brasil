@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 
-const valoresPermitidos = [
+const defaultValoresPermitidos = [
   "Até R$ 20 mil",
   "De R$ 20 mil a R$ 40 mil",
   "De R$ 40 mil a R$ 60 mil",
@@ -19,7 +19,7 @@ const valoresPermitidos = [
   "Acima de R$ 1 milhão",
 ];
 
-const investimentosPermitidos = [
+const defaultInvestimentosPermitidos = [
   "Nada",
   "Até R$ 1.000",
   "De R$ 1.000 a R$ 5.000",
@@ -33,26 +33,36 @@ const schema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   telefone: z
     .string()
-    .min(8, "Telefone inválido")
-    .max(15, "Telefone muito longo")
-    .refine((val) => /^\d+$/.test(val), {
-      message: "Digite apenas números",
-    })
-    .transform((val) => val.replace(/\D/g, "")),
+    .transform((val) => val.replace(/\D/g, ""))
+    .refine((val) => val.length >= 8 && val.length <= 15, {
+      message: "Digite um telefone válido (8 a 15 dígitos)",
+    }),
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
-  faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
-    errorMap: () => ({ message: "Selecione uma opção válida" }),
-  }),
-  investimento: z.enum(investimentosPermitidos as [string, ...string[]], {
-    errorMap: () => ({ message: "Selecione uma opção válida" }),
-  }),
+  faturamento: z.string().min(1, "Selecione uma opção válida"),
+  investimento: z.string().min(1, "Selecione uma opção válida"),
 });
 
 type FormData = z.infer<typeof schema>;
 
 const transitionObj = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
-export default function ContactForm() {
+export interface ContactFormConfig {
+  phonePlaceholder?: string;
+  companyPlaceholder?: string;
+  revenueOptions?: string[];
+  investmentOptions?: string[];
+  leadSourceTag?: string;
+  routePath?: string;
+}
+
+export default function ContactForm({ config }: { config?: ContactFormConfig }) {
+  const revenueOptions = config?.revenueOptions || defaultValoresPermitidos;
+  const investmentOptions = config?.investmentOptions || defaultInvestimentosPermitidos;
+  const phonePlaceholder = config?.phonePlaceholder || "WhatsApp (ex: 11999999999)";
+  const companyPlaceholder = config?.companyPlaceholder || "Nome do seu Negócio";
+  const leadSourceTag = config?.leadSourceTag || "Landing Page Elite";
+  const routePath = config?.routePath || "/restaurantes";
+
   const {
     register,
     handleSubmit,
@@ -73,20 +83,14 @@ export default function ContactForm() {
       `*Empresa:* ${data.empresa}%0A` +
       `*Faturamento:* ${data.faturamento}%0A` +
       `*Investimento em Marketing:* ${data.investimento}%0A%0A` +
-      `_Lead vindo da Landing Page Elite_`;
+      `_Lead vindo da ${leadSourceTag}_`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
     try {
-      // Simula um pequeno delay para feedback visual
       await new Promise(resolve => setTimeout(resolve, 800));
-      
-      // Redireciona para o WhatsApp
       window.open(whatsappUrl, "_blank");
-      
-      // Também redireciona a página atual para a página de sucesso
-      window.location.replace("/CadastroConcluido");
-      
+      window.location.replace(`/CadastroConcluido?from=${encodeURIComponent(routePath)}`);
       reset();
     } catch (error) {
       console.error("Erro ao processar redirecionamento:", error);
@@ -97,19 +101,19 @@ export default function ContactForm() {
 
   const formFields = [
     { name: "nome", placeholder: "Nome Completo", type: "input" },
-    { name: "telefone", placeholder: "WhatsApp (ex: 11999999999)", type: "input" },
-    { name: "empresa", placeholder: "Nome do seu Negócio", type: "input" },
+    { name: "telefone", placeholder: phonePlaceholder, type: "input" },
+    { name: "empresa", placeholder: companyPlaceholder, type: "input" },
     { 
       name: "faturamento", 
       placeholder: "Qual seu faturamento mensal?", 
       type: "select", 
-      options: valoresPermitidos 
+      options: revenueOptions 
     },
     { 
       name: "investimento", 
       placeholder: "Quanto investe em marketing hoje?", 
       type: "select", 
-      options: investimentosPermitidos 
+      options: investmentOptions 
     }
   ];
 

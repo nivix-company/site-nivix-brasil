@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { CaseItem } from "@/data/niches";
 
-const cases = [
+const defaultCases: CaseItem[] = [
   {
     id: 1,
     title: "Sabores da Vila",
@@ -51,7 +52,15 @@ const cases = [
   }
 ];
 
-const ClientVideos: React.FC = () => {
+interface ClientVideosProps {
+  data?: {
+    items?: CaseItem[];
+  };
+}
+
+const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
+  const cases = data?.items || defaultCases;
+
   return (
     <section id="depoimentos" className="w-full px-4 py-24 flex flex-col items-center relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -84,7 +93,7 @@ const ClientVideos: React.FC = () => {
 
         {/* Bento Grid High-Authority */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl auto-rows-[220px]">
-            {cases.map((item, index) => (
+            {cases.map((item) => (
                 <motion.div 
                     key={item.id}
                     initial={{ opacity: 0, scale: 0.9 }}

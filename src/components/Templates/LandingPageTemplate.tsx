@@ -24,19 +24,28 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
     if (navigator.userAgent.includes("Chrome") && !navigator.userAgent.includes("Edg")) {
       document.documentElement.classList.add("is-chrome");
     }
-  }, []);
+
+    // Salva a última vertical visitada para que caso o usuário saia e acesse a raiz (/),
+    // ele possa retornar automaticamente para a vertical onde estava.
+    try {
+      localStorage.setItem("nivix_vertical", data.routePath);
+      document.cookie = `nivix_vertical=${encodeURIComponent(data.routePath)}; path=/; max-age=2592000; SameSite=Lax`;
+    } catch {
+      // ignore storage errors
+    }
+  }, [data.routePath]);
 
   return (
     <main className="w-full h-fit bg-[#101010] relative">
-      <Header />
+      <Header homeHref={data.routePath} />
       <Headline data={data.hero} />
-      <FormContainer data={{ ...data.form, ...data.method }} />
-      <ClientVideos />
-      <ClientsCarousel />
+      <FormContainer data={{ ...data.form, ...data.method, routePath: data.routePath }} />
+      <ClientVideos data={data.cases} />
+      <ClientsCarousel data={data.carousel} />
       <Ecosystem360 data={data.ecosystem} />
       <Plano data={data.plano} />
       <Team data={data.team} />
-      <OurWork />
+      <OurWork data={data.faq} />
       <FinalCTA data={data.finalCTA} />
       <Footer />
     </main>
