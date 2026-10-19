@@ -43,6 +43,8 @@ export interface NicheConfig {
   hero: {
     highlight: string;
     locationSuffix: string;
+    hasSplitFlag?: boolean;
+    useUsaGradient?: boolean;
     subtext: string;
   };
   form: {
@@ -517,7 +519,9 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
     routePath: "/builders",
     hero: {
       highlight: "Marketing para Construtores",
-      locationSuffix: "nos Estados Unidos",
+      locationSuffix: "na América",
+      hasSplitFlag: true,
+      useUsaGradient: true,
       subtext:
         "Validamos o método americano que coloca <strong>homeowners qualificados e contratos de alto ticket</strong> na sua agenda todas as semanas, sem depender de indicação ou plataformas caras de leads compartilhados.",
     },

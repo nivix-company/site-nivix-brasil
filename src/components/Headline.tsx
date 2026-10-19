@@ -1,11 +1,14 @@
 'use client'
 import { motion } from "framer-motion";
+import SplitFlagBg from "./SplitFlagBg";
 
 interface HeadlineProps {
     data: {
         highlight: string;
         locationSuffix?: string;
         subtext: string;
+        hasSplitFlag?: boolean;
+        useUsaGradient?: boolean;
     }
 }
 
@@ -23,8 +26,11 @@ const Headline = ({ data }: HeadlineProps) => {
                     transition: { staggerChildren: 0.15 }
                 }
             }}
-            className="w-full h-fit mt-16 flex justify-center flex-col items-center"
+            className="w-full h-fit mt-16 flex justify-center flex-col items-center relative overflow-visible"
         >
+            {/* Split Flag USA / Brasil subtle background */}
+            {data.hasSplitFlag && <SplitFlagBg />}
+
            <motion.div 
                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
                className="mb-6 flex items-center relative justify-center border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 bg-[#FFB400]/5 backdrop-blur-md"
@@ -35,13 +41,19 @@ const Headline = ({ data }: HeadlineProps) => {
 
             <motion.h1 
                 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
-                className="text-5xl [line-height:1.1] font-black text-center md:text-6xl max-w-6xl tracking-tight text-white"
+                className="text-5xl [line-height:1.1] font-black text-center md:text-6xl max-w-6xl tracking-tight text-white relative z-10"
             >
              A melhor equipe de <br className="md:hidden" />
                 <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
                     {data.highlight}
                 </span> <br className="md:hidden" />
-                {data.locationSuffix || "do Brasil"}
+                {data.useUsaGradient ? (
+                  <span className="bg-[linear-gradient(90deg,#ef4444_0%,#ffffff_28%,#2563eb_50%,#ffffff_72%,#ef4444_100%)] bg-clip-text text-transparent animate-usa-gradient drop-shadow-[0_0_20px_rgba(37,99,235,0.45)] font-black tracking-tight inline-block ml-2">
+                    {data.locationSuffix || "na América"}
+                  </span>
+                ) : (
+                  <span> {data.locationSuffix || "do Brasil"}</span>
+                )}
             </motion.h1>
 
             <motion.p 
