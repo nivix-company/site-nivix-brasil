@@ -16,45 +16,46 @@ const transitionObj = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
 const Headline = ({ data }: HeadlineProps) => {
     return (
-        <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.15 }
-                }
-            }}
-            className="w-full h-fit mt-16 flex justify-center flex-col items-center relative overflow-visible"
-        >
-            {/* Split Flag USA / Brasil subtle background */}
+        <section className="w-full relative overflow-visible flex flex-col items-center">
+            {/* Split Flag USA / Brasil painterly background */}
             {data.hasSplitFlag && <SplitFlagBg />}
 
-           <motion.div 
-               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
-               className="mb-6 flex items-center relative justify-center border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 bg-[#FFB400]/5 backdrop-blur-md"
-           >
-            <img className="w-3 opacity-80" src="/cadeado-aberto.png" alt="" />
-            <span>Contrato livre de amarras</span>
-           </motion.div>
-
-            <motion.h1 
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
-                className="text-5xl [line-height:1.1] font-black text-center md:text-6xl max-w-6xl tracking-tight text-white relative z-10"
+            <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: { staggerChildren: 0.15 }
+                    }
+                }}
+                className="w-full h-fit mt-16 flex justify-center flex-col items-center relative z-10"
             >
-             A melhor equipe de <br className="md:hidden" />
-                <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
-                    {data.highlight}
-                </span> <br className="md:hidden" />
-                {data.useUsaGradient ? (
-                  <span className="bg-[linear-gradient(90deg,#ef4444_0%,#ffffff_28%,#2563eb_50%,#ffffff_72%,#ef4444_100%)] bg-clip-text text-transparent animate-usa-gradient drop-shadow-[0_0_20px_rgba(37,99,235,0.45)] font-black tracking-tight inline-block ml-2">
-                    {data.locationSuffix || "na América"}
-                  </span>
-                ) : (
-                  <span> {data.locationSuffix || "do Brasil"}</span>
-                )}
-            </motion.h1>
+               <motion.div 
+                   variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
+                   className="mb-6 flex items-center relative justify-center border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 bg-[#FFB400]/5 backdrop-blur-md"
+               >
+                <img className="w-3 opacity-80" src="/cadeado-aberto.png" alt="" />
+                <span>Contrato livre de amarras</span>
+               </motion.div>
+
+                <motion.h1 
+                    variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
+                    className="text-5xl [line-height:1.1] font-black text-center md:text-6xl max-w-6xl tracking-tight text-white relative z-10"
+                >
+                 A melhor equipe de <br className="md:hidden" />
+                    <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
+                        {data.highlight}
+                    </span> <br className="md:hidden" />
+                    {data.useUsaGradient ? (
+                      <span className="bg-[linear-gradient(90deg,#E11D48_0%,#FB7185_18%,#F8FAFC_36%,#93C5FD_54%,#3B82F6_72%,#E11D48_100%)] bg-clip-text text-transparent animate-usa-gradient drop-shadow-[0_0_15px_rgba(225,29,72,0.3)] font-black tracking-tight inline-block ml-2">
+                        {data.locationSuffix || "na América"}
+                      </span>
+                    ) : (
+                      <span> {data.locationSuffix || "do Brasil"}</span>
+                    )}
+                </motion.h1>
 
             <motion.p 
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
@@ -80,7 +81,8 @@ const Headline = ({ data }: HeadlineProps) => {
                     <img src="/down-arrow.png" className="w-6 h-6 animate-bounce opacity-50 hover:opacity-100 transition-opacity" />
                 </a>
             </motion.div>
-        </motion.div> 
+            </motion.div> 
+        </section>
     );
 }
  

@@ -68,8 +68,8 @@ body {
 }
 
 .animate-usa-gradient {
-  background-size: 250% auto;
-  animation: usa-gradient 4s ease-in-out infinite;
+  background-size: 300% 100%;
+  animation: usa-gradient 12s ease-in-out infinite;
 }
 
 html {
