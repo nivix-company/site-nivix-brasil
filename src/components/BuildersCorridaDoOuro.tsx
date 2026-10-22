@@ -334,15 +334,16 @@ export default function BuildersCorridaDoOuro() {
                       transition={{ duration: 2, repeat: Infinity, repeatDelay: 1.2, ease: "easeInOut" }}
                       className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent skew-x-12 pointer-events-none"
                     />
-                    <div className="flex items-center justify-center gap-1.5">
+                    <div className="flex items-center justify-center gap-1.5 px-1">
                       <motion.span
                         animate={{ rotate: [-6, 6, -6] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="shrink-0"
                       >
                         <FaCheck className="text-emerald-400 text-xs" />
                       </motion.span>
-                      <span className="text-[11px] font-mono font-black text-emerald-400 uppercase tracking-wide">
-                        $0 Comissão GC • 100% Seu
+                      <span className="text-[10.5px] sm:text-[11px] font-mono font-black text-emerald-400 tracking-tight whitespace-nowrap">
+                        100% do dinheiro no seu bolso
                       </span>
                     </div>
                   </motion.div>
