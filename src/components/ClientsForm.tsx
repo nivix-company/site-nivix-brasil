@@ -44,12 +44,12 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
   };
 
   return (
-    <section className="text-white bg-[#101010] w-full flex flex-col items-center py-24 select-none overflow-hidden relative">
+    <section className="text-white bg-[#101010] w-full flex flex-col items-center pt-8 sm:pt-10 pb-20 select-none overflow-hidden relative">
       {/* Background Glow */}
       <div className="absolute w-[600px] h-[600px] rounded-full bg-[#FFB400]/5 blur-[120px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
       {/* Header Padronizado */}
-      <div className="mb-16 flex flex-col items-center px-4 text-center">
+      <div className="mb-14 sm:mb-16 flex flex-col items-center px-4 text-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,9 +70,9 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-white tracking-tight leading-tight max-w-4xl"
+          className="text-4xl md:text-5xl lg:text-6xl font-black text-center text-white tracking-tight leading-tight max-w-5xl"
         >
-          {data?.titleLine1 || "De contractors autônomos a"} <br className="hidden sm:block" />
+          {data?.titleLine1 || "De contractors autônomos a"}{" "}
           <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
             {data?.titleHighlight || "grandes construtoras nos EUA"}
           </span>
@@ -83,9 +83,9 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center text-sm sm:text-base md:text-lg lg:text-xl mt-4 max-w-2xl px-4 text-neutral-300 leading-relaxed font-normal"
+          className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mt-4 max-w-3xl px-4 text-neutral-300 leading-relaxed font-medium"
         >
-          {data?.subtitle || "Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação."}
+          {data?.subtitle || "Sem depender de Angi, HomeAdvisor ou sorte: brasileiros nos EUA confiaram na Nivix para escalar seus contratos."}
         </motion.p>
       </div>
 
