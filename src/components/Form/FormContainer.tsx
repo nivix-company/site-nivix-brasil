@@ -216,10 +216,9 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                    className="text-md lg:text-lg text-neutral-400 font-medium leading-tight mt-1"
-                  >
-                    {data.methodSubtitle}
-                  </motion.p>
+                    className="text-base lg:text-lg text-neutral-300 font-medium leading-relaxed mt-2"
+                    dangerouslySetInnerHTML={{ __html: data.methodSubtitle }}
+                  />
                   <motion.p 
                     initial={{ opacity: 0, y: 10 }} 
                     whileInView={{ opacity: 1, y: 0 }} 

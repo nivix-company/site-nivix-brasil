@@ -65,6 +65,7 @@ export interface NicheConfig {
     revenueOptions: string[];
     investmentOptions: string[];
     leadSourceTag: string;
+    hideInvestment?: boolean;
   };
   method: {
     cpaValue: string;
@@ -539,7 +540,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
     },
     form: {
       methodSubtitle:
-        "Transformamos sua construtora nos EUA em uma máquina previsível de contratos fechados.",
+        "Montamos uma máquina de estimates para sua construtora nos EUA <strong>fechar serviços semanais de alto ticket e escalar</strong> sem depender de GC ou intermediários.",
       authorityText: "Especialistas em Builders & Contractors nos EUA",
       riskZeroText:
         "Você ganha um diagnóstico estratégico gratuito da sua operação nos EUA, sem compromisso. Você só tem a ganhar!",
@@ -548,6 +549,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       currencySymbol: "$",
       phonePlaceholder: "WhatsApp / Phone (ex: +1 407 555-0199)",
       companyPlaceholder: "Nome da sua Company / Construtora",
+      hideInvestment: true,
       revenueOptions: [
         "Até $15,000 / mês",
         "De $15,000 a $30,000 / mês",

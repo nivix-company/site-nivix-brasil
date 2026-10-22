@@ -29,7 +29,7 @@ const defaultInvestimentosPermitidos = [
   "Acima de R$ 30.000",
 ];
 
-const schema = z.object({
+const baseSchema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   telefone: z
     .string()
@@ -39,10 +39,10 @@ const schema = z.object({
     }),
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.string().min(1, "Selecione uma opção válida"),
-  investimento: z.string().min(1, "Selecione uma opção válida"),
+  investimento: z.string().optional(),
 });
 
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof baseSchema>;
 
 const transitionObj = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
@@ -53,9 +53,11 @@ export interface ContactFormConfig {
   investmentOptions?: string[];
   leadSourceTag?: string;
   routePath?: string;
+  hideInvestment?: boolean;
 }
 
 export default function ContactForm({ config }: { config?: ContactFormConfig }) {
+  const hideInvestment = Boolean(config?.hideInvestment ?? (config?.routePath === "/builders"));
   const revenueOptions = config?.revenueOptions || defaultValoresPermitidos;
   const investmentOptions = config?.investmentOptions || defaultInvestimentosPermitidos;
   const phonePlaceholder = config?.phonePlaceholder || "WhatsApp (ex: 11999999999)";
@@ -63,13 +65,30 @@ export default function ContactForm({ config }: { config?: ContactFormConfig }) 
   const leadSourceTag = config?.leadSourceTag || "Landing Page Elite";
   const routePath = config?.routePath || "/restaurantes";
 
+  const formSchema = React.useMemo(() => {
+    return z.object({
+      nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
+      telefone: z
+        .string()
+        .transform((val) => val.replace(/\D/g, ""))
+        .refine((val) => val.length >= 8 && val.length <= 15, {
+          message: "Digite um telefone válido (8 a 15 dígitos)",
+        }),
+      empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
+      faturamento: z.string().min(1, "Selecione uma opção válida"),
+      investimento: hideInvestment
+        ? z.string().optional()
+        : z.string().min(1, "Selecione uma opção válida"),
+    });
+  }, [hideInvestment]);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm<FormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = async (data: FormData) => {
@@ -77,12 +96,16 @@ export default function ContactForm({ config }: { config?: ContactFormConfig }) 
     const whatsappNumber = "5554999656522"; 
     
     // Formatação da mensagem para o WhatsApp
+    const investmentPart = data.investimento
+      ? `*Investimento em Marketing:* ${data.investimento}%0A%0A`
+      : `%0A`;
+
     const message = `Olá, tenho interesse na consultoria gratuita para meu negócio! Seguem meus dados:%0A%0A` +
       `*Nome:* ${data.nome}%0A` +
       `*Telefone:* ${data.telefone}%0A` +
       `*Empresa:* ${data.empresa}%0A` +
       `*Faturamento:* ${data.faturamento}%0A` +
-      `*Investimento em Marketing:* ${data.investimento}%0A%0A` +
+      investmentPart +
       `_Lead vindo da ${leadSourceTag}_`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
@@ -109,12 +132,16 @@ export default function ContactForm({ config }: { config?: ContactFormConfig }) 
       type: "select", 
       options: revenueOptions 
     },
-    { 
-      name: "investimento", 
-      placeholder: "Quanto investe em marketing hoje?", 
-      type: "select", 
-      options: investmentOptions 
-    }
+    ...(!hideInvestment
+      ? [
+          {
+            name: "investimento",
+            placeholder: "Quanto investe em marketing hoje?",
+            type: "select",
+            options: investmentOptions,
+          },
+        ]
+      : []),
   ];
 
   return (
