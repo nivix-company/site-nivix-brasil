@@ -12,61 +12,18 @@ import {
   FaShieldHalved, 
   FaFilter, 
   FaMobileScreenButton, 
-  FaBullhorn, 
   FaCamera, 
+  FaBullhorn, 
   FaCalendarCheck,
-  FaCheck,
-  FaArrowRight
+  FaArrowRight,
+  FaArrowDown
 } from "react-icons/fa6";
-
-const steps = [
-  {
-    step: "01",
-    phase: "Fase 1 • O Gatilho",
-    title: "A Necessidade Real",
-    subtitle: "O Homeowner Decide Reformar",
-    desc: "O americano olha para a cozinha antiga, o banheiro desgastado ou o telhado danificado e decide reformar. Ele tem entre $25,000 e $90,000+ de orçamento reservado e busca um serviço de confiança.",
-    highlight: "Budget Aprovado • Alta Urgência",
-    icon: <FaHouseChimney className="text-amber-400 text-lg" />,
-    isFinal: false,
-  },
-  {
-    step: "02",
-    phase: "Fase 2 • A Busca Local",
-    title: "Pesquisa no Google Maps",
-    subtitle: "Busca de Alta Intenção",
-    desc: "Ele pega o celular e digita no Google: '(Serviço) near me'. 84% ignoram anúncios comuns e plataformas como Angi, indo direto para os 3 primeiros colocados locais do Google Maps.",
-    highlight: "84% Ignoram Plataformas de Leads",
-    icon: <FaMagnifyingGlass className="text-amber-400 text-lg" />,
-    isFinal: false,
-  },
-  {
-    step: "03",
-    phase: "Fase 3 • Autoridade Máxima",
-    title: "Sua Empresa no Top 1",
-    subtitle: "A Escolha Óbvia e Imediata",
-    desc: "Sua construtora aparece em 1º lugar absoluto, blindada com 5 estrelas, fotos de obras de luxo e reviews impecáveis. Ele nem cogita descer para pesquisar concorrentes.",
-    highlight: "Confiança Absoluta • Sem Concorrentes",
-    icon: <FaCrown className="text-amber-400 text-lg" />,
-    isFinal: false,
-  },
-  {
-    step: "04",
-    phase: "Fase 4 • A Vitória",
-    title: "Estimate & Contrato Fechado",
-    subtitle: "100% de Margem no Seu Bolso",
-    desc: "O homeowner clica no botão e liga ou manda mensagem direto no seu WhatsApp. Você agenda a visita técnica e fecha a obra sem repassar comissão para General Contractor.",
-    highlight: "Contrato Fechado • Margem Integral",
-    icon: <FaHandshake className="text-black text-lg" />,
-    isFinal: true,
-  },
-];
 
 const deliverables = [
   { icon: <FaGoogle className="text-amber-400" />, label: "Google Meu Negócio Top 1" },
   { icon: <FaStar className="text-amber-400" />, label: "Sistema de Reviews Qualificadas" },
   { icon: <FaShieldHalved className="text-amber-400" />, label: "SEO Local & Domínio Regional" },
-  { icon: <FaFilter className="text-amber-400" />, label: "Filtro Anti-Curiosos (Tire-Kickers)" },
+  { icon: <FaFilter className="text-amber-400" />, label: "Filtro Anti-Curiosos" },
   { icon: <FaMobileScreenButton className="text-amber-400" />, label: "Site Corporativo de Alta Conversão" },
   { icon: <FaCamera className="text-amber-400" />, label: "Portfólio & Fotos de Alto Padrão" },
   { icon: <FaBullhorn className="text-amber-400" />, label: "Tráfego Direto para Homeowners" },
@@ -77,7 +34,7 @@ export default function BuildersCorridaDoOuro() {
   return (
     <section id="metodo-corrida" className="relative flex flex-col items-center justify-center px-4 pt-16 pb-20 w-full overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute w-[800px] h-[800px] rounded-full bg-amber-500/5 blur-[160px] -z-10 top-0 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute w-[800px] h-[600px] rounded-full bg-amber-500/5 blur-[160px] -z-10 top-0 left-1/2 -translate-x-1/2 pointer-events-none"></div>
 
       <div className="w-full lg:w-[85%] max-w-6xl flex flex-col items-center">
         
@@ -118,156 +75,197 @@ export default function BuildersCorridaDoOuro() {
           </motion.p>
         </div>
 
-        {/* TIMELINE DESKTOP: HORIZONTAL COM TRILHO DOURADO E CONECTORES */}
-        <div className="hidden lg:block w-full relative mb-16">
-          {/* Linha horizontal do trilho dourado passando por trás dos números */}
-          <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-amber-500/40 via-amber-400 to-yellow-400 z-0">
-            <div className="absolute inset-0 bg-amber-400/30 blur-[3px]" />
+        {/* COMPONENTE MODERNO: O FUNIL VISUAL DA CORRIDA DO OURO */}
+        <div className="w-full max-w-6xl mb-16 p-5 sm:p-7 lg:p-8 rounded-[36px] bg-gradient-to-b from-neutral-900/80 via-neutral-950/90 to-neutral-900/80 border border-neutral-800/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl relative overflow-hidden">
+          
+          {/* Top Bar da Interface */}
+          <div className="flex items-center justify-between pb-6 mb-6 border-b border-neutral-800/80 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span className="font-bold uppercase tracking-wider text-neutral-300">O Trajeto da Decisão Americana</span>
+            </div>
+            <span className="hidden sm:inline font-mono text-neutral-500 text-[11px]">Do Primeiro Clique ao Contrato Fechado</span>
           </div>
 
-          <div className="grid grid-cols-4 gap-6 relative z-10">
-            {steps.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                className={`rounded-[32px] p-6 sm:p-7 flex flex-col justify-between transition-all duration-500 shadow-2xl relative group ${
-                  item.isFinal
-                    ? "bg-gradient-to-b from-amber-950/40 via-neutral-900/90 to-neutral-950 border-2 border-amber-400/80 shadow-[0_0_45px_rgba(245,158,11,0.2)]"
-                    : "bg-neutral-900/60 border border-neutral-800 hover:border-amber-400/40"
-                }`}
-              >
-                {/* Topo: Node / Marcador Numerado no Trilho */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-black text-base shadow-xl transition-transform group-hover:scale-110 ${
-                    item.isFinal
-                      ? "bg-gradient-to-br from-amber-400 to-yellow-500 text-black shadow-amber-500/40"
-                      : "bg-neutral-950 border border-amber-400/40 text-amber-300"
-                  }`}>
-                    {item.step}
-                  </div>
-
-                  <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-all ${
-                    item.isFinal 
-                      ? "bg-gradient-to-br from-amber-400 to-yellow-500 border-amber-400 shadow-md" 
-                      : "bg-neutral-900/80 border-neutral-800 group-hover:border-amber-400/30"
-                  }`}>
-                    {item.icon}
-                  </div>
+          {/* Grid dos 4 Módulos Visuais: Horizontal no Desktop, Vertical no Mobile */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-5 relative">
+            
+            {/* ETAPA 01: A NECESSIDADE */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -4 }}
+              className="rounded-[28px] p-5 sm:p-6 bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/30 transition-all flex flex-col justify-between relative group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-mono font-bold text-neutral-500 uppercase">Passo 01</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/10 text-amber-300 border border-amber-400/20">O Gatilho</span>
+                </div>
+                
+                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <FaHouseChimney className="text-amber-400 text-xl" />
                 </div>
 
-                {/* Conteúdo */}
-                <div className="flex-1 flex flex-col justify-between space-y-3">
-                  <div>
-                    <span className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full inline-block mb-2 ${
-                      item.isFinal
-                        ? "bg-amber-400/20 text-amber-300 border border-amber-400/30"
-                        : "bg-neutral-800/80 text-neutral-400"
-                    }`}>
-                      {item.phase}
-                    </span>
-                    <h3 className="text-white text-xl font-bold tracking-tight group-hover:text-amber-300 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-amber-400 text-xs font-semibold mt-0.5">
-                      {item.subtitle}
-                    </p>
-                    <p className="text-neutral-300 text-xs sm:text-sm mt-3 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">A Necessidade</h3>
+                <p className="text-xs text-neutral-400 mt-1">Homeowner decide reformar</p>
 
-                  {/* Badge de Status / Highlight */}
-                  <div className="pt-4 border-t border-neutral-800/80 mt-4">
-                    <span className={`text-[11px] font-bold inline-flex items-center gap-1.5 ${
-                      item.isFinal ? "text-emerald-400" : "text-amber-300/90"
-                    }`}>
-                      <FaCheck className="text-[10px]" />
-                      <span>{item.highlight}</span>
-                    </span>
-                  </div>
+                {/* Mock Visual: Orçamento Disponível */}
+                <div className="mt-4 p-3 rounded-2xl bg-neutral-950/80 border border-neutral-800/80">
+                  <div className="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Budget Reservado</div>
+                  <div className="text-sm font-black text-white mt-0.5">$ 35,000 – $ 85,000</div>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-neutral-800/60 flex items-center justify-between text-[11px]">
+                <span className="text-neutral-400">Intenção:</span>
+                <span className="font-bold text-amber-300">Imediata</span>
+              </div>
+
+              {/* Seta indicativa para desktop */}
+              <div className="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-neutral-900 border border-amber-400/30 items-center justify-center text-amber-400 text-[10px] shadow-md z-20 pointer-events-none">
+                <FaArrowRight />
+              </div>
+            </motion.div>
+
+            {/* Seta no mobile entre 1 e 2 */}
+            <div className="lg:hidden flex justify-center py-0.5">
+              <FaArrowDown className="text-amber-400/50 text-xs" />
+            </div>
+
+            {/* ETAPA 02: A BUSCA NO GOOGLE MAPS */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -4 }}
+              className="rounded-[28px] p-5 sm:p-6 bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/30 transition-all flex flex-col justify-between relative group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-mono font-bold text-neutral-500 uppercase">Passo 02</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">Google Maps</span>
+                </div>
+                
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <FaGoogle className="text-blue-400 text-xl" />
                 </div>
 
-                {/* Seta indicativa para o próximo passo no Desktop */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-neutral-900 border border-amber-400/40 items-center justify-center text-amber-400 text-xs shadow-md z-20 pointer-events-none group-hover:translate-x-1 transition-transform">
-                    <FaArrowRight className="text-[10px]" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">A Pesquisa Local</h3>
+                <p className="text-xs text-neutral-400 mt-1">Busca no Maps do celular</p>
 
-        {/* TIMELINE MOBILE: VERTICAL COM LINHA CONTÍNUA E NODES ILUMINADOS */}
-        <div className="lg:hidden w-full relative mb-16 pl-6">
-          {/* Linha vertical contínua conectando todos os passos */}
-          <div className="absolute left-6 top-8 bottom-12 w-[2px] bg-gradient-to-b from-amber-400 via-yellow-400 to-amber-500 z-0">
-            <div className="absolute inset-0 bg-amber-400/30 blur-[2px]" />
-          </div>
+                {/* Mock Visual: Barra de Busca */}
+                <div className="mt-4 p-3 rounded-2xl bg-neutral-950/80 border border-neutral-800/80 flex items-center gap-2">
+                  <FaMagnifyingGlass className="text-neutral-500 text-xs shrink-0" />
+                  <span className="text-xs font-mono text-neutral-200 truncate">"remodeling near me"</span>
+                </div>
+              </div>
 
-          <div className="flex flex-col space-y-6 relative z-10">
-            {steps.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex items-start gap-4"
-              >
-                {/* Node indicador sobre a linha vertical */}
-                <div className={`-ml-6 w-12 h-12 rounded-full flex items-center justify-center font-mono font-black text-sm shrink-0 border-2 shadow-xl z-10 ${
-                  item.isFinal
-                    ? "bg-gradient-to-br from-amber-400 to-yellow-500 text-black border-amber-200 shadow-amber-500/40"
-                    : "bg-neutral-950 border-amber-400 text-amber-300"
-                }`}>
-                  {item.step}
+              <div className="mt-4 pt-3 border-t border-neutral-800/60 flex items-center justify-between text-[11px]">
+                <span className="text-neutral-400">Comportamento:</span>
+                <span className="font-bold text-blue-400">84% no Top 3</span>
+              </div>
+
+              {/* Seta indicativa para desktop */}
+              <div className="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-neutral-900 border border-amber-400/30 items-center justify-center text-amber-400 text-[10px] shadow-md z-20 pointer-events-none">
+                <FaArrowRight />
+              </div>
+            </motion.div>
+
+            {/* Seta no mobile entre 2 e 3 */}
+            <div className="lg:hidden flex justify-center py-0.5">
+              <FaArrowDown className="text-amber-400/50 text-xs" />
+            </div>
+
+            {/* ETAPA 03: SUA EMPRESA NO TOP 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -4 }}
+              className="rounded-[28px] p-5 sm:p-6 bg-neutral-900/90 border border-neutral-800 hover:border-amber-400/40 transition-all flex flex-col justify-between relative group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-mono font-bold text-neutral-500 uppercase">Passo 03</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/10 text-amber-300 border border-amber-400/30">Posição #1</span>
+                </div>
+                
+                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <FaCrown className="text-amber-400 text-xl" />
                 </div>
 
-                {/* Card da etapa */}
-                <div className={`flex-1 rounded-[28px] p-6 shadow-xl transition-all ${
-                  item.isFinal
-                    ? "bg-gradient-to-b from-amber-950/30 via-neutral-900/90 to-neutral-950 border-2 border-amber-400/70 shadow-[0_0_30px_rgba(245,158,11,0.15)]"
-                    : "bg-neutral-900/70 border border-neutral-800"
-                }`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full ${
-                      item.isFinal
-                        ? "bg-amber-400/20 text-amber-300 border border-amber-400/30"
-                        : "bg-neutral-800/80 text-neutral-400"
-                    }`}>
-                      {item.phase}
-                    </span>
-                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center border ${
-                      item.isFinal
-                        ? "bg-amber-400 text-black border-amber-300"
-                        : "bg-neutral-900/80 border-neutral-800 text-amber-400"
-                    }`}>
-                      {item.icon}
-                    </div>
-                  </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">Sua Empresa no Top 1</h3>
+                <p className="text-xs text-neutral-400 mt-1">A escolha imediata e óbvia</p>
 
-                  <h3 className="text-white text-lg font-bold tracking-tight mt-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-amber-400 text-xs font-semibold mt-0.5">
-                    {item.subtitle}
-                  </p>
-                  <p className="text-neutral-300 text-xs sm:text-sm mt-3 leading-relaxed font-normal">
-                    {item.desc}
-                  </p>
-
-                  <div className="pt-3 border-t border-neutral-800/80 mt-3 flex items-center gap-1.5 text-[11px] font-bold text-amber-300">
-                    <FaCheck className="text-[10px] text-emerald-400" />
-                    <span>{item.highlight}</span>
+                {/* Mock Visual: 5 Estrelas Google */}
+                <div className="mt-4 p-3 rounded-2xl bg-neutral-950/80 border border-amber-400/20">
+                  <div className="flex items-center gap-1 text-amber-400 text-xs">
+                    <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                    <span className="font-bold text-white text-[11px] ml-1">5.0 (120+)</span>
                   </div>
+                  <div className="text-[11px] font-semibold text-neutral-300 mt-1 truncate">Sua Construtora • Verificado</div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-neutral-800/60 flex items-center justify-between text-[11px]">
+                <span className="text-neutral-400">Concorrência:</span>
+                <span className="font-bold text-amber-300">Ignorada</span>
+              </div>
+
+              {/* Seta indicativa para desktop */}
+              <div className="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-neutral-900 border border-amber-400/30 items-center justify-center text-amber-400 text-[10px] shadow-md z-20 pointer-events-none">
+                <FaArrowRight />
+              </div>
+            </motion.div>
+
+            {/* Seta no mobile entre 3 e 4 */}
+            <div className="lg:hidden flex justify-center py-0.5">
+              <FaArrowDown className="text-amber-400/50 text-xs" />
+            </div>
+
+            {/* ETAPA 04: O ESTIMATE & CONTRATO FECHADO */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ y: -4 }}
+              className="rounded-[28px] p-5 sm:p-6 bg-gradient-to-b from-amber-950/35 via-neutral-900/90 to-neutral-950 border-2 border-amber-400/70 shadow-[0_0_35px_rgba(245,158,11,0.15)] flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-mono font-bold text-amber-300 uppercase">Passo 04</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-amber-400 to-yellow-500 text-black">A Vitória</span>
+                </div>
+                
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-500 text-black flex items-center justify-center mb-4 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+                  <FaHandshake className="text-black text-xl" />
+                </div>
+
+                <h3 className="text-lg font-bold text-white tracking-tight">Estimate Fechado</h3>
+                <p className="text-xs text-amber-300/90 mt-1">100% de margem no seu bolso</p>
+
+                {/* Mock Visual: Notificação de Fechamento */}
+                <div className="mt-4 p-3 rounded-2xl bg-black/80 border border-emerald-500/30">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-emerald-400">Contrato Direto</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div className="text-sm font-black text-white mt-0.5">$ 48,000 fechado</div>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-amber-400/20 flex items-center justify-between text-[11px]">
+                <span className="text-neutral-400">Comissão GC:</span>
+                <span className="font-black text-emerald-400">$ 0 (Zero)</span>
+              </div>
+            </motion.div>
+
           </div>
         </div>
 
@@ -279,7 +277,7 @@ export default function BuildersCorridaDoOuro() {
         </div>
 
         {/* Badges de Entregáveis */}
-        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mb-16 px-4">
+        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mb-12 px-4">
           {deliverables.map((item, idx) => (
             <motion.div
               key={idx}
@@ -294,6 +292,19 @@ export default function BuildersCorridaDoOuro() {
               <span>{item.label}</span>
             </motion.div>
           ))}
+        </div>
+
+        {/* Botão de Ação CTA */}
+        <div className="text-center mb-16 px-4 w-full max-w-md">
+          <motion.a 
+            href="#form" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center gap-2.5 w-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black py-4 px-8 rounded-2xl shadow-[0_0_30px_rgba(255,180,0,0.35)] hover:shadow-[0_0_40px_rgba(255,180,0,0.55)] text-base sm:text-lg transition-all"
+          >
+            <span>Quero Vencer a Corrida na Minha Região</span>
+            <FaArrowRight className="text-sm" />
+          </motion.a>
         </div>
 
         {/* SOFT-BREAK (CONTINUIDADE DE SUB-SEÇÃO PARA NOSSAS VANTAGENS) */}
