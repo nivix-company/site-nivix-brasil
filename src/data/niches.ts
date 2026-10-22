@@ -51,6 +51,8 @@ export interface NicheConfig {
     hasSplitFlag?: boolean;
     useUsaGradient?: boolean;
     subtext: string;
+    badgeText?: string;
+    badgeIcon?: "google" | "crown" | "lock";
   };
   form: {
     methodSubtitle: string;
@@ -530,8 +532,10 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       locationSuffix: "na América",
       hasSplitFlag: true,
       useUsaGradient: true,
+      badgeText: "Top 1 do google garantido",
+      badgeIcon: "google",
       subtext:
-        "Validamos o método americano que coloca <strong>homeowners qualificados e contratos de alto ticket</strong> na sua agenda todas as semanas, sem depender de indicação ou plataformas caras de leads compartilhados.",
+        "Validamos o método americano que coloca <strong>homeowners qualificado e estimates de alto ticket</strong> direto na sua agenda todas as semanas, sem depender de GC ou plataformas de leads compartilhados.",
     },
     form: {
       methodSubtitle:

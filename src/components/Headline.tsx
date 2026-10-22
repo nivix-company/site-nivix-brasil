@@ -1,6 +1,7 @@
 'use client'
 import { motion } from "framer-motion";
 import SplitFlagBg from "./SplitFlagBg";
+import { FaGoogle, FaCrown } from "react-icons/fa6";
 
 interface HeadlineProps {
     data: {
@@ -9,6 +10,8 @@ interface HeadlineProps {
         subtext: string;
         hasSplitFlag?: boolean;
         useUsaGradient?: boolean;
+        badgeText?: string;
+        badgeIcon?: "google" | "crown" | "lock";
     }
 }
 
@@ -36,8 +39,21 @@ const Headline = ({ data }: HeadlineProps) => {
                    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
                    className="mb-6 flex items-center relative justify-center border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 bg-[#FFB400]/5 backdrop-blur-md"
                >
-                <img className="w-3 opacity-80" src="/cadeado-aberto.png" alt="" />
-                <span>Contrato livre de amarras</span>
+                {data.badgeText ? (
+                  <>
+                    {data.badgeIcon === "crown" ? (
+                      <FaCrown className="text-xs text-[#FFB400]" />
+                    ) : (
+                      <FaGoogle className="text-xs text-[#FFB400]" />
+                    )}
+                    <span>{data.badgeText}</span>
+                  </>
+                ) : (
+                  <>
+                    <img className="w-3 opacity-80" src="/cadeado-aberto.png" alt="" />
+                    <span>Contrato livre de amarras</span>
+                  </>
+                )}
                </motion.div>
 
                 <motion.h1 
