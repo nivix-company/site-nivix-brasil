@@ -9,16 +9,23 @@ import {
   FaTrophy,
   FaFlagCheckered,
   FaStar,
-  FaBolt,
-  FaCheck
+  FaShieldHalved,
+  FaFilter,
+  FaMobileScreenButton,
+  FaCamera,
+  FaBullhorn,
+  FaCalendarCheck
 } from "react-icons/fa6";
 
-const raceKit = [
-  "Google Maps Top 1",
-  "Tráfego Direto para Homeowners",
-  "Reputação 5.0 Estrelas",
-  "Filtro Anti-Curiosos",
-  "Esteira Previsível de Estimates"
+const deliverables = [
+  { icon: <FaGoogle className="text-amber-400" />, label: "Google Meu Negócio Top 1" },
+  { icon: <FaStar className="text-amber-400" />, label: "Sistema de Reviews Qualificadas" },
+  { icon: <FaShieldHalved className="text-amber-400" />, label: "SEO Local & Domínio Regional" },
+  { icon: <FaFilter className="text-amber-400" />, label: "Filtro Anti-Curiosos" },
+  { icon: <FaMobileScreenButton className="text-amber-400" />, label: "Site Corporativo de Alta Conversão" },
+  { icon: <FaCamera className="text-amber-400" />, label: "Portfólio & Fotos de Alto Padrão" },
+  { icon: <FaBullhorn className="text-amber-400" />, label: "Tráfego Direto para Homeowners" },
+  { icon: <FaCalendarCheck className="text-amber-400" />, label: "Esteira Previsível de Estimates" },
 ];
 
 export default function BuildersCorridaDoOuro() {
@@ -38,8 +45,8 @@ export default function BuildersCorridaDoOuro() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-4 py-1.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md"
           >
-            <FaFlagCheckered className="text-amber-400 text-xs" />
-            <span>Circuito de Decisão nos EUA</span>
+            <FaCrown className="text-amber-400 text-xs" />
+            <span>A Jornada de Decisão Americana</span>
           </motion.div>
           
           <motion.h2 
@@ -67,19 +74,19 @@ export default function BuildersCorridaDoOuro() {
         </div>
 
         {/* CIRCUITO VISUAL DA CORRIDA (PISTA & CHECKPOINTS) */}
-        <div className="w-full max-w-6xl mb-12 p-6 sm:p-8 lg:p-10 rounded-[36px] bg-gradient-to-b from-neutral-900/90 via-neutral-950/95 to-neutral-900/90 border border-neutral-800/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl relative overflow-hidden">
+        <div className="w-full max-w-6xl mb-14 p-6 sm:p-8 lg:p-10 rounded-[36px] bg-gradient-to-b from-neutral-900/90 via-neutral-950/95 to-neutral-900/90 border border-neutral-800/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl relative overflow-hidden">
           
           {/* Telemetria / Barra de Pista Topo */}
           <div className="flex items-center justify-between pb-5 mb-8 border-b border-neutral-800/80 text-xs">
             <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
               <span className="font-mono font-bold tracking-wider uppercase text-neutral-300 text-[11px] sm:text-xs">
-                Telemetria de Pista: Trajeto até o Contrato
+                O Trajeto da Decisão Americana
               </span>
             </div>
             <div className="flex items-center gap-2 text-neutral-500 font-mono text-[11px]">
               <FaGaugeHigh className="text-amber-400" />
-              <span>Decisão em Segundos</span>
+              <span>Do Clique ao Contrato Fechado</span>
             </div>
           </div>
 
@@ -241,33 +248,29 @@ export default function BuildersCorridaDoOuro() {
           </div>
         </div>
 
-        {/* PIT STOP / O QUE ENTREGAMOS (ENXUTO E DIRETO) */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-4xl mb-12 px-4">
-          <span className="text-neutral-400 text-xs font-mono font-bold uppercase tracking-wider mr-1 sm:mr-2 flex items-center gap-1.5">
-            <FaBolt className="text-amber-400 text-xs" /> O Seu Carro na Pista:
-          </span>
-          {raceKit.map((item, idx) => (
-            <div 
-              key={idx}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 text-[11px] font-semibold"
-            >
-              <FaCheck className="text-amber-400 text-[10px]" />
-              <span>{item}</span>
-            </div>
-          ))}
+        {/* Sub-Header: O que a Nivix faz para você vencer a corrida do ouro */}
+        <div className="text-center mb-8 px-4">
+          <p className="text-amber-300/80 text-xs sm:text-sm font-bold uppercase tracking-[0.25em]">
+            O que a Nivix faz para você vencer a corrida do ouro:
+          </p>
         </div>
 
-        {/* Botão de Ação CTA Tematizado */}
-        <div className="text-center mb-16 px-4 w-full max-w-md">
-          <motion.a 
-            href="#form" 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black py-4 px-8 rounded-2xl shadow-[0_0_30px_rgba(255,180,0,0.35)] hover:shadow-[0_0_40px_rgba(255,180,0,0.55)] text-base sm:text-lg transition-all"
-          >
-            <FaFlagCheckered className="text-black text-base" />
-            <span>Colocar Minha Construtora na Pole Position</span>
-          </motion.a>
+        {/* Badges de Entregáveis */}
+        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mb-16 px-4">
+          {deliverables.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              whileHover={{ y: -3, borderColor: "rgba(245, 158, 11, 0.4)" }}
+              className="flex items-center gap-2.5 px-4 py-2.5 bg-neutral-900/60 border border-neutral-800 hover:border-amber-400/40 rounded-2xl text-xs font-semibold text-neutral-200 backdrop-blur-md transition-all shadow-sm group"
+            >
+              <span className="text-amber-400 text-sm group-hover:scale-110 transition-transform">{item.icon}</span>
+              <span>{item.label}</span>
+            </motion.div>
+          ))}
         </div>
 
         {/* SOFT-BREAK (CONTINUIDADE DE SUB-SEÇÃO) */}
