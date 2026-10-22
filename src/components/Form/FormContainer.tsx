@@ -200,8 +200,8 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
             </motion.div>
 
             {/* Coluna Esquerda: Título e Etapas */}
-            <div className="flex flex-col lg:w-[48%] justify-center mt-6 lg:mt-0">
-                <div className="text-center lg:text-left mb-8">
+            <div className="flex flex-col lg:w-[48%] justify-center mt-6 lg:mt-0 py-2">
+                <div className="text-center lg:text-left mb-10 lg:mb-12">
                   <motion.h2 
                     initial={{ opacity: 0, y: 20 }} 
                     whileInView={{ opacity: 1, y: 0 }} 
@@ -230,7 +230,7 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                   </motion.p>
                 </div>
 
-                <div className="flex flex-col relative">
+                <div className="flex flex-col relative max-w-md mx-auto lg:mx-0 w-full my-auto">
                   <motion.div 
                     initial={{ height: 0 }} 
                     whileInView={{ height: "70%" }} 
