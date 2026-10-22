@@ -110,88 +110,113 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           </motion.p>
         </div>
 
-        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): GRID 2X2 LUXURY LIMPO E ORGANIZADO */}
+        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO GRID LUXURY NO DESKTOP, STACKED NO MOBILE */}
         {isRichCases ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl">
-            {cases.map((item, index) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                className="w-full bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group"
-              >
-                {/* TOPO: FOTO DO PROJETO COM BADGES DISCRETOS E ELEGANTES */}
-                <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-neutral-950">
-                  <img 
-                    src={item.poster || "/cases/case-kitchen.jpg"} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105" 
-                    alt={item.title} 
-                  />
-                  {/* Gradiente sutil da imagem */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/60" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full max-w-6xl">
+            {cases.map((item, index) => {
+              // Bento layout: primeiro card é wide (2 colunas) ou se 4 cards: 0 e 3 são wide
+              const isWide = (cases.length === 4 && (index === 0 || index === 3)) || (cases.length !== 4 && index === 0);
+              const isCtaCard = item.id === 5 || item.title.includes("Sua Construtora") || item.title.includes("Sua Empresa");
 
-                  {/* Badges superiores flutuantes */}
-                  <div className="absolute top-4 inset-x-4 flex items-center justify-between gap-2 z-10">
-                    {item.location && (
-                      <span className="flex items-center gap-1.5 bg-black/75 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3 py-1 rounded-full font-medium shadow-md">
-                        <FaLocationDot className="text-amber-400 text-[11px]" />
-                        <span>{item.location}</span>
+              return (
+                <motion.div 
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6 }}
+                  className={`w-full bg-neutral-900/60 border rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group ${
+                    isWide ? "lg:col-span-2 lg:flex-row" : "lg:col-span-1 flex-col"
+                  } ${
+                    isCtaCard 
+                      ? "border-amber-400/40 bg-gradient-to-b from-amber-950/20 via-neutral-900/70 to-neutral-900/90 shadow-[0_0_35px_rgba(245,158,11,0.08)]" 
+                      : "border-neutral-800"
+                  }`}
+                >
+                  {/* FOTO DO PROJETO COM BADGES DISCRETOS E ELEGANTES */}
+                  <div className={`relative w-full ${isWide ? "lg:w-[46%] h-56 sm:h-64 lg:h-auto min-h-[280px]" : "h-56 sm:h-64"} overflow-hidden bg-neutral-950 shrink-0`}>
+                    <img 
+                      src={item.poster || "/cases/case-kitchen.jpg"} 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105" 
+                      alt={item.title} 
+                    />
+                    {/* Gradiente sutil da imagem */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/60 pointer-events-none" />
+
+                    {/* Badges superiores flutuantes */}
+                    <div className="absolute top-4 inset-x-4 flex items-center justify-between gap-2 z-10">
+                      {item.location && (
+                        <span className="flex items-center gap-1.5 bg-black/75 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3 py-1 rounded-full font-medium shadow-md">
+                          <FaLocationDot className="text-amber-400 text-[11px]" />
+                          <span>{item.location}</span>
+                        </span>
+                      )}
+                      {item.subMetric && (
+                        <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3 py-1 rounded-full font-black tracking-wide shadow-lg">
+                          <FaArrowTrendUp className="text-[11px]" />
+                          <span>{item.subMetric}</span>
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Tag inferior na foto: Nicho / Categoria */}
+                    <div className="absolute bottom-3 left-4 z-10">
+                      <span className="text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/85 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
+                        {item.subtitle}
                       </span>
-                    )}
-                    {item.subMetric && (
-                      <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3 py-1 rounded-full font-black tracking-wide shadow-lg">
-                        <FaArrowTrendUp className="text-[11px]" />
-                        <span>{item.subMetric}</span>
-                      </span>
-                    )}
+                    </div>
                   </div>
 
-                  {/* Tag inferior na foto: Nicho / Categoria */}
-                  <div className="absolute bottom-3 left-4 z-10">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/85 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
-                      {item.subtitle}
-                    </span>
-                  </div>
-                </div>
+                  {/* CORPO DO CARD: INFORMAÇÕES ORGANIZADAS E HIERARQUIA VISUAL CLARA */}
+                  <div className={`p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90 ${
+                    isWide ? "lg:w-[54%] lg:p-8" : "w-full"
+                  }`}>
+                    <div>
+                      <h3 className={`font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors ${
+                        isWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-xl sm:text-2xl"
+                      }`}>
+                        {item.title}
+                      </h3>
+                      {item.metric && (
+                        <div className={`mt-1.5 font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight ${
+                          isWide ? "text-2xl sm:text-3xl lg:text-4xl" : "text-2xl sm:text-3xl"
+                        }`}>
+                          {item.metric}
+                        </div>
+                      )}
+                    </div>
 
-                {/* CORPO DO CARD: INFORMAÇÕES ORGANIZADAS E HIERARQUIA VISUAL CLARA */}
-                <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors">
-                      {item.title}
-                    </h3>
-                    {item.metric && (
-                      <div className="mt-1.5 text-2xl sm:text-3xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
-                        {item.metric}
+                    {/* História / Depoimento limpo e legível */}
+                    {item.story && (
+                      <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800">
+                        <p className="text-neutral-300 text-sm leading-relaxed font-normal italic">
+                          "{item.story}"
+                        </p>
                       </div>
                     )}
-                  </div>
 
-                  {/* História / Depoimento limpo e legível */}
-                  {item.story && (
-                    <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800">
-                      <p className="text-neutral-300 text-sm leading-relaxed font-normal italic">
-                        "{item.story}"
-                      </p>
+                    {/* Rodapé: Entrega & Validação */}
+                    <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs">
+                      {isCtaCard ? (
+                        <span className="inline-flex items-center gap-1.5 font-bold text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/25">
+                          <FaCrown className="text-[10px]" />
+                          <span>{item.badge || "Exclusividade Territorial"}</span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                          <FaCheck className="text-[10px]" />
+                          <span>{item.badge || "Contratos Diretos"}</span>
+                        </span>
+                      )}
+                      <span className="text-neutral-500 font-mono text-[11px]">
+                        {isCtaCard ? "Vagas por Zip Code" : "Case Verificado Nivix"}
+                      </span>
                     </div>
-                  )}
-
-                  {/* Rodapé: Entrega & Validação */}
-                  <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs">
-                    <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                      <FaCheck className="text-[10px]" />
-                      <span>{item.badge || "Contratos Diretos"}</span>
-                    </span>
-                    <span className="text-neutral-500 font-mono text-[11px]">
-                      Case Verificado Nivix
-                    </span>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         ) : (
           /* BENTO GRID PADRÃO PARA OUTROS NICHOS (FOOD) */
