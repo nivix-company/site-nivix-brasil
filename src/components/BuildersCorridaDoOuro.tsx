@@ -14,7 +14,9 @@ import {
   FaMobileScreenButton,
   FaCamera,
   FaBullhorn,
-  FaCalendarCheck
+  FaCalendarCheck,
+  FaMagnifyingGlass,
+  FaCheck
 } from "react-icons/fa6";
 
 const deliverables = [
@@ -93,8 +95,12 @@ export default function BuildersCorridaDoOuro() {
           {/* Grid dos 4 Checkpoints da Corrida com Pista Conectora */}
           <div className="relative">
             {/* Pista de corrida (Linha conectora horizontal luminosa no Desktop) */}
-            <div className="hidden lg:block absolute top-[52px] left-12 right-12 h-[2px] bg-gradient-to-r from-amber-500/20 via-amber-400/80 to-amber-500/20 z-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-300/40 to-transparent blur-sm"></div>
+            <div className="hidden lg:block absolute top-[52px] left-12 right-12 h-[2px] bg-gradient-to-r from-amber-500/20 via-amber-400/80 to-amber-500/20 z-0 overflow-hidden">
+              <motion.div 
+                animate={{ x: ["-100%", "500%"] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-32 h-full bg-gradient-to-r from-transparent via-amber-200 to-transparent blur-[1px]"
+              />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10">
@@ -113,12 +119,16 @@ export default function BuildersCorridaDoOuro() {
                     <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-neutral-800/80 text-neutral-400 group-hover:text-amber-300 transition-colors">
                       01 • Largada
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-neutral-800/80 border border-neutral-700/60 flex items-center justify-center mb-4 group-hover:border-amber-400/40 group-hover:scale-105 transition-all">
+                  <motion.div 
+                    animate={{ rotate: [-6, 10, -6] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-12 h-12 rounded-2xl bg-neutral-800/80 border border-neutral-700/60 flex items-center justify-center mb-4 group-hover:border-amber-400/40 group-hover:scale-105 transition-all"
+                  >
                     <FaGaugeHigh className="text-emerald-400 text-lg" />
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-lg font-bold text-white tracking-tight">O Gatilho</h3>
                   <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
@@ -126,12 +136,28 @@ export default function BuildersCorridaDoOuro() {
                   </p>
                 </div>
 
+                {/* Motion Scenario Box 01 */}
                 <div className="mt-5 pt-4 border-t border-neutral-800/80">
-                  <div className="p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 text-center">
-                    <span className="text-[11px] font-mono font-bold text-neutral-300">
-                      Budget: $35k – $85k
-                    </span>
-                  </div>
+                  <motion.div 
+                    animate={{ 
+                      borderColor: ["rgba(38,38,38,0.9)", "rgba(16,185,129,0.5)", "rgba(38,38,38,0.9)"],
+                      boxShadow: ["0 0 0px rgba(16,185,129,0)", "0 0 16px rgba(16,185,129,0.18)", "0 0 0px rgba(16,185,129,0)"]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 text-center relative overflow-hidden"
+                  >
+                    <motion.div 
+                      animate={{ x: ["-100%", "220%"] }}
+                      transition={{ duration: 2.6, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }}
+                      className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-emerald-400/15 to-transparent skew-x-12 pointer-events-none"
+                    />
+                    <div className="flex items-center justify-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span className="text-[11px] font-mono font-bold text-neutral-200">
+                        Budget: $35k – $85k
+                      </span>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -149,12 +175,16 @@ export default function BuildersCorridaDoOuro() {
                     <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-neutral-800/80 text-neutral-400 group-hover:text-blue-400 transition-colors">
                       02 • O Sprint
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa]"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa] animate-pulse"></span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-neutral-800/80 border border-neutral-700/60 flex items-center justify-center mb-4 group-hover:border-blue-400/40 group-hover:scale-105 transition-all">
+                  <motion.div 
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-12 h-12 rounded-2xl bg-neutral-800/80 border border-neutral-700/60 flex items-center justify-center mb-4 group-hover:border-blue-400/40 group-hover:scale-105 transition-all"
+                  >
                     <FaGoogle className="text-blue-400 text-lg" />
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-lg font-bold text-white tracking-tight">A Disputa no Maps</h3>
                   <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
@@ -162,12 +192,31 @@ export default function BuildersCorridaDoOuro() {
                   </p>
                 </div>
 
+                {/* Motion Scenario Box 02 */}
                 <div className="mt-5 pt-4 border-t border-neutral-800/80">
-                  <div className="p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 text-center truncate">
-                    <span className="text-[11px] font-mono font-bold text-blue-300">
+                  <motion.div 
+                    animate={{ 
+                      borderColor: ["rgba(38,38,38,0.9)", "rgba(96,165,250,0.5)", "rgba(38,38,38,0.9)"],
+                      boxShadow: ["0 0 0px rgba(96,165,250,0)", "0 0 16px rgba(96,165,250,0.18)", "0 0 0px rgba(96,165,250,0)"]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, delay: 0.5, ease: "easeInOut" }}
+                    className="p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 text-center flex items-center justify-center gap-1.5 relative overflow-hidden"
+                  >
+                    <motion.span
+                      animate={{ rotate: [0, 16, 0] }}
+                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <FaMagnifyingGlass className="text-blue-400 text-[10px]" />
+                    </motion.span>
+                    <span className="text-[11px] font-mono font-bold text-blue-300 flex items-center">
                       "contractor near me"
+                      <motion.span 
+                        animate={{ opacity: [1, 0, 1] }} 
+                        transition={{ duration: 0.8, repeat: Infinity }}
+                        className="inline-block w-1 h-3 bg-blue-400 ml-1 rounded-sm"
+                      />
                     </span>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -185,12 +234,16 @@ export default function BuildersCorridaDoOuro() {
                     <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-400/10 text-amber-300 border border-amber-400/20">
                       03 • Pole Position
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]"></span>
+                    <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b] animate-pulse"></span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-all">
+                  <motion.div 
+                    animate={{ y: [0, -4, 0], rotate: [-3, 3, -3] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,180,0,0.15)]"
+                  >
                     <FaCrown className="text-amber-400 text-lg" />
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-lg font-bold text-white tracking-tight">Liderança Isolada</h3>
                   <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
@@ -198,13 +251,34 @@ export default function BuildersCorridaDoOuro() {
                   </p>
                 </div>
 
+                {/* Motion Scenario Box 03 */}
                 <div className="mt-5 pt-4 border-t border-neutral-800/80">
-                  <div className="p-2.5 rounded-xl bg-neutral-950/80 border border-amber-400/30 flex items-center justify-center gap-1.5">
-                    <div className="flex text-amber-400 text-xs">
-                      <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                  <motion.div 
+                    animate={{ 
+                      borderColor: ["rgba(245,158,11,0.25)", "rgba(245,158,11,0.7)", "rgba(245,158,11,0.25)"],
+                      boxShadow: ["0 0 0px rgba(245,158,11,0)", "0 0 18px rgba(245,158,11,0.25)", "0 0 0px rgba(245,158,11,0)"]
+                    }}
+                    transition={{ duration: 2.8, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+                    className="p-2.5 rounded-xl bg-neutral-950/80 border border-amber-400/30 flex items-center justify-center gap-2 relative overflow-hidden"
+                  >
+                    <div className="flex text-amber-400 text-xs gap-0.5">
+                      {[0, 1, 2, 3, 4].map((starIdx) => (
+                        <motion.span
+                          key={starIdx}
+                          animate={{ scale: [1, 1.25, 1], opacity: [0.75, 1, 0.75] }}
+                          transition={{ 
+                            duration: 1.6, 
+                            repeat: Infinity, 
+                            delay: starIdx * 0.18,
+                            ease: "easeInOut" 
+                          }}
+                        >
+                          <FaStar />
+                        </motion.span>
+                      ))}
                     </div>
-                    <span className="text-[11px] font-mono font-bold text-white">5.0 Top 1</span>
-                  </div>
+                    <span className="text-[11px] font-mono font-black text-white">5.0 Top 1</span>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -222,12 +296,21 @@ export default function BuildersCorridaDoOuro() {
                     <span className="px-3 py-1 rounded-full text-[10px] font-mono font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 to-yellow-500 text-black shadow-sm">
                       04 • Bandeirada
                     </span>
-                    <FaFlagCheckered className="text-amber-400 text-xs animate-bounce" />
+                    <motion.div
+                      animate={{ rotate: [-8, 8, -8], scale: [1, 1.15, 1] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <FaFlagCheckered className="text-amber-400 text-xs" />
+                    </motion.div>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-500 text-black flex items-center justify-center mb-4 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-all">
+                  <motion.div 
+                    animate={{ scale: [1, 1.06, 1], rotate: [-2, 2, -2] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-500 text-black flex items-center justify-center mb-4 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-all"
+                  >
                     <FaTrophy className="text-black text-lg" />
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-lg font-bold text-white tracking-tight">Contrato Fechado</h3>
                   <p className="text-xs text-amber-300/90 mt-1 leading-relaxed">
@@ -235,12 +318,34 @@ export default function BuildersCorridaDoOuro() {
                   </p>
                 </div>
 
+                {/* Motion Scenario Box 04 */}
                 <div className="mt-5 pt-4 border-t border-amber-400/30">
-                  <div className="p-2.5 rounded-xl bg-black/80 border border-emerald-500/40 text-center">
-                    <span className="text-[11px] font-mono font-black text-emerald-400 uppercase tracking-wide">
-                      $0 Comissão GC • 100% Seu
-                    </span>
-                  </div>
+                  <motion.div 
+                    animate={{ 
+                      scale: [1, 1.02, 1],
+                      borderColor: ["rgba(16,185,129,0.3)", "rgba(16,185,129,0.85)", "rgba(16,185,129,0.3)"],
+                      boxShadow: ["0 0 0px rgba(16,185,129,0)", "0 0 22px rgba(16,185,129,0.3)", "0 0 0px rgba(16,185,129,0)"]
+                    }}
+                    transition={{ duration: 2.6, repeat: Infinity, delay: 1.5, ease: "easeInOut" }}
+                    className="p-2.5 rounded-xl bg-black/90 border border-emerald-500/40 text-center relative overflow-hidden"
+                  >
+                    <motion.div 
+                      animate={{ x: ["-100%", "220%"] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 1.2, ease: "easeInOut" }}
+                      className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent skew-x-12 pointer-events-none"
+                    />
+                    <div className="flex items-center justify-center gap-1.5">
+                      <motion.span
+                        animate={{ rotate: [-6, 6, -6] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <FaCheck className="text-emerald-400 text-xs" />
+                      </motion.span>
+                      <span className="text-[11px] font-mono font-black text-emerald-400 uppercase tracking-wide">
+                        $0 Comissão GC • 100% Seu
+                      </span>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
