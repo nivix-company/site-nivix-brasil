@@ -536,7 +536,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       badgeText: "Top 1 do google garantido",
       badgeIcon: "google",
       subtext:
-        "Validamos o método americano que coloca <strong>homeowners qualificado e estimates de alto ticket</strong> direto na sua agenda todas as semanas, sem depender de GC ou plataformas de leads compartilhados.",
+        "Validamos o método americano que coloca <strong>estimates com homeowners qualificados</strong> direto na sua agenda todas as semanas, sem depender de GC ou plataformas de leads compartilhados.",
     },
     form: {
       methodSubtitle:
