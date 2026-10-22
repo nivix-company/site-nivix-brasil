@@ -160,38 +160,64 @@ export default function BuildersGoogleSchedule() {
 
   return (
     <section id="google-top1" className="w-full flex flex-col items-center relative scroll-mt-24">
-      {/* CONTAINER PRINCIPAL MINIMALISTA & DARK LUXURY */}
+      {/* Glow de fundo */}
+      <div className="absolute top-10 w-96 h-96 bg-amber-500/5 blur-[140px] -z-10 pointer-events-none"></div>
+
+      {/* HEADER FORA DO CARD (PADRÃO DAS SEÇÕES ANTERIORES) */}
+      <div className="text-center max-w-4xl mx-auto mb-14 px-4 flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-4 py-1.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md"
+        >
+          <FaCrown className="text-amber-400 text-xs" />
+          <span>Google Meu Negócio • Top 1 Garantido</span>
+        </motion.div>
+
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center text-white tracking-tight leading-tight"
+        >
+          <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight block sm:inline mb-1 sm:mb-0 mr-0 sm:mr-3 text-white">
+            Garantimos
+          </span>
+          <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-200">
+            você no{" "}
+            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] font-black">
+              Top 1 do Google
+            </span>
+          </span>
+        </motion.h2>
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center text-base sm:text-lg md:text-2xl mt-4 max-w-3xl px-4 text-neutral-300 leading-relaxed font-medium"
+        >
+          Ou você chega no topo do Google recebendo estimates toda semana,{" "}
+          <span className="text-white font-bold underline decoration-amber-400/50 decoration-2 underline-offset-4">
+            ou seu dinheiro de volta.
+          </span>
+        </motion.p>
+      </div>
+
+      {/* CONTAINER PRINCIPAL MINIMALISTA & DARK LUXURY (APENAS O CARD INTERATIVO) */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full bg-neutral-950/80 border border-neutral-800/80 rounded-[36px] p-6 sm:p-10 lg:p-14 shadow-2xl relative overflow-hidden"
+        className="w-full bg-neutral-950/80 border border-neutral-800/80 rounded-[36px] p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden"
       >
         {/* Glow muito sutil e elegante em âmbar/dourado */}
         <div className="absolute top-0 right-1/4 w-80 h-80 bg-amber-500/5 blur-[120px] -z-10 pointer-events-none"></div>
-
-        {/* HEADER: COPY LIMPA, DIRETA E SEM POLUIÇÃO */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-4 py-1.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider">
-            <FaCrown className="text-amber-400 text-xs" />
-            <span>Google Meu Negócio • Top 1 Garantido</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
-            Garantimos você no{" "}
-            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
-              Top 1 do Google
-            </span>
-          </h2>
-
-          <p className="text-neutral-200 text-lg sm:text-xl lg:text-2xl font-bold leading-relaxed max-w-2xl mx-auto">
-            Ou você recebe estimate toda semana ou{" "}
-            <span className="text-amber-400 font-extrabold underline decoration-amber-400/40 decoration-2 underline-offset-4">
-              não paga nada pelo serviço.
-            </span>
-          </p>
-        </div>
 
         {/* GRID DE DUAS COLUNAS: GOOGLE TOP 1 + AGENDA MOTION */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
