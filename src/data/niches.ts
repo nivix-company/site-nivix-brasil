@@ -543,9 +543,9 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
         "Montamos uma máquina de estimates para sua construtora nos EUA <strong>fechar serviços semanais de alto ticket e escalar</strong> sem depender de GC ou intermediários.",
       authorityText: "Exclusivo para brasileiros da construção na América",
       riskZeroText:
-        "Você ganha um diagnóstico estratégico gratuito da sua operação nos EUA, sem compromisso. Você só tem a ganhar!",
+        "Nossa consultoria gratuita é uma verdadeira aula estratégica. Sem compromisso: mesmo que você não feche com a gente, sai de lá com tudo em mãos para encher sua agenda de estimates.",
       remarketingSubtext:
-        "Cada dia que você deixa pra depois é uma obra na mão do seu concorrente. <span class=\"text-white font-bold block sm:inline mt-1 sm:mt-0\">O melhor momento é agora, torne-se referência na sua região.</span>",
+        "Cada dia que você deixa pra depois é uma obra na mão do seu concorrente. <span class=\"text-white font-bold\">O melhor momento é agora, torne-se referência na sua região.</span>",
       currencySymbol: "$",
       phonePlaceholder: "WhatsApp / Phone (ex: +1 407 555-0199)",
       companyPlaceholder: "Nome da sua Company / Construtora",
