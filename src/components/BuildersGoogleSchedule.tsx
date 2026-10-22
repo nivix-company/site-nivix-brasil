@@ -159,7 +159,7 @@ export default function BuildersGoogleSchedule() {
   }, [nextIndex]);
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <section id="google-top1" className="w-full flex flex-col items-center relative scroll-mt-24">
       {/* CONTAINER PRINCIPAL MINIMALISTA & DARK LUXURY */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -180,16 +180,15 @@ export default function BuildersGoogleSchedule() {
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
             Garantimos você no{" "}
-            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
               Top 1 do Google
-            </span>{" "}
-            recebendo estimates toda semana.
+            </span>
           </h2>
 
-          <p className="text-neutral-300 text-lg sm:text-xl font-semibold">
-            Já imaginou sua agenda assim toda semana?{" "}
-            <span className="text-neutral-400 font-normal text-base block mt-1">
-              (Agenda lotada de estimates com homeowners qualificados buscando sua empresa)
+          <p className="text-neutral-200 text-lg sm:text-xl lg:text-2xl font-bold leading-relaxed max-w-2xl mx-auto">
+            Ou você recebe estimate toda semana ou{" "}
+            <span className="text-amber-400 font-extrabold underline decoration-amber-400/40 decoration-2 underline-offset-4">
+              não paga nada pelo serviço.
             </span>
           </p>
         </div>
@@ -436,6 +435,6 @@ export default function BuildersGoogleSchedule() {
 
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 }

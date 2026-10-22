@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import ContactForm from "./Form";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWpforms, FaWhatsapp, FaGem } from "react-icons/fa6";
+import { FaWpforms, FaWhatsapp, FaGem, FaCrown } from "react-icons/fa6";
 import { NicheConfig } from "@/data/niches";
 import BuildersGoogleSchedule from "../BuildersGoogleSchedule";
 
@@ -380,9 +380,40 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                 ))}
             </div>
 
+            {/* DIVISÃO ENTRE AS SEÇÕES */}
+            <div className="w-full flex flex-col items-center my-14 sm:my-20 relative">
+                <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: 110 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-[1px] bg-gradient-to-b from-transparent via-[#FFB400] to-transparent opacity-60"
+                ></motion.div>
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/40 flex items-center justify-center my-3 shadow-[0_0_20px_rgba(255,180,0,0.25)] z-10"
+                >
+                    {data.routePath === "/builders" ? (
+                      <FaCrown className="text-[#FFB400] text-sm" />
+                    ) : (
+                      <FaGem className="text-[#FFB400] text-sm" />
+                    )}
+                </motion.div>
+                <motion.div 
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileInView={{ scaleX: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-[#FFB400]/25 to-transparent top-1/2 -translate-y-1/2 -z-0"
+                ></motion.div>
+            </div>
+
             {/* SEÇÃO: O MÉTODO NIVIX (A MÁQUINA DE ESCALA / DOMÍNIO GOOGLE BUILDERS) */}
             {data.routePath === "/builders" ? (
-              <div className="mt-8 w-full flex flex-col items-center">
+              <div className="w-full flex flex-col items-center">
                 <BuildersGoogleSchedule />
               </div>
             ) : (
