@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { clients as defaultClients } from "../data/clientsData";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFire, FaArrowTrendUp } from "react-icons/fa6";
+import { FaFire, FaArrowTrendUp, FaCrown, FaArrowRight } from "react-icons/fa6";
 import { NicheConfig } from "@/data/niches";
 
 export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel"] }) {
@@ -48,28 +48,45 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
       {/* Background Glow */}
       <div className="absolute w-[600px] h-[600px] rounded-full bg-[#FFB400]/5 blur-[120px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
+      {/* Header Padronizado */}
       <div className="mb-16 flex flex-col items-center px-4 text-center">
         <motion.div 
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mb-6 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-2 border-[#FFB400]/30 text-[#FFB400] text-sm gap-3 backdrop-blur-md"
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 inline-flex items-center gap-2.5 bg-amber-400/10 border border-amber-400/25 rounded-full px-4 py-1.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md"
         >
+          <FaCrown className="text-amber-400 text-xs" />
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB400] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFB400]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
           </span>
-          <p className="font-bold tracking-wide">Atualmente com: <span className="tabular-nums">{clientes}</span> Clientes Ativos</p>
+          <span>Atualmente com: <strong className="text-white tabular-nums">{clientes}</strong> Parceiros Ativos</span>
         </motion.div>
 
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-          {data?.titleLine1 || "De pizzarias de bairro a"} <br className="hidden md:block" /> 
-          <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.5)]">
-            {data?.titleHighlight || "grandes franquias"}
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl md:text-5xl lg:text-6xl font-black text-center text-white tracking-tight leading-tight"
+        >
+          {data?.titleLine1 || "De contractors autônomos a"}{" "}
+          <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
+            {data?.titleHighlight || "grandes construtoras nos EUA"}
           </span>
-        </h2>
-        <p className="text-lg md:text-2xl mt-4 text-neutral-400 max-w-2xl px-6">
+        </motion.h2>
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mt-4 max-w-3xl px-4 text-neutral-300 leading-relaxed font-medium"
+        >
           {data?.subtitle || "Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação."}
-        </p>
+        </motion.p>
       </div>
 
       <div className="w-full relative flex flex-col items-center">
@@ -102,29 +119,29 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
                       filter: isCenter ? "blur(0px)" : "blur(2px)",
                     }}
                     transition={{ type: "spring", stiffness: 260, damping: 26 }}
-                    className="absolute w-[85%] md:w-[400px] h-[480px] bg-neutral-900/40 border-2 border-neutral-800/50 backdrop-blur-xl rounded-[40px] p-8 flex flex-col items-center justify-between text-center cursor-grab active:cursor-grabbing shadow-2xl"
+                    className="absolute w-[85%] md:w-[400px] h-[480px] bg-neutral-900/60 border border-neutral-800 hover:border-amber-400/40 backdrop-blur-xl rounded-[32px] p-7 sm:p-8 flex flex-col items-center justify-between text-center cursor-grab active:cursor-grabbing shadow-2xl transition-colors duration-300"
                   >
                     <div className="relative w-full flex flex-col items-center">
-                      <div className="absolute inset-0 bg-white/5 blur-[20px] rounded-full"></div>
+                      <div className="absolute inset-0 bg-amber-400/5 blur-[20px] rounded-full"></div>
                       <img
                         src={client.imagePath}
                         alt={client.companyName}
-                        className="w-24 h-24 z-10 object-cover rounded-3xl border border-white/10 shadow-xl"
+                        className="w-24 h-24 z-10 object-cover rounded-3xl border border-amber-400/20 shadow-xl"
                       />
                       <h3 className="text-2xl mt-6 font-bold text-white tracking-tight">{client.companyName}</h3>
-                      <div className="mt-4 flex items-center justify-center gap-2 px-4 py-1.5 bg-neutral-800/50 border border-neutral-700/30 rounded-full">
-                        <FaFire className="text-[#FFB400] text-sm animate-pulse" />
-                        <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[#FFB400]">
-                          A {client.fireText} Conosco
+                      <div className="mt-4 flex items-center justify-center gap-1.5 px-4 py-1.5 bg-amber-400/10 border border-amber-400/25 rounded-full">
+                        <FaArrowTrendUp className="text-amber-400 text-xs" />
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+                          {client.fireText}
                         </p>
                       </div>
                     </div>
                     <div className="mt-6 relative flex-grow flex items-center">
-                      <p className="text-neutral-300 text-sm md:text-base italic leading-relaxed font-medium">
+                      <p className="text-neutral-300 text-sm md:text-base italic leading-relaxed font-normal">
                         "{client.description}"
                       </p>
                     </div>
-                    <div className="mt-6 w-10 h-0.5 bg-neutral-800"></div>
+                    <div className="mt-6 w-12 h-0.5 bg-neutral-800 rounded-full"></div>
                   </motion.div>
                 );
               })}
@@ -134,13 +151,14 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
 
         {/* Minimalist Controls */}
         <div className="flex flex-col items-center gap-8 mt-4">
-           <div className="flex gap-2">
+           <div className="flex items-center gap-2">
               {clientsList.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentIndex(i)}
-                  className={`h-1 transition-all duration-300 rounded-full ${
-                    i === currentIndex ? "bg-[#FFB400] w-6" : "bg-neutral-800 w-2 opacity-50"
+                  aria-label={`Slide ${i + 1}`}
+                  className={`h-1.5 transition-all duration-300 rounded-full ${
+                    i === currentIndex ? "bg-amber-400 w-8 shadow-[0_0_10px_rgba(255,180,0,0.5)]" : "bg-neutral-800 w-2.5 opacity-60 hover:opacity-100"
                   }`}
                 />
               ))}
@@ -148,42 +166,43 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
         </div>
 
         {/* Action Button */}
-        <div className="text-center mt-12 px-4 w-full max-w-sm">
+        <div className="text-center mt-12 px-4 w-full max-w-md">
             <motion.a 
               href="#form" 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="block w-full text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center gap-2.5 w-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black py-4 px-8 rounded-2xl shadow-[0_0_30px_rgba(255,180,0,0.35)] hover:shadow-[0_0_40px_rgba(255,180,0,0.55)] text-base sm:text-lg transition-all"
             >
-              Entrar em contato
+              <span>Quero Escalar Minha Empresa</span>
+              <FaArrowRight className="text-sm" />
             </motion.a>
         </div>
 
-        {/* DIVISOR DE SEÇÃO - HARD DIVIDER (CLEAN & REFINED) */}
-        <div className="w-full flex flex-col items-center mt-12 relative">
+        {/* DIVISOR DE SEÇÃO PADRONIZADO COM COROA DOURADA */}
+        <div className="w-full flex flex-col items-center mt-16 relative">
             <motion.div 
                 initial={{ height: 0 }}
-                whileInView={{ height: 128 }}
+                whileInView={{ height: 96 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="w-[1px] bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"
-            ></motion.div>
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[1px] bg-gradient-to-b from-amber-400/40 via-amber-400/20 to-transparent"
+            />
             <motion.div 
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="w-10 h-10 rounded-full bg-neutral-900 border border-amber-400/30 flex items-center justify-center my-3 shadow-[0_0_25px_rgba(255,180,0,0.25)] z-10"
             >
-                <FaArrowTrendUp className="text-[#FFB400] text-sm" />
+                <FaCrown className="text-amber-400 text-sm" />
             </motion.div>
             <motion.div 
-                initial={{ scaleX: 0, opacity: 0 }}
-                whileInView={{ scaleX: 1, opacity: 1 }}
+                initial={{ height: 0 }}
+                whileInView={{ height: 64 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"
-            ></motion.div>
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[1px] bg-gradient-to-b from-amber-400/20 to-transparent"
+            />
         </div>
       </div>
     </section>
