@@ -356,7 +356,7 @@ export default function BuildersCorridaDoOuro() {
 
         {/* Sub-Header: O que a Nivix faz para você vencer a corrida do ouro */}
         <div className="text-center mb-8 px-4">
-          <p className="text-amber-300/80 text-xs sm:text-sm font-bold uppercase tracking-[0.25em]">
+          <p className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,180,0,0.35)]">
             O que a Nivix faz para você vencer a corrida do ouro:
           </p>
         </div>
