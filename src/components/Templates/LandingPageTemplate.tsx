@@ -10,6 +10,8 @@ import ClientVideos from "../ClientVideos";
 import Team from "../Team";
 import Plano from "../Plano";
 import Ecosystem360 from "../Ecosystem360";
+import BuildersCorridaDoOuro from "../BuildersCorridaDoOuro";
+import BuildersVantagens from "../BuildersVantagens";
 import FinalCTA from "../FinalCTA";
 import { NicheType, nicheData } from "../../data/niches";
 
@@ -35,6 +37,8 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
     }
   }, [data.routePath]);
 
+  const isBuilders = niche === "builders";
+
   return (
     <main className="w-full h-fit bg-[#101010] relative">
       <Header homeHref={data.routePath} />
@@ -42,9 +46,24 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
       <FormContainer data={{ ...data.form, ...data.method, routePath: data.routePath }} />
       <ClientVideos data={data.cases} />
       <ClientsCarousel data={data.carousel} />
-      <Ecosystem360 data={data.ecosystem} />
-      <Plano data={data.plano} />
-      <Team data={data.team} />
+      
+      {/* Se for builders: A Corrida do Ouro + Badges de Entregáveis */}
+      {isBuilders ? (
+        <BuildersCorridaDoOuro />
+      ) : (
+        <Ecosystem360 data={data.ecosystem} />
+      )}
+
+      {/* Se for builders: Nossas Vantagens (sem tabela de preço fixo) */}
+      {isBuilders ? (
+        <BuildersVantagens />
+      ) : (
+        <Plano data={data.plano} />
+      )}
+
+      {/* Equipe mantida apenas para food/pizzarias */}
+      {!isBuilders && <Team data={data.team} />}
+
       <OurWork data={data.faq} />
       <FinalCTA data={data.finalCTA} />
       <Footer />
