@@ -339,7 +339,7 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                 />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full max-w-6xl justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-2 sm:px-0">
                 {[
                   {
                     icon: <FaWpforms />,
@@ -366,13 +366,16 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                         whileInView={{ opacity: 1, y: 0 }} 
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: index * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full max-w-[290px] sm:max-w-[310px] md:max-w-none aspect-square md:aspect-auto md:min-h-[320px] flex flex-col items-center justify-center text-center p-4 sm:p-6 md:p-8 bg-neutral-900/30 border border-neutral-800/50 rounded-3xl md:rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/20 transition-all duration-500 ease-out group"
+                        className="w-full flex flex-col items-center justify-center text-center p-7 sm:p-8 md:p-8 bg-gradient-to-b from-neutral-900/60 to-neutral-950/70 border border-neutral-800/80 rounded-[32px] md:rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/30 transition-all duration-500 ease-out group md:min-h-[320px] relative overflow-hidden shadow-xl"
                     >
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-neutral-800/50 flex items-center justify-center text-xl md:text-2xl mb-2.5 sm:mb-3 md:mb-5 border border-neutral-700/50 transition-colors group-hover:border-[#FFB400]/30 shrink-0" style={{ color: item.color }}>
-                            {item.icon}
+                        <div 
+                          className="w-14 h-14 rounded-2xl bg-neutral-800/80 flex items-center justify-center text-2xl mb-4 md:mb-6 border border-neutral-700/60 transition-colors group-hover:border-[#FFB400]/40 shadow-md shrink-0" 
+                          style={{ boxShadow: `0 0 25px ${item.color}15` }}
+                        >
+                            <span style={{ color: item.color }}>{item.icon}</span>
                         </div>
-                        <h4 className="text-white text-lg sm:text-xl md:text-xl font-bold mb-1.5 sm:mb-2 md:mb-3 tracking-tight">{item.title}</h4>
-                        <p className="text-neutral-200 text-[15px] sm:text-base md:text-lg font-medium leading-snug sm:leading-relaxed">{item.text}</p>
+                        <h4 className="text-white text-xl font-bold mb-3 md:mb-4 tracking-tight">{item.title}</h4>
+                        <p className="text-neutral-300 md:text-neutral-400 text-sm md:text-base font-medium leading-relaxed max-w-md">{item.text}</p>
                     </motion.div>
                 ))}
             </div>
