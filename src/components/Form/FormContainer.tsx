@@ -366,13 +366,13 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                         whileInView={{ opacity: 1, y: 0 }} 
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: index * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full max-w-[280px] sm:max-w-[300px] md:max-w-none aspect-square md:aspect-auto md:min-h-[320px] flex flex-col items-center justify-center text-center p-5 sm:p-6 md:p-8 bg-neutral-900/30 border border-neutral-800/50 rounded-3xl md:rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/20 transition-all duration-500 ease-out group"
+                        className="w-full max-w-[290px] sm:max-w-[310px] md:max-w-none aspect-square md:aspect-auto md:min-h-[320px] flex flex-col items-center justify-center text-center p-4 sm:p-6 md:p-8 bg-neutral-900/30 border border-neutral-800/50 rounded-3xl md:rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/20 transition-all duration-500 ease-out group"
                     >
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-neutral-800/50 flex items-center justify-center text-xl md:text-2xl mb-3 md:mb-5 border border-neutral-700/50 transition-colors group-hover:border-[#FFB400]/30 shrink-0" style={{ color: item.color }}>
+                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-neutral-800/50 flex items-center justify-center text-xl md:text-2xl mb-2.5 sm:mb-3 md:mb-5 border border-neutral-700/50 transition-colors group-hover:border-[#FFB400]/30 shrink-0" style={{ color: item.color }}>
                             {item.icon}
                         </div>
-                        <h4 className="text-white text-lg sm:text-xl md:text-xl font-bold mb-2 md:mb-3 tracking-tight">{item.title}</h4>
-                        <p className="text-neutral-300 text-[13.5px] sm:text-[14.5px] md:text-base font-medium leading-snug md:leading-relaxed">{item.text}</p>
+                        <h4 className="text-white text-lg sm:text-xl md:text-xl font-bold mb-1.5 sm:mb-2 md:mb-3 tracking-tight">{item.title}</h4>
+                        <p className="text-neutral-200 text-[15px] sm:text-base md:text-lg font-medium leading-snug sm:leading-relaxed">{item.text}</p>
                     </motion.div>
                 ))}
             </div>
