@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CaseItem } from "@/data/niches";
-import { FaCrown, FaLocationDot, FaCheck, FaArrowTrendUp } from "react-icons/fa6";
+import { FaCrown, FaLocationDot, FaCheck, FaArrowTrendUp, FaArrowRight, FaShieldHalved } from "react-icons/fa6";
 
 const defaultCases: CaseItem[] = [
   {
@@ -110,14 +110,134 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           </motion.p>
         </div>
 
-        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO GRID LUXURY NO DESKTOP, STACKED NO MOBILE */}
+        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO COM LINHA 1 (50/50), LINHA 2 (50/50) E LINHA 3 FULL WIDTH (CASO DO LEAD) */}
         {isRichCases ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl">
             {cases.map((item, index) => {
-              // Bento layout: primeiro card é wide (2 colunas) ou se 4 cards: 0 e 3 são wide
-              const isWide = (cases.length === 4 && (index === 0 || index === 3)) || (cases.length !== 4 && index === 0);
               const isCtaCard = item.id === 5 || item.title.includes("Sua Construtora") || item.title.includes("Sua Empresa");
 
+              if (isCtaCard) {
+                // LINHA 3: CARD EXCLUSIVO DO LEAD (100% FULL-WIDTH) COM TODA A INFORMAÇÃO ESTRATÉGICA
+                return (
+                  <motion.div 
+                    key={item.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ y: -4 }}
+                    className="w-full lg:col-span-2 bg-gradient-to-br from-amber-950/20 via-neutral-900/90 to-neutral-950 border border-amber-400/40 hover:border-amber-400/70 rounded-[32px] overflow-hidden flex flex-col lg:flex-row items-stretch justify-between shadow-[0_0_50px_rgba(245,158,11,0.1)] transition-all duration-500 group"
+                  >
+                    {/* LATERAL ESQUERDA (DESKTOP) / TOPO (MOBILE): FOTO COM STATS DE PROJEÇÃO */}
+                    <div className="relative w-full lg:w-[40%] h-64 sm:h-72 lg:h-auto min-h-[300px] overflow-hidden bg-neutral-950 shrink-0 flex flex-col justify-between p-6 sm:p-7">
+                      <img 
+                        src={item.poster || "/flags-blend.jpg"} 
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100" 
+                        alt={item.title} 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-black/70 pointer-events-none" />
+
+                      {/* Badges superiores */}
+                      <div className="relative z-10 flex items-center justify-between gap-2">
+                        <span className="flex items-center gap-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3.5 py-1.5 rounded-full font-medium shadow-md">
+                          <FaLocationDot className="text-amber-400 text-xs" />
+                          <span>{item.location || "Flórida e Regiões dos EUA"}</span>
+                        </span>
+                        <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3.5 py-1.5 rounded-full font-black tracking-wide shadow-lg">
+                          <FaCrown className="text-xs" />
+                          <span>Vagas por Região</span>
+                        </span>
+                      </div>
+
+                      {/* Projeção rápida sobre a imagem */}
+                      <div className="relative z-10 space-y-2.5 mt-auto pt-6">
+                        <span className="inline-block text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/90 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
+                          {item.subtitle || "Remodeling, Roofing, Pavers & Framing"}
+                        </span>
+                        <div className="p-3.5 rounded-2xl bg-neutral-950/90 backdrop-blur-md border border-amber-400/20 grid grid-cols-2 gap-2 text-left shadow-lg">
+                          <div>
+                            <p className="text-[10px] text-neutral-400 uppercase font-semibold">Estimates</p>
+                            <p className="text-sm sm:text-base font-black text-amber-400">+3 a 6 / semana</p>
+                          </div>
+                          <div>
+                            <p className="text-[10px] text-neutral-400 uppercase font-semibold">Margem Líquida</p>
+                            <p className="text-sm sm:text-base font-black text-emerald-400">40% a 65%</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* LADO DIREITO: INFORMAÇÕES COMPLETAS DO CASO DO LEAD */}
+                    <div className="w-full lg:w-[60%] p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6 bg-gradient-to-b from-neutral-950/90 via-neutral-900/80 to-neutral-950/90">
+                      <div>
+                        <div className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-3.5 py-1 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md w-fit">
+                          <FaCrown className="text-amber-400 text-xs" />
+                          <span>Seu Futuro com a Nivix</span>
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-amber-300 transition-colors mt-3">
+                          Sua Empresa Aqui: Do Subcontrato ao Domínio Regional
+                        </h3>
+                        <div className="mt-2 text-lg sm:text-xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
+                          Receba Estimates Toda Semana Direto no Seu WhatsApp
+                        </div>
+                      </div>
+
+                      {/* O Caso do Lead / Transformação */}
+                      <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/80 border border-neutral-800">
+                        <p className="text-neutral-300 text-sm sm:text-[15px] leading-relaxed font-normal">
+                          Você não veio para os EUA para viver de migalhas de GC ou depender de indicação de boca a boca que oscila todo mês. A Nivix monta a sua máquina americana de estimates: colocamos você no <strong className="text-amber-300 font-semibold">Top 1 do Google</strong> e geramos um fluxo previsível de homeowners qualificados te chamando direto para fechar reformas completas com <strong className="text-emerald-400 font-semibold">100% de margem própria</strong>.
+                        </p>
+                      </div>
+
+                      {/* 3 Pilares da Parceria */}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
+                          <span className="flex items-center gap-1.5 text-xs font-bold text-amber-400">
+                            <FaArrowTrendUp className="text-[11px]" /> Top 1 Google
+                          </span>
+                          <span className="text-[11px] text-neutral-400 leading-tight">
+                            O americano pesquisa e encontra sua construtora em 1º lugar.
+                          </span>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
+                          <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                            <FaCheck className="text-[11px]" /> 100% Margem
+                          </span>
+                          <span className="text-[11px] text-neutral-400 leading-tight">
+                            Contratos de $15k a $90k sem repassar até 50% para GC.
+                          </span>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
+                          <span className="flex items-center gap-1.5 text-xs font-bold text-yellow-400">
+                            <FaShieldHalved className="text-[11px]" /> Trava Territorial
+                          </span>
+                          <span className="text-[11px] text-neutral-400 leading-tight">
+                            Apenas 1 parceiro por Zip Code para blindar seu mercado.
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Rodapé com CTA Direto */}
+                      <div className="pt-4 border-t border-neutral-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                        <a 
+                          href="#form" 
+                          className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-[0_0_30px_rgba(255,180,0,0.35)] hover:shadow-[0_0_40px_rgba(255,180,0,0.55)] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                          <span>Quero Ser o Próximo Case na Minha Região</span>
+                          <FaArrowRight className="text-sm" />
+                        </a>
+
+                        <span className="text-xs text-neutral-400 font-medium flex items-center gap-2 justify-center sm:justify-start">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                          <span>Trava de Zip Code Ativa</span>
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              // LINHAS 1 E 2: CARDS 50/50 NO DESKTOP, STACKED NO MOBILE
               return (
                 <motion.div 
                   key={item.id}
@@ -126,16 +246,10 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -6 }}
-                  className={`w-full bg-neutral-900/60 border rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group ${
-                    isWide ? "lg:col-span-2 lg:flex-row" : "lg:col-span-1 flex-col"
-                  } ${
-                    isCtaCard 
-                      ? "border-amber-400/40 bg-gradient-to-b from-amber-950/20 via-neutral-900/70 to-neutral-900/90 shadow-[0_0_35px_rgba(245,158,11,0.08)]" 
-                      : "border-neutral-800"
-                  }`}
+                  className="w-full lg:col-span-1 bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group"
                 >
                   {/* FOTO DO PROJETO COM BADGES DISCRETOS E ELEGANTES */}
-                  <div className={`relative w-full ${isWide ? "lg:w-[46%] h-56 sm:h-64 lg:h-auto min-h-[280px]" : "h-56 sm:h-64"} overflow-hidden bg-neutral-950 shrink-0`}>
+                  <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-neutral-950 shrink-0">
                     <img 
                       src={item.poster || "/cases/case-kitchen.jpg"} 
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105" 
@@ -169,19 +283,13 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   </div>
 
                   {/* CORPO DO CARD: INFORMAÇÕES ORGANIZADAS E HIERARQUIA VISUAL CLARA */}
-                  <div className={`p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90 ${
-                    isWide ? "lg:w-[54%] lg:p-8" : "w-full"
-                  }`}>
+                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90">
                     <div>
-                      <h3 className={`font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors ${
-                        isWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-xl sm:text-2xl"
-                      }`}>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors">
                         {item.title}
                       </h3>
                       {item.metric && (
-                        <div className={`mt-1.5 font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight ${
-                          isWide ? "text-2xl sm:text-3xl lg:text-4xl" : "text-2xl sm:text-3xl"
-                        }`}>
+                        <div className="mt-1.5 text-2xl sm:text-3xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
                           {item.metric}
                         </div>
                       )}
@@ -198,19 +306,12 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
 
                     {/* Rodapé: Entrega & Validação */}
                     <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs">
-                      {isCtaCard ? (
-                        <span className="inline-flex items-center gap-1.5 font-bold text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/25">
-                          <FaCrown className="text-[10px]" />
-                          <span>{item.badge || "Exclusividade Territorial"}</span>
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                          <FaCheck className="text-[10px]" />
-                          <span>{item.badge || "Contratos Diretos"}</span>
-                        </span>
-                      )}
+                      <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                        <FaCheck className="text-[10px]" />
+                        <span>{item.badge || "Contratos Diretos"}</span>
+                      </span>
                       <span className="text-neutral-500 font-mono text-[11px]">
-                        {isCtaCard ? "Vagas por Zip Code" : "Case Verificado Nivix"}
+                        Case Verificado Nivix
                       </span>
                     </div>
                   </div>
