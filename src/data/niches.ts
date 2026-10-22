@@ -541,7 +541,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
     form: {
       methodSubtitle:
         "Montamos uma máquina de estimates para sua construtora nos EUA <strong>fechar serviços semanais de alto ticket e escalar</strong> sem depender de GC ou intermediários.",
-      authorityText: "Especialistas em Builders & Contractors nos EUA",
+      authorityText: "Exclusivo para brasileiros da construção na América",
       riskZeroText:
         "Você ganha um diagnóstico estratégico gratuito da sua operação nos EUA, sem compromisso. Você só tem a ganhar!",
       remarketingSubtext:
@@ -551,13 +551,13 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       companyPlaceholder: "Nome da sua Company / Construtora",
       hideInvestment: true,
       revenueOptions: [
-        "Até $15,000 / mês",
-        "De $15,000 a $30,000 / mês",
-        "De $30,000 a $60,000 / mês",
-        "De $60,000 a $100,000 / mês",
-        "De $100,000 a $250,000 / mês",
-        "De $250,000 a $500,000 / mês",
-        "Acima de $500,000 / mês",
+        "Até $15k / mês",
+        "$15k a $30k / mês",
+        "$30k a $60k / mês",
+        "$60k a $100k / mês",
+        "$100k a $300k / mês",
+        "$300k a $500k / mês",
+        "$500k+ / mês",
       ],
       investmentOptions: [
         "Nada no momento",
