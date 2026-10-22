@@ -110,14 +110,14 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           </motion.p>
         </div>
 
-        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO COM LINHA 1 (50/50), LINHA 2 (50/50) E LINHA 3 FULL WIDTH (CASO DO LEAD) */}
+        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO DESKTOP (L1: WIDE + COMPACT, L2: 50/50, L3: LEAD CARD ELEGANTE) */}
         {isRichCases ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 lg:gap-8 w-full max-w-6xl">
             {cases.map((item, index) => {
               const isCtaCard = item.id === 5 || item.title.includes("Sua Construtora") || item.title.includes("Sua Empresa");
 
+              // Card 4: LINHA 3 - CARD DO LEAD (FULL WIDTH, SLEEK & COMPACT)
               if (isCtaCard) {
-                // LINHA 3: CARD EXCLUSIVO DO LEAD (100% FULL-WIDTH) COM TODA A INFORMAÇÃO ESTRATÉGICA
                 return (
                   <motion.div 
                     key={item.id}
@@ -126,110 +126,87 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ y: -4 }}
-                    className="w-full lg:col-span-2 bg-gradient-to-br from-amber-950/20 via-neutral-900/90 to-neutral-950 border border-amber-400/40 hover:border-amber-400/70 rounded-[32px] overflow-hidden flex flex-col lg:flex-row items-stretch justify-between shadow-[0_0_50px_rgba(245,158,11,0.1)] transition-all duration-500 group"
+                    className="w-full lg:col-span-6 bg-gradient-to-r from-neutral-900/90 via-neutral-900/70 to-neutral-950 border border-amber-400/40 hover:border-amber-400/70 rounded-[32px] overflow-hidden flex flex-col lg:flex-row items-stretch justify-between shadow-[0_0_35px_rgba(245,158,11,0.08)] transition-all duration-500 group"
                   >
-                    {/* LATERAL ESQUERDA (DESKTOP) / TOPO (MOBILE): FOTO COM STATS DE PROJEÇÃO */}
-                    <div className="relative w-full lg:w-[40%] h-64 sm:h-72 lg:h-auto min-h-[300px] overflow-hidden bg-neutral-950 shrink-0 flex flex-col justify-between p-6 sm:p-7">
+                    {/* LATERAL ESQUERDA: FOTO LIMPA COM BADGES */}
+                    <div className="relative w-full lg:w-[32%] h-56 sm:h-64 lg:h-auto min-h-[220px] overflow-hidden bg-neutral-950 shrink-0">
                       <img 
                         src={item.poster || "/flags-blend.jpg"} 
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100" 
                         alt={item.title} 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-black/70 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/30 to-black/60 pointer-events-none" />
 
                       {/* Badges superiores */}
-                      <div className="relative z-10 flex items-center justify-between gap-2">
-                        <span className="flex items-center gap-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3.5 py-1.5 rounded-full font-medium shadow-md">
-                          <FaLocationDot className="text-amber-400 text-xs" />
+                      <div className="absolute top-4 inset-x-4 flex items-center justify-between gap-2 z-10">
+                        <span className="flex items-center gap-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3 py-1 rounded-full font-medium shadow-md">
+                          <FaLocationDot className="text-amber-400 text-[11px]" />
                           <span>{item.location || "Flórida e Regiões dos EUA"}</span>
                         </span>
-                        <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3.5 py-1.5 rounded-full font-black tracking-wide shadow-lg">
-                          <FaCrown className="text-xs" />
+                        <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3 py-1 rounded-full font-black tracking-wide shadow-lg">
+                          <FaCrown className="text-[11px]" />
                           <span>Vagas por Região</span>
                         </span>
                       </div>
 
-                      {/* Projeção rápida sobre a imagem */}
-                      <div className="relative z-10 space-y-2.5 mt-auto pt-6">
-                        <span className="inline-block text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/90 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
-                          {item.subtitle || "Remodeling, Roofing, Pavers & Framing"}
+                      {/* Tag inferior */}
+                      <div className="absolute bottom-3 left-4 z-10">
+                        <span className="text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/90 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
+                          {item.subtitle || "Remodeling & Construction"}
                         </span>
-                        <div className="p-3.5 rounded-2xl bg-neutral-950/90 backdrop-blur-md border border-amber-400/20 grid grid-cols-2 gap-2 text-left shadow-lg">
-                          <div>
-                            <p className="text-[10px] text-neutral-400 uppercase font-semibold">Estimates</p>
-                            <p className="text-sm sm:text-base font-black text-amber-400">+3 a 6 / semana</p>
-                          </div>
-                          <div>
-                            <p className="text-[10px] text-neutral-400 uppercase font-semibold">Margem Líquida</p>
-                            <p className="text-sm sm:text-base font-black text-emerald-400">40% a 65%</p>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
-                    {/* LADO DIREITO: INFORMAÇÕES COMPLETAS DO CASO DO LEAD */}
-                    <div className="w-full lg:w-[60%] p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6 bg-gradient-to-b from-neutral-950/90 via-neutral-900/80 to-neutral-950/90">
+                    {/* LADO DIREITO: CONTEÚDO ELEGANTE E PROPORCIONAL */}
+                    <div className="w-full lg:w-[68%] p-6 sm:p-7 lg:p-8 flex flex-col justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90">
                       <div>
-                        <div className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-3.5 py-1 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md w-fit">
-                          <FaCrown className="text-amber-400 text-xs" />
-                          <span>Seu Futuro com a Nivix</span>
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="inline-flex items-center gap-1.5 bg-amber-400/10 border border-amber-400/25 rounded-full px-3 py-0.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider">
+                            <FaCrown className="text-amber-400 text-[10px]" />
+                            <span>Seu Futuro com a Nivix</span>
+                          </span>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-amber-300 transition-colors mt-3">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight group-hover:text-amber-300 transition-colors">
                           Sua Empresa Aqui: Do Subcontrato ao Domínio Regional
                         </h3>
-                        <div className="mt-2 text-lg sm:text-xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
-                          Receba Estimates Toda Semana Direto no Seu WhatsApp
+                        <div className="mt-1 text-lg sm:text-xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
+                          Estimates Semanais Direto no Seu WhatsApp
                         </div>
                       </div>
 
-                      {/* O Caso do Lead / Transformação */}
-                      <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/80 border border-neutral-800">
-                        <p className="text-neutral-300 text-sm sm:text-[15px] leading-relaxed font-normal">
-                          Você não veio para os EUA para viver de migalhas de GC ou depender de indicação de boca a boca que oscila todo mês. A Nivix monta a sua máquina americana de estimates: colocamos você no <strong className="text-amber-300 font-semibold">Top 1 do Google</strong> e geramos um fluxo previsível de homeowners qualificados te chamando direto para fechar reformas completas com <strong className="text-emerald-400 font-semibold">100% de margem própria</strong>.
+                      {/* História / Transformação do Lead */}
+                      <div className="p-3.5 sm:p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800">
+                        <p className="text-neutral-300 text-sm leading-relaxed font-normal italic">
+                          "Colocamos sua construtora no <strong className="text-amber-300 font-semibold not-italic">Top 1 do Google</strong> para receber estimates particulares toda semana com homeowners americanos, fechando contratos diretos sem depender de General Contractor e com <strong className="text-emerald-400 font-semibold not-italic">100% de margem própria</strong>."
                         </p>
                       </div>
 
-                      {/* 3 Pilares da Parceria */}
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
-                          <span className="flex items-center gap-1.5 text-xs font-bold text-amber-400">
-                            <FaArrowTrendUp className="text-[11px]" /> Top 1 Google
-                          </span>
-                          <span className="text-[11px] text-neutral-400 leading-tight">
-                            O americano pesquisa e encontra sua construtora em 1º lugar.
-                          </span>
-                        </div>
-                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
-                          <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
-                            <FaCheck className="text-[11px]" /> 100% Margem
-                          </span>
-                          <span className="text-[11px] text-neutral-400 leading-tight">
-                            Contratos de $15k a $90k sem repassar até 50% para GC.
-                          </span>
-                        </div>
-                        <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col gap-1">
-                          <span className="flex items-center gap-1.5 text-xs font-bold text-yellow-400">
-                            <FaShieldHalved className="text-[11px]" /> Trava Territorial
-                          </span>
-                          <span className="text-[11px] text-neutral-400 leading-tight">
-                            Apenas 1 parceiro por Zip Code para blindar seu mercado.
-                          </span>
-                        </div>
+                      {/* 3 Pilares compactos em linha */}
+                      <div className="flex flex-wrap items-center gap-2 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 font-semibold text-[11px]">
+                          <FaArrowTrendUp className="text-[10px]" /> Top 1 Google
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold text-[11px]">
+                          <FaCheck className="text-[10px]" /> 100% Margem Própria
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-300 font-semibold text-[11px]">
+                          <FaShieldHalved className="text-[10px]" /> 1 Construtora por Zip Code
+                        </span>
                       </div>
 
-                      {/* Rodapé com CTA Direto */}
-                      <div className="pt-4 border-t border-neutral-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                      {/* Rodapé CTA */}
+                      <div className="pt-3 border-t border-neutral-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs">
                         <a 
                           href="#form" 
-                          className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-[0_0_30px_rgba(255,180,0,0.35)] hover:shadow-[0_0_40px_rgba(255,180,0,0.55)] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-black text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-[0_0_20px_rgba(255,180,0,0.25)] hover:shadow-[0_0_30px_rgba(255,180,0,0.45)] transition-all transform hover:scale-[1.01] active:scale-[0.99]"
                         >
                           <span>Quero Ser o Próximo Case na Minha Região</span>
-                          <FaArrowRight className="text-sm" />
+                          <FaArrowRight className="text-xs" />
                         </a>
 
-                        <span className="text-xs text-neutral-400 font-medium flex items-center gap-2 justify-center sm:justify-start">
+                        <span className="text-neutral-400 font-mono text-[11px] flex items-center gap-1.5 justify-center sm:justify-start">
                           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                          <span>Trava de Zip Code Ativa</span>
+                          <span>Trava Territorial Ativa</span>
                         </span>
                       </div>
                     </div>
@@ -237,7 +214,16 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                 );
               }
 
-              // LINHAS 1 E 2: CARDS 50/50 NO DESKTOP, STACKED NO MOBILE
+              // CARDS 0, 1, 2, 3:
+              // Linha 1: index 0 (lg:col-span-4, wide) + index 1 (lg:col-span-2, compact) -> UM MAIOR QUE O OUTRO
+              // Linha 2: index 2 (lg:col-span-3) + index 3 (lg:col-span-3) -> 50% / 50%
+              const isFirstRowWide = index === 0;
+              const colSpanClass = index === 0 
+                ? "lg:col-span-4 lg:flex-row" 
+                : index === 1 
+                  ? "lg:col-span-2 flex-col" 
+                  : "lg:col-span-3 flex-col";
+
               return (
                 <motion.div 
                   key={item.id}
@@ -246,10 +232,10 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -6 }}
-                  className="w-full lg:col-span-1 bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group"
+                  className={`w-full ${colSpanClass} bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group`}
                 >
                   {/* FOTO DO PROJETO COM BADGES DISCRETOS E ELEGANTES */}
-                  <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-neutral-950 shrink-0">
+                  <div className={`relative w-full ${isFirstRowWide ? "lg:w-[46%] h-56 sm:h-64 lg:h-auto min-h-[280px]" : "h-56 sm:h-64"} overflow-hidden bg-neutral-950 shrink-0`}>
                     <img 
                       src={item.poster || "/cases/case-kitchen.jpg"} 
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105" 
@@ -283,13 +269,19 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   </div>
 
                   {/* CORPO DO CARD: INFORMAÇÕES ORGANIZADAS E HIERARQUIA VISUAL CLARA */}
-                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90">
+                  <div className={`p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90 ${
+                    isFirstRowWide ? "lg:w-[54%] lg:p-8" : "w-full"
+                  }`}>
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors">
+                      <h3 className={`font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors ${
+                        isFirstRowWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-xl sm:text-2xl"
+                      }`}>
                         {item.title}
                       </h3>
                       {item.metric && (
-                        <div className="mt-1.5 text-2xl sm:text-3xl font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight">
+                        <div className={`mt-1.5 font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight ${
+                          isFirstRowWide ? "text-2xl sm:text-3xl lg:text-4xl" : "text-2xl sm:text-3xl"
+                        }`}>
                           {item.metric}
                         </div>
                       )}
