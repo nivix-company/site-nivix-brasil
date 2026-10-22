@@ -597,10 +597,10 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       },
     },
     cases: {
-      title: "Cases Reais nos EUA",
-      titleHighlight: "de subcontratados a empresas de mais de $100k/mês",
+      title: "Nossos Parceiros",
+      titleHighlight: "na América",
       subtitle:
-        "Veja como contractors brasileiros nos EUA pararam de disputar preço em plataformas compartilhadas e estruturaram uma máquina previsível de contratos de alto ticket.",
+        "Veja como brasileiros da construção escalaram suas empresas montando uma máquina de estimates com a Nivix, fazendo serviços particulares toda semana.",
       items: [
         {
           id: 1,
