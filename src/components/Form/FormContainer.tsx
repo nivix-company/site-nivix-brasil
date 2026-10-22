@@ -330,14 +330,16 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-center md:text-2xl mt-2 max-w-4xl px-6 text-white/90 leading-relaxed"
-                >
-                  {data.remarketingSubtext || "Cada minuto que você hesita é um pedido que cai no caixa do seu concorrente."}
-                  <span className="text-white font-bold ml-1">Recupere o controle da sua operação hoje.</span>
-                </motion.p>
+                  className="text-center text-base sm:text-lg md:text-2xl mt-3 max-w-4xl px-4 sm:px-6 text-neutral-300 leading-relaxed font-medium"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      data.remarketingSubtext ||
+                      'Cada minuto que você hesita é um pedido que cai no caixa do seu concorrente. <span class="text-white font-bold ml-1">Recupere o controle da sua operação hoje.</span>',
+                  }}
+                />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full max-w-6xl justify-items-center">
                 {[
                   {
                     icon: <FaWpforms />,
@@ -364,13 +366,13 @@ export default function FormContainer({ data }: { data: FormContainerData }) {
                         whileInView={{ opacity: 1, y: 0 }} 
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: index * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="flex flex-col items-center justify-center text-center p-8 bg-neutral-900/30 border border-neutral-800/50 rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/20 transition-all duration-500 ease-out group min-h-[320px]"
+                        className="w-full max-w-[280px] sm:max-w-[300px] md:max-w-none aspect-square md:aspect-auto md:min-h-[320px] flex flex-col items-center justify-center text-center p-5 sm:p-6 md:p-8 bg-neutral-900/30 border border-neutral-800/50 rounded-3xl md:rounded-[40px] backdrop-blur-sm hover:border-[#FFB400]/20 transition-all duration-500 ease-out group"
                     >
-                        <div className="w-14 h-14 rounded-2xl bg-neutral-800/50 flex items-center justify-center text-2xl mb-6 border border-neutral-700/50 transition-colors group-hover:border-[#FFB400]/30" style={{ color: item.color }}>
+                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-neutral-800/50 flex items-center justify-center text-xl md:text-2xl mb-3 md:mb-5 border border-neutral-700/50 transition-colors group-hover:border-[#FFB400]/30 shrink-0" style={{ color: item.color }}>
                             {item.icon}
                         </div>
-                        <h4 className="text-white text-xl font-bold mb-4 tracking-tight">{item.title}</h4>
-                        <p className="text-neutral-400 text-sm md:text-base font-medium leading-relaxed">{item.text}</p>
+                        <h4 className="text-white text-lg sm:text-xl md:text-xl font-bold mb-2 md:mb-3 tracking-tight">{item.title}</h4>
+                        <p className="text-neutral-300 text-[13.5px] sm:text-[14.5px] md:text-base font-medium leading-snug md:leading-relaxed">{item.text}</p>
                     </motion.div>
                 ))}
             </div>

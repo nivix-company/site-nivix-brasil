@@ -545,7 +545,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       riskZeroText:
         "Você ganha um diagnóstico estratégico gratuito da sua operação nos EUA, sem compromisso. Você só tem a ganhar!",
       remarketingSubtext:
-        "Cada minuto que você hesita é um contrato de obra de alto valor que cai na mão do seu concorrente.",
+        "Cada dia que você hesita é uma obra na mão do seu concorrente. <span class=\"text-white font-bold block sm:inline mt-1 sm:mt-0\">O melhor momento é agora, torne-se referência na sua região.</span>",
       currencySymbol: "$",
       phonePlaceholder: "WhatsApp / Phone (ex: +1 407 555-0199)",
       companyPlaceholder: "Nome da sua Company / Construtora",
