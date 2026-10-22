@@ -399,31 +399,31 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           </motion.div>
         )}
 
-        {/* DIVISOR DE SEÇÃO PADRONIZADO */}
-        <div className="mt-16 w-full flex flex-col items-center relative">
+        {/* SOFT-BREAK (APENAS CONTINUIDADE DE SUB-SEÇÃO: CASES -> CARROSSEL) */}
+        <div className="mt-20 w-full flex flex-col items-center">
           <motion.div 
             initial={{ height: 0 }}
             whileInView={{ height: 96 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[1px] bg-gradient-to-b from-amber-400/40 via-amber-400/20 to-transparent"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="w-[1px] bg-gradient-to-b from-neutral-800 to-[#FFB400] opacity-50"
           />
           <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-10 h-10 rounded-full bg-neutral-900 border border-amber-400/30 flex items-center justify-center my-3 shadow-[0_0_25px_rgba(255,180,0,0.25)] z-10"
-          >
-            <FaCrown className="text-amber-400 text-sm" />
-          </motion.div>
-          <motion.div 
-            initial={{ height: 0 }}
-            whileInView={{ height: 64 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[1px] bg-gradient-to-b from-amber-400/20 to-transparent"
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="w-2.5 h-2.5 rounded-full bg-[#FFB400] shadow-[0_0_15px_#FFB400] animate-pulse my-4"
           />
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="text-[#FFB400] text-[10px] font-black uppercase tracking-[0.4em] opacity-50"
+          >
+            E tem muito mais...
+          </motion.p>
         </div>
       </div>
     </section>

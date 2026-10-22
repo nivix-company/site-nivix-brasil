@@ -70,9 +70,9 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black text-center text-white tracking-tight leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-white tracking-tight leading-tight max-w-4xl"
         >
-          {data?.titleLine1 || "De contractors autônomos a"}{" "}
+          {data?.titleLine1 || "De contractors autônomos a"} <br className="hidden sm:block" />
           <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
             {data?.titleHighlight || "grandes construtoras nos EUA"}
           </span>
@@ -83,7 +83,7 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mt-4 max-w-3xl px-4 text-neutral-300 leading-relaxed font-medium"
+          className="text-center text-sm sm:text-base md:text-lg lg:text-xl mt-4 max-w-2xl px-4 text-neutral-300 leading-relaxed font-normal"
         >
           {data?.subtitle || "Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação."}
         </motion.p>
@@ -178,30 +178,30 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
             </motion.a>
         </div>
 
-        {/* DIVISOR DE SEÇÃO PADRONIZADO COM COROA DOURADA */}
+        {/* DIVISOR DE SEÇÃO - HARD DIVIDER (TRANSIÇÃO DE PROVA SOCIAL PARA A METODOLOGIA) */}
         <div className="w-full flex flex-col items-center mt-16 relative">
             <motion.div 
                 initial={{ height: 0 }}
-                whileInView={{ height: 96 }}
+                whileInView={{ height: 128 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="w-[1px] bg-gradient-to-b from-amber-400/40 via-amber-400/20 to-transparent"
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[1px] bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"
             />
             <motion.div 
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="w-10 h-10 rounded-full bg-neutral-900 border border-amber-400/30 flex items-center justify-center my-3 shadow-[0_0_25px_rgba(255,180,0,0.25)] z-10"
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10"
             >
-                <FaCrown className="text-amber-400 text-sm" />
+                <FaArrowTrendUp className="text-[#FFB400] text-sm" />
             </motion.div>
             <motion.div 
-                initial={{ height: 0 }}
-                whileInView={{ height: 64 }}
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileInView={{ scaleX: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="w-[1px] bg-gradient-to-b from-amber-400/20 to-transparent"
+                transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"
             />
         </div>
       </div>
