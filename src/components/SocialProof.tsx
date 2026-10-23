@@ -102,6 +102,8 @@ const generalActions = [
 
 export default function SocialProof() {
   const pathname = usePathname() || "";
+  const isExcludedRoute = pathname.startsWith("/serp") || pathname.startsWith("/crm");
+
   const [currentNotification, setCurrentNotification] = useState<{
     id: number;
     name: string;
@@ -170,6 +172,8 @@ export default function SocialProof() {
   };
 
   useEffect(() => {
+    if (isExcludedRoute) return;
+
     const firstTimer = setTimeout(showNotification, 4000);
 
     const triggerNext = () => {
@@ -187,6 +191,8 @@ export default function SocialProof() {
       clearTimeout(loopTimer);
     };
   }, [pathname]);
+
+  if (isExcludedRoute) return null;
 
   return (
     <div className="fixed bottom-6 z-[99999] w-full lg:w-fit lg:left-6 flex justify-center lg:block pointer-events-none px-4">
