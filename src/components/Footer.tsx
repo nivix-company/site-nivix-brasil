@@ -14,6 +14,7 @@ const defaultNavItems = [
 ];
 
 const buildersNavItems = [
+    { name: "Contato", href: "#form" },
     { name: "Google", href: "#google" },
     { name: "Cases", href: "#cases" },
     { name: "Vantagens", href: "#vantagens" },

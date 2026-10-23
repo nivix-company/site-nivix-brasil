@@ -17,6 +17,7 @@ const defaultNavItems = [
 ];
 
 const buildersNavItems = [
+  { name: "Contato", href: "#form" },
   { name: "Google", href: "#google" },
   { name: "Cases", href: "#cases" },
   { name: "Vantagens", href: "#vantagens" },
@@ -27,7 +28,7 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isBuilders = niche === "builders";
   const navItems = isBuilders ? buildersNavItems : defaultNavItems;
-  const ctaLabel = isBuilders ? "Contato" : "Contrate";
+  const ctaLabel = "Contrate";
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith("#")) return;
@@ -74,7 +75,7 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
         </motion.div>
 
         {/* Menu Desktop */}
-        <ul className="hidden lg:flex items-center space-x-10 text-white">
+        <ul className="hidden lg:flex items-center space-x-6 xl:space-x-9 text-white">
           {navItems.map((item, index) => (
             <motion.li 
               key={index}
