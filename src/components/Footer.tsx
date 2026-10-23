@@ -1,7 +1,29 @@
 'use client';
 import { FaInstagram, FaWhatsapp, FaLinkedinIn, FaChevronUp } from "react-icons/fa6";
 
-const Footer = () => {
+interface FooterProps {
+    niche?: string;
+}
+
+const defaultNavItems = [
+    { name: "Resultados", href: "#depoimentos" },
+    { name: "Ecossistema", href: "#ecossistema" },
+    { name: "Planos", href: "#planos" },
+    { name: "Sobre nós", href: "#time" },
+    { name: "Dúvidas", href: "#FAQ" }
+];
+
+const buildersNavItems = [
+    { name: "Resultados", href: "#depoimentos" },
+    { name: "A Corrida do Ouro", href: "#metodo-corrida" },
+    { name: "Vantagens", href: "#vantagens" },
+    { name: "Dúvidas", href: "#FAQ" }
+];
+
+const Footer = ({ niche }: FooterProps) => {
+    const isBuilders = niche === "builders";
+    const navItems = isBuilders ? buildersNavItems : defaultNavItems;
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -42,11 +64,13 @@ const Footer = () => {
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <h4 className="text-white font-bold tracking-[0.2em] uppercase text-[10px] mb-6 opacity-50">Navegação</h4>
                         <ul className="space-y-3">
-                            <li><a href="#depoimentos" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Resultados</a></li>
-                            <li><a href="#ecossistema" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Ecossistema</a></li>
-                            <li><a href="#planos" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Planos</a></li>
-                            <li><a href="#time" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Sobre nós</a></li>
-                            <li><a href="#FAQ" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Dúvidas</a></li>
+                            {navItems.map((item, idx) => (
+                                <li key={idx}>
+                                    <a href={item.href} className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 

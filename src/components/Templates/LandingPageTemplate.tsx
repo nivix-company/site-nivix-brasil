@@ -41,7 +41,7 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
 
   return (
     <main className="w-full h-fit bg-[#101010] relative">
-      <Header homeHref={data.routePath} />
+      <Header homeHref={data.routePath} niche={niche} />
       <Headline data={data.hero} />
       <FormContainer data={{ ...data.form, ...data.method, routePath: data.routePath }} />
       <ClientVideos data={data.cases} />
@@ -66,7 +66,7 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
 
       <OurWork data={data.faq} />
       <FinalCTA data={data.finalCTA} />
-      <Footer />
+      <Footer niche={niche} />
     </main>
   );
 }

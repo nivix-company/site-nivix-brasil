@@ -32,7 +32,7 @@ const deliverables = [
 
 export default function BuildersCorridaDoOuro() {
   return (
-    <section id="metodo-corrida" className="relative flex flex-col items-center justify-center px-4 pt-16 pb-20 w-full overflow-hidden">
+    <section id="metodo-corrida" className="relative flex flex-col items-center justify-center px-4 pt-16 pb-20 w-full overflow-hidden scroll-mt-24">
       {/* Background Glow */}
       <div className="absolute w-[800px] h-[600px] rounded-full bg-amber-500/5 blur-[160px] -z-10 top-0 left-1/2 -translate-x-1/2 pointer-events-none"></div>
 
