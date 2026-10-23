@@ -193,8 +193,15 @@ export default function KeywordPlanner() {
           </div>
           
           {/* Right side: Search & Profile */}
-          <div className="flex items-center gap-6 shrink-0 ml-4">
-            <div className="hidden lg:flex items-center border border-gray-300 rounded overflow-hidden w-64 xl:w-[350px] bg-[#f1f3f4] h-10">
+          <div className="flex items-center gap-4 sm:gap-6 shrink-0 ml-4">
+            <a 
+              href="/crm" 
+              className="px-3 py-1.5 rounded-lg bg-[#1a73e8] text-white text-xs font-semibold hover:bg-[#1557b0] shadow-sm transition-all whitespace-nowrap flex items-center gap-1.5"
+            >
+              <span>CRM de Obras</span>
+              <span>→</span>
+            </a>
+            <div className="hidden lg:flex items-center border border-gray-300 rounded overflow-hidden w-64 xl:w-[320px] bg-[#f1f3f4] h-10">
               <Search className="text-gray-500 ml-3 w-5 h-5 shrink-0" />
               <input 
                 type="text" 
