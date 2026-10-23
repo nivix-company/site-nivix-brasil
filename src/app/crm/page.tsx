@@ -6352,130 +6352,185 @@ export default function NivixEnterpriseCrm() {
           </div>
         </div>
 
-        {/* User & Exit */}
-        <div className="flex items-center gap-3">
+        {/* User & Exit & Export Action */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <button 
+            onClick={() => {
+              alert("Exportando base de 340 clientes em formato CSV com métricas operacionais...");
+            }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] hover:border-[#3d4860] text-neutral-300 hover:text-white text-xs sm:text-xs font-medium transition-all shadow-sm active:scale-95"
+            title="Exportar base completa para planilha CSV"
+          >
+            <FaDownload className="text-[11px] text-amber-400" />
+            <span className="hidden sm:inline">Exportar Base (CSV)</span>
+            <span className="sm:hidden">Exportar</span>
+          </button>
+
+          <div className="h-4 w-[1px] bg-[#212631] hidden sm:block"></div>
+
           <a 
             href="/builders" 
             className="text-xs sm:text-sm text-neutral-400 hover:text-white transition-colors px-2.5 py-1 rounded-md hover:bg-[#1a1f2c]"
           >
             Sair
           </a>
-          <div className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-xs font-bold text-amber-300">
+          <div className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-xs font-bold text-amber-300 shadow-inner">
             GG
           </div>
         </div>
 
       </header>
 
-      {/* 2. SUB-HEADER / WORKSPACE TITLE & AÇÕES */}
-      <div className="border-b border-[#212631] bg-[#0e1014] px-4 sm:px-6 lg:px-8 py-5">
-        <div className="max-w-[1800px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          
-          <div>
-            <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                Diretório Operacional de Clientes
-              </h1>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#1c212c] text-neutral-300 border border-[#2b3344]">
-                340 clientes cadastrados
-              </span>
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-1">
-              Gestão de clientes ativos, histórico de LTV, esteira de orçamentos e parceiros societários nos EUA.
-            </p>
-          </div>
-
-          {/* Quick Actions */}
-          <div className="flex items-center gap-2.5">
-            <button 
-              onClick={() => {
-                alert("Exportando base de 340 clientes em formato CSV com métricas operacionais...");
-              }}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] text-neutral-300 text-xs sm:text-sm font-medium transition-colors"
-            >
-              <FaDownload className="text-xs" />
-              <span>Exportar Base de Clientes (CSV)</span>
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* 3. KPI METRICS CARDS (CALCULADOS SOBRE A BASE REAL DE CLIENTES) */}
-      <section className="px-4 sm:px-6 lg:px-8 py-5">
-        <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+      {/* 2. KPI METRICS CARDS (CALCULADOS SOBRE A BASE REAL DE CLIENTES) */}
+      <section className="px-4 sm:px-6 lg:px-8 pt-5 pb-5">
+        <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
           
           {/* KPI 1: Clientes no Filtro */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Total de Clientes</span>
-              <FaBuilding className="text-neutral-500 text-xs sm:text-sm" />
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.05 }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="p-5 sm:p-6 lg:p-7 rounded-[22px] bg-gradient-to-b from-[#141720] via-[#10131b] to-[#0c0e14] border border-[#232938] hover:border-[#384358] transition-all shadow-xl shadow-black/40 relative overflow-hidden group flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-neutral-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-2">
+              <span className="tracking-wide">Total de Clientes</span>
+              <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                <FaBuilding className="text-xs sm:text-sm" />
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
-              {totalFiltered}
+            
+            <div className="my-1 sm:my-2">
+              <div className="text-3xl sm:text-4xl lg:text-[40px] font-black text-white tracking-tight font-mono leading-none">
+                {totalFiltered}
+              </div>
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5 truncate">
+
+            <div className="text-xs text-neutral-400 mt-2 truncate pt-2.5 border-t border-[#1c2230]">
               <span className="text-emerald-400 font-semibold">{activeFilteredCount} ativos</span>
               {sociosFilteredCount > 0 && <span className="text-blue-400 font-semibold"> • {sociosFilteredCount} sócios</span>}
-              {churnedFilteredCount > 0 && <span> • {churnedFilteredCount} encerrados</span>}
+              {churnedFilteredCount > 0 && <span className="text-neutral-500"> • {churnedFilteredCount} encerrados</span>}
             </div>
-          </div>
+          </motion.div>
 
           {/* KPI 2: TAXA DE RENOVAÇÃO (> 90 DIAS) SOBRE A BASE */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631] relative overflow-hidden">
-            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Taxa de Renovação (90d+)</span>
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="p-5 sm:p-6 lg:p-7 rounded-[22px] bg-gradient-to-b from-[#141b1f] via-[#10161b] to-[#0c1014] border border-emerald-500/30 hover:border-emerald-500/50 transition-all shadow-xl shadow-black/40 relative overflow-hidden group flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -right-8 -top-8 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="flex items-center justify-between text-neutral-300 text-xs sm:text-sm font-medium mb-2">
+              <span className="tracking-wide">Taxa de Renovação (90d+)</span>
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight font-mono">
-              {retentionRate}%
+
+            <div className="my-1 sm:my-2">
+              <div className="text-3xl sm:text-4xl lg:text-[40px] font-black text-emerald-400 tracking-tight font-mono leading-none drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]">
+                {retentionRate}%
+              </div>
             </div>
-            <div className="text-xs text-neutral-300 mt-1.5 font-medium truncate font-mono">
+
+            <div className="text-xs text-neutral-300 mt-2 font-medium truncate font-mono pt-2.5 border-t border-[#1a2822]">
               {over90dCount} de {totalFiltered} clientes renovaram após 90 dias
             </div>
-          </div>
+          </motion.div>
 
           {/* KPI 3: LTV Médio em Meses */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Tempo Médio (LTV)</span>
-              <FaCalendarDays className="text-neutral-500 text-xs sm:text-sm" />
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="p-5 sm:p-6 lg:p-7 rounded-[22px] bg-gradient-to-b from-[#141720] via-[#10131b] to-[#0c0e14] border border-[#232938] hover:border-[#384358] transition-all shadow-xl shadow-black/40 relative overflow-hidden group flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-2">
+              <span className="tracking-wide">Tempo Médio (LTV)</span>
+              <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-neutral-400 group-hover:text-blue-300 transition-colors">
+                <FaCalendarDays className="text-xs sm:text-sm" />
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
-              {averageTenureMonths} <span className="text-sm font-normal text-neutral-400">meses</span>
+
+            <div className="my-1 sm:my-2">
+              <div className="text-3xl sm:text-4xl lg:text-[40px] font-black text-white tracking-tight font-mono leading-none">
+                {averageTenureMonths} <span className="text-base sm:text-lg font-normal text-neutral-400 font-sans">meses</span>
+              </div>
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5 truncate">
+
+            <div className="text-xs text-neutral-400 mt-2 truncate pt-2.5 border-t border-[#1c2230]">
               {nicheFilter !== "all" ? `Média no nicho: ${nicheNames[nicheFilter]}` : "Permanência média dos clientes"}
             </div>
-          </div>
+          </motion.div>
 
           {/* KPI 4: Estimates Gerados */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Estimates Gerados</span>
-              <FaBriefcase className="text-neutral-500 text-xs sm:text-sm" />
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="p-5 sm:p-6 lg:p-7 rounded-[22px] bg-gradient-to-b from-[#141720] via-[#10131b] to-[#0c0e14] border border-[#232938] hover:border-[#384358] transition-all shadow-xl shadow-black/40 relative overflow-hidden group flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-purple-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-2">
+              <span className="tracking-wide">Estimates Gerados</span>
+              <div className="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-neutral-400 group-hover:text-purple-300 transition-colors">
+                <FaBriefcase className="text-xs sm:text-sm" />
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
-              {totalEstimatesCount.toLocaleString()}
+
+            <div className="my-1 sm:my-2">
+              <div className="text-3xl sm:text-4xl lg:text-[40px] font-black text-white tracking-tight font-mono leading-none">
+                {totalEstimatesCount.toLocaleString()}
+              </div>
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5 truncate">
+
+            <div className="text-xs text-neutral-400 mt-2 truncate pt-2.5 border-t border-[#1c2230]">
               Entregues aos clientes
             </div>
-          </div>
+          </motion.div>
 
           {/* KPI 5: Volume de Obra Fechada (GMV) */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631] col-span-2 lg:col-span-1">
-            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Volume Transacionado</span>
-              <FaDollarSign className="text-amber-400 text-xs sm:text-sm" />
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="p-5 sm:p-6 lg:p-7 rounded-[22px] bg-gradient-to-b from-[#191612] via-[#13110e] to-[#0e0c0a] border border-amber-400/25 hover:border-amber-400/45 transition-all shadow-xl shadow-black/40 col-span-2 lg:col-span-1 relative overflow-hidden group flex flex-col justify-between"
+          >
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/70 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -right-8 -top-8 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="flex items-center justify-between text-neutral-300 text-xs sm:text-sm font-medium mb-2">
+              <span className="tracking-wide">Volume Transacionado</span>
+              <div className="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/25 flex items-center justify-center text-amber-400">
+                <FaDollarSign className="text-xs sm:text-sm" />
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight font-mono">
-              ${(totalGmvDelivered / 1000000).toFixed(1)}M
+
+            <div className="my-1 sm:my-2">
+              <div className="text-3xl sm:text-4xl lg:text-[40px] font-black text-amber-300 tracking-tight font-mono leading-none drop-shadow-[0_0_12px_rgba(251,191,36,0.25)]">
+                ${(totalGmvDelivered / 1000000).toFixed(1)}M
+              </div>
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5 truncate">
+
+            <div className="text-xs text-neutral-400 mt-2 truncate pt-2.5 border-t border-[#262017]">
               Obras fechadas pelos clientes
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
