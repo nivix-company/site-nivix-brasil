@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaMagnifyingGlass, 
@@ -16,7 +16,9 @@ import {
   FaTableCellsLarge,
   FaChevronDown,
   FaRotateLeft,
-  FaCheck
+  FaCheck,
+  FaHammer,
+  FaHelmetSafety
 } from "react-icons/fa6";
 
 interface ContractorAccount {
@@ -6171,9 +6173,22 @@ type FilterCategory =
   | "ltv12m"       // LTV > 1 Ano
   | "onboarding";  // Onboarding (< 90 dias)
 
+export const getNicheCategory = (specialty: string): string => {
+  const s = specialty.toLowerCase();
+  if (s.includes("roof")) return "roofing";
+  if (s.includes("kitchen") || s.includes("bath")) return "kitchen_bath";
+  if (s.includes("floor") || s.includes("granite") || s.includes("tile")) return "flooring";
+  if (s.includes("patio") || s.includes("paver") || s.includes("pool") || s.includes("hardscape")) return "hardscapes";
+  if (s.includes("framing") || s.includes("carpentry") || s.includes("cabinet") || s.includes("closet")) return "framing_carpentry";
+  if (s.includes("drywall") || s.includes("paint")) return "drywall_painting";
+  if (s.includes("whole home") || s.includes("addition") || s.includes("basement") || s.includes("siding")) return "general_remodel";
+  return "other";
+};
+
 export default function NivixEnterpriseCrm() {
   const [accounts] = useState<ContractorAccount[]>(accountsData);
   const [selectedFilter, setSelectedFilter] = useState<FilterCategory>("renovacoes");
+  const [nicheFilter, setNicheFilter] = useState<string>("all");
   const [stateFilter, setStateFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"table" | "cards">("table");
@@ -6181,12 +6196,11 @@ export default function NivixEnterpriseCrm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(60);
 
-  // 1. FILTRAGEM DINÂMICA
+  // 1. FILTRAGEM DINÂMICA (Segmento + Nicho da Construção + Estado + Busca)
   const filteredAccounts = useMemo(() => {
     return accounts.filter(acc => {
       // Filtro de Categoria / Segmento Selecionado
       if (selectedFilter === "renovacoes") {
-        // Renovações confirmadas após a barreira dos 90 dias (3+ meses)
         if (acc.monthsActive < 3) return false;
       } else if (selectedFilter === "ativos") {
         if (acc.status !== "ativo") return false;
@@ -6200,6 +6214,12 @@ export default function NivixEnterpriseCrm() {
         if (acc.monthsActive < 12) return false;
       } else if (selectedFilter === "onboarding") {
         if (acc.monthsActive >= 3 || acc.status !== "ativo") return false;
+      }
+
+      // Filtro de Nicho da Construção
+      if (nicheFilter !== "all") {
+        const niche = getNicheCategory(acc.specialty);
+        if (niche !== nicheFilter) return false;
       }
 
       // Filtro de Estado
@@ -6219,14 +6239,14 @@ export default function NivixEnterpriseCrm() {
 
       return true;
     });
-  }, [accounts, selectedFilter, stateFilter, searchQuery]);
+  }, [accounts, selectedFilter, nicheFilter, stateFilter, searchQuery]);
 
   // Reset paginação quando filtros mudam
-  React.useEffect(() => {
+  useEffect(() => {
     setVisibleCount(60);
-  }, [selectedFilter, stateFilter, searchQuery]);
+  }, [selectedFilter, nicheFilter, stateFilter, searchQuery]);
 
-  // 2. MÉTRICAS DINÂMICAS DO TOPO (REAGEM AO FILTRO SELECIONADO)
+  // 2. MÉTRICAS DINÂMICAS DO TOPO (REAGEM INSTANTANEAMENTE AOS FILTROS)
   const totalFiltered = filteredAccounts.length;
   const activeFilteredCount = filteredAccounts.filter(a => a.status === "ativo").length;
   const sociosFilteredCount = filteredAccounts.filter(a => a.status === "socio").length;
@@ -6249,7 +6269,7 @@ export default function NivixEnterpriseCrm() {
   // GMV / Volume Fechado
   const totalGmvDelivered = filteredAccounts.reduce((acc, a) => acc + a.closedRevenue, 0);
 
-  // Contagens para os badges do Dropdown
+  // Contagens para os badges de Segmentos
   const filterCounts = useMemo(() => ({
     all: accounts.length,
     renovacoes: accounts.filter(a => a.monthsActive >= 3).length,
@@ -6260,6 +6280,36 @@ export default function NivixEnterpriseCrm() {
     ltv12m: accounts.filter(a => a.monthsActive >= 12).length,
     onboarding: accounts.filter(a => a.monthsActive < 3 && a.status === "ativo").length,
   }), [accounts]);
+
+  // Contagens para os Nichos da Construção
+  const nicheCounts = useMemo(() => {
+    const counts: Record<string, number> = {
+      all: accounts.length,
+      roofing: 0,
+      kitchen_bath: 0,
+      flooring: 0,
+      hardscapes: 0,
+      framing_carpentry: 0,
+      drywall_painting: 0,
+      general_remodel: 0,
+    };
+    for (const a of accounts) {
+      const n = getNicheCategory(a.specialty);
+      if (counts[n] !== undefined) counts[n]++;
+    }
+    return counts;
+  }, [accounts]);
+
+  const nicheNames: Record<string, string> = {
+    all: "Todos os Nichos da Construção",
+    roofing: "Roofing & Telhados",
+    kitchen_bath: "Kitchen & Bath (Cozinhas e Banheiros)",
+    flooring: "Flooring & Pisos / Revestimentos",
+    hardscapes: "Hardscapes, Pavers & Piscinas",
+    framing_carpentry: "Framing & Estruturas de Madeira",
+    drywall_painting: "Drywall, Pintura & Acabamento",
+    general_remodel: "Whole Home & Grandes Reformas",
+  };
 
   const filterLabels: Record<FilterCategory, { title: string; subtitle: string }> = {
     all: { title: "Todas as Contas", subtitle: "Base histórica completa" },
@@ -6336,7 +6386,7 @@ export default function NivixEnterpriseCrm() {
           <div className="flex items-center gap-2.5">
             <button 
               onClick={() => {
-                alert("Exportando base de 340 construtoras com métricas de LTV e orçamentos em formato CSV...");
+                alert("Exportando base de 340 construtoras com métricas de nicho, LTV e orçamentos em formato CSV...");
               }}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] text-neutral-300 text-xs sm:text-sm font-medium transition-colors"
             >
@@ -6348,7 +6398,7 @@ export default function NivixEnterpriseCrm() {
         </div>
       </div>
 
-      {/* 3. KPI METRICS CARDS (DINÂMICOS CONFORME O FILTRO SELECIONADO) */}
+      {/* 3. KPI METRICS CARDS (DINÂMICOS CONFORME OS FILTROS SELECIONADOS) */}
       <section className="px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           
@@ -6391,8 +6441,8 @@ export default function NivixEnterpriseCrm() {
             <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
               {averageTenureMonths} <span className="text-sm font-normal text-neutral-400">meses</span>
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5">
-              LTV médio contínuo
+            <div className="text-xs text-neutral-400 mt-1.5 truncate">
+              {nicheFilter !== "all" ? `LTV no nicho: ${nicheNames[nicheFilter]}` : "LTV médio contínuo"}
             </div>
           </div>
 
@@ -6405,7 +6455,7 @@ export default function NivixEnterpriseCrm() {
             <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
               {totalEstimatesCount.toLocaleString()}
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5">
+            <div className="text-xs text-neutral-400 mt-1.5 truncate">
               Homeowners nos EUA
             </div>
           </div>
@@ -6419,7 +6469,7 @@ export default function NivixEnterpriseCrm() {
             <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight font-mono">
               ${(totalGmvDelivered / 1000000).toFixed(1)}M
             </div>
-            <div className="text-xs text-neutral-400 mt-1.5">
+            <div className="text-xs text-neutral-400 mt-1.5 truncate">
               Obras fechadas sem GC
             </div>
           </div>
@@ -6427,18 +6477,18 @@ export default function NivixEnterpriseCrm() {
         </div>
       </section>
 
-      {/* 4. BARRA DE PESQUISA & DROPDOWN DE FILTROS AVANÇADO (DESIGN COMBINADO) */}
+      {/* 4. BARRA DE PESQUISA & FILTROS AVANÇADOS (SEGMENTO + NICHO + ESTADO) */}
       <section className="px-4 sm:px-6 lg:px-8 pb-4">
         <div className="max-w-[1800px] mx-auto bg-[#101216] p-3 sm:p-4 rounded-2xl border border-[#212631] shadow-xl flex flex-col gap-3">
           
-          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+          <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3">
             
-            {/* DROPDOWN SELECTOR (ESTILO BARRA DE FILTROS AVANÇADA) */}
+            {/* 1. DROPDOWN DE SEGMENTO (RENVAÇÕES 90D, ATIVOS, SÓCIOS, CHURNED) */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`w-full lg:w-[320px] flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${
+                className={`w-full xl:w-[310px] flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${
                   isDropdownOpen
                     ? "bg-[#1d2331] text-amber-300 border-amber-400/50 shadow-md ring-1 ring-amber-400/20"
                     : "bg-[#14171f] text-white border-[#2b3548] hover:border-neutral-400"
@@ -6488,7 +6538,7 @@ export default function NivixEnterpriseCrm() {
                         <span className="text-neutral-500">340 Construtoras</span>
                       </div>
 
-                      <div className="max-h-[420px] overflow-y-auto py-1 divide-y divide-[#1e232e]">
+                      <div className="max-h-[440px] overflow-y-auto py-1 divide-y divide-[#1e232e]">
                         
                         {/* Seção 1: Métricas de Fechamento / Call */}
                         <div className="py-1.5">
@@ -6590,10 +6640,10 @@ export default function NivixEnterpriseCrm() {
 
                         </div>
 
-                        {/* Seção 2: Segmentos de LTV e Base Total */}
+                        {/* Seção 2: Segmentos de LTV */}
                         <div className="py-1.5">
                           <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-500 font-bold block">
-                            Outros Segmentos
+                            Segmentos por Tempo de Casa
                           </span>
 
                           <button
@@ -6637,6 +6687,35 @@ export default function NivixEnterpriseCrm() {
                           </button>
                         </div>
 
+                        {/* Seção 3: Atalhos por Nicho da Construção */}
+                        <div className="py-1.5">
+                          <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-400 font-bold block mb-1">
+                            Atalhos por Nicho (Para Call)
+                          </span>
+                          <div className="grid grid-cols-2 gap-1 px-2">
+                            {[
+                              { id: "roofing", label: "Roofing", count: nicheCounts.roofing },
+                              { id: "kitchen_bath", label: "Kitchen & Bath", count: nicheCounts.kitchen_bath },
+                              { id: "flooring", label: "Flooring & Tile", count: nicheCounts.flooring },
+                              { id: "hardscapes", label: "Hardscapes & Pavers", count: nicheCounts.hardscapes },
+                              { id: "framing_carpentry", label: "Framing & Carpentry", count: nicheCounts.framing_carpentry },
+                              { id: "drywall_painting", label: "Drywall & Paint", count: nicheCounts.drywall_painting },
+                              { id: "general_remodel", label: "Whole Home", count: nicheCounts.general_remodel },
+                            ].map(n => (
+                              <button
+                                key={n.id}
+                                onClick={() => { setNicheFilter(n.id); setIsDropdownOpen(false); }}
+                                className={`text-left px-2 py-1.5 rounded-lg text-xs flex items-center justify-between transition-colors ${
+                                  nicheFilter === n.id ? "bg-amber-400 text-black font-bold" : "bg-[#181d27] text-neutral-300 hover:text-white"
+                                }`}
+                              >
+                                <span className="truncate">{n.label}</span>
+                                <span className="font-mono text-[10px] opacity-80">{n.count}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
                       </div>
                     </motion.div>
                   </>
@@ -6644,7 +6723,7 @@ export default function NivixEnterpriseCrm() {
               </AnimatePresence>
             </div>
 
-            {/* BARRA DE PESQUISA INTEGRADA */}
+            {/* 2. BARRA DE PESQUISA INTEGRADA */}
             <div className="relative flex-1">
               <FaMagnifyingGlass className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 text-sm" />
               <input
@@ -6664,14 +6743,38 @@ export default function NivixEnterpriseCrm() {
               )}
             </div>
 
-            {/* SELETORES COMPLEMENTARES: ESTADO + TOGGLE TABELA/CARDS */}
-            <div className="flex items-center gap-2.5 justify-between lg:justify-start">
-              
-              {/* Select Estado */}
+            {/* 3. SELETOR DE NICHO DA CONSTRUÇÃO (EXCLUSIVO PARA DAR EXEMPLO EM CALL) */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-full sm:w-auto">
+                <select
+                  value={nicheFilter}
+                  onChange={e => setNicheFilter(e.target.value)}
+                  className={`w-full sm:w-[220px] px-3.5 py-2.5 bg-[#14171f] border rounded-xl text-xs sm:text-sm font-medium transition-all focus:outline-none cursor-pointer ${
+                    nicheFilter !== "all"
+                      ? "border-amber-400/60 text-amber-300 bg-amber-400/10 font-bold"
+                      : "border-[#262c3a] text-neutral-300 hover:border-neutral-500"
+                  }`}
+                >
+                  <option value="all">🔨 Todos os Nichos (Construção)</option>
+                  <option value="roofing">Roofing & Telhados ({nicheCounts.roofing})</option>
+                  <option value="kitchen_bath">Kitchen & Bath ({nicheCounts.kitchen_bath})</option>
+                  <option value="flooring">Flooring & Pisos / Tile ({nicheCounts.flooring})</option>
+                  <option value="hardscapes">Hardscapes, Pavers & Pools ({nicheCounts.hardscapes})</option>
+                  <option value="framing_carpentry">Framing & Estruturas ({nicheCounts.framing_carpentry})</option>
+                  <option value="drywall_painting">Drywall, Level 5 & Paint ({nicheCounts.drywall_painting})</option>
+                  <option value="general_remodel">Whole Home & Additions ({nicheCounts.general_remodel})</option>
+                </select>
+              </div>
+
+              {/* 4. SELETOR DE ESTADO */}
               <select
                 value={stateFilter}
                 onChange={e => setStateFilter(e.target.value)}
-                className="px-3 py-2.5 bg-[#14171f] border border-[#262c3a] rounded-xl text-xs sm:text-sm text-neutral-300 focus:outline-none cursor-pointer"
+                className={`px-3 py-2.5 bg-[#14171f] border rounded-xl text-xs sm:text-sm font-medium transition-all focus:outline-none cursor-pointer ${
+                  stateFilter !== "all"
+                    ? "border-amber-400/60 text-amber-300 bg-amber-400/10 font-bold"
+                    : "border-[#262c3a] text-neutral-300 hover:border-neutral-500"
+                }`}
               >
                 <option value="all">Todos Estados (EUA)</option>
                 <option value="FL">FL (Flórida)</option>
@@ -6690,8 +6793,8 @@ export default function NivixEnterpriseCrm() {
                 <option value="WA">WA (Washington)</option>
               </select>
 
-              {/* Toggle Modo Tabela / Modo Cards (Para Celular) */}
-              <div className="flex items-center p-1 bg-[#161a22] rounded-xl border border-[#262c3a]">
+              {/* 5. TOGGLE TABELA / CARDS (PARA CELULAR) */}
+              <div className="flex items-center p-1 bg-[#161a22] rounded-xl border border-[#262c3a] shrink-0">
                 <button
                   onClick={() => setViewMode("table")}
                   title="Visualização em Tabela"
@@ -6718,25 +6821,38 @@ export default function NivixEnterpriseCrm() {
 
           </div>
 
-          {/* Sub-barra com resumo do filtro ativo */}
+          {/* Sub-barra de Resumo e Reset */}
           <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1c212c] text-xs text-neutral-400">
-            <div className="flex items-center gap-2">
-              <span>Segmento ativo: <strong className="text-amber-300">{filterLabels[selectedFilter].title}</strong></span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span>Segmento: <strong className="text-amber-300">{filterLabels[selectedFilter].title}</strong></span>
+              {nicheFilter !== "all" && (
+                <>
+                  <span>•</span>
+                  <span>Nicho: <strong className="text-emerald-400">{nicheNames[nicheFilter]}</strong></span>
+                </>
+              )}
+              {stateFilter !== "all" && (
+                <>
+                  <span>•</span>
+                  <span>Estado: <strong className="text-white">{stateFilter}</strong></span>
+                </>
+              )}
               <span>•</span>
-              <span>{filteredAccounts.length} de 340 contas encontradas</span>
+              <span><strong>{filteredAccounts.length}</strong> de 340 construtoras</span>
             </div>
 
-            {(selectedFilter !== "all" || stateFilter !== "all" || searchQuery) && (
+            {(selectedFilter !== "all" || stateFilter !== "all" || nicheFilter !== "all" || searchQuery) && (
               <button
                 onClick={() => {
                   setSelectedFilter("all");
+                  setNicheFilter("all");
                   setStateFilter("all");
                   setSearchQuery("");
                 }}
-                className="text-neutral-400 hover:text-white flex items-center gap-1 text-xs"
+                className="text-neutral-400 hover:text-white flex items-center gap-1.5 text-xs bg-[#161a22] px-2.5 py-1 rounded-lg border border-[#262c3a] transition-colors"
               >
                 <FaRotateLeft className="text-[10px]" />
-                <span>Restaurar Base Completa</span>
+                <span>Limpar Filtros</span>
               </button>
             )}
           </div>
@@ -6757,7 +6873,7 @@ export default function NivixEnterpriseCrm() {
                     <tr>
                       <th className="py-3.5 px-4 font-semibold">Conta / Construtora</th>
                       <th className="py-3.5 px-4 font-semibold">Responsável</th>
-                      <th className="py-3.5 px-4 font-semibold">Especialidade</th>
+                      <th className="py-3.5 px-4 font-semibold">Especialidade / Nicho</th>
                       <th className="py-3.5 px-4 font-semibold">Localização</th>
                       <th className="py-3.5 px-4 font-semibold text-center">Início</th>
                       <th className="py-3.5 px-4 font-semibold text-center">Permanência (LTV)</th>
@@ -6804,9 +6920,9 @@ export default function NivixEnterpriseCrm() {
                             {account.ownerName}
                           </td>
 
-                          {/* Especialidade */}
+                          {/* Especialidade / Nicho */}
                           <td className="py-3.5 px-4 text-neutral-300">
-                            <span className="truncate max-w-[220px] block">
+                            <span className="truncate max-w-[220px] block font-medium">
                               {account.specialty}
                             </span>
                           </td>
@@ -6948,7 +7064,7 @@ export default function NivixEnterpriseCrm() {
 
                       {/* Especialidade e Local */}
                       <div className="text-xs sm:text-sm text-neutral-300 mb-4 flex items-center justify-between">
-                        <span className="truncate max-w-[200px] text-neutral-200">{account.specialty}</span>
+                        <span className="truncate max-w-[200px] text-neutral-200 font-medium">{account.specialty}</span>
                         <span className="text-neutral-400 font-medium">{account.city}, {account.state}</span>
                       </div>
                     </div>
