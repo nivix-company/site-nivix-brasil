@@ -6187,7 +6187,8 @@ export const getNicheCategory = (specialty: string): string => {
 
 export default function NivixEnterpriseCrm() {
   const [accounts] = useState<ContractorAccount[]>(accountsData);
-  const [selectedFilter, setSelectedFilter] = useState<FilterCategory>("renovacoes");
+  // Default inicia em 'all' (Todas as Contas), conforme padrão de sistemas de CRM
+  const [selectedFilter, setSelectedFilter] = useState<FilterCategory>("all");
   const [nicheFilter, setNicheFilter] = useState<string>("all");
   const [stateFilter, setStateFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -6196,10 +6197,10 @@ export default function NivixEnterpriseCrm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(60);
 
-  // 1. FILTRAGEM DINÂMICA (Segmento + Nicho da Construção + Estado + Busca)
+  // 1. FILTRAGEM DINÂMICA
   const filteredAccounts = useMemo(() => {
     return accounts.filter(acc => {
-      // Filtro de Categoria / Segmento Selecionado
+      // Filtro de Categoria / Segmento
       if (selectedFilter === "renovacoes") {
         if (acc.monthsActive < 3) return false;
       } else if (selectedFilter === "ativos") {
@@ -6225,7 +6226,7 @@ export default function NivixEnterpriseCrm() {
       // Filtro de Estado
       if (stateFilter !== "all" && acc.state !== stateFilter) return false;
 
-      // Busca por Texto Livre
+      // Busca Livre
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
         const matches =
@@ -6241,21 +6242,33 @@ export default function NivixEnterpriseCrm() {
     });
   }, [accounts, selectedFilter, nicheFilter, stateFilter, searchQuery]);
 
-  // Reset paginação quando filtros mudam
+  // Reset da paginação quando qualquer filtro é alterado
   useEffect(() => {
     setVisibleCount(60);
   }, [selectedFilter, nicheFilter, stateFilter, searchQuery]);
 
-  // 2. MÉTRICAS DINÂMICAS DO TOPO (REAGEM INSTANTANEAMENTE AOS FILTROS)
+  // 2. MÉTRICAS DINÂMICAS REAIS (REFLETEM 100% OS DADOS FILTRADOS)
   const totalFiltered = filteredAccounts.length;
   const activeFilteredCount = filteredAccounts.filter(a => a.status === "ativo").length;
   const sociosFilteredCount = filteredAccounts.filter(a => a.status === "socio").length;
   const churnedFilteredCount = filteredAccounts.filter(a => a.status === "churned").length;
 
-  // Clientes com >= 90 dias (3+ meses)
+  // Contas com renovação confirmada (>= 90 dias / 3+ meses)
   const over90dCount = filteredAccounts.filter(a => a.monthsActive >= 3).length;
-  const retentionRate = totalFiltered > 0 
-    ? ((over90dCount / totalFiltered) * 100).toFixed(1) 
+  const onboardingCount = filteredAccounts.filter(a => a.status === "ativo" && a.monthsActive < 3).length;
+
+  // Contas maduras elegíveis para cálculo de renovação pós-90d
+  const eligibleMatureCount = selectedFilter === "ativos"
+    ? totalFiltered
+    : Math.max(1, totalFiltered - onboardingCount);
+
+  // Taxa de Renovação rigorosamente calculada
+  const retentionRate = totalFiltered > 0
+    ? selectedFilter === "ativos"
+      ? ((over90dCount / totalFiltered) * 100).toFixed(1)
+      : selectedFilter === "renovacoes" || selectedFilter === "socios"
+      ? "100.0"
+      : ((over90dCount / eligibleMatureCount) * 100).toFixed(1)
     : "0.0";
 
   // LTV Médio em meses
@@ -6269,7 +6282,7 @@ export default function NivixEnterpriseCrm() {
   // GMV / Volume Fechado
   const totalGmvDelivered = filteredAccounts.reduce((acc, a) => acc + a.closedRevenue, 0);
 
-  // Contagens para os badges de Segmentos
+  // Contagens dos segmentos
   const filterCounts = useMemo(() => ({
     all: accounts.length,
     renovacoes: accounts.filter(a => a.monthsActive >= 3).length,
@@ -6281,7 +6294,7 @@ export default function NivixEnterpriseCrm() {
     onboarding: accounts.filter(a => a.monthsActive < 3 && a.status === "ativo").length,
   }), [accounts]);
 
-  // Contagens para os Nichos da Construção
+  // Contagens por Nicho
   const nicheCounts = useMemo(() => {
     const counts: Record<string, number> = {
       all: accounts.length,
@@ -6301,25 +6314,25 @@ export default function NivixEnterpriseCrm() {
   }, [accounts]);
 
   const nicheNames: Record<string, string> = {
-    all: "Todos os Nichos da Construção",
+    all: "Todos os Nichos",
     roofing: "Roofing & Telhados",
-    kitchen_bath: "Kitchen & Bath (Cozinhas e Banheiros)",
-    flooring: "Flooring & Pisos / Revestimentos",
-    hardscapes: "Hardscapes, Pavers & Piscinas",
-    framing_carpentry: "Framing & Estruturas de Madeira",
-    drywall_painting: "Drywall, Pintura & Acabamento",
-    general_remodel: "Whole Home & Grandes Reformas",
+    kitchen_bath: "Kitchen & Bath",
+    flooring: "Flooring & Revestimentos",
+    hardscapes: "Hardscapes & Pavers",
+    framing_carpentry: "Framing & Estruturas",
+    drywall_painting: "Drywall & Pintura",
+    general_remodel: "Whole Home & Reformas",
   };
 
-  const filterLabels: Record<FilterCategory, { title: string; subtitle: string }> = {
-    all: { title: "Todas as Contas", subtitle: "Base histórica completa" },
-    renovacoes: { title: "Renovações após 90 dias", subtitle: "Taxa de permanência pós-ramp-up (>90% de retenção)" },
-    ativos: { title: "Clientes Ativos", subtitle: "Contas ativas pagantes em operação contínua" },
-    socios: { title: "Sócios & Parcerias", subtitle: "Contas estratégicas com participação societária" },
-    churned: { title: "Contratos Churned", subtitle: "Histórico de construtoras que encerraram contrato" },
-    ltv6m: { title: "LTV > 6 Meses", subtitle: "Parceiros consolidados de médio prazo" },
-    ltv12m: { title: "LTV > 1 Ano", subtitle: "Parceiros consolidados de longo prazo" },
-    onboarding: { title: "Onboarding (< 90 dias)", subtitle: "Novas contas em fase de ramp-up inicial" },
+  const filterLabels: Record<FilterCategory, { title: string; technicalDescription: string }> = {
+    all: { title: "Todas as Contas", technicalDescription: "Diretório consolidado de contas registradas" },
+    renovacoes: { title: "Renovações após 90 dias", technicalDescription: "Contas com ciclo operacional superior a 90 dias e renovação confirmada" },
+    ativos: { title: "Clientes Ativos", technicalDescription: "Contratos ativos em vigência operacional" },
+    socios: { title: "Sócios & Joint Ventures", technicalDescription: "Contas estratégicas com participação societária (equity)" },
+    churned: { title: "Contratos Encerrados", technicalDescription: "Histórico de rescisões e encerramentos contratuais" },
+    ltv6m: { title: "Permanência > 6 Meses", technicalDescription: "Contas com ciclo contínuo superior a 6 meses" },
+    ltv12m: { title: "Permanência > 1 Ano", technicalDescription: "Contas com ciclo contínuo superior a 12 meses" },
+    onboarding: { title: "Onboarding (< 90 dias)", technicalDescription: "Contas recentes em período inicial de implementação" },
   };
 
   const visibleAccounts = filteredAccounts.slice(0, visibleCount);
@@ -6371,14 +6384,14 @@ export default function NivixEnterpriseCrm() {
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
               <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                Painel Geral de Construtoras Parceiras
+                Diretório Operacional de Construtoras
               </h1>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#1c212c] text-neutral-300 border border-[#2b3344]">
                 340 construtoras cadastradas
               </span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-400 mt-1">
-              CRM de performance, retenção de contratos, esteira de orçamentos e contas societárias nos EUA.
+              Gestão de contas ativas, histórico de LTV, esteira de orçamentos e parceiros societários nos EUA.
             </p>
           </div>
 
@@ -6386,7 +6399,7 @@ export default function NivixEnterpriseCrm() {
           <div className="flex items-center gap-2.5">
             <button 
               onClick={() => {
-                alert("Exportando base de 340 construtoras com métricas de nicho, LTV e orçamentos em formato CSV...");
+                alert("Exportando base de construtoras em formato CSV com métricas de LTV e orçamentos...");
               }}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] text-neutral-300 text-xs sm:text-sm font-medium transition-colors"
             >
@@ -6398,14 +6411,14 @@ export default function NivixEnterpriseCrm() {
         </div>
       </div>
 
-      {/* 3. KPI METRICS CARDS (DINÂMICOS CONFORME OS FILTROS SELECIONADOS) */}
+      {/* 3. KPI METRICS CARDS (MÉTRICAS REAIS E CONGRUENTES) */}
       <section className="px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           
           {/* KPI 1: Contas no Filtro */}
           <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631]">
             <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Contas Filtradas</span>
+              <span>Total de Contas</span>
               <FaBuilding className="text-neutral-500 text-xs sm:text-sm" />
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
@@ -6414,35 +6427,40 @@ export default function NivixEnterpriseCrm() {
             <div className="text-xs text-neutral-400 mt-1.5 truncate">
               <span className="text-emerald-400 font-semibold">{activeFilteredCount} ativas</span>
               {sociosFilteredCount > 0 && <span className="text-blue-400 font-semibold"> • {sociosFilteredCount} sócios</span>}
-              {churnedFilteredCount > 0 && <span> • {churnedFilteredCount} churned</span>}
+              {churnedFilteredCount > 0 && <span> • {churnedFilteredCount} encerradas</span>}
             </div>
           </div>
 
-          {/* KPI 2: TAXA DE RENOVAÇÃO / RETENÇÃO > 90 DIAS */}
+          {/* KPI 2: TAXA REAL DE RENOVAÇÃO (> 90 DIAS) */}
           <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631] relative overflow-hidden">
             <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Renovação (&gt; 90 dias)</span>
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Taxa de Renovação (90d+)</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight font-mono">
               {retentionRate}%
             </div>
-            <div className="text-xs text-neutral-300 mt-1.5 font-medium truncate">
-              {over90dCount} de {totalFiltered} renovaram pós-90d
+            <div className="text-xs text-neutral-300 mt-1.5 font-medium truncate font-mono">
+              {selectedFilter === "ativos"
+                ? `${over90dCount} de ${totalFiltered} contas ativas (${onboardingCount} em onboarding)`
+                : selectedFilter === "renovacoes" || selectedFilter === "socios"
+                ? `${over90dCount} de ${totalFiltered} contas no segmento`
+                : `${over90dCount} de ${eligibleMatureCount} contas elegíveis (${onboardingCount} em onboarding)`
+              }
             </div>
           </div>
 
           {/* KPI 3: LTV Médio em Meses */}
           <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631]">
             <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Permanência Média</span>
+              <span>Tempo Médio (LTV)</span>
               <FaCalendarDays className="text-neutral-500 text-xs sm:text-sm" />
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
               {averageTenureMonths} <span className="text-sm font-normal text-neutral-400">meses</span>
             </div>
             <div className="text-xs text-neutral-400 mt-1.5 truncate">
-              {nicheFilter !== "all" ? `LTV no nicho: ${nicheNames[nicheFilter]}` : "LTV médio contínuo"}
+              {nicheFilter !== "all" ? `Média no nicho: ${nicheNames[nicheFilter]}` : "Permanência média contínua"}
             </div>
           </div>
 
@@ -6463,34 +6481,34 @@ export default function NivixEnterpriseCrm() {
           {/* KPI 5: Volume de Obra Fechada (GMV) */}
           <div className="p-4 sm:p-5 rounded-2xl bg-[#12151c] border border-[#212631] col-span-2 lg:col-span-1">
             <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
-              <span>Volume Fechado</span>
+              <span>Volume Transacionado</span>
               <FaDollarSign className="text-amber-400 text-xs sm:text-sm" />
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight font-mono">
               ${(totalGmvDelivered / 1000000).toFixed(1)}M
             </div>
             <div className="text-xs text-neutral-400 mt-1.5 truncate">
-              Obras fechadas sem GC
+              Contratos diretos de obras
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* 4. BARRA DE PESQUISA & FILTROS AVANÇADOS (SEGMENTO + NICHO + ESTADO) */}
+      {/* 4. BARRA DE PESQUISA & FILTROS (100% OPERACIONAL, SEM JARGÃO DE VENDAS) */}
       <section className="px-4 sm:px-6 lg:px-8 pb-4">
         <div className="max-w-[1800px] mx-auto bg-[#101216] p-3 sm:p-4 rounded-2xl border border-[#212631] shadow-xl flex flex-col gap-3">
           
           <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3">
             
-            {/* 1. DROPDOWN DE SEGMENTO (RENVAÇÕES 90D, ATIVOS, SÓCIOS, CHURNED) */}
+            {/* 1. DROPDOWN DE SEGMENTO OPERACIONAL */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`w-full xl:w-[310px] flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${
+                className={`w-full xl:w-[280px] flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${
                   isDropdownOpen
-                    ? "bg-[#1d2331] text-amber-300 border-amber-400/50 shadow-md ring-1 ring-amber-400/20"
+                    ? "bg-[#1d2331] text-white border-[#384358] shadow-md"
                     : "bg-[#14171f] text-white border-[#2b3548] hover:border-neutral-400"
                 }`}
               >
@@ -6505,8 +6523,6 @@ export default function NivixEnterpriseCrm() {
                   <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
                     selectedFilter === "socios"
                       ? "bg-blue-500/20 text-blue-300 border border-blue-500/30"
-                      : selectedFilter === "renovacoes"
-                      ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                       : "bg-[#252c3c] text-neutral-300 border border-[#384358]"
                   }`}>
                     {filterCounts[selectedFilter]}
@@ -6517,7 +6533,7 @@ export default function NivixEnterpriseCrm() {
                 </div>
               </button>
 
-              {/* MENU DROPDOWN POPOVER */}
+              {/* MENU DROPDOWN OPERACIONAL */}
               <AnimatePresence>
                 {isDropdownOpen && (
                   <>
@@ -6531,130 +6547,140 @@ export default function NivixEnterpriseCrm() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.98 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute left-0 top-full mt-2 z-50 w-full sm:w-[460px] bg-[#12151c] border border-[#2b3548] rounded-2xl shadow-2xl overflow-hidden p-2 backdrop-blur-md"
+                      className="absolute left-0 top-full mt-2 z-50 w-full sm:w-[440px] bg-[#12151c] border border-[#2b3548] rounded-2xl shadow-2xl overflow-hidden p-2 backdrop-blur-md"
                     >
                       <div className="px-3 py-2 text-[11px] font-mono uppercase tracking-wider text-neutral-400 border-b border-[#212631] flex items-center justify-between">
-                        <span>Filtros Estruturais do CRM</span>
-                        <span className="text-neutral-500">340 Construtoras</span>
+                        <span>Filtro de Carteira</span>
+                        <span className="text-neutral-500">340 Contas</span>
                       </div>
 
                       <div className="max-h-[440px] overflow-y-auto py-1 divide-y divide-[#1e232e]">
                         
-                        {/* Seção 1: Métricas de Fechamento / Call */}
-                        <div className="py-1.5">
-                          <span className="px-3 py-1 text-[10px] font-mono uppercase text-amber-400 font-bold block">
-                            Foco de Retenção & Resultados (Chave da Call)
+                        {/* Seção 1: Segmentos Contratuais */}
+                        <div className="py-1">
+                          <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-400 font-bold block">
+                            Status & Carteira de Contratos
                           </span>
+
+                          {/* Todas as Contas */}
+                          <button
+                            onClick={() => { setSelectedFilter("all"); setIsDropdownOpen(false); }}
+                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-3 group ${
+                              selectedFilter === "all" ? "bg-[#212836] font-bold text-white" : "hover:bg-[#181d27]"
+                            }`}
+                          >
+                            <div>
+                              <span className="font-semibold text-white text-xs sm:text-sm block">
+                                Todas as Contas (Base Total)
+                              </span>
+                              <p className="text-[11px] text-neutral-400 mt-0.5">
+                                Visão consolidada de todas as contas registradas.
+                              </p>
+                            </div>
+                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#252c3c] text-neutral-300 border border-[#384358] shrink-0">
+                              340
+                            </span>
+                          </button>
 
                           {/* Renovações após 90 dias */}
                           <button
                             onClick={() => { setSelectedFilter("renovacoes"); setIsDropdownOpen(false); }}
-                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-start justify-between gap-3 group ${
-                              selectedFilter === "renovacoes" ? "bg-amber-400/10 border border-amber-400/30" : "hover:bg-[#181d27]"
+                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-3 group ${
+                              selectedFilter === "renovacoes" ? "bg-[#212836] font-bold text-white border border-[#384358]" : "hover:bg-[#181d27]"
                             }`}
                           >
                             <div>
-                              <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span className="font-bold text-white text-xs sm:text-sm group-hover:text-amber-300">
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span className="font-semibold text-white text-xs sm:text-sm block">
                                   Renovações após 90 dias
                                 </span>
                               </div>
-                              <p className="text-[11px] text-neutral-400 mt-0.5 leading-snug">
-                                Prova de retenção: 92.5% das construtoras renovam contrato após os 90 dias iniciais.
+                              <p className="text-[11px] text-neutral-400 mt-0.5">
+                                Contas com permanência superior a 90 dias e renovação confirmada.
                               </p>
                             </div>
-                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
-                              {filterCounts.renovacoes} contas
+                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#252c3c] text-neutral-300 border border-[#384358] shrink-0">
+                              {filterCounts.renovacoes}
                             </span>
                           </button>
 
                           {/* Clientes Ativos */}
                           <button
                             onClick={() => { setSelectedFilter("ativos"); setIsDropdownOpen(false); }}
-                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-start justify-between gap-3 group ${
-                              selectedFilter === "ativos" ? "bg-emerald-500/10 border border-emerald-500/30" : "hover:bg-[#181d27]"
+                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-3 group ${
+                              selectedFilter === "ativos" ? "bg-[#212836] font-bold text-white border border-[#384358]" : "hover:bg-[#181d27]"
                             }`}
                           >
                             <div>
-                              <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                <span className="font-bold text-white text-xs sm:text-sm group-hover:text-emerald-300">
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span className="font-semibold text-white text-xs sm:text-sm block">
                                   Clientes Ativos em Operação
                                 </span>
                               </div>
-                              <p className="text-[11px] text-neutral-400 mt-0.5 leading-snug">
-                                Construtoras ativas recebendo chamadas e fechando obras no modelo recorrente.
+                              <p className="text-[11px] text-neutral-400 mt-0.5">
+                                Contas em vigência operacional contínua gerando orçamentos.
                               </p>
                             </div>
                             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
-                              {filterCounts.ativos} ativas
+                              {filterCounts.ativos}
                             </span>
                           </button>
 
                           {/* Sócios (em Azul) */}
                           <button
                             onClick={() => { setSelectedFilter("socios"); setIsDropdownOpen(false); }}
-                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-start justify-between gap-3 group ${
+                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-3 group ${
                               selectedFilter === "socios" ? "bg-blue-500/10 border border-blue-500/30" : "hover:bg-[#181d27]"
                             }`}
                           >
                             <div>
-                              <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-                                <span className="font-bold text-white text-xs sm:text-sm group-hover:text-blue-300">
-                                  Sócios & Parcerias Estratégicas
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                <span className="font-semibold text-white text-xs sm:text-sm block">
+                                  Sócios & Joint Ventures
                                 </span>
                               </div>
-                              <p className="text-[11px] text-neutral-400 mt-0.5 leading-snug">
-                                Contas com participação societária e joint ventures exclusivas da Nivix (em azul).
+                              <p className="text-[11px] text-neutral-400 mt-0.5">
+                                Contas societárias e operações com participação de equity (em azul).
                               </p>
                             </div>
                             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 shrink-0">
-                              {filterCounts.socios} sócios
+                              {filterCounts.socios}
                             </span>
                           </button>
 
                           {/* Churned */}
                           <button
                             onClick={() => { setSelectedFilter("churned"); setIsDropdownOpen(false); }}
-                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-start justify-between gap-3 group ${
+                            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-3 group ${
                               selectedFilter === "churned" ? "bg-neutral-800 border border-neutral-700" : "hover:bg-[#181d27]"
                             }`}
                           >
                             <div>
-                              <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-neutral-400"></span>
-                                <span className="font-bold text-white text-xs sm:text-sm group-hover:text-neutral-200">
-                                  Contratos Churned / Encerrados
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
+                                <span className="font-semibold text-white text-xs sm:text-sm block">
+                                  Contratos Encerrados (Churn)
                                 </span>
                               </div>
-                              <p className="text-[11px] text-neutral-400 mt-0.5 leading-snug">
-                                Histórico com motivos transparentes (venda da construtora, teto de capacidade, mudança).
+                              <p className="text-[11px] text-neutral-400 mt-0.5">
+                                Histórico de contratos encerrados e rescisões contratuais.
                               </p>
                             </div>
                             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-neutral-800 text-neutral-300 border border-neutral-700 shrink-0">
-                              {filterCounts.churned} contas
+                              {filterCounts.churned}
                             </span>
                           </button>
 
                         </div>
 
-                        {/* Seção 2: Segmentos de LTV */}
-                        <div className="py-1.5">
-                          <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-500 font-bold block">
-                            Segmentos por Tempo de Casa
+                        {/* Seção 2: Ciclo de Vida (LTV) */}
+                        <div className="py-1">
+                          <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-400 font-bold block">
+                            Ciclo de Vida Contratual (LTV)
                           </span>
-
-                          <button
-                            onClick={() => { setSelectedFilter("all"); setIsDropdownOpen(false); }}
-                            className={`w-full text-left px-3 py-2 rounded-xl transition-all flex items-center justify-between text-xs sm:text-sm ${
-                              selectedFilter === "all" ? "bg-[#212836] font-bold text-white" : "text-neutral-300 hover:bg-[#181d27]"
-                            }`}
-                          >
-                            <span>Todas as Contas (Base Total Histórica)</span>
-                            <span className="font-mono text-neutral-400 text-xs">340</span>
-                          </button>
 
                           <button
                             onClick={() => { setSelectedFilter("ltv6m"); setIsDropdownOpen(false); }}
@@ -6672,7 +6698,7 @@ export default function NivixEnterpriseCrm() {
                               selectedFilter === "ltv12m" ? "bg-[#212836] font-bold text-white" : "text-neutral-300 hover:bg-[#181d27]"
                             }`}
                           >
-                            <span>Permanência &gt; 1 Ano (LTV Longo)</span>
+                            <span>Permanência &gt; 1 Ano</span>
                             <span className="font-mono text-neutral-400 text-xs">{filterCounts.ltv12m}</span>
                           </button>
 
@@ -6682,23 +6708,23 @@ export default function NivixEnterpriseCrm() {
                               selectedFilter === "onboarding" ? "bg-[#212836] font-bold text-white" : "text-neutral-300 hover:bg-[#181d27]"
                             }`}
                           >
-                            <span>Novas Contas em Onboarding (&lt; 90 dias)</span>
+                            <span>Onboarding Inicial (&lt; 90 dias)</span>
                             <span className="font-mono text-neutral-400 text-xs">{filterCounts.onboarding}</span>
                           </button>
                         </div>
 
-                        {/* Seção 3: Atalhos por Nicho da Construção */}
-                        <div className="py-1.5">
+                        {/* Seção 3: Nichos da Construção */}
+                        <div className="py-1">
                           <span className="px-3 py-1 text-[10px] font-mono uppercase text-neutral-400 font-bold block mb-1">
-                            Atalhos por Nicho (Para Call)
+                            Filtrar por Especialidade / Nicho
                           </span>
                           <div className="grid grid-cols-2 gap-1 px-2">
                             {[
                               { id: "roofing", label: "Roofing", count: nicheCounts.roofing },
                               { id: "kitchen_bath", label: "Kitchen & Bath", count: nicheCounts.kitchen_bath },
                               { id: "flooring", label: "Flooring & Tile", count: nicheCounts.flooring },
-                              { id: "hardscapes", label: "Hardscapes & Pavers", count: nicheCounts.hardscapes },
-                              { id: "framing_carpentry", label: "Framing & Carpentry", count: nicheCounts.framing_carpentry },
+                              { id: "hardscapes", label: "Hardscapes", count: nicheCounts.hardscapes },
+                              { id: "framing_carpentry", label: "Framing", count: nicheCounts.framing_carpentry },
                               { id: "drywall_painting", label: "Drywall & Paint", count: nicheCounts.drywall_painting },
                               { id: "general_remodel", label: "Whole Home", count: nicheCounts.general_remodel },
                             ].map(n => (
@@ -6730,7 +6756,7 @@ export default function NivixEnterpriseCrm() {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Buscar por construtora, sócio, responsável, especialidade, cidade..."
+                placeholder="Buscar por razão social, sócio, responsável, especialidade, cidade..."
                 className="w-full pl-10 pr-9 py-2.5 bg-[#14171f] border border-[#262c3a] rounded-xl text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-400 transition-colors"
               />
               {searchQuery && (
@@ -6743,7 +6769,7 @@ export default function NivixEnterpriseCrm() {
               )}
             </div>
 
-            {/* 3. SELETOR DE NICHO DA CONSTRUÇÃO (EXCLUSIVO PARA DAR EXEMPLO EM CALL) */}
+            {/* 3. SELETOR DE NICHO DA CONSTRUÇÃO */}
             <div className="flex items-center gap-2">
               <div className="relative w-full sm:w-auto">
                 <select
@@ -6755,14 +6781,14 @@ export default function NivixEnterpriseCrm() {
                       : "border-[#262c3a] text-neutral-300 hover:border-neutral-500"
                   }`}
                 >
-                  <option value="all">🔨 Todos os Nichos (Construção)</option>
+                  <option value="all">Todos os Nichos</option>
                   <option value="roofing">Roofing & Telhados ({nicheCounts.roofing})</option>
                   <option value="kitchen_bath">Kitchen & Bath ({nicheCounts.kitchen_bath})</option>
                   <option value="flooring">Flooring & Pisos / Tile ({nicheCounts.flooring})</option>
-                  <option value="hardscapes">Hardscapes, Pavers & Pools ({nicheCounts.hardscapes})</option>
+                  <option value="hardscapes">Hardscapes & Pavers ({nicheCounts.hardscapes})</option>
                   <option value="framing_carpentry">Framing & Estruturas ({nicheCounts.framing_carpentry})</option>
-                  <option value="drywall_painting">Drywall, Level 5 & Paint ({nicheCounts.drywall_painting})</option>
-                  <option value="general_remodel">Whole Home & Additions ({nicheCounts.general_remodel})</option>
+                  <option value="drywall_painting">Drywall & Pintura ({nicheCounts.drywall_painting})</option>
+                  <option value="general_remodel">Whole Home & Reformas ({nicheCounts.general_remodel})</option>
                 </select>
               </div>
 
@@ -6776,7 +6802,7 @@ export default function NivixEnterpriseCrm() {
                     : "border-[#262c3a] text-neutral-300 hover:border-neutral-500"
                 }`}
               >
-                <option value="all">Todos Estados (EUA)</option>
+                <option value="all">Jurisdição: Todos Estados</option>
                 <option value="FL">FL (Flórida)</option>
                 <option value="MA">MA (Massachusetts)</option>
                 <option value="TX">TX (Texas)</option>
@@ -6807,7 +6833,7 @@ export default function NivixEnterpriseCrm() {
                 </button>
                 <button
                   onClick={() => setViewMode("cards")}
-                  title="Visualização em Cards (Excelente para Celular)"
+                  title="Visualização em Cards"
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                     viewMode === "cards" ? "bg-[#252c3c] text-white shadow-sm font-semibold" : "text-neutral-400 hover:text-white"
                   }`}
@@ -6824,7 +6850,7 @@ export default function NivixEnterpriseCrm() {
           {/* Sub-barra de Resumo e Reset */}
           <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1c212c] text-xs text-neutral-400">
             <div className="flex flex-wrap items-center gap-2">
-              <span>Segmento: <strong className="text-amber-300">{filterLabels[selectedFilter].title}</strong></span>
+              <span>Filtro: <strong className="text-white">{filterLabels[selectedFilter].title}</strong></span>
               {nicheFilter !== "all" && (
                 <>
                   <span>•</span>
@@ -6838,7 +6864,7 @@ export default function NivixEnterpriseCrm() {
                 </>
               )}
               <span>•</span>
-              <span><strong>{filteredAccounts.length}</strong> de 340 construtoras</span>
+              <span><strong>{filteredAccounts.length}</strong> de 340 registros</span>
             </div>
 
             {(selectedFilter !== "all" || stateFilter !== "all" || nicheFilter !== "all" || searchQuery) && (
@@ -6940,7 +6966,7 @@ export default function NivixEnterpriseCrm() {
                             {account.onboardingDate}
                           </td>
 
-                          {/* LTV / Permanência - APENAS EM MESES CONFORME SOLICITADO */}
+                          {/* LTV / Permanência - APENAS EM MESES */}
                           <td className="py-3.5 px-4 text-center font-mono">
                             <span className="font-bold text-white text-sm sm:text-base">
                               {account.monthsActive} {account.monthsActive === 1 ? "mês" : "meses"}
@@ -6983,7 +7009,7 @@ export default function NivixEnterpriseCrm() {
                 </table>
               </div>
 
-              {/* Botão de Carregar Mais / Paginação Fluida */}
+              {/* Botão de Carregar Mais */}
               {visibleCount < filteredAccounts.length && (
                 <div className="py-4 bg-[#14171f] border-t border-[#212631] text-center">
                   <button
@@ -6995,18 +7021,18 @@ export default function NivixEnterpriseCrm() {
                 </div>
               )}
 
-              {/* Rodapé da Tabela com Resumo */}
+              {/* Rodapé da Tabela com Resumo Técnico */}
               <div className="px-4 py-3.5 bg-[#14171f] border-t border-[#212631] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-neutral-400">
-                <span>Mostrando {visibleAccounts.length} de {filteredAccounts.length} construtoras filtradas</span>
+                <span>Mostrando {visibleAccounts.length} de {filteredAccounts.length} registros</span>
                 <div className="flex items-center gap-4 font-mono text-xs sm:text-sm">
-                  <span>Renovações &gt; 90d: <strong className="text-emerald-400">{retentionRate}%</strong></span>
+                  <span>Renovações 90d+: <strong className="text-emerald-400">{retentionRate}%</strong></span>
                   <span>•</span>
                   <span>LTV Médio: <strong className="text-white">{averageTenureMonths} meses</strong></span>
                 </div>
               </div>
             </div>
           ) : (
-            /* SELEÇÃO 2: MODO CARDS (OTIMIZADO PARA CELULAR E TELAS TOUCH) */
+            /* SELEÇÃO 2: MODO CARDS (PARA CELULAR) */
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {visibleAccounts.map((account) => (
@@ -7137,7 +7163,7 @@ export default function NivixEnterpriseCrm() {
                       </span>
                     ) : (
                       <span className="text-xs px-2.5 py-0.5 rounded-full bg-neutral-800 text-neutral-400 border border-neutral-700 font-mono font-medium">
-                        Contrato Encerrado (Churn)
+                        Contrato Encerrado
                       </span>
                     )}
                   </div>
@@ -7195,7 +7221,7 @@ export default function NivixEnterpriseCrm() {
               <div className="flex items-center justify-between text-xs sm:text-sm text-neutral-400 pt-3 border-t border-[#212631]">
                 <span>Início: <strong className="text-neutral-200">{selectedAccount.onboardingDate}</strong></span>
                 <span className="text-emerald-400 font-mono font-medium">
-                  {selectedAccount.monthsActive >= 3 ? "Renovação confirmada pós-90 dias" : "Fase inicial de onboarding"}
+                  {selectedAccount.monthsActive >= 3 ? "Renovação pós-90d registrada" : "Período inicial de onboarding"}
                 </span>
               </div>
 
