@@ -116,6 +116,9 @@ export default function KeywordPlanner() {
   const [chartData, setChartData] = useState<any[]>([]);
   const [similarKeywords, setSimilarKeywords] = useState<any[]>([]);
 
+  // Rolling months for ghost state
+  const ghostMonths = getLast12Months();
+
   // Outside click handlers
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -226,13 +229,6 @@ export default function KeywordPlanner() {
           
           {/* Right side: Search & Profile */}
           <div className="flex items-center gap-4 sm:gap-6 shrink-0 ml-4">
-            <a 
-              href="/crm" 
-              className="px-3 py-1.5 rounded-lg bg-[#1a73e8] text-white text-xs font-semibold hover:bg-[#1557b0] shadow-sm transition-all whitespace-nowrap flex items-center gap-1.5"
-            >
-              <span>CRM de Obras</span>
-              <span>→</span>
-            </a>
             <div className="hidden lg:flex items-center border border-gray-300 rounded overflow-hidden w-64 xl:w-[320px] bg-[#f1f3f4] h-10">
               <Search className="text-gray-500 ml-3 w-5 h-5 shrink-0" />
               <input 
@@ -364,6 +360,138 @@ export default function KeywordPlanner() {
             </button>
           </div>
         </div>
+
+        {/* Ghost Component: Estado Inicial Limpo (Antes da Pesquisa) */}
+        {!hasSearched && !isSearching && (
+          <div className="transition-opacity duration-500">
+            {/* Ghost Chart Card */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+              <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+                <h2 className="text-lg font-medium text-gray-400">Search volume trends</h2>
+                <div className="flex items-center gap-4">
+                  <div className="flex bg-gray-100 rounded p-1 opacity-50">
+                    <button disabled className="p-1.5 rounded bg-white shadow-sm text-gray-400 cursor-default">
+                      <BarChart2 className="w-4 h-4" />
+                    </button>
+                    <button disabled className="p-1.5 rounded text-gray-400 cursor-default">
+                      <LineChartIcon className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="text-sm text-gray-400 flex items-center gap-2 border-l border-gray-200 pl-4">
+                    <span>Last 12 months</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                    <span>{location || "United States"}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 flex flex-col lg:flex-row gap-8 items-start">
+                {/* Ghost Bar Chart */}
+                <div className="flex-1 w-full h-[300px] flex flex-col justify-end">
+                  <div className="flex-1 w-full flex items-end gap-2 sm:gap-3 px-2 border-b border-gray-200 pb-2">
+                    {ghostMonths.map((m, i) => {
+                      const ghostHeights = [30, 42, 50, 38, 58, 48, 62, 45, 68, 54, 58, 65];
+                      const h = ghostHeights[i % ghostHeights.length];
+                      return (
+                        <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                          <div 
+                            className="w-full max-w-[36px] bg-gray-100 rounded-t border-t border-x border-gray-200/70"
+                            style={{ height: `${h}%` }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-between px-2 pt-2">
+                    {ghostMonths.map((m, i) => (
+                      <span key={i} className="flex-1 text-center text-[11px] text-gray-400 font-medium">
+                        {m.short}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Ghost Device Breakdown */}
+                <div className="w-full lg:w-64 shrink-0 flex flex-col items-center">
+                  <h3 className="text-sm font-medium text-gray-400 mb-4 self-start">Device Breakdown</h3>
+                  <div className="h-[200px] w-full flex flex-col items-center justify-center relative">
+                    <div className="w-36 h-36 rounded-full border-8 border-gray-100 flex items-center justify-center flex-col">
+                      <span className="text-xl font-semibold text-gray-300">—</span>
+                      <span className="text-[11px] text-gray-400 mt-0.5">Aguardando busca</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 mt-2 text-xs text-gray-400">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-sm bg-gray-200"></div>
+                      <span>Mobile</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-sm bg-gray-200"></div>
+                      <span>Desktop</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ghost Keyword ideas Table */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="border-b border-gray-200 px-4 py-3 flex items-center justify-between bg-gray-50/50">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-[15px] font-medium text-gray-400">Keyword ideas</h2>
+                  <span className="text-xs bg-gray-100 text-gray-400 px-2 py-0.5 rounded-full font-medium">0 available</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Filter className="w-4 h-4 cursor-not-allowed" />
+                  <Columns className="w-4 h-4 cursor-not-allowed" />
+                  <Download className="w-4 h-4 cursor-not-allowed" />
+                </div>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="text-xs text-gray-400 bg-white border-b border-gray-200">
+                    <tr>
+                      <th className="p-4 w-12 font-normal">
+                        <input type="checkbox" disabled className="w-4 h-4 rounded border-gray-300 text-gray-300 cursor-not-allowed" />
+                      </th>
+                      <th className="px-4 py-3 font-medium">Keyword (by relevance)</th>
+                      <th className="px-4 py-3 font-medium text-right">Avg. monthly searches</th>
+                      <th className="px-4 py-3 font-medium">Competition</th>
+                      <th className="px-4 py-3 font-medium text-right">Top of page bid (low range)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {[
+                      { w: "w-48", vol: "w-16", comp: "w-12", bid: "w-14" },
+                      { w: "w-64", vol: "w-20", comp: "w-16", bid: "w-12" },
+                      { w: "w-52", vol: "w-14", comp: "w-12", bid: "w-16" },
+                      { w: "w-40", vol: "w-16", comp: "w-14", bid: "w-14" },
+                      { w: "w-56", vol: "w-18", comp: "w-12", bid: "w-12" },
+                    ].map((row, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                        <td className="p-4">
+                          <input type="checkbox" disabled className="w-4 h-4 rounded border-gray-200 text-gray-300 cursor-not-allowed" />
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className={`h-4 ${row.w} bg-gray-100 rounded`}></div>
+                        </td>
+                        <td className="px-4 py-3 flex justify-end">
+                          <div className={`h-4 ${row.vol} bg-gray-100 rounded`}></div>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className={`h-4 ${row.comp} bg-gray-100 rounded`}></div>
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <div className={`h-4 ${row.bid} bg-gray-100 rounded ml-auto`}></div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Loading Skeleton */}
         {isSearching && (
