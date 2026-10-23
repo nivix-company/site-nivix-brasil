@@ -3,24 +3,20 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  FaShieldHalved, 
-  FaCheck, 
   FaMagnifyingGlass, 
   FaLocationDot, 
   FaCalendarDays, 
   FaDollarSign, 
   FaBuilding, 
   FaSliders,
-  FaArrowDown,
-  FaArrowUpRightFromSquare,
   FaDownload,
-  FaPlus,
-  FaEllipsisVertical,
   FaXmark,
   FaCircleCheck,
-  FaUserCheck,
   FaBriefcase,
-  FaChartSimple
+  FaTableList,
+  FaTableCellsLarge,
+  FaRotateRight,
+  FaCheck
 } from "react-icons/fa6";
 
 interface ContractorAccount {
@@ -36,6 +32,7 @@ interface ContractorAccount {
   estimatesDelivered: number;
   closedRevenue: number;
   monthlyPlan: number;
+  status: "ativo" | "encerrado";
   healthScore: "excelente" | "estavel";
   nps: number;
   notes: string;
@@ -57,6 +54,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Top 1 GMB Orlando/Windermere. Operação consolidada com 3 equipes de execução."
   },
   {
@@ -74,6 +72,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Grande Boston. Faturamento contínuo de reformas indoor durante o inverno."
   },
   {
@@ -91,6 +90,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 3200,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Ticket médio de $18,000 por telhado residencial direto com proprietários."
   },
   {
@@ -108,6 +108,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 3000,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Palm Beach County. Foco em residências de alto padrão com projetos de $80k a $150k."
   },
   {
@@ -125,6 +126,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1800,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "3 crews operando em paralelo. Agenda fechada com 60 dias de antecedência."
   },
   {
@@ -142,6 +144,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2200,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "North Jersey. Média de 12 estimates presenciais qualificados por mês."
   },
   {
@@ -159,6 +162,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 4000,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Cliente veterano. Transição de sub-empreiteiro para construtora estruturada."
   },
   {
@@ -176,6 +180,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2400,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Alpharetta e Roswell. Margem líquida média de 48% em decks de luxo."
   },
   {
@@ -193,6 +198,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2500,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Captação contínua de trocas de telhado na Carolina do Norte."
   },
   {
@@ -210,6 +216,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Especialista em porcelanatos de grande formato e banheiros master."
   },
   {
@@ -227,6 +234,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2200,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Painéis e marcenaria sob medida em Coral Gables e Brickell."
   },
   {
@@ -244,6 +252,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2600,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Transformação de porões (basements) em suítes e áreas de lazer."
   },
   {
@@ -261,6 +270,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1800,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Acabamentos Level 5 de padrão americano para casas de luxo no Lago Travis."
   },
   {
@@ -278,6 +288,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Restauração de pisos clássicos em Connecticut. 90% dos estimates fecham no local."
   },
   {
@@ -295,6 +306,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2800,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Forte atuação em Tampa e St. Petersburg com travertino e decks de piscina."
   },
   {
@@ -312,6 +324,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Westchester County, NY. Homeowners pagam em média $45,000 por projeto direto."
   },
   {
@@ -329,6 +342,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Alcançou o Top 3 no Google Maps em 45 dias de campanha estruturada."
   },
   {
@@ -346,6 +360,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2400,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Construção de suítes master e extensões de casas antigas na costa da Carolina do Sul."
   },
   {
@@ -363,6 +378,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2200,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Transição completa de subcontratado para construtor direto no estado de Massachusetts."
   },
   {
@@ -380,6 +396,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2100,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Bateu a marca de 90 dias com 14 contratos residenciais fechados em The Woodlands e Katy."
   },
   {
@@ -397,6 +414,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Google Meu Negócio com mais de 75 avaliações 5 estrelas geradas com a metodologia Nivix."
   },
   {
@@ -414,6 +432,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2200,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Forte presença em Denver e Aurora com materiais resistentes a neve e alta altitude."
   },
   {
@@ -431,6 +450,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Molduras crown, painéis de parede e portas decorativas nos subúrbios ricos de New Jersey."
   },
   {
@@ -448,6 +468,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 4500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "2 anos completos com a Nivix. A construtora mais lucrativa de Broward County na nossa carteira."
   },
   {
@@ -465,6 +486,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Instalação de James Hardie e revestimentos térmicos. Clientes pagam valor de tabela sem choro."
   },
   {
@@ -482,6 +504,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2800,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Bellevue e Redmond. Ticket médio de $58,000 por cozinha planejada com iluminação de LED."
   },
   {
@@ -499,6 +522,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2900,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Trocas completas de telhado pós-tempestade de granizo. Fechamento direto com donos de casa."
   },
   {
@@ -516,6 +540,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2100,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Reformas de condomínios e casas à beira da baía de Tampa com margem limpa de 42%."
   },
   {
@@ -533,6 +558,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2300,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Closets de luxo e armários sob medida para casas de alto padrão no sul de Boston."
   },
   {
@@ -550,6 +576,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Obras em New Hampshire sem imposto sobre vendas. Clientes compram madeira premium."
   },
   {
@@ -567,6 +594,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2400,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Siesta Key e Lakewood Ranch. Clientes aposentados com dinheiro em conta pagando à vista."
   },
   {
@@ -584,6 +612,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 3100,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "1 ano fechado com a Nivix. Faturamento anual triplicou em relação aos anos de sub-empreita."
   },
   {
@@ -601,6 +630,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2600,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Zero dependência de seguradoras problemáticas. Estimativas fechadas direto com o dono."
   },
   {
@@ -618,6 +648,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2400,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Média de 3 banheiros reformados simultaneamente por mês com 2 equipes experientes."
   },
   {
@@ -635,6 +666,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Passou da marca de 90 dias com faturamento mensal médio de $74,000 direto no bolso."
   },
   {
@@ -652,6 +684,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Forte demanda em Fort Myers e Cape Coral para reformas de banheiros com acessibilidade."
   },
   {
@@ -669,6 +702,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Estruturação completa de casas novas de 2 pavimentos. Margem bruta de 35% sem GC intermediário."
   },
   {
@@ -686,6 +720,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2200,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Union County e Bergen County. 100% dos leads vêm de proprietários de casas residenciais."
   },
   {
@@ -703,6 +738,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 3500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Vale do Silício. Clientes engenheiros de tecnologia com ticket médio de $75,000 por obra."
   },
   {
@@ -720,6 +756,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Restauração de casas históricas e varandas clássicas do sul americano."
   },
   {
@@ -737,6 +774,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2300,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Main Line Philadelphia. Famílias americanas fechando contratos completos de porão e cozinha."
   },
   {
@@ -754,6 +792,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Superou os 90 dias com 12 telhados fechados sem depender de indicações lentas."
   },
   {
@@ -771,6 +810,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2700,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Naples e Marco Island. Clientes milionários pagando antecipado para garantir data na agenda."
   },
   // 3 Contas em Fase de Onboarding / Maturação (< 90 dias)
@@ -789,6 +829,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 1900,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "Fase de ramp-up (65 dias). 4 projetos fechados no primeiro mês de campanha."
   },
   {
@@ -806,6 +847,7 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2000,
     healthScore: "estavel",
     nps: 9,
+    status: "ativo",
     notes: "55 dias de contrato. 6 estimates enviados na última semana aguardando assinatura."
   },
   {
@@ -823,90 +865,217 @@ const accountsData: ContractorAccount[] = [
     monthlyPlan: 2500,
     healthScore: "excelente",
     nps: 10,
+    status: "ativo",
     notes: "Onboarding recente (35 dias). Já obteve o selo de Top 1 no Maps da sua região."
   }
+,
+  {
+    id: "ACC-147",
+    companyName: "Apex Granite & Countertops",
+    ownerName: "Carlos Andrade",
+    specialty: "Granite & Marble Fabrication",
+    city: "Orlando",
+    state: "FL",
+    onboardingDate: "12/03/2024",
+    monthsActive: 14,
+    daysActive: 420,
+    estimatesDelivered: 126,
+    closedRevenue: 640000,
+    monthlyPlan: 2200,
+    healthScore: "estavel",
+    nps: 9,
+    status: "encerrado",
+    notes: "Operação encerrada após venda da marmoraria pelo proprietário para se aposentar."
+  },
+  {
+    id: "ACC-148",
+    companyName: "Tri-State Framing Pros",
+    ownerName: "Marcelo Rezende",
+    specialty: "Wood Framing & Drywall",
+    city: "Charlotte",
+    state: "NC",
+    onboardingDate: "08/07/2025",
+    monthsActive: 2,
+    daysActive: 60,
+    estimatesDelivered: 18,
+    closedRevenue: 85000,
+    monthlyPlan: 1800,
+    healthScore: "estavel",
+    nps: 8,
+    status: "encerrado",
+    notes: "Dificuldade em contratar equipes próprias de montagem; optou por pausar marketing temporariamente."
+  },
+  {
+    id: "ACC-149",
+    companyName: "North Star Custom Painting",
+    ownerName: "Luciano Mendes",
+    specialty: "Interior & Exterior Painting",
+    city: "Newark",
+    state: "NJ",
+    onboardingDate: "15/11/2024",
+    monthsActive: 8,
+    daysActive: 240,
+    estimatesDelivered: 72,
+    closedRevenue: 310000,
+    monthlyPlan: 1900,
+    healthScore: "estavel",
+    nps: 9,
+    status: "encerrado",
+    notes: "Família mudou-se para Austin, Texas; encerrou a operação em New Jersey."
+  },
+  {
+    id: "ACC-150",
+    companyName: "Coastal Outdoor & Pavers",
+    ownerName: "Fabio Vasconcelos",
+    specialty: "Travertine & Patios",
+    city: "Tampa",
+    state: "FL",
+    onboardingDate: "10/04/2024",
+    monthsActive: 16,
+    daysActive: 480,
+    estimatesDelivered: 148,
+    closedRevenue: 920000,
+    monthlyPlan: 2600,
+    healthScore: "estavel",
+    nps: 10,
+    status: "encerrado",
+    notes: "Capacidade operacional 100% esgotada com fila de espera de 10 meses; pausou captação externa."
+  },
+  {
+    id: "ACC-151",
+    companyName: "Sunline Metal Roofing LLC",
+    ownerName: "Gilberto Ramos",
+    specialty: "Commercial & Metal Roofs",
+    city: "Dallas",
+    state: "TX",
+    onboardingDate: "20/09/2024",
+    monthsActive: 11,
+    daysActive: 330,
+    estimatesDelivered: 96,
+    closedRevenue: 590000,
+    monthlyPlan: 2500,
+    healthScore: "estavel",
+    nps: 9,
+    status: "encerrado",
+    notes: "Migrou o foco operacional para subcontratação governamental exclusiva."
+  },
+  {
+    id: "ACC-152",
+    companyName: "Metro Interior Drywallers",
+    ownerName: "Gustavo Pinho",
+    specialty: "Drywall Hanging & Taping",
+    city: "Framingham",
+    state: "MA",
+    onboardingDate: "05/08/2025",
+    monthsActive: 1,
+    daysActive: 40,
+    estimatesDelivered: 11,
+    closedRevenue: 42000,
+    monthlyPlan: 1800,
+    healthScore: "estavel",
+    nps: 8,
+    status: "encerrado",
+    notes: "Sócio fundador com problema cirúrgico na coluna logo no primeiro mês; contrato cancelado amigavelmente."
+  }
 ];
-
 export default function NivixEnterpriseCrm() {
   const [accounts] = useState<ContractorAccount[]>(accountsData);
-  const [filterMode, setFilterMode] = useState<"all" | "90plus" | "6months" | "1year" | "maturing">("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | "ativo" | "encerrado">("all");
+  const [tenureFilter, setTenureFilter] = useState<"all" | "90plus" | "6months" | "1year" | "maturing">("all");
   const [stateFilter, setStateFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState<"table" | "cards">("table");
   const [selectedAccount, setSelectedAccount] = useState<ContractorAccount | null>(null);
 
-  // Cálculos Operacionais de CRM
-  const totalAccounts = accounts.length; // 46
-  const accounts90Plus = accounts.filter(a => a.daysActive >= 90); // 43
-  const retentionRate = ((accounts90Plus.length / totalAccounts) * 100).toFixed(1); // 93.5%
-  const totalMrr = accounts.reduce((acc, a) => acc + a.monthlyPlan, 0); // Total recorrente
-  const averageTenureMonths = (accounts.reduce((acc, a) => acc + a.monthsActive, 0) / totalAccounts).toFixed(1);
-  const totalEstimatesCount = accounts.reduce((acc, a) => acc + a.estimatesDelivered, 0);
-  const totalGmvDelivered = accounts.reduce((acc, a) => acc + a.closedRevenue, 0);
-
-  // Filtros de Tabela
+  // 1. FILTRAGEM DINÂMICA
   const filteredAccounts = useMemo(() => {
     return accounts.filter(acc => {
-      let matchesTenure = true;
-      if (filterMode === "90plus") matchesTenure = acc.daysActive >= 90;
-      else if (filterMode === "6months") matchesTenure = acc.monthsActive >= 6;
-      else if (filterMode === "1year") matchesTenure = acc.monthsActive >= 12;
-      else if (filterMode === "maturing") matchesTenure = acc.daysActive < 90;
+      // Filtro de Status (Ativo vs Encerrado)
+      if (statusFilter !== "all" && acc.status !== statusFilter) return false;
 
-      const query = searchQuery.toLowerCase();
-      const matchesSearch = 
-        acc.companyName.toLowerCase().includes(query) ||
-        acc.ownerName.toLowerCase().includes(query) ||
-        acc.city.toLowerCase().includes(query) ||
-        acc.specialty.toLowerCase().includes(query);
+      // Filtro de Permanência (LTV)
+      if (tenureFilter === "90plus" && acc.monthsActive < 3) return false;
+      if (tenureFilter === "6months" && acc.monthsActive < 6) return false;
+      if (tenureFilter === "1year" && acc.monthsActive < 12) return false;
+      if (tenureFilter === "maturing" && acc.monthsActive >= 3) return false;
 
-      const matchesState = stateFilter === "all" || acc.state === stateFilter;
+      // Filtro de Estado
+      if (stateFilter !== "all" && acc.state !== stateFilter) return false;
 
-      return matchesTenure && matchesSearch && matchesState;
+      // Busca por texto
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const matches =
+          acc.companyName.toLowerCase().includes(q) ||
+          acc.ownerName.toLowerCase().includes(q) ||
+          acc.city.toLowerCase().includes(q) ||
+          acc.specialty.toLowerCase().includes(q) ||
+          acc.id.toLowerCase().includes(q);
+        if (!matches) return false;
+      }
+
+      return true;
     });
-  }, [accounts, filterMode, searchQuery, stateFilter]);
+  }, [accounts, statusFilter, tenureFilter, stateFilter, searchQuery]);
+
+  // 2. MÉTRICAS DINÂMICAS DO TOPO (REAGEM DIRETAMENTE AOS FILTROS ATIVOS)
+  const totalFiltered = filteredAccounts.length;
+  const activeFilteredCount = filteredAccounts.filter(a => a.status === "ativo").length;
+  const churnedFilteredCount = filteredAccounts.filter(a => a.status === "encerrado").length;
+
+  // Clientes com >= 90 dias (3+ meses)
+  const over90dCount = filteredAccounts.filter(a => a.monthsActive >= 3).length;
+  const retentionRate = totalFiltered > 0 
+    ? ((over90dCount / totalFiltered) * 100).toFixed(1) 
+    : "0.0";
+
+  // LTV Médio em meses
+  const averageTenureMonths = totalFiltered > 0 
+    ? (filteredAccounts.reduce((acc, a) => acc + a.monthsActive, 0) / totalFiltered).toFixed(1) 
+    : "0.0";
+
+  // Total de Estimates
+  const totalEstimatesCount = filteredAccounts.reduce((acc, a) => acc + a.estimatesDelivered, 0);
+
+  // GMV / Volume Fechado
+  const totalGmvDelivered = filteredAccounts.reduce((acc, a) => acc + a.closedRevenue, 0);
+
+  // Total de ativas na base geral
+  const totalAgencyActive = accounts.filter(a => a.status === "ativo").length;
 
   return (
     <div className="min-h-screen bg-[#0b0c10] text-[#e1e3ea] font-sans antialiased selection:bg-[#1a73e8] selection:text-white">
       
-      {/* 1. TOP APP BAR (AUTÊNTICA DE CRM SAAS / ENTERPRISE) */}
+      {/* 1. TOP APP BAR (SaaS Enterprise Interno - SEM links externos desnecessários) */}
       <header className="sticky top-0 z-40 bg-[#101216] border-b border-[#212631] px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
         
-        {/* Workspace & Breadcrumb */}
+        {/* Workspace & Identificador */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-lg bg-amber-400 flex items-center justify-center text-black font-black text-xs shadow-sm">
               N
             </div>
-            <span className="font-semibold text-white text-sm tracking-tight">Nivix Agency OS</span>
+            <span className="font-semibold text-white text-sm sm:text-base tracking-tight">Nivix Agency OS</span>
           </div>
 
-          <span className="text-neutral-600 font-mono text-sm">/</span>
+          <span className="text-neutral-600 font-mono text-sm hidden sm:inline">/</span>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-neutral-300">Construction Partners (USA)</span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="hidden sm:flex items-center gap-2">
+            <span className="text-xs sm:text-sm font-medium text-neutral-300">Construction Partners (USA)</span>
+            <span className="px-2 py-0.5 rounded text-[10px] sm:text-xs font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               Live Production
             </span>
           </div>
         </div>
 
-        {/* User & Global Actions */}
+        {/* User Profile & Exit */}
         <div className="flex items-center gap-3">
           <a 
-            href="/serp" 
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#181b22] border border-[#262c3a] hover:border-neutral-500 text-neutral-300 text-xs font-medium transition-all"
-          >
-            <span>Google SERP Tool</span>
-            <FaArrowUpRightFromSquare className="text-[10px]" />
-          </a>
-
-          <a 
             href="/builders" 
-            className="text-xs text-neutral-400 hover:text-white transition-colors px-2 py-1"
+            className="text-xs sm:text-sm text-neutral-400 hover:text-white transition-colors px-2.5 py-1 rounded-md hover:bg-[#1a1f2c]"
           >
             Sair
           </a>
-
           <div className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-xs font-bold text-amber-300">
             GG
           </div>
@@ -914,320 +1083,465 @@ export default function NivixEnterpriseCrm() {
 
       </header>
 
-      {/* 2. SUB-HEADER / WORKSPACE TITLE & ACTIONS */}
+      {/* 2. SUB-HEADER / WORKSPACE TITLE & AÇÕES */}
       <div className="border-b border-[#212631] bg-[#0e1014] px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-[1800px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           
           <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-xl font-bold text-white tracking-tight">
-                Contas de Construtoras Ativas
+            <div className="flex flex-wrap items-center gap-2.5">
+              <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Contas de Construtoras Parceiras
               </h1>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#1c212c] text-neutral-300 border border-[#2b3344]">
-                {totalAccounts} contas ativas
+                {totalAgencyActive} ativas • {accounts.length} cadastradas
               </span>
             </div>
-            <p className="text-xs text-neutral-400 mt-1">
-              Gerenciamento de performance, retenção de clientes e esteira de estimates nos EUA.
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1">
+              Gerenciamento de performance, LTV e histórico operacional de construtoras nos EUA.
             </p>
           </div>
 
-          {/* Quick Actions */}
-          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+          {/* Ação de Exportar */}
+          <div className="flex items-center gap-2.5">
             <button 
               onClick={() => {
-                alert("Exportando relatório de retenção e faturamento das contas ativas...");
+                alert("Exportando relatório completo de retenção e faturamento em formato CSV...");
               }}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] text-neutral-300 text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#161a22] border border-[#2b3344] hover:bg-[#1e232e] text-neutral-300 text-xs sm:text-sm font-medium transition-colors"
             >
-              <FaDownload className="text-[11px]" />
-              <span>Exportar Dados</span>
-            </button>
-            <button 
-              onClick={() => setFilterMode("90plus")}
-              className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all shadow-sm ${
-                filterMode === "90plus"
-                  ? "bg-amber-400 text-black hover:bg-amber-300"
-                  : "bg-amber-400/10 text-amber-300 border border-amber-400/30 hover:bg-amber-400/20"
-              }`}
-            >
-              <FaCheck className="text-[10px]" />
-              <span>Filtrar Retenção &gt; 90 Dias</span>
+              <FaDownload className="text-xs" />
+              <span>Exportar CSV</span>
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* 3. KPI METRICS STRIP (MÉTRICAS REAIS DE OPERAÇÃO SAAS) */}
+      {/* 3. KPI METRICS (DINÂMICOS CONFORME OS FILTROS SELECIONADOS) */}
       <section className="px-4 sm:px-6 lg:px-8 py-5">
-        <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           
-          {/* KPI 1: Total de Construtoras */}
-          <div className="p-4 rounded-xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs font-medium mb-1.5">
-              <span>Total Contas Ativas</span>
-              <FaBuilding className="text-neutral-500 text-xs" />
+          {/* KPI 1: Contas Filtradas */}
+          <div className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631]">
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
+              <span>Contas Filtradas</span>
+              <FaBuilding className="text-neutral-500 text-xs sm:text-sm" />
             </div>
-            <div className="text-2xl font-bold text-white tracking-tight">
-              {totalAccounts}
+            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
+              {totalFiltered}
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 mt-1">
-              <span>+3 adicionadas este mês</span>
+            <div className="text-xs text-neutral-400 mt-1.5">
+              <span className="text-emerald-400 font-semibold">{activeFilteredCount} ativas</span> • {churnedFilteredCount} encerradas
             </div>
           </div>
 
           {/* KPI 2: TAXA DE RETENÇÃO > 90 DIAS (CHAVE DA CALL) */}
-          <div className="p-4 rounded-xl bg-[#12151c] border border-[#212631] relative overflow-hidden">
-            <div className="flex items-center justify-between text-neutral-400 text-xs font-medium mb-1.5">
+          <div className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631] relative overflow-hidden">
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
               <span>Retenção (&gt; 90 dias)</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
             </div>
-            <div className="text-2xl font-bold text-emerald-400 tracking-tight font-mono">
+            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight font-mono">
               {retentionRate}%
             </div>
-            <div className="text-[11px] text-neutral-400 mt-1 font-mono">
-              {accounts90Plus.length} de {totalAccounts} clientes ativos
+            <div className="text-xs text-neutral-300 mt-1.5 font-medium">
+              {over90dCount} de {totalFiltered} construtoras &gt; 90d
             </div>
           </div>
 
           {/* KPI 3: LTV Médio em Meses */}
-          <div className="p-4 rounded-xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs font-medium mb-1.5">
-              <span>Tempo Médio (LTV)</span>
-              <FaCalendarDays className="text-neutral-500 text-xs" />
+          <div className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631]">
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
+              <span>Permanência Média</span>
+              <FaCalendarDays className="text-neutral-500 text-xs sm:text-sm" />
             </div>
-            <div className="text-2xl font-bold text-white tracking-tight">
-              {averageTenureMonths} <span className="text-xs font-normal text-neutral-400">meses</span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
+              {averageTenureMonths} <span className="text-sm font-normal text-neutral-400">meses</span>
             </div>
-            <div className="text-[11px] text-neutral-400 mt-1">
-              Permanência média contínua
+            <div className="text-xs text-neutral-400 mt-1.5">
+              Tempo médio de contrato
             </div>
           </div>
 
           {/* KPI 4: Estimates Entregues */}
-          <div className="p-4 rounded-xl bg-[#12151c] border border-[#212631]">
-            <div className="flex items-center justify-between text-neutral-400 text-xs font-medium mb-1.5">
+          <div className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631]">
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
               <span>Estimates Gerados</span>
-              <FaBriefcase className="text-neutral-500 text-xs" />
+              <FaBriefcase className="text-neutral-500 text-xs sm:text-sm" />
             </div>
-            <div className="text-2xl font-bold text-white tracking-tight font-mono">
+            <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
               {totalEstimatesCount.toLocaleString()}
             </div>
-            <div className="text-[11px] text-neutral-400 mt-1">
-              100% Homeowners diretos
+            <div className="text-xs text-neutral-400 mt-1.5">
+              Direto com proprietários
             </div>
           </div>
 
           {/* KPI 5: Volume de Obra Fechada (GMV) */}
-          <div className="p-4 rounded-xl bg-[#12151c] border border-[#212631] col-span-2 lg:col-span-1">
-            <div className="flex items-center justify-between text-neutral-400 text-xs font-medium mb-1.5">
-              <span>Volume Gerado p/ Clientes</span>
-              <FaDollarSign className="text-amber-400 text-xs" />
+          <div className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631] col-span-2 lg:col-span-1">
+            <div className="flex items-center justify-between text-neutral-400 text-xs sm:text-sm font-medium mb-1.5">
+              <span>Volume Fechado</span>
+              <FaDollarSign className="text-amber-400 text-xs sm:text-sm" />
             </div>
-            <div className="text-2xl font-bold text-amber-300 tracking-tight font-mono">
+            <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight font-mono">
               ${(totalGmvDelivered / 1000000).toFixed(1)}M
             </div>
-            <div className="text-[11px] text-neutral-400 mt-1">
-              Em contratos fechados sem GC
+            <div className="text-xs text-neutral-400 mt-1.5">
+              Obras fechadas sem GC
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* 4. SEGMENTS & FILTERS TOOLBAR */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-3">
-        <div className="max-w-[1800px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 bg-[#101216] p-3 rounded-xl border border-[#212631]">
+      {/* 4. FILTROS NA TABELA (STATUS + RETENÇÃO/LTV + BUSCA + ESTADO) */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="max-w-[1800px] mx-auto bg-[#101216] p-3.5 sm:p-4 rounded-xl border border-[#212631] flex flex-col gap-3.5">
           
-          {/* Segment Tabs (LTV Selectors) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
-            {[
-              { id: "all", label: `Todas as Contas (${totalAccounts})` },
-              { id: "90plus", label: `LTV > 90 Dias (${accounts90Plus.length}) • ${retentionRate}%` },
-              { id: "6months", label: `> 6 Meses (${accounts.filter(a => a.monthsActive >= 6).length})` },
-              { id: "1year", label: `> 1 Ano (${accounts.filter(a => a.monthsActive >= 12).length})` },
-              { id: "maturing", label: `Onboarding < 90d (${accounts.filter(a => a.daysActive < 90).length})` }
-            ].map(tab => (
+          {/* Linha 1: Status (Todos / Ativos / Encerrados) + Filtros de LTV */}
+          <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3">
+            
+            {/* Status Tabs */}
+            <div className="flex items-center gap-1.5 p-1 bg-[#161a22] rounded-lg border border-[#262c3a] text-xs sm:text-sm overflow-x-auto w-full sm:w-auto">
               <button
-                key={tab.id}
-                onClick={() => setFilterMode(tab.id as any)}
-                className={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors flex items-center gap-1.5 ${
-                  filterMode === tab.id
-                    ? "bg-[#1f2533] text-white border border-[#3b4761]"
-                    : "text-neutral-400 hover:text-neutral-200 hover:bg-[#161a22]"
+                onClick={() => setStatusFilter("all")}
+                className={`px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
+                  statusFilter === "all"
+                    ? "bg-[#252c3c] text-white shadow-sm font-semibold"
+                    : "text-neutral-400 hover:text-white"
                 }`}
               >
-                {tab.id === "90plus" && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                )}
-                <span>{tab.label}</span>
+                Todos ({accounts.length})
               </button>
-            ))}
+              <button
+                onClick={() => setStatusFilter("ativo")}
+                className={`px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                  statusFilter === "ativo"
+                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold"
+                    : "text-neutral-400 hover:text-emerald-400"
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Clientes Ativos ({accounts.filter(a => a.status === "ativo").length})
+              </button>
+              <button
+                onClick={() => setStatusFilter("encerrado")}
+                className={`px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                  statusFilter === "encerrado"
+                    ? "bg-neutral-700 text-neutral-200 border border-neutral-600 font-semibold"
+                    : "text-neutral-400 hover:text-white"
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-neutral-400"></span>
+                Encerrados ({accounts.filter(a => a.status === "encerrado").length})
+              </button>
+            </div>
+
+            {/* Filtros de LTV / Retenção */}
+            <div className="flex items-center gap-1.5 overflow-x-auto w-full xl:w-auto pb-1 xl:pb-0 text-xs sm:text-sm">
+              <span className="text-neutral-500 text-xs font-mono uppercase tracking-wider hidden lg:inline mr-1">
+                Filtro LTV:
+              </span>
+              {[
+                { id: "all", label: "Todos os Períodos" },
+                { id: "90plus", label: "LTV > 90 Dias (3+ meses)" },
+                { id: "6months", label: "> 6 Meses" },
+                { id: "1year", label: "> 1 Ano" },
+                { id: "maturing", label: "Onboarding (< 90d)" }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setTenureFilter(tab.id as any)}
+                  className={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                    tenureFilter === tab.id
+                      ? "bg-[#1f2533] text-amber-300 border border-amber-400/40 font-semibold"
+                      : "text-neutral-400 hover:text-neutral-200 hover:bg-[#161a22]"
+                  }`}
+                >
+                  {tab.id === "90plus" && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  )}
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </div>
+
           </div>
 
-          {/* Search & State Filter */}
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <div className="relative flex-1 md:w-64">
-              <FaMagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xs" />
+          {/* Linha 2: Busca por texto + Seleção de Estado + Alternar Tabela / Cards */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2.5 border-t border-[#1c212c]">
+            
+            {/* Search Input */}
+            <div className="relative w-full sm:flex-1">
+              <FaMagnifyingGlass className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 text-xs sm:text-sm" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Filtrar por nome, dono, cidade..."
-                className="w-full pl-8 pr-3 py-1.5 bg-[#14171f] border border-[#262c3a] rounded-lg text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-400 transition-colors"
+                placeholder="Filtrar por construtora, responsável, especialidade, cidade..."
+                className="w-full pl-9 pr-3.5 py-2 bg-[#14171f] border border-[#262c3a] rounded-lg text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-400 transition-colors"
               />
             </div>
 
-            <select
-              value={stateFilter}
-              onChange={e => setStateFilter(e.target.value)}
-              className="px-2.5 py-1.5 bg-[#14171f] border border-[#262c3a] rounded-lg text-xs text-neutral-300 focus:outline-none cursor-pointer"
-            >
-              <option value="all">Todos Estados</option>
-              <option value="FL">FL (Flórida)</option>
-              <option value="MA">MA (Massachusetts)</option>
-              <option value="TX">TX (Texas)</option>
-              <option value="NJ">NJ (New Jersey)</option>
-              <option value="CA">CA (California)</option>
-              <option value="GA">GA (Georgia)</option>
-              <option value="NC">NC (North Carolina)</option>
-              <option value="SC">SC (South Carolina)</option>
-              <option value="NY">NY (New York)</option>
-            </select>
+            <div className="flex items-center gap-2.5 w-full sm:w-auto justify-between sm:justify-start">
+              
+              {/* Select Estado */}
+              <select
+                value={stateFilter}
+                onChange={e => setStateFilter(e.target.value)}
+                className="px-3 py-2 bg-[#14171f] border border-[#262c3a] rounded-lg text-xs sm:text-sm text-neutral-300 focus:outline-none cursor-pointer"
+              >
+                <option value="all">Todos Estados</option>
+                <option value="FL">FL (Flórida)</option>
+                <option value="MA">MA (Massachusetts)</option>
+                <option value="TX">TX (Texas)</option>
+                <option value="NJ">NJ (New Jersey)</option>
+                <option value="CA">CA (Califórnia)</option>
+                <option value="GA">GA (Georgia)</option>
+                <option value="NC">NC (North Carolina)</option>
+                <option value="SC">SC (South Carolina)</option>
+                <option value="NY">NY (New York)</option>
+                <option value="CT">CT (Connecticut)</option>
+                <option value="NH">NH (New Hampshire)</option>
+                <option value="UT">UT (Utah)</option>
+                <option value="MD">MD (Maryland)</option>
+                <option value="WA">WA (Washington)</option>
+              </select>
+
+              {/* Toggle Modo Tabela / Modo Cards (Para visualização nítida no Celular) */}
+              <div className="flex items-center p-1 bg-[#161a22] rounded-lg border border-[#262c3a]">
+                <button
+                  onClick={() => setViewMode("table")}
+                  title="Visualização em Tabela"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs sm:text-sm font-medium transition-colors ${
+                    viewMode === "table"
+                      ? "bg-[#252c3c] text-white shadow-sm font-semibold"
+                      : "text-neutral-400 hover:text-white"
+                  }`}
+                >
+                  <FaTableList className="text-xs" />
+                  <span>Tabela</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("cards")}
+                  title="Visualização em Cards (Excelente para Celular)"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs sm:text-sm font-medium transition-colors ${
+                    viewMode === "cards"
+                      ? "bg-[#252c3c] text-white shadow-sm font-semibold"
+                      : "text-neutral-400 hover:text-white"
+                  }`}
+                >
+                  <FaTableCellsLarge className="text-xs" />
+                  <span>Cards</span>
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* 5. DATA TABLE (ESTILO LINEAR / STRIPE DASHBOARD) */}
-      <main className="px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="max-w-[1800px] mx-auto rounded-xl border border-[#212631] bg-[#101216] overflow-hidden">
+      {/* 5. ÁREA DE DADOS (TABELA OU CARDS RESPONSIVOS) */}
+      <main className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-[1800px] mx-auto">
           
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-[#14171f] border-b border-[#212631] text-[11px] font-mono uppercase tracking-wider text-neutral-400">
-                <tr>
-                  <th className="py-3 px-4 font-medium">Conta / Empresa</th>
-                  <th className="py-3 px-4 font-medium">Responsável</th>
-                  <th className="py-3 px-4 font-medium">Especialidade</th>
-                  <th className="py-3 px-4 font-medium">Localização</th>
-                  <th className="py-3 px-4 font-medium text-center">Início (Onboarding)</th>
-                  <th className="py-3 px-4 font-medium text-center">Permanência (LTV)</th>
-                  <th className="py-3 px-4 font-medium text-right">Estimates</th>
-                  <th className="py-3 px-4 font-medium text-right">Volume Fechado</th>
-                  <th className="py-3 px-4 font-medium text-center">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#1e232e]">
-                {filteredAccounts.map((account) => {
-                  const isOver90Days = account.daysActive >= 90;
-
-                  return (
-                    <tr 
-                      key={account.id}
-                      onClick={() => setSelectedAccount(account)}
-                      className="hover:bg-[#161a23] transition-colors cursor-pointer group"
-                    >
-                      {/* Empresa */}
-                      <td className="py-3 px-4">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-md bg-[#191f2b] border border-[#2b3548] flex items-center justify-center font-bold text-amber-300 text-xs shrink-0">
-                            {account.companyName.charAt(0)}
-                          </div>
-                          <div>
-                            <span className="font-semibold text-white group-hover:text-amber-300 transition-colors block">
-                              {account.companyName}
-                            </span>
-                            <span className="text-[10px] text-neutral-500 font-mono">
-                              {account.id}
-                            </span>
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* Responsável */}
-                      <td className="py-3 px-4 text-neutral-300 font-medium">
-                        {account.ownerName}
-                      </td>
-
-                      {/* Especialidade */}
-                      <td className="py-3 px-4 text-neutral-300">
-                        <span className="truncate max-w-[200px] block">
-                          {account.specialty}
-                        </span>
-                      </td>
-
-                      {/* Localização */}
-                      <td className="py-3 px-4 text-neutral-400">
-                        <div className="flex items-center gap-1">
-                          <FaLocationDot className="text-neutral-500 text-[10px]" />
-                          <span>{account.city}, {account.state}</span>
-                        </div>
-                      </td>
-
-                      {/* Onboarding */}
-                      <td className="py-3 px-4 text-center text-neutral-400 font-mono">
-                        {account.onboardingDate}
-                      </td>
-
-                      {/* LTV / Permanência */}
-                      <td className="py-3 px-4 text-center">
-                        <div className="inline-flex items-center gap-1.5">
-                          <span className="font-bold text-white font-mono">
-                            {account.monthsActive}m
-                          </span>
-                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                            isOver90Days
-                              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                              : "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                          }`}>
-                            {account.daysActive}d
-                          </span>
-                        </div>
-                      </td>
-
-                      {/* Estimates Entregues */}
-                      <td className="py-3 px-4 text-right font-mono text-neutral-300 font-medium">
-                        {account.estimatesDelivered}
-                      </td>
-
-                      {/* Volume Fechado */}
-                      <td className="py-3 px-4 text-right font-mono font-semibold text-amber-300">
-                        ${account.closedRevenue.toLocaleString()}
-                      </td>
-
-                      {/* Health / Status */}
-                      <td className="py-3 px-4 text-center">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                          <span>Ativo</span>
-                        </span>
-                      </td>
+          {/* SELEÇÃO 1: MODO TABELA */}
+          {viewMode === "table" ? (
+            <div className="rounded-xl border border-[#212631] bg-[#101216] overflow-hidden shadow-lg">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm min-w-[950px]">
+                  <thead className="bg-[#14171f] border-b border-[#212631] text-xs font-mono uppercase tracking-wider text-neutral-400">
+                    <tr>
+                      <th className="py-3.5 px-4 font-semibold">Conta / Empresa</th>
+                      <th className="py-3.5 px-4 font-semibold">Responsável</th>
+                      <th className="py-3.5 px-4 font-semibold">Especialidade</th>
+                      <th className="py-3.5 px-4 font-semibold">Localização</th>
+                      <th className="py-3.5 px-4 font-semibold text-center">Início (Onboarding)</th>
+                      <th className="py-3.5 px-4 font-semibold text-center">Permanência (LTV)</th>
+                      <th className="py-3.5 px-4 font-semibold text-right">Estimates</th>
+                      <th className="py-3.5 px-4 font-semibold text-right">Volume Fechado</th>
+                      <th className="py-3.5 px-4 font-semibold text-center">Status</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                  </thead>
+                  <tbody className="divide-y divide-[#1e232e]">
+                    {filteredAccounts.map((account) => {
+                      return (
+                        <tr 
+                          key={account.id}
+                          onClick={() => setSelectedAccount(account)}
+                          className="hover:bg-[#161a23] transition-colors cursor-pointer group"
+                        >
+                          {/* Empresa */}
+                          <td className="py-3.5 px-4">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-8 h-8 rounded-md bg-[#191f2b] border border-[#2b3548] flex items-center justify-center font-bold text-amber-300 text-xs sm:text-sm shrink-0">
+                                {account.companyName.charAt(0)}
+                              </div>
+                              <div>
+                                <span className="font-bold text-white group-hover:text-amber-300 transition-colors block text-sm sm:text-base">
+                                  {account.companyName}
+                                </span>
+                                <span className="text-xs text-neutral-500 font-mono">
+                                  {account.id}
+                                </span>
+                              </div>
+                            </div>
+                          </td>
 
-          {/* Footer da Tabela com Sumário */}
-          <div className="px-4 py-3 bg-[#14171f] border-t border-[#212631] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-400">
-            <span>Mostrando {filteredAccounts.length} de {totalAccounts} construtoras registradas</span>
-            <div className="flex items-center gap-4 font-mono text-[11px]">
-              <span>Retenção pós-90d: <strong className="text-emerald-400">{retentionRate}%</strong></span>
-              <span>•</span>
-              <span>LTV Médio: <strong className="text-white">{averageTenureMonths} meses</strong></span>
+                          {/* Responsável */}
+                          <td className="py-3.5 px-4 text-neutral-200 font-medium">
+                            {account.ownerName}
+                          </td>
+
+                          {/* Especialidade */}
+                          <td className="py-3.5 px-4 text-neutral-300">
+                            <span className="truncate max-w-[220px] block">
+                              {account.specialty}
+                            </span>
+                          </td>
+
+                          {/* Localização */}
+                          <td className="py-3.5 px-4 text-neutral-300">
+                            <div className="flex items-center gap-1.5">
+                              <FaLocationDot className="text-neutral-500 text-xs" />
+                              <span>{account.city}, {account.state}</span>
+                            </div>
+                          </td>
+
+                          {/* Onboarding */}
+                          <td className="py-3.5 px-4 text-center text-neutral-400 font-mono text-xs sm:text-sm">
+                            {account.onboardingDate}
+                          </td>
+
+                          {/* LTV / Permanência - APENAS EM MESES CONFORME SOLICITADO */}
+                          <td className="py-3.5 px-4 text-center font-mono">
+                            <span className="font-bold text-white text-sm sm:text-base">
+                              {account.monthsActive} {account.monthsActive === 1 ? "mês" : "meses"}
+                            </span>
+                          </td>
+
+                          {/* Estimates Entregues */}
+                          <td className="py-3.5 px-4 text-right font-mono text-neutral-200 font-semibold text-sm sm:text-base">
+                            {account.estimatesDelivered}
+                          </td>
+
+                          {/* Volume Fechado */}
+                          <td className="py-3.5 px-4 text-right font-mono font-bold text-amber-300 text-sm sm:text-base">
+                            ${account.closedRevenue.toLocaleString()}
+                          </td>
+
+                          {/* Status (Cliente Ativo vs Encerrado) */}
+                          <td className="py-3.5 px-4 text-center">
+                            {account.status === "ativo" ? (
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                Cliente Ativo
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-neutral-800 text-neutral-400 border border-neutral-700 whitespace-nowrap">
+                                <span className="w-2 h-2 rounded-full bg-neutral-500"></span>
+                                Encerrado
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Rodapé da Tabela com Resumo */}
+              <div className="px-4 py-3.5 bg-[#14171f] border-t border-[#212631] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-neutral-400">
+                <span>Mostrando {filteredAccounts.length} de {accounts.length} construtoras</span>
+                <div className="flex items-center gap-4 font-mono text-xs sm:text-sm">
+                  <span>Retenção &gt; 90d: <strong className="text-emerald-400">{retentionRate}%</strong></span>
+                  <span>•</span>
+                  <span>LTV Médio: <strong className="text-white">{averageTenureMonths} meses</strong></span>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            /* SELEÇÃO 2: MODO CARDS (OTIMIZADO PARA CELULAR E TELAS TOUCH) */
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {filteredAccounts.map((account) => (
+                <div
+                  key={account.id}
+                  onClick={() => setSelectedAccount(account)}
+                  className="p-4 sm:p-5 rounded-xl bg-[#12151c] border border-[#212631] hover:border-neutral-500 transition-all cursor-pointer group shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Top Row: Empresa + Status */}
+                    <div className="flex items-start justify-between gap-3 mb-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-9 h-9 rounded-lg bg-[#191f2b] border border-[#2b3548] flex items-center justify-center font-bold text-amber-300 text-sm shrink-0">
+                          {account.companyName.charAt(0)}
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-white text-base sm:text-lg group-hover:text-amber-300 transition-colors leading-tight">
+                            {account.companyName}
+                          </h3>
+                          <span className="text-xs text-neutral-500 font-mono">
+                            {account.id} • {account.ownerName}
+                          </span>
+                        </div>
+                      </div>
+
+                      {account.status === "ativo" ? (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                          Cliente Ativo
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-neutral-800 text-neutral-400 border border-neutral-700 shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-neutral-500"></span>
+                          Encerrado
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Especialidade e Local */}
+                    <div className="text-xs sm:text-sm text-neutral-300 mb-4 flex items-center justify-between">
+                      <span className="truncate max-w-[200px] text-neutral-200">{account.specialty}</span>
+                      <span className="text-neutral-400 font-medium">{account.city}, {account.state}</span>
+                    </div>
+                  </div>
+
+                  {/* 3 Blocos de Métricas Grandes */}
+                  <div className="grid grid-cols-3 gap-2.5 pt-3 border-t border-[#1e232e]">
+                    <div className="bg-[#161a22] p-2.5 rounded-lg border border-[#212631]">
+                      <span className="text-[11px] font-mono uppercase text-neutral-400 block mb-0.5">Permanência</span>
+                      <span className="text-sm sm:text-base font-bold text-white font-mono block">
+                        {account.monthsActive} {account.monthsActive === 1 ? "mês" : "meses"}
+                      </span>
+                    </div>
+                    <div className="bg-[#161a22] p-2.5 rounded-lg border border-[#212631]">
+                      <span className="text-[11px] font-mono uppercase text-neutral-400 block mb-0.5">Estimates</span>
+                      <span className="text-sm sm:text-base font-bold text-white font-mono block">
+                        {account.estimatesDelivered}
+                      </span>
+                    </div>
+                    <div className="bg-[#161a22] p-2.5 rounded-lg border border-[#212631]">
+                      <span className="text-[11px] font-mono uppercase text-neutral-400 block mb-0.5">Volume</span>
+                      <span className="text-sm sm:text-base font-bold text-amber-300 font-mono block">
+                        ${(account.closedRevenue / 1000).toFixed(0)}k
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
         </div>
       </main>
 
-      {/* 6. DRAWER / MODAL DE DETALHES DA CONTA */}
+      {/* 6. MODAL / DRAWER DE INSPEÇÃO DA CONTA */}
       <AnimatePresence>
         {selectedAccount && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -1238,57 +1552,74 @@ export default function NivixEnterpriseCrm() {
               {/* Header do Drawer */}
               <div className="flex items-start justify-between pb-4 mb-5 border-b border-[#212631]">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-base font-bold text-white tracking-tight">{selectedAccount.companyName}</h2>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
-                      Conta Ativa
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">{selectedAccount.companyName}</h2>
+                    {selectedAccount.status === "ativo" ? (
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono font-medium">
+                        Cliente Ativo
+                      </span>
+                    ) : (
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-neutral-800 text-neutral-400 border border-neutral-700 font-mono font-medium">
+                        Contrato Encerrado
+                      </span>
+                    )}
                   </div>
-                  <p className="text-xs text-neutral-400 mt-0.5">
-                    ID: {selectedAccount.id} • Resp: {selectedAccount.ownerName} • {selectedAccount.city}, {selectedAccount.state}
+                  <p className="text-xs sm:text-sm text-neutral-400 mt-1">
+                    ID: {selectedAccount.id} • Responsável: {selectedAccount.ownerName} • {selectedAccount.city}, {selectedAccount.state}
                   </p>
                 </div>
+
                 <button
                   onClick={() => setSelectedAccount(null)}
-                  className="w-7 h-7 rounded-lg bg-[#1a1f2b] border border-[#2b3548] flex items-center justify-center text-neutral-400 hover:text-white"
+                  className="w-8 h-8 rounded-lg bg-[#1a1f2b] border border-[#2b3548] flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
                 >
-                  <FaXmark className="text-xs" />
+                  <FaXmark className="text-sm" />
                 </button>
               </div>
 
-              {/* Métricas da Conta */}
+              {/* Métricas Principais da Conta */}
               <div className="grid grid-cols-3 gap-3 mb-5">
-                <div className="p-3 rounded-lg bg-[#161a22] border border-[#212631]">
-                  <span className="text-[10px] font-mono uppercase text-neutral-500 block">Tempo Ativo (LTV)</span>
-                  <span className="text-base font-bold text-white font-mono mt-0.5 block">{selectedAccount.monthsActive} Meses</span>
-                  <span className="text-[10px] text-emerald-400 font-mono">{selectedAccount.daysActive} dias contínuos</span>
+                <div className="p-3.5 rounded-lg bg-[#161a22] border border-[#212631]">
+                  <span className="text-xs font-mono uppercase text-neutral-400 block">Permanência (LTV)</span>
+                  <span className="text-base sm:text-lg font-bold text-white font-mono mt-1 block">
+                    {selectedAccount.monthsActive} {selectedAccount.monthsActive === 1 ? "mês" : "meses"}
+                  </span>
+                  <span className="text-xs text-neutral-400 font-mono mt-0.5 block">
+                    {selectedAccount.daysActive} dias contínuos
+                  </span>
                 </div>
-                <div className="p-3 rounded-lg bg-[#161a22] border border-[#212631]">
-                  <span className="text-[10px] font-mono uppercase text-neutral-500 block">Estimates Entregues</span>
-                  <span className="text-base font-bold text-white font-mono mt-0.5 block">{selectedAccount.estimatesDelivered}</span>
-                  <span className="text-[10px] text-neutral-400 font-mono">Homeowners reais</span>
+                <div className="p-3.5 rounded-lg bg-[#161a22] border border-[#212631]">
+                  <span className="text-xs font-mono uppercase text-neutral-400 block">Estimates</span>
+                  <span className="text-base sm:text-lg font-bold text-white font-mono mt-1 block">
+                    {selectedAccount.estimatesDelivered}
+                  </span>
+                  <span className="text-xs text-neutral-400 font-mono mt-0.5 block">Homeowners</span>
                 </div>
-                <div className="p-3 rounded-lg bg-[#161a22] border border-[#212631]">
-                  <span className="text-[10px] font-mono uppercase text-neutral-500 block">Volume Fechado</span>
-                  <span className="text-base font-bold text-amber-300 font-mono mt-0.5 block">${selectedAccount.closedRevenue.toLocaleString()}</span>
-                  <span className="text-[10px] text-neutral-400 font-mono">Direto no bolso</span>
+                <div className="p-3.5 rounded-lg bg-[#161a22] border border-[#212631]">
+                  <span className="text-xs font-mono uppercase text-neutral-400 block">Volume Fechado</span>
+                  <span className="text-base sm:text-lg font-bold text-amber-300 font-mono mt-1 block">
+                    ${selectedAccount.closedRevenue.toLocaleString()}
+                  </span>
+                  <span className="text-xs text-neutral-400 font-mono mt-0.5 block">Contratos</span>
                 </div>
               </div>
 
-              {/* Resumo da Operação */}
-              <div className="p-3.5 rounded-lg bg-[#161a22] border border-[#212631] mb-5">
-                <span className="text-[10px] font-mono uppercase font-bold text-neutral-400 block mb-1">
-                  Diagnóstico da Conta:
+              {/* Diagnóstico / Histórico */}
+              <div className="p-4 rounded-lg bg-[#161a22] border border-[#212631] mb-5">
+                <span className="text-xs font-mono uppercase font-bold text-neutral-400 block mb-1.5">
+                  Diagnóstico e Histórico Operacional:
                 </span>
-                <p className="text-xs text-neutral-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed">
                   {selectedAccount.notes}
                 </p>
               </div>
 
               {/* Status do Contrato */}
-              <div className="flex items-center justify-between text-xs text-neutral-400 pt-3 border-t border-[#212631]">
+              <div className="flex items-center justify-between text-xs sm:text-sm text-neutral-400 pt-3 border-t border-[#212631]">
                 <span>Início: <strong className="text-neutral-200">{selectedAccount.onboardingDate}</strong></span>
-                <span className="text-emerald-400 font-mono font-medium">Retenção consolidada após 90 dias</span>
+                <span className="text-emerald-400 font-mono font-medium">
+                  {selectedAccount.monthsActive >= 3 ? "Retenção consolidada (+90 dias)" : "Período de onboarding"}
+                </span>
               </div>
 
             </motion.div>
