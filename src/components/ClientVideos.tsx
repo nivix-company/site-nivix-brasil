@@ -12,45 +12,55 @@ const defaultCases: CaseItem[] = [
     subtitle: "+147% em pedidos no 1º mês",
     videoSrc: "/SaboresDaVila.webm",
     poster: "/svlogo.jpeg",
+    metric: "+147% Pedidos",
+    location: "São Paulo, SP",
     className: "md:col-span-2 md:row-span-2",
     floatDelay: 0,
   },
   {
     id: 2,
-    title: "Pizzaria Don Giovanni",
-    subtitle: "ROI 8x em anúncios",
-    videoSrc: "", 
-    poster: "/logo-n.png",
-    className: "md:col-span-1 md:row-span-1",
+    title: "Vellaro Pizzaria",
+    subtitle: "De salão vazio a recorde de delivery",
+    videoSrc: "/VellaroCase.webm",
+    poster: "/vellarologo.jpeg",
+    metric: "3 Anos de Parceria",
+    location: "Campinas, SP",
+    className: "md:col-span-1 md:row-span-2",
     floatDelay: 1,
   },
   {
     id: 3,
-    title: "Burger Elite HQ",
-    subtitle: "Escala Vertical Validada",
+    title: "Anabela - Forno a Lenha",
+    subtitle: "Consolidada como maior da região",
     videoSrc: "",
-    poster: "/logo-n.png",
-    className: "md:col-span-1 md:row-span-2",
-    floatDelay: 2,
-  },
-  {
-    id: 4,
-    title: "Texas Burger House",
-    subtitle: "Domínio Regional",
-    videoSrc: "",
-    poster: "/logo-n.png",
+    poster: "/cases/case-anabela.jpg",
+    metric: "4 Anos com a Nivix",
+    location: "Curitiba, PR",
     className: "md:col-span-1 md:row-span-1",
     floatDelay: 0.5,
   },
   {
-    id: 5,
-    title: "Sua Empresa Aqui",
-    subtitle: "A próxima máquina de lucro",
+    id: 4,
+    title: "Forno e Famiglia",
+    subtitle: "De 12 para 60+ pedidos por noite",
     videoSrc: "",
-    poster: "/logo-n.png",
+    poster: "/cases/case-forno-famiglia.jpg",
+    metric: "5x Mais Pedidos sem iFood",
+    location: "Belo Horizonte, MG",
     className: "md:col-span-1 md:row-span-1",
     floatDelay: 1.5,
-  }
+  },
+  {
+    id: 5,
+    title: "Hober Pizzaria",
+    subtitle: "Recorde histórico de pedidos no delivery",
+    videoSrc: "",
+    poster: "/cases/case-hober.jpg",
+    metric: "ROI 8x em Anúncios",
+    location: "Santo André, SP",
+    className: "md:col-span-1 md:row-span-1",
+    floatDelay: 2,
+  },
 ];
 
 interface ClientVideosProps {
@@ -96,7 +106,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           >
             {data?.title || "Nossos Parceiros"}{" "}
             <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
-              {data?.titleHighlight || "na América"}
+              {data?.titleHighlight || "em Todo o Brasil"}
             </span>
           </motion.h2>
 
@@ -107,7 +117,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="text-center text-base sm:text-lg md:text-xl lg:text-2xl mt-4 max-w-3xl px-4 text-neutral-300 leading-relaxed font-medium"
           >
-            {data?.subtitle || "Veja como brasileiros da construção escalaram suas empresas montando uma máquina de estimates com a Nivix, fazendo serviços particulares toda semana."}
+            {data?.subtitle || "Veja como empresas parceiras escalaram sua operação e dominaram o mercado com a assessoria da Nivix."}
           </motion.p>
         </div>
 
@@ -350,7 +360,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                       />
                     ) : (
                       <div className="w-full h-full bg-neutral-900/80 flex items-center justify-center">
-                        <img src="/logo-n.png" className="w-16 h-16 opacity-10 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700" alt="" />
+                        <img src="/nivix-logo.png" className="w-16 h-16 opacity-10 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700" alt="" />
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
