@@ -75,6 +75,7 @@ const OurWork = ({ data }: { data?: NicheConfig["faq"] }) => {
 
     return (
         <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center pb-16 pt-4 scroll-mt-24">  
+            <div id="duvidas" className="absolute top-0 pointer-events-none scroll-mt-24"></div>  
             <div className="w-full lg:w-[70%] flex flex-col items-center">
                 
                 {/* Header Principal */}

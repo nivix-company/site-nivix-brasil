@@ -17,8 +17,8 @@ const defaultNavItems = [
 ];
 
 const buildersNavItems = [
-  { name: "Resultados", href: "#depoimentos" },
-  { name: "A Corrida do Ouro", href: "#metodo-corrida" },
+  { name: "Google", href: "#google" },
+  { name: "Cases", href: "#cases" },
   { name: "Vantagens", href: "#vantagens" },
   { name: "Dúvidas", href: "#FAQ" }
 ];
@@ -27,7 +27,31 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isBuilders = niche === "builders";
   const navItems = isBuilders ? buildersNavItems : defaultNavItems;
-  const ctaLabel = isBuilders ? "Diagnóstico" : "Contrate";
+  const ctaLabel = isBuilders ? "Contato" : "Contrate";
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (!element) {
+      window.location.hash = href;
+      return;
+    }
+
+    window.history.pushState(null, "", href);
+
+    const headerHeight = 86;
+    const elementRect = element.getBoundingClientRect();
+    const absoluteElementTop = elementRect.top + window.pageYOffset;
+
+    window.scrollTo({
+      top: Math.max(0, absoluteElementTop - headerHeight + 5),
+      behavior: "smooth"
+    });
+  };
 
   return (
     <motion.header 
@@ -60,7 +84,8 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
             >
               <a 
                 href={item.href} 
-                className="hover:text-[#FFBE2E] transition-colors duration-300 text-sm font-medium tracking-wide"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="hover:text-[#FFBE2E] transition-colors duration-300 text-sm font-medium tracking-wide cursor-pointer"
               >
                 {item.name}
               </a>
@@ -73,7 +98,8 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
           >
             <a
               href="#form"
-              className="bg-[#FFB400] hover:bg-yellow-400 transition-all duration-300 text-black px-10 py-2.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(255,180,0,0.15)] hover:shadow-[0_10px_25px_rgba(255,180,0,0.3)] hover:scale-[1.02]"
+              onClick={(e) => handleNavClick(e, "#form")}
+              className="bg-[#FFB400] hover:bg-yellow-400 transition-all duration-300 text-black px-10 py-2.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(255,180,0,0.15)] hover:shadow-[0_10px_25px_rgba(255,180,0,0.3)] hover:scale-[1.02] cursor-pointer"
             >
               {ctaLabel}
             </a>
@@ -106,7 +132,7 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
               <a
                 key={index}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-neutral-200 hover:text-amber-400 text-base font-semibold py-2 transition-colors border-b border-neutral-800/50"
               >
                 {item.name}
@@ -114,7 +140,7 @@ const Header = ({ homeHref = "#", niche }: HeaderProps) => {
             ))}
             <a
               href="#form"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, "#form")}
               className="bg-[#FFB400] text-black text-center py-3.5 rounded-xl font-black text-sm shadow-[0_10px_20px_rgba(255,180,0,0.2)] mt-2"
             >
               {ctaLabel}

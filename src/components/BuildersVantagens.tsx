@@ -21,7 +21,7 @@ import {
 
 export default function BuildersVantagens() {
   return (
-    <section id="vantagens" className="relative flex flex-col items-center justify-center px-4 pt-12 sm:pt-16 pb-20 w-full overflow-hidden scroll-mt-24">
+    <section id="primeira-divisao" className="relative flex flex-col items-center justify-center px-4 pt-12 sm:pt-16 pb-20 w-full overflow-hidden scroll-mt-24">
       {/* Background Glow */}
       <div className="absolute w-[800px] h-[600px] rounded-full bg-amber-500/5 blur-[160px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 

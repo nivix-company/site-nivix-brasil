@@ -67,7 +67,8 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
   const isRichCases = cases.some((c) => Boolean(c.story));
 
   return (
-    <section id="depoimentos" className="w-full px-4 pt-20 pb-0 flex flex-col items-center relative overflow-hidden scroll-mt-24">
+    <section id="cases" className="w-full px-4 pt-12 sm:pt-16 pb-0 flex flex-col items-center relative overflow-hidden scroll-mt-24">
+      <div id="depoimentos" className="absolute top-0 pointer-events-none scroll-mt-24"></div>
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,#FFB40008,transparent_50%)] -z-10"></div>
 

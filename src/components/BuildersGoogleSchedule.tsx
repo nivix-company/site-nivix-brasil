@@ -159,7 +159,8 @@ export default function BuildersGoogleSchedule() {
   }, [nextIndex]);
 
   return (
-    <section id="google-top1" className="w-full flex flex-col items-center relative scroll-mt-24">
+    <section id="google" className="w-full flex flex-col items-center relative scroll-mt-24">
+      <div id="google-top1" className="absolute top-0 pointer-events-none scroll-mt-24"></div>
       {/* Glow de fundo */}
       <div className="absolute top-10 w-96 h-96 bg-amber-500/5 blur-[140px] -z-10 pointer-events-none"></div>
 

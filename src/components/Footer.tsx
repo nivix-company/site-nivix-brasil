@@ -14,8 +14,8 @@ const defaultNavItems = [
 ];
 
 const buildersNavItems = [
-    { name: "Resultados", href: "#depoimentos" },
-    { name: "A Corrida do Ouro", href: "#metodo-corrida" },
+    { name: "Google", href: "#google" },
+    { name: "Cases", href: "#cases" },
     { name: "Vantagens", href: "#vantagens" },
     { name: "Dúvidas", href: "#FAQ" }
 ];
