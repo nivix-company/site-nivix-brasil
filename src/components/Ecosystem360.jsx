@@ -44,6 +44,9 @@ const Ecosystem360 = ({ data }) => {
         { icon: <FaArrowsSpin />, title: "Recorrência" },
     ];
 
+    // Hub de Inteligência (Lead Elite Platform) mantido no código, mas oculto conforme solicitado (produto ainda não entregue)
+    const showHubDeInteligencia = false;
+
     return (
         <section id="ecossistema" className="relative flex flex-col items-center justify-center px-4 py-24 w-full overflow-hidden">
             {/* Background Glow */}
@@ -114,39 +117,41 @@ const Ecosystem360 = ({ data }) => {
                     ))}
                 </div>
 
-                {/* Card Especial: Futuro SaaS / Plataforma (Mantido conforme solicitado) */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                    className="w-full max-w-6xl p-8 md:p-12 bg-gradient-to-br from-[#FFB400]/10 via-neutral-900/60 to-neutral-900 border-2 border-[#FFB400]/30 backdrop-blur-2xl rounded-[40px] relative overflow-hidden group"
-                >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB400]/5 blur-[80px] -z-10 group-hover:scale-110 transition-transform duration-1000"></div>
-                    
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-                        <div className="flex-1 space-y-6 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 bg-neutral-900/80 px-4 py-1.5 rounded-full border border-white/5">
-                                <span className="w-2 h-2 rounded-full bg-[#00ff2a] animate-pulse"></span>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-white/70 italic">Disponível em breve para parceiros</span>
-                            </div>
-                            <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">
-                                O Hub de Inteligência <br />
-                                <span className="text-[#FFB400]">Lead Elite Plataform</span>
-                            </h3>
-                            <p className="text-neutral-400 text-base md:text-xl leading-relaxed max-w-2xl">
-                                {data.platformDesc || `Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da ${data.platformTitle}.`}
-                            </p>
-                        </div>
+                {/* Card Especial: Futuro SaaS / Plataforma (Mantido no código mas não visível conforme solicitado) */}
+                {showHubDeInteligencia && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        className="w-full max-w-6xl p-8 md:p-12 bg-gradient-to-br from-[#FFB400]/10 via-neutral-900/60 to-neutral-900 border-2 border-[#FFB400]/30 backdrop-blur-2xl rounded-[40px] relative overflow-hidden group"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB400]/5 blur-[80px] -z-10 group-hover:scale-110 transition-transform duration-1000"></div>
                         
-                        <div className="w-full lg:w-[350px] aspect-square rounded-[32px] bg-neutral-800/80 border border-white/5 shadow-3xl flex items-center justify-center group-hover:rotate-2 transition-transform duration-700">
-                            <div className="text-center space-y-4">
-                                <FaCirclePlay className="text-[#FFB400] text-7xl mx-auto opacity-30 animate-pulse" />
-                                <p className="text-[10px] text-neutral-500 font-black uppercase tracking-[0.3em]">[ Interface em Desenvolvimento ]</p>
+                        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+                            <div className="flex-1 space-y-6 text-center lg:text-left">
+                                <div className="inline-flex items-center gap-2 bg-neutral-900/80 px-4 py-1.5 rounded-full border border-white/5">
+                                    <span className="w-2 h-2 rounded-full bg-[#00ff2a] animate-pulse"></span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/70 italic">Disponível em breve para parceiros</span>
+                                </div>
+                                <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">
+                                    O Hub de Inteligência <br />
+                                    <span className="text-[#FFB400]">Lead Elite Plataform</span>
+                                </h3>
+                                <p className="text-neutral-400 text-base md:text-xl leading-relaxed max-w-2xl">
+                                    {data.platformDesc || `Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da ${data.platformTitle}.`}
+                                </p>
+                            </div>
+                            
+                            <div className="w-full lg:w-[350px] aspect-square rounded-[32px] bg-neutral-800/80 border border-white/5 shadow-3xl flex items-center justify-center group-hover:rotate-2 transition-transform duration-700">
+                                <div className="text-center space-y-4">
+                                    <FaCirclePlay className="text-[#FFB400] text-7xl mx-auto opacity-30 animate-pulse" />
+                                    <p className="text-[10px] text-neutral-500 font-black uppercase tracking-[0.3em]">[ Interface em Desenvolvimento ]</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                )}
 
                 {/* Final Call to Action */}
                 <div className="mt-20 flex flex-col items-center">
