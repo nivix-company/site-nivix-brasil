@@ -102,7 +102,7 @@ const generalActions = [
 
 export default function SocialProof() {
   const pathname = usePathname() || "";
-  const isExcludedRoute = pathname.startsWith("/serp") || pathname.startsWith("/crm");
+  const isExcludedRoute = pathname.startsWith("/serp") || pathname.startsWith("/google-search-engine") || pathname.startsWith("/crm");
 
   const [currentNotification, setCurrentNotification] = useState<{
     id: number;
