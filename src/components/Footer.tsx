@@ -1,4 +1,5 @@
 'use client';
+import { usePathname } from "next/navigation";
 import { FaInstagram, FaWhatsapp, FaLinkedinIn, FaChevronUp } from "react-icons/fa6";
 
 interface FooterProps {
@@ -22,7 +23,8 @@ const buildersNavItems = [
 ];
 
 const Footer = ({ niche }: FooterProps) => {
-    const isBuilders = niche === "builders";
+    const pathname = usePathname();
+    const isBuilders = niche === "builders" || pathname?.startsWith("/builders");
     const navItems = isBuilders ? buildersNavItems : defaultNavItems;
 
     const scrollToTop = () => {
@@ -92,7 +94,9 @@ const Footer = ({ niche }: FooterProps) => {
                             © {new Date().getFullYear()} NIVIX COMPANY.
                         </p>
                         <span className="hidden md:block w-1 h-1 rounded-full bg-neutral-800"></span>
-                        <span className="text-neutral-600 text-[10px] font-bold uppercase tracking-widest">CNPJ: 62.759.291/0001-53</span>
+                        <span className="text-neutral-600 text-[10px] font-bold uppercase tracking-widest">
+                            {isBuilders ? "EIN: 42-3819566" : "CNPJ: 62.759.291/0001-53"}
+                        </span>
                     </div>
                     
                     <button 
