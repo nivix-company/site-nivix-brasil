@@ -11,6 +11,11 @@ export interface CaseItem {
   location?: string;
   story?: string;
   badge?: string;
+  chatAuthor?: string;
+  chatHighlight?: string;
+  chatDetail?: string;
+  googleRanking?: string;
+  isAudio?: boolean;
 }
 
 export interface ClientTestimonial {
@@ -459,7 +464,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       items: defaultFoodCases,
     },
     carousel: {
-      activeClientsCount: 621,
+      activeClientsCount: 38,
       titleLine1: "De pizzarias de bairro a",
       titleHighlight: "grandes franquias",
       subtitle:
@@ -559,7 +564,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       items: defaultPizzariasCases,
     },
     carousel: {
-      activeClientsCount: 621,
+      activeClientsCount: 34,
       titleLine1: "De pizzarias de bairro a",
       titleHighlight: "grandes franquias",
       subtitle:
@@ -680,68 +685,84 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       items: [
         {
           id: 1,
-          title: "Apex Luxury Remodeling",
-          subtitle: "Kitchen & Bathroom Remodeling",
+          title: "Summit Builders",
+          subtitle: "Roofing & Siding",
           videoSrc: "",
-          poster: "/cases/case-kitchen.jpg",
-          metric: "De $60k para $132k / mês",
-          subMetric: "+120% em 90 dias",
-          location: "Windermere, FL",
+          poster: "/social-proof-builders/social-proof-1.jpg",
+          metric: "Top #1 Google • +254 Reviews 5★",
+          subMetric: "Contrato Fechado em Douglasville",
+          location: "Douglasville & Região, GA",
           story:
-            "Faturava em média $60k/mês dependendo de indicações. A Nivix implementou o funil americano e o Top 1 no Google. No 3º mês, bateram recorde de $132,000 faturados com 4 contratos fechados em Windermere e Winter Garden.",
-          badge: "Contratos Diretos com Homeowners",
+            "Pedro fechou mais uma obra em Douglasville. Posicionado no topo absoluto do Google Maps, recebendo novos serviços particulares toda semana sem terceirização.",
+          badge: "Top 1 Google Local",
+          chatAuthor: "Pedro - Summit Builders",
+          chatHighlight: "Cliente de Douglasville fechado 👏🙌🎉",
+          chatDetail: "5:36 PM • Grupo VIP Nivix",
+          googleRanking: "Top 1 no Google • 4.8 ★ (254 avaliações)",
           className: "md:col-span-2 md:row-span-2",
           floatDelay: 0,
         },
         {
           id: 2,
-          title: "Prime Pavers & Outdoor Living",
-          subtitle: "Hardscape & Outdoor Kitchens",
+          title: "Terranov",
+          subtitle: "Pavers & Hardscape",
           videoSrc: "",
-          poster: "/cases/case-patio.jpg",
-          metric: "4 Estimates Semanais",
-          subMetric: "Agenda 100% Lotada",
-          location: "Lake Nona, FL",
+          poster: "/social-proof-builders/social-proof-2.jpg",
+          metric: "3 Estimates/Dia • Acima de $3,000 Cada",
+          subMetric: "Agenda Lotada de Obras",
+          location: "Flórida, EUA",
           story:
-            "Chega de Angi e Thumbtack. 4 estimates semanais 100% exclusivos direto no WhatsApp com homeowners qualificados de Lake Nona.",
-          badge: "Leads 100% Exclusivos",
+            "Diego no WhatsApp da Nivix: 3 ligações de homeowners qualificadas no mesmo dia para agendar orçamentos de alto padrão sem margem de intermediários.",
+          badge: "Estimates de Alto Ticket",
+          chatAuthor: "Diego - Terranov",
+          chatHighlight: "Minha esposa recebeu três ligações hoje... não vai ser menos de $3.000 cada um",
+          chatDetail: "Áudio 0:05 • Grupo VIP Nivix",
+          isAudio: true,
           className: "md:col-span-1 md:row-span-1",
           floatDelay: 1,
         },
         {
           id: 3,
-          title: "Vanguard Custom Builders",
-          subtitle: "General Contractor & Additions",
+          title: "Rodrigo's Flooring",
+          subtitle: "Flooring Solutions & Decks",
           videoSrc: "",
-          poster: "/cases/case-bathroom.jpg",
-          metric: "De Sub a Contractor em 2 meses",
-          subMetric: "+$160k em Obras Próprias",
-          location: "Orlando & Winter Park, FL",
+          poster: "/social-proof-builders/social-proof-3.jpg",
+          metric: "+$20,000 Fechados em 1 Semana",
+          subMetric: "5.0 ★★★★★ (110 Reviews)",
+          location: "Charlotte, NC • +1 (704) 425-4698",
           story:
-            "Passou 4 anos como subcontratado. Em 2 meses com a Nivix, estruturou sua marca própria e fechou mais de $160k em contratos diretos sem intermediários.",
-          badge: "100% Margem Própria",
+            "Rodrigo mandando foto da obra e agradecendo a semana cheia: de subcontratado a dono da própria demanda, fechando $20k em 7 dias direto com homeowners americanos.",
+          badge: "Semana de $20K",
+          chatAuthor: "~ Rodrigo - Flooring",
+          chatHighlight: "Boa tarde rapazes, obrigado pela semana cheia 🙏 Fecharemos essa semana em $20k",
+          chatDetail: "1:38 PM • Grupo VIP Nivix",
+          googleRanking: "Top 1 Google • 5.0 ★ (110 avaliações)",
           className: "md:col-span-1 md:row-span-2",
           floatDelay: 2,
         },
         {
           id: 4,
-          title: "Summit Contracting & Roofing",
-          subtitle: "Roofing & Whole Home Renovation",
+          title: "Pro Fences",
+          subtitle: "Quality Fencing Solutions",
           videoSrc: "",
-          poster: "/cases/case-exterior.jpg",
-          metric: "Faturamento de $900K / ano",
-          subMetric: "Contratos Médios de $40k a $85k",
-          location: "Tampa & St. Pete, FL",
+          poster: "/social-proof-builders/social-proof-4.jpg",
+          metric: "Top #1 Google • Raleigh, NC",
+          subMetric: "Clientes Diários sem Intermediário",
+          location: "Raleigh, NC & Lake Norman",
           story:
-            "Pipeline previsível o ano inteiro com equipe própria e novos contratos fechados toda semana.",
-          badge: "Pipeline Anual Previsível",
+            "Pedro avisando à noite: 'Amanhã cedo já temos mais um cliente 🙌'. Posicionado no topo absoluto das buscas de cercas na Carolina do Norte.",
+          badge: "Agenda Diária Cheia",
+          chatAuthor: "Pedro - Pro Fences",
+          chatHighlight: "Amanhã cedo já temos mais um cliente 🙌",
+          chatDetail: "10:04 PM • Grupo VIP Nivix",
+          googleRanking: "Top 1 Local SEO • 4.8 ★ (102 avaliações)",
           className: "md:col-span-1 md:row-span-1",
           floatDelay: 0.5,
         },
         {
           id: 5,
           title: "Sua Construtora Aqui",
-          subtitle: "Remodeling, Painting, Roofing, Pavers & Framing",
+          subtitle: "Remodeling, Flooring, Roofing, Pavers & Framing",
           videoSrc: "",
           poster: "/flags-blend.jpg",
           metric: "+3 a 6 Estimates de Alto Padrão por Semana",
@@ -756,7 +777,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       ],
     },
     carousel: {
-      activeClientsCount: 148,
+      activeClientsCount: 26,
       titleLine1: "De contractors autônomos a",
       titleHighlight: "grandes construtoras nos EUA",
       subtitle:
@@ -764,39 +785,39 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       clients: [
         {
           id: 1,
-          companyName: "Apex Luxury Remodeling (FL)",
+          companyName: "Rodrigos Flooring",
           description:
-            "Estávamos estagnados em $60k/mês pegando resto de serviço. A Nivix colocou a gente no Top 1 do Google e no terceiro mês batemos $132,000 faturados atendendo direto o homeowner americano.",
-          imagePath: "/cases/case-kitchen.jpg",
+            "Faturava  em média $15K/mês vindo de um contractor que me terceirizava, depois da parceria com a Nivix, 15K é o que fazemos por cada serviço, hoje meu faturamento nunca é menos que $60K/mês, tratando diretamente com homeowners sem deixar % com contractor nenhum, apenas eu, meu filho e mais um funcionário.",
+          imagePath: "/social-proof-builders/rodrigos-flooring-logo.png",
           fireImagePath: "/fogo.png",
-          fireText: "De $60k para $132k/mês",
+          fireText: "200K faturados em 3 meses",
         },
         {
           id: 2,
-          companyName: "Vanguard Custom Builders (FL)",
+          companyName: "Summit Builders",
           description:
-            "Eu era subcontratado há 4 anos me matando na obra para os outros lucrarem. Em 2 meses com a Nivix, virei contractor com marca própria e já fechei mais de $160k em contratos diretos.",
-          imagePath: "/cases/case-bathroom.jpg",
+            "Pedro já era um expert da construção e gerenciava 2 equipes que não tinham suas capacidades lotadas. Depois da implementação da nossa maquina de aquisição a demanda das duas equipes foi preenchida e ele estruturou mais duas equipe, assim atingindo a marca dos 200 mil dólares mensais.",
+          imagePath: "/social-proof-builders/summit-builders-logo.png",
           fireImagePath: "/fogo.png",
-          fireText: "Sub a Contractor em 2 meses",
+          fireText: "De 70K para 200k mensais",
         },
         {
           id: 3,
-          companyName: "Prime Pavers & Outdoor Living (FL)",
+          companyName: "JS Drywall",
           description:
-            "Paramos de queimar dinheiro no Angi e Thumbtack com leads disputados. Agora temos 4 estimates semanais garantidos direto na nossa agenda, todos com homeowners qualificados de Lake Nona.",
-          imagePath: "/cases/case-patio.jpg",
+            "Antes de trabalhar com a Nivix, a JS Drywall dependia do boca a boca e de serviços pontuais de baixo valor, o que mantinha o faturamento estagnado nos $20K/mês. Com a estruturação da nossa máquina de aquisição e posicionamento local, passamos a captar projetos completos de remodelação de alto ticket. Em 3 meses, triplicamos o faturamento mensal atingindo a marca constante dos $70K/mês, mantendo a agenda lotada com clientes diretos e margens muito mais altas",
+          imagePath: "/social-proof-builders/js-drywall-logo.png",
           fireImagePath: "/fogo.png",
-          fireText: "4 estimates semanais",
+          fireText: "De 20k para 70k mensais",
         },
         {
           id: 4,
-          companyName: "Summit Contracting & Roofing (FL)",
+          companyName: "Terranov",
           description:
-            "Saímos da montanha-russa de um mês bom e dois meses parados. Hoje nosso pipeline anual passa de $900K/year com equipe própria e contratos fechados todas as semanas.",
-          imagePath: "/cases/case-exterior.jpg",
+            "A Terranov já entregava um trabalho impecável no campo, mas a operação dependia da sazonalidade e da incerteza de indicações. Faltava uma engenharia de vendas previsível. Quando implementamos o sistema de atração e conversão da Nivix, o jogo mudou do dia para a noite: a região foi dominada, cortada a dependência de intermediários e criamos uma fila de espera de projetos. Em apenas 4 meses de parceria, geramos mais de um quarto de milhão de dólares em faturamento direto, consolidando a Terranov como referência absoluta no mercado.",
+          imagePath: "/social-proof-builders/terranov-logo.png",
           fireImagePath: "/fogo.png",
-          fireText: "Faturamento de $900K/ano",
+          fireText: "$250K faturados em 4 meses",
         },
       ],
     },

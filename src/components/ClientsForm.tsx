@@ -7,7 +7,7 @@ import { NicheConfig } from "@/data/niches";
 
 export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel"] }) {
   const clientsList = data?.clients || defaultClients;
-  const initialCount = data?.activeClientsCount ?? 621;
+  const initialCount = data?.activeClientsCount ?? 26;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clientes, setClientes] = useState(initialCount);
@@ -93,7 +93,7 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
         
         {/* Carousel Window */}
         <div className="w-full max-w-7xl overflow-visible px-4">
-          <div className="relative h-[550px] flex items-center justify-center">
+          <div className="relative h-[560px] flex items-center justify-center">
             
             <AnimatePresence mode="popLayout" initial={false}>
               {clientsList.map((client, index) => {
@@ -119,29 +119,31 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
                       filter: isCenter ? "blur(0px)" : "blur(2px)",
                     }}
                     transition={{ type: "spring", stiffness: 260, damping: 26 }}
-                    className="absolute w-[85%] md:w-[400px] h-[480px] bg-neutral-900/60 border border-neutral-800 hover:border-amber-400/40 backdrop-blur-xl rounded-[32px] p-7 sm:p-8 flex flex-col items-center justify-between text-center cursor-grab active:cursor-grabbing shadow-2xl transition-colors duration-300"
+                    className="absolute w-[88%] md:w-[420px] h-[510px] bg-neutral-900/70 border border-neutral-800 hover:border-amber-400/40 backdrop-blur-xl rounded-[32px] p-6 sm:p-7 flex flex-col items-center justify-between text-center cursor-grab active:cursor-grabbing shadow-2xl transition-colors duration-300"
                   >
                     <div className="relative w-full flex flex-col items-center">
                       <div className="absolute inset-0 bg-amber-400/5 blur-[20px] rounded-full"></div>
-                      <img
-                        src={client.imagePath}
-                        alt={client.companyName}
-                        className="w-24 h-24 z-10 object-cover rounded-3xl border border-amber-400/20 shadow-xl"
-                      />
-                      <h3 className="text-2xl mt-6 font-bold text-white tracking-tight">{client.companyName}</h3>
-                      <div className="mt-4 flex items-center justify-center gap-1.5 px-4 py-1.5 bg-amber-400/10 border border-amber-400/25 rounded-full">
-                        <FaArrowTrendUp className="text-amber-400 text-xs" />
+                      <div className="w-24 h-24 z-10 rounded-2xl bg-white p-2.5 border border-amber-400/25 shadow-xl flex items-center justify-center overflow-hidden">
+                        <img
+                          src={client.imagePath}
+                          alt={client.companyName}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <h3 className="text-xl sm:text-2xl mt-5 font-bold text-white tracking-tight">{client.companyName}</h3>
+                      <div className="mt-3 flex items-center justify-center gap-1.5 px-4 py-1.5 bg-amber-400/10 border border-amber-400/25 rounded-full">
+                        <FaArrowTrendUp className="text-amber-400 text-xs shrink-0" />
                         <p className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
                           {client.fireText}
                         </p>
                       </div>
                     </div>
-                    <div className="mt-6 relative flex-grow flex items-center">
-                      <p className="text-neutral-300 text-sm md:text-base italic leading-relaxed font-normal">
+                    <div className="mt-4 relative flex-grow flex items-center px-1">
+                      <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed italic font-normal line-clamp-6">
                         "{client.description}"
                       </p>
                     </div>
-                    <div className="mt-6 w-12 h-0.5 bg-neutral-800 rounded-full"></div>
+                    <div className="mt-4 w-12 h-0.5 bg-neutral-800 rounded-full"></div>
                   </motion.div>
                 );
               })}
