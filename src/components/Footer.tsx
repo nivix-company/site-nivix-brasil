@@ -41,7 +41,7 @@ const Footer = ({ niche }: FooterProps) => {
                     
                     {/* Brand Section */}
                     <div className="col-span-1 md:col-span-1 flex flex-col items-center md:items-start space-y-6">
-                        <img src="/logo-n.png" alt="Nivix" className="w-14 h-14 opacity-90 object-contain" />
+                        <img src="/N-Amarelo.png" alt="Nivix" className="w-12 h-14 opacity-95 object-contain" />
                         <div className="flex gap-3">
                             <a href="#" className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all">
                                 <FaInstagram size={16} />

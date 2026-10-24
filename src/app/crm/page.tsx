@@ -6336,9 +6336,7 @@ export default function NivixEnterpriseCrm() {
         {/* Workspace Identifier */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-amber-400 flex items-center justify-center text-black font-black text-xs shadow-sm">
-              N
-            </div>
+            <img src="/N-Amarelo.png" alt="Nivix" className="w-6 h-7 object-contain drop-shadow" />
             <span className="font-semibold text-white text-sm sm:text-base tracking-tight">Nivix Agency OS</span>
           </div>
 

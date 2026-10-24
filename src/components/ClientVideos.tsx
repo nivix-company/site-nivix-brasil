@@ -360,7 +360,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                       />
                     ) : (
                       <div className="w-full h-full bg-neutral-900/80 flex items-center justify-center">
-                        <img src="/nivix-logo.png" className="w-16 h-16 opacity-10 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700" alt="" />
+                        <img src="/N-Amarelo.png" className="w-12 h-14 opacity-15 grayscale group-hover:opacity-40 group-hover:grayscale-0 transition-all duration-700 object-contain" alt="" />
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
