@@ -8,56 +8,56 @@ import { FaCrown, FaLocationDot, FaCheck, FaArrowTrendUp, FaArrowRight, FaShield
 const defaultCases: CaseItem[] = [
   {
     id: 1,
+    title: "Gratto Pizzaria",
+    subtitle: "Escala acelerada e explosão de novos pedidos",
+    videoSrc: "",
+    poster: "/grattopv.png",
+    metric: "Case de Escala & Crescimento",
+    location: "Passo Fundo, RS",
+    className: "md:col-span-2 md:row-span-2",
+    floatDelay: 0,
+  },
+  {
+    id: 2,
     title: "Sabores da Vila",
     subtitle: "+147% em pedidos no 1º mês",
     videoSrc: "/SaboresDaVila.webm",
     poster: "/svlogo.jpeg",
     metric: "+147% Pedidos",
     location: "São Paulo, SP",
-    className: "md:col-span-2 md:row-span-2",
-    floatDelay: 0,
+    className: "md:col-span-1 md:row-span-2",
+    floatDelay: 1,
   },
   {
-    id: 2,
+    id: 3,
     title: "Vellaro Pizzaria",
     subtitle: "De salão vazio a recorde de delivery",
     videoSrc: "/VellaroCase.webm",
     poster: "/vellarologo.jpeg",
     metric: "3 Anos de Parceria",
     location: "Campinas, SP",
-    className: "md:col-span-1 md:row-span-2",
-    floatDelay: 1,
+    className: "md:col-span-1 md:row-span-1",
+    floatDelay: 0.5,
   },
   {
-    id: 3,
+    id: 4,
+    title: "Gambito Bar",
+    subtitle: "Posicionamento e delivery lucrativo",
+    videoSrc: "",
+    poster: "/gamblogo.jpg",
+    metric: "Parceria Estratégica",
+    location: "Farroupilha, RS",
+    className: "md:col-span-1 md:row-span-1",
+    floatDelay: 1.5,
+  },
+  {
+    id: 5,
     title: "Anabela - Forno a Lenha",
     subtitle: "Consolidada como maior da região",
     videoSrc: "",
     poster: "/cases/case-anabela.jpg",
     metric: "4 Anos com a Nivix",
     location: "Curitiba, PR",
-    className: "md:col-span-1 md:row-span-1",
-    floatDelay: 0.5,
-  },
-  {
-    id: 4,
-    title: "Forno e Famiglia",
-    subtitle: "De 12 para 60+ pedidos por noite",
-    videoSrc: "",
-    poster: "/cases/case-forno-famiglia.jpg",
-    metric: "5x Mais Pedidos sem iFood",
-    location: "Belo Horizonte, MG",
-    className: "md:col-span-1 md:row-span-1",
-    floatDelay: 1.5,
-  },
-  {
-    id: 5,
-    title: "Hober Pizzaria",
-    subtitle: "Recorde histórico de pedidos no delivery",
-    videoSrc: "",
-    poster: "/cases/case-hober.jpg",
-    metric: "ROI 8x em Anúncios",
-    location: "Santo André, SP",
     className: "md:col-span-1 md:row-span-1",
     floatDelay: 2,
   },
@@ -363,7 +363,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                         <img src="/N-Amarelo.png" className="w-12 h-14 opacity-15 grayscale group-hover:opacity-40 group-hover:grayscale-0 transition-all duration-700 object-contain" alt="" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
                   </div>
 
                   <div className="relative z-20 flex items-center justify-between gap-2">
