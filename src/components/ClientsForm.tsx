@@ -7,7 +7,7 @@ import { NicheConfig } from "@/data/niches";
 
 export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel"] }) {
   const clientsList = data?.clients || defaultClients;
-  const initialCount = data?.activeClientsCount ?? 26;
+  const initialCount = data?.activeClientsCount ?? 127;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clientes, setClientes] = useState(initialCount);
@@ -123,11 +123,11 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
                   >
                     <div className="relative w-full flex flex-col items-center">
                       <div className="absolute inset-0 bg-amber-400/5 blur-[20px] rounded-full"></div>
-                      <div className="w-24 h-24 z-10 rounded-2xl bg-white p-2.5 border border-amber-400/25 shadow-xl flex items-center justify-center overflow-hidden">
+                      <div className="w-24 h-24 z-10 rounded-2xl bg-white border border-amber-400/25 shadow-xl flex items-center justify-center overflow-hidden">
                         <img
                           src={client.imagePath}
                           alt={client.companyName}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-cover"
                         />
                       </div>
                       <h3 className="text-xl sm:text-2xl mt-5 font-bold text-white tracking-tight">{client.companyName}</h3>

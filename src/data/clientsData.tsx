@@ -18,10 +18,10 @@ export const clients: Client[] = [
   {
     id: 1,
     companyName: "Gratto Pizzaria",
-    description: "Referência em alta performance e delivery. Estruturação completa de funil de vendas, branding e escala diária de novos pedidos com a assessoria da Nivix.",
+    description: "Pizzaria delivery de Farroupilha, chegou com problemas de demanda que foram completamente supridos pela Nivix com investimento mínimo em tráfego, saindo de 20K para 50K faturados no período inicial.",
     imagePath: "/grattopv.png",                                                        
     fireImagePath: "/fogo.png",
-    fireText: "Escala Contínua",
+    fireText: "8 meses com a Nivix",
   },
   {
     id: 2,
@@ -34,10 +34,10 @@ export const clients: Client[] = [
   {
     id: 3,
     companyName: "Gambito Bar",
-    description: "Social media de alto padrão, drinks autorais e reconhecimento na região, com estratégias de delivery e captação de clientes que mudaram o jogo da operação.",
+    description: "Parceria estratégica com estrutura social e delivery para captação contínua e presença marcante na região.",
     imagePath: "/gamblogo.jpg",
     fireImagePath: "/fogo.png",
-    fireText: "Parceria Elite",
+    fireText: "Parceria Estratégica",
   },
   {
     id: 4,

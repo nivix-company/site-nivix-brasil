@@ -23,11 +23,12 @@ const defaultCases: CaseItem[] = [
   {
     id: 1,
     title: "Gratto Pizzaria",
-    subtitle: "Escala acelerada e explosão de novos pedidos",
+    subtitle: "Pizzaria delivery de Farroupilha",
     videoSrc: "",
     poster: "/grattopv.png",
-    metric: "Case de Escala & Crescimento",
-    location: "Passo Fundo, RS",
+    metric: "De 20K para 50K",
+    subMetric: "8 Meses com a Nivix",
+    location: "Farroupilha, RS",
     className: "md:col-span-2 md:row-span-2",
     floatDelay: 0,
   },
@@ -56,7 +57,7 @@ const defaultCases: CaseItem[] = [
   {
     id: 4,
     title: "Gambito Bar",
-    subtitle: "Posicionamento e delivery lucrativo",
+    subtitle: "Estrutura social e delivery",
     videoSrc: "",
     poster: "/gamblogo.jpg",
     metric: "Parceria Estratégica",
@@ -384,46 +385,61 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
         ) : (
           /* BENTO GRID PADRÃO PARA OUTROS NICHOS (FOOD) */
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl auto-rows-[220px]">
-            {cases.map((item) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                animate={{ 
-                  y: [0, -12, 0],
-                }}
-                transition={{ 
-                  scale: { duration: 0.5 },
-                  y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: item.floatDelay || 0 }
-                }}
-                whileHover={{ scale: 1.02, zIndex: 50 }}
-                className={`relative rounded-[40px] p-[1px] bg-gradient-to-br from-neutral-700/50 via-neutral-900/50 to-neutral-800 shadow-2xl overflow-hidden group 
-                  ${item.className || "md:col-span-1 md:row-span-1"}
-                `}
-              >
-                <div className="relative w-full h-full rounded-[39px] overflow-hidden bg-neutral-950/40 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-8">
-                  <div className="absolute inset-0 z-0 overflow-hidden">
-                    {item.videoSrc ? (
-                      <video
-                        controls
-                        playsInline
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
-                        src={item.videoSrc}
-                        poster={item.poster}
-                      />
-                    ) : item.poster ? (
-                      <img 
-                        src={item.poster} 
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700" 
-                        alt={item.title} 
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-neutral-900/80 flex items-center justify-center">
-                        <img src="/N-Amarelo.png" className="w-12 h-14 opacity-15 grayscale group-hover:opacity-40 group-hover:grayscale-0 transition-all duration-700 object-contain" alt="" />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
-                  </div>
+            {cases.map((item) => {
+              const isGratto = item.title.includes("Gratto") || item.poster?.includes("gratto");
+
+              return (
+                <motion.div 
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  animate={{ 
+                    y: [0, -12, 0],
+                  }}
+                  transition={{ 
+                    scale: { duration: 0.5 },
+                    y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: item.floatDelay || 0 }
+                  }}
+                  whileHover={{ scale: 1.02, zIndex: 50 }}
+                  className={`relative rounded-[40px] p-[1px] bg-gradient-to-br from-neutral-700/50 via-neutral-900/50 to-neutral-800 shadow-2xl overflow-hidden group 
+                    ${item.className || "md:col-span-1 md:row-span-1"}
+                  `}
+                >
+                  <div className={`relative w-full h-full rounded-[39px] overflow-hidden ${isGratto ? "bg-black" : "bg-neutral-950/40 backdrop-blur-3xl"} flex flex-col justify-between p-6 sm:p-8`}>
+                    <div className={`absolute inset-0 z-0 overflow-hidden ${isGratto ? "bg-black flex items-center justify-center" : ""}`}>
+                      {item.videoSrc ? (
+                        <video
+                          controls
+                          playsInline
+                          className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                          src={item.videoSrc}
+                          poster={item.poster}
+                        />
+                      ) : item.poster ? (
+                        isGratto ? (
+                          <div className="w-full h-full bg-black flex items-center justify-center p-6">
+                            <img 
+                              src={item.poster} 
+                              className="w-36 sm:w-44 max-h-36 sm:max-h-44 object-contain group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_25px_rgba(255,255,255,0.06)]" 
+                              alt={item.title} 
+                            />
+                          </div>
+                        ) : (
+                          <img 
+                            src={item.poster} 
+                            className="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700" 
+                            alt={item.title} 
+                          />
+                        )
+                      ) : (
+                        <div className="w-full h-full bg-neutral-900/80 flex items-center justify-center">
+                          <img src="/N-Amarelo.png" className="w-12 h-14 opacity-15 grayscale group-hover:opacity-40 group-hover:grayscale-0 transition-all duration-700 object-contain" alt="" />
+                        </div>
+                      )}
+                      {!isGratto && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
+                      )}
+                    </div>
 
                   <div className="relative z-20 flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
@@ -451,8 +467,9 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
         )}
 
         {/* Botão de Ação apenas para nichos food/padrão (builders já tem o CTA no card) */}

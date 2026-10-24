@@ -168,11 +168,15 @@ const defaultPizzariasCases: CaseItem[] = [
   {
     id: 1,
     title: "Gratto Pizzaria",
-    subtitle: "Escala acelerada e explosão de novos pedidos",
+    subtitle: "Pizzaria delivery de Farroupilha",
     videoSrc: "",
     poster: "/grattopv.png",
-    metric: "Case de Escala & Crescimento",
-    location: "Passo Fundo, RS",
+    metric: "De 20K para 50K",
+    subMetric: "8 Meses com a Nivix",
+    location: "Farroupilha, RS",
+    story:
+      "Pizzaria delivery de Farroupilha, chegou com problemas de demanda que foram completamente supridos pela Nivix com investimento mínimo em tráfego, saindo de 20K para 50K faturados no período inicial.",
+    badge: "8 Meses de Parceria",
     className: "md:col-span-2 md:row-span-2",
     floatDelay: 0,
   },
@@ -201,7 +205,7 @@ const defaultPizzariasCases: CaseItem[] = [
   {
     id: 4,
     title: "Gambito Bar",
-    subtitle: "Posicionamento e delivery lucrativo",
+    subtitle: "Estrutura social e delivery",
     videoSrc: "",
     poster: "/gamblogo.jpg",
     metric: "Parceria Estratégica",
@@ -226,11 +230,15 @@ const defaultFoodCases: CaseItem[] = [
   {
     id: 1,
     title: "Gratto Pizzaria",
-    subtitle: "Escala acelerada e explosão de novos pedidos",
+    subtitle: "Pizzaria delivery de Farroupilha",
     videoSrc: "",
     poster: "/grattopv.png",
-    metric: "Case de Escala & Crescimento",
-    location: "Passo Fundo, RS",
+    metric: "De 20K para 50K",
+    subMetric: "8 Meses com a Nivix",
+    location: "Farroupilha, RS",
+    story:
+      "Pizzaria delivery de Farroupilha, chegou com problemas de demanda que foram completamente supridos pela Nivix com investimento mínimo em tráfego, saindo de 20K para 50K faturados no período inicial.",
+    badge: "8 Meses de Parceria",
     className: "md:col-span-2 md:row-span-2",
     floatDelay: 0,
   },
@@ -259,7 +267,7 @@ const defaultFoodCases: CaseItem[] = [
   {
     id: 4,
     title: "Gambito Bar",
-    subtitle: "Posicionamento e delivery lucrativo",
+    subtitle: "Estrutura social e delivery",
     videoSrc: "",
     poster: "/gamblogo.jpg",
     metric: "Parceria Estratégica",
@@ -285,10 +293,10 @@ const defaultFoodClients: ClientTestimonial[] = [
     id: 1,
     companyName: "Gratto Pizzaria",
     description:
-      "Referência em alta performance e delivery. Estruturação completa de funil de vendas, branding e escala diária de novos pedidos com a assessoria da Nivix.",
+      "Pizzaria delivery de Farroupilha, chegou com problemas de demanda que foram completamente supridos pela Nivix com investimento mínimo em tráfego, saindo de 20K para 50K faturados no período inicial.",
     imagePath: "/grattopv.png",
     fireImagePath: "/fogo.png",
-    fireText: "Escala Contínua",
+    fireText: "8 meses com a Nivix",
   },
   {
     id: 2,
@@ -303,10 +311,10 @@ const defaultFoodClients: ClientTestimonial[] = [
     id: 3,
     companyName: "Gambito Bar",
     description:
-      "Social media de alto padrão, drinks autorais e reconhecimento na região, com estratégias de delivery e captação de clientes que mudaram o jogo da operação.",
+      "Parceria estratégica com estrutura social e delivery para captação contínua e presença marcante na região.",
     imagePath: "/gamblogo.jpg",
     fireImagePath: "/fogo.png",
-    fireText: "Parceria Elite",
+    fireText: "Parceria Estratégica",
   },
   {
     id: 4,
@@ -464,7 +472,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       items: defaultFoodCases,
     },
     carousel: {
-      activeClientsCount: 38,
+      activeClientsCount: 127,
       titleLine1: "De pizzarias de bairro a",
       titleHighlight: "grandes franquias",
       subtitle:
@@ -564,7 +572,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       items: defaultPizzariasCases,
     },
     carousel: {
-      activeClientsCount: 34,
+      activeClientsCount: 127,
       titleLine1: "De pizzarias de bairro a",
       titleHighlight: "grandes franquias",
       subtitle:
@@ -777,7 +785,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       ],
     },
     carousel: {
-      activeClientsCount: 26,
+      activeClientsCount: 127,
       titleLine1: "De contractors autônomos a",
       titleHighlight: "grandes construtoras nos EUA",
       subtitle:
