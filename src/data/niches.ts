@@ -525,17 +525,17 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
       leadSourceTag: "Landing Page Elite - Pizzarias",
     },
     method: {
-      cpaValue: "R$ 6",
-      cpaFormatted: "R$ 6,00",
+      cpaValue: "R$ 4",
+      cpaFormatted: "R$ 4,00",
       cpaLabel: "Custo por Cliente",
       hookTarget: "cliente novo",
-      hookAction: "fazendo pedido?",
+      hookAction: "fazendo pedidos na sua base?",
       description:
         "Nós validamos o custo médio de aquisição mais agressivo do mercado de pizzarias brasileiro.",
       subDescription:
-        'Nossa engenharia de tráfego transforma cada <span class="text-white font-bold">R$ 6,00 investidos</span> em uma comanda batendo na sua cozinha.',
+        'Nossa engenharia de tráfego transforma cada <span class="text-white font-bold">R$ 4,00 investidos</span> em um cliente novo fazendo pedidos na sua base.',
       footer:
-        "*Baseado no CPA médio de R$ 6,00 validado em centenas de pizzarias de sucesso.",
+        "*Baseado no CPA médio de R$ 4,00 validado em centenas de pizzarias de sucesso.",
       roiConfig: {
         defaultInvest: 1600,
         minInvest: 600,
@@ -545,7 +545,7 @@ export const nicheData: Record<"geral" | "pizzarias" | "builders", NicheConfig> 
         minTicket: 20,
         maxTicket: 200,
         stepTicket: 5,
-        cpaDivisor: 6,
+        cpaDivisor: 4,
         ticketLabel: "Seu Ticket Médio",
         ordersLabel: "Novos Pedidos",
         revenueLabel: "Faturamento Est.",
