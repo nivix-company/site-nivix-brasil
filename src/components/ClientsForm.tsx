@@ -10,15 +10,7 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
   const initialCount = data?.activeClientsCount ?? 127;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [clientes, setClientes] = useState(initialCount);
-
-  useEffect(() => {
-    setClientes(initialCount);
-    const timer = setTimeout(() => {
-      setClientes(initialCount + 1);
-    }, 40000); 
-    return () => clearTimeout(timer);
-  }, [initialCount]);
+  const clientes = initialCount;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % clientsList.length);
@@ -62,7 +54,7 @@ export default function ClientsCarousel({ data }: { data?: NicheConfig["carousel
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
           </span>
-          <span>Atualmente com: <strong className="text-white tabular-nums">{clientes}</strong> Parceiros Ativos</span>
+          <span>Atualmente com <strong className="text-white tabular-nums">{clientes}</strong> parceiros ativos.</span>
         </motion.div>
 
         <motion.h2 

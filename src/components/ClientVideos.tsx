@@ -1,33 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { CaseItem } from "@/data/niches";
-import { 
-  FaCrown, 
-  FaLocationDot, 
-  FaCheck, 
-  FaArrowTrendUp, 
-  FaArrowRight, 
-  FaShieldHalved, 
-  FaUsers,
-  FaWhatsapp,
-  FaMicrophone,
-  FaMagnifyingGlassPlus,
-  FaXmark,
-  FaStar,
-  FaGoogle
-} from "react-icons/fa6";
+import { FaCrown, FaLocationDot, FaCheck, FaArrowTrendUp, FaArrowRight, FaShieldHalved, FaUsers } from "react-icons/fa6";
 
 const defaultCases: CaseItem[] = [
   {
     id: 1,
     title: "Gratto Pizzaria",
-    subtitle: "Pizzaria delivery de Farroupilha",
+    subtitle: "Saindo de 20K para 50K faturados no período inicial",
     videoSrc: "",
     poster: "/grattopv.png",
-    metric: "De 20K para 50K",
-    subMetric: "8 Meses com a Nivix",
+    metric: "8 Meses com a Nivix",
     location: "Farroupilha, RS",
     className: "md:col-span-2 md:row-span-2",
     floatDelay: 0,
@@ -35,10 +20,10 @@ const defaultCases: CaseItem[] = [
   {
     id: 2,
     title: "Sabores da Vila",
-    subtitle: "+147% em pedidos no 1º mês",
+    subtitle: "Salão cheio com previsibilidade e clientes fiéis",
     videoSrc: "/SaboresDaVila.webm",
     poster: "/svlogo.jpeg",
-    metric: "+147% Pedidos",
+    metric: "10 Meses com a Nivix",
     location: "São Paulo, SP",
     className: "md:col-span-1 md:row-span-2",
     floatDelay: 1,
@@ -46,10 +31,10 @@ const defaultCases: CaseItem[] = [
   {
     id: 3,
     title: "Vellaro Pizzaria",
-    subtitle: "De salão vazio a recorde de delivery",
+    subtitle: "Recorde de delivery e maior case da Nivix",
     videoSrc: "/VellaroCase.webm",
     poster: "/vellarologo.jpeg",
-    metric: "3 Anos de Parceria",
+    metric: "3 Anos com a Nivix",
     location: "Campinas, SP",
     className: "md:col-span-1 md:row-span-1",
     floatDelay: 0.5,
@@ -68,7 +53,7 @@ const defaultCases: CaseItem[] = [
   {
     id: 5,
     title: "Anabela - Forno a Lenha",
-    subtitle: "Consolidada como maior da região",
+    subtitle: "Consolidada como maior pizzaria da cidade",
     videoSrc: "",
     poster: "/cases/case-anabela.jpg",
     metric: "4 Anos com a Nivix",
@@ -89,8 +74,7 @@ interface ClientVideosProps {
 
 const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
   const cases = data?.items || defaultCases;
-  const isRichCases = cases.some((c) => Boolean(c.story));
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const isRichCases = cases.some((c) => Boolean(c.story)) && !cases.some((c) => c.title.includes("Gratto") || c.title.includes("Sabores da Vila"));
 
   return (
     <section id="cases" className="w-full px-4 pt-12 sm:pt-16 pb-0 flex flex-col items-center relative overflow-hidden scroll-mt-24">
@@ -110,7 +94,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
             className="mb-6 inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/25 rounded-full px-4 py-1.5 text-amber-300 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md"
           >
             <FaCrown className="text-amber-400 text-xs" />
-            <span>{isRichCases ? "Prova Social Real • Resultados Comprovados na América" : "Cases de Sucesso • Resultados Comprovados"}</span>
+            <span>Cases de Sucesso • Resultados Comprovados</span>
           </motion.div>
 
           <motion.h2 
@@ -137,7 +121,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           </motion.p>
         </div>
 
-        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO DESKTOP COM PROVA SOCIAL REAL E MOTIONS */}
+        {/* SE FOR CASES ESTRUTURADOS (BUILDERS): BENTO DESKTOP (L1: WIDE + COMPACT, L2: 50/50, L3: LEAD CARD ELEGANTE) */}
         {isRichCases ? (
           <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 lg:gap-8 w-full max-w-6xl">
             {cases.map((item, index) => {
@@ -241,7 +225,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                 );
               }
 
-              // CARDS 0, 1, 2, 3: PROVAS SOCIAIS REAIS COM CONVERSAS & MOTIONS
+              // CARDS 0, 1, 2, 3: BENTO ELEGANTE E LIMPO
               const isFirstRowWide = index === 0;
               const colSpanClass = index === 0 
                 ? "lg:col-span-4 lg:flex-row" 
@@ -257,107 +241,65 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -6 }}
-                  className={`w-full ${colSpanClass} bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/50 transition-all duration-500 group`}
+                  className={`w-full ${colSpanClass} bg-neutral-900/60 border border-neutral-800 rounded-[32px] overflow-hidden flex flex-col justify-between shadow-2xl hover:border-amber-400/40 transition-all duration-500 group`}
                 >
-                  {/* FOTO/PRINT DA CONVERSA & RANKING GOOGLE COM MOTIONS INTERATIVOS */}
-                  <div 
-                    onClick={() => item.poster && setSelectedImage(item.poster)}
-                    className={`relative w-full ${isFirstRowWide ? "lg:w-[48%] h-72 sm:h-80 lg:h-auto min-h-[340px]" : "h-72 sm:h-80"} overflow-hidden bg-neutral-950 shrink-0 cursor-pointer select-none`}
-                    title="Clique para ver a prova completa"
-                  >
+                  {/* FOTO DO PROJETO COM BADGES DISCRETOS E ELEGANTES */}
+                  <div className={`relative w-full ${isFirstRowWide ? "lg:w-[46%] h-56 sm:h-64 lg:h-auto min-h-[280px]" : "h-56 sm:h-64"} overflow-hidden bg-neutral-950 shrink-0`}>
                     <img 
                       src={item.poster || "/cases/case-kitchen.jpg"} 
-                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 brightness-[0.92] group-hover:brightness-100" 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105" 
                       alt={item.title} 
                     />
-                    
                     {/* Gradiente sutil da imagem */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/25 to-black/60 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/60 pointer-events-none" />
 
                     {/* Badges superiores flutuantes */}
-                    <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between gap-2 z-10">
+                    <div className="absolute top-4 inset-x-4 flex items-center justify-between gap-2 z-10">
                       {item.location && (
-                        <span className="flex items-center gap-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3 py-1 rounded-full font-medium shadow-md">
+                        <span className="flex items-center gap-1.5 bg-black/75 backdrop-blur-md border border-white/10 text-neutral-200 text-xs px-3 py-1 rounded-full font-medium shadow-md">
                           <FaLocationDot className="text-amber-400 text-[11px]" />
-                          <span className="truncate max-w-[150px]">{item.location}</span>
+                          <span>{item.location}</span>
                         </span>
                       )}
-                      
-                      {/* Badge de ampliação / zoom */}
-                      <span className="inline-flex items-center gap-1.5 bg-amber-400/90 text-black text-[11px] font-black px-2.5 py-1 rounded-full shadow-lg opacity-85 group-hover:opacity-100 transition-opacity">
-                        <FaMagnifyingGlassPlus className="text-[10px]" />
-                        <span>Ver Print</span>
-                      </span>
+                      {item.subMetric && (
+                        <span className="flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs px-3 py-1 rounded-full font-black tracking-wide shadow-lg">
+                          <FaArrowTrendUp className="text-[11px]" />
+                          <span>{item.subMetric}</span>
+                        </span>
+                      )}
                     </div>
 
-                    {/* Tag de nicho/categoria */}
-                    <div className="absolute top-12 left-3.5 z-10">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/85 backdrop-blur-md px-2.5 py-0.5 rounded-md border border-amber-400/30">
+                    {/* Tag inferior na foto: Nicho / Categoria */}
+                    <div className="absolute bottom-3 left-4 z-10">
+                      <span className="text-[11px] font-bold tracking-wider uppercase text-amber-300 bg-neutral-950/85 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-400/30">
                         {item.subtitle}
                       </span>
                     </div>
-
-                    {/* MOTION: BALÃO ANIMADO DE CONVERSA DO WHATSAPP / AUDIO */}
-                    {item.chatHighlight && (
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: (item.floatDelay || 0) * 0.5 }}
-                        className="absolute bottom-3 inset-x-3 sm:bottom-3.5 sm:inset-x-3.5 z-20 bg-neutral-950/95 backdrop-blur-xl border border-emerald-500/40 rounded-2xl p-2.5 sm:p-3 shadow-[0_10px_25px_rgba(0,0,0,0.6)] flex items-start gap-2.5 group-hover:border-emerald-400 transition-colors"
-                      >
-                        <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                          {item.isAudio ? (
-                            <FaMicrophone className="text-emerald-400 text-xs animate-pulse" />
-                          ) : (
-                            <FaWhatsapp className="text-emerald-400 text-xs" />
-                          )}
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center justify-between gap-1 text-[10px]">
-                            <span className="font-bold text-emerald-400 truncate">{item.chatAuthor || "Cliente Nivix"}</span>
-                            <span className="font-mono text-[9px] text-neutral-400 shrink-0">{item.chatDetail || "WhatsApp VIP"}</span>
-                          </div>
-                          <p className="text-white text-xs font-semibold leading-snug mt-0.5 line-clamp-2">
-                            "{item.chatHighlight}"
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
                   </div>
 
                   {/* CORPO DO CARD: INFORMAÇÕES ORGANIZADAS E HIERARQUIA VISUAL CLARA */}
                   <div className={`p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4 bg-gradient-to-b from-neutral-950/90 to-neutral-900/90 ${
-                    isFirstRowWide ? "lg:w-[52%] lg:p-8" : "w-full"
+                    isFirstRowWide ? "lg:w-[54%] lg:p-8" : "w-full"
                   }`}>
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-1.5">
-                        <h3 className={`font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors ${
-                          isFirstRowWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-xl sm:text-2xl"
-                        }`}>
-                          {item.title}
-                        </h3>
-                      </div>
-
+                      <h3 className={`font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors ${
+                        isFirstRowWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-xl sm:text-2xl"
+                      }`}>
+                        {item.title}
+                      </h3>
                       {item.metric && (
-                        <div className={`mt-1 font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight ${
-                          isFirstRowWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-lg sm:text-xl"
+                        <div className={`mt-1.5 font-black bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent tracking-tight ${
+                          isFirstRowWide ? "text-2xl sm:text-3xl lg:text-4xl" : "text-2xl sm:text-3xl"
                         }`}>
                           {item.metric}
                         </div>
                       )}
-
-                      {/* Google Ranking Badge */}
-                      {item.googleRanking && (
-                        <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-300 text-[11px] font-semibold">
-                          <FaGoogle className="text-[10px] text-blue-400" />
-                          <span>{item.googleRanking}</span>
-                        </div>
-                      )}
                     </div>
 
-                    {/* História / Depoimento limpo e legível */}
+                    {/* História / Resumo do ganho e parceria */}
                     {item.story && (
-                      <div className="p-3.5 sm:p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800">
-                        <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-normal italic">
+                      <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800">
+                        <p className="text-neutral-300 text-sm leading-relaxed font-normal italic">
                           "{item.story}"
                         </p>
                       </div>
@@ -369,13 +311,9 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                         <FaCheck className="text-[10px]" />
                         <span>{item.badge || "Contratos Diretos"}</span>
                       </span>
-                      <button
-                        onClick={() => item.poster && setSelectedImage(item.poster)}
-                        className="text-amber-400/90 hover:text-amber-300 font-mono text-[11px] flex items-center gap-1 transition-colors"
-                      >
-                        <span>Ver conversa real</span>
-                        <FaArrowRight className="text-[10px]" />
-                      </button>
+                      <span className="text-neutral-500 font-mono text-[11px]">
+                        Case Verificado Nivix
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -406,7 +344,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                   `}
                 >
                   <div className={`relative w-full h-full rounded-[39px] overflow-hidden ${isGratto ? "bg-black" : "bg-neutral-950/40 backdrop-blur-3xl"} flex flex-col justify-between p-6 sm:p-8`}>
-                    <div className={`absolute inset-0 z-0 overflow-hidden ${isGratto ? "bg-black flex items-center justify-center" : ""}`}>
+                    <div className={`absolute inset-0 z-0 overflow-hidden ${isGratto ? "bg-black flex items-center justify-center p-6" : ""}`}>
                       {item.videoSrc ? (
                         <video
                           controls
@@ -420,7 +358,7 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                           <div className="w-full h-full bg-black flex items-center justify-center p-6">
                             <img 
                               src={item.poster} 
-                              className="w-36 sm:w-44 max-h-36 sm:max-h-44 object-contain group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_25px_rgba(255,255,255,0.06)]" 
+                              className="w-36 sm:w-44 max-h-36 sm:max-h-44 object-contain group-hover:scale-105 transition-all duration-700" 
                               alt={item.title} 
                             />
                           </div>
@@ -441,35 +379,35 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
                       )}
                     </div>
 
-                  <div className="relative z-20 flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#00ff2a] animate-pulse"></span>
-                      <p className="text-white text-xs sm:text-sm font-bold tracking-wider uppercase truncate">
-                        {item.title}
+                    <div className="relative z-20 flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#00ff2a] animate-pulse"></span>
+                        <p className="text-white text-xs sm:text-sm font-bold tracking-wider uppercase truncate">
+                          {item.title}
+                        </p>
+                      </div>
+                      {item.location && (
+                        <span className="text-[10px] text-neutral-300 font-mono bg-black/60 px-2.5 py-0.5 rounded-full border border-neutral-700/60 shrink-0">
+                          {item.location}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="relative z-20 space-y-1.5">
+                      {item.metric && (
+                        <div className="inline-block text-[#FFB400] text-xs sm:text-sm font-black uppercase tracking-wider bg-black/70 px-2.5 py-1 rounded-lg border border-[#FFB400]/30 shadow-md">
+                          {item.metric}
+                        </div>
+                      )}
+                      <p className="text-[#FFB400] text-[11px] font-bold uppercase tracking-[0.15em]">
+                        {item.subtitle}
                       </p>
                     </div>
-                    {item.location && (
-                      <span className="text-[10px] text-neutral-300 font-mono bg-black/60 px-2.5 py-0.5 rounded-full border border-neutral-700/60 shrink-0">
-                        {item.location}
-                      </span>
-                    )}
                   </div>
-
-                  <div className="relative z-20 space-y-1.5">
-                    {item.metric && (
-                      <div className="inline-block text-[#FFB400] text-xs sm:text-sm font-black uppercase tracking-wider bg-black/70 px-2.5 py-1 rounded-lg border border-[#FFB400]/30 shadow-md">
-                        {item.metric}
-                      </div>
-                    )}
-                    <p className="text-[#FFB400] text-[11px] font-bold uppercase tracking-[0.15em]">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </div>
         )}
 
         {/* Botão de Ação apenas para nichos food/padrão (builders já tem o CTA no card) */}
@@ -513,66 +451,6 @@ const ClientVideos: React.FC<ClientVideosProps> = ({ data }) => {
           />
         </div>
       </div>
-
-      {/* LIGHTBOX MODAL: VISUALIZAÇÃO EM ALTA RESOLUÇÃO DAS CONVERSAS E RESULTADOS */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl p-4 sm:p-6 flex flex-col items-center justify-center cursor-zoom-out"
-          >
-            <motion.div 
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-md w-full max-h-[92vh] bg-neutral-950 border border-neutral-800 rounded-[28px] overflow-hidden flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.9)] cursor-default"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header do Modal */}
-              <div className="px-5 py-3.5 bg-neutral-900/90 border-b border-neutral-800 flex items-center justify-between shrink-0">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span className="text-xs sm:text-sm font-bold text-white tracking-wide">Comprovante Real • WhatsApp & Google</span>
-                </div>
-                <button 
-                  onClick={() => setSelectedImage(null)}
-                  className="w-7 h-7 rounded-full bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
-                  aria-label="Fechar"
-                >
-                  <FaXmark className="text-xs" />
-                </button>
-              </div>
-
-              {/* Imagem do Print em Alta Resolução com Scroll Suave */}
-              <div className="overflow-y-auto p-3 sm:p-4 bg-neutral-950 flex items-center justify-center">
-                <img 
-                  src={selectedImage} 
-                  alt="Conversa e Prova Social Completa" 
-                  className="w-full h-auto max-h-[78vh] object-contain rounded-xl shadow-2xl"
-                />
-              </div>
-
-              {/* Rodapé do Modal */}
-              <div className="px-5 py-3 bg-neutral-900/70 border-t border-neutral-800 flex items-center justify-between text-[11px] text-neutral-400 shrink-0">
-                <span className="font-mono text-emerald-400 flex items-center gap-1.5">
-                  <FaCheck className="text-[10px]" />
-                  <span>Histórico Autêntico Nivix</span>
-                </span>
-                <button 
-                  onClick={() => setSelectedImage(null)}
-                  className="text-amber-400 hover:text-amber-300 font-semibold"
-                >
-                  Fechar
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
