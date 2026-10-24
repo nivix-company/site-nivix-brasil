@@ -1,4 +1,5 @@
 'use client';
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa6";
 
@@ -7,10 +8,16 @@ interface FinalCTAProps {
         title: string;
         highlight: string;
         subtitle: string;
-    }
+    };
+    niche?: string;
 }
 
-const FinalCTA = ({ data }: FinalCTAProps) => {
+const FinalCTA = ({ data, niche }: FinalCTAProps) => {
+    const pathname = usePathname();
+    const isBuilders = niche === "builders" || pathname?.startsWith("/builders");
+    const whatsappUrl = isBuilders 
+        ? "https://wa.me/17044254698" 
+        : "https://wa.me/5554999656522";
     return (
         <section className="w-full py-32 px-4 flex justify-center relative overflow-hidden">
             {/* Massive Background Glow */}
@@ -80,8 +87,9 @@ const FinalCTA = ({ data }: FinalCTAProps) => {
                             </motion.a>
 
                             <motion.a 
-                                href="https://wa.me/5511999999999" 
+                                href={whatsappUrl} 
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="w-full md:w-auto px-12 py-6 bg-neutral-800/80 border border-neutral-700 rounded-2xl text-white font-bold text-xl flex items-center justify-center gap-3 hover:bg-neutral-800 transition-all"

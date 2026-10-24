@@ -27,6 +27,17 @@ const Footer = ({ niche }: FooterProps) => {
     const isBuilders = niche === "builders" || pathname?.startsWith("/builders");
     const navItems = isBuilders ? buildersNavItems : defaultNavItems;
 
+    // Redes sociais dinâmicas por mercado/operação
+    const whatsappUrl = isBuilders 
+        ? "https://wa.me/17044254698" 
+        : "https://wa.me/5554999656522";
+    
+    const instagramUrl = isBuilders 
+        ? "https://www.instagram.com/nivix.company" 
+        : "https://www.instagram.com/nivix.co";
+
+    const linkedinUrl = "https://www.linkedin.com/company/nivix.co";
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -43,13 +54,31 @@ const Footer = ({ niche }: FooterProps) => {
                     <div className="col-span-1 md:col-span-1 flex flex-col items-center md:items-start space-y-6">
                         <img src="/N-Amarelo.png" alt="Nivix" className="w-12 h-14 opacity-95 object-contain" />
                         <div className="flex gap-3">
-                            <a href="#" className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all">
+                            <a 
+                                href={instagramUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all"
+                                title="Instagram"
+                            >
                                 <FaInstagram size={16} />
                             </a>
-                            <a href="#" className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all">
+                            <a 
+                                href={whatsappUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all"
+                                title="WhatsApp"
+                            >
                                 <FaWhatsapp size={16} />
                             </a>
-                            <a href="#" className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all">
+                            <a 
+                                href={linkedinUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:border-[#FFB400]/50 hover:text-[#FFB400] transition-all"
+                                title="LinkedIn"
+                            >
                                 <FaLinkedinIn size={16} />
                             </a>
                         </div>

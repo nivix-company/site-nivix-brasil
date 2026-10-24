@@ -65,7 +65,7 @@ const LandingPageTemplate = ({ niche }: LandingPageTemplateProps) => {
       {!isBuilders && <Team data={data.team} />}
 
       <OurWork data={data.faq} />
-      <FinalCTA data={data.finalCTA} />
+      <FinalCTA data={data.finalCTA} niche={niche} />
       <Footer niche={niche} />
     </main>
   );
