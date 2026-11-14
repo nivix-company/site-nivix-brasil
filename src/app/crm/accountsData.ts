@@ -20,21 +20,21 @@ export interface ContractorAccount {
 export const accountsData: ContractorAccount[] = [
   {
     "id": "ACC-001",
-    "companyName": "JS Drywall & Painting LLC",
-    "ownerName": "Jean Silva",
-    "specialty": "Drywall, Level 5 & Paint",
-    "city": "Framingham",
+    "companyName": "Merrimack Valley Framing & Carpentry LLC",
+    "ownerName": "Roberto Faria",
+    "specialty": "Wood & Metal Framing",
+    "city": "Lowell",
     "state": "MA",
-    "onboardingDate": "09/07/2023",
-    "monthsActive": 24,
-    "daysActive": 787,
-    "estimatesDelivered": 509,
-    "closedRevenue": 1465000,
-    "monthlyPlan": 3500,
+    "onboardingDate": "06/11/2025",
+    "monthsActive": 5,
+    "daysActive": 154,
+    "estimatesDelivered": 76,
+    "closedRevenue": 137000,
+    "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Showcase Case: Top-1 Google Local Pack ranking across Greater Boston (Framingham, MA). Covered initial $26k baseline in first 30 days and scaled direct homeowner contract volume to over $115k/mo during peak high season with zero GC dependency."
+    "notes": "Cold Belt operation (Lowell, MA). Covered $16k baseline in M1 and doubled direct homeowner pipeline in M2. Maintains steady residential framing volume (~$27k/mo avg, $137k total across 5 months)."
   },
   {
     "id": "ACC-002",
@@ -46,31 +46,31 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/15/2025",
     "monthsActive": 3,
     "daysActive": 89,
-    "estimatesDelivered": 36,
-    "closedRevenue": 125000,
+    "estimatesDelivered": 33,
+    "closedRevenue": 92000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$42k/mo direct contract volume ($125k total)."
+    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$31k/mo direct contract volume ($92k total)."
   },
   {
-    "companyName": "Summit Peak Construction & Remodeling LLC",
-    "ownerName": "Lucas Ferreira",
+    "id": "ACC-003",
+    "companyName": "JK Construction LLC",
+    "ownerName": "Jonas Klein",
     "specialty": "Whole Home & Interior Remodeling",
-    "city": "Worcester",
-    "state": "MA",
-    "onboardingDate": "09/10/2024",
-    "monthsActive": 14,
-    "daysActive": 420,
-    "monthlyPlan": 3500,
+    "city": "Hartford",
+    "state": "CT",
+    "onboardingDate": "05/14/2025",
+    "monthsActive": 9,
+    "daysActive": 274,
+    "estimatesDelivered": 115,
+    "closedRevenue": 372000,
+    "monthlyPlan": 2500,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Close Call Showcase (Presentation Model • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Paused 2 full months during sub-zero freeze (Jan–Feb), with small emergency trickle in Dec ($12k); generated peak $84k/mo in high season with zero GC dependency.",
-    "id": "ACC-003",
-    "estimatesDelivered": 224,
-    "closedRevenue": 622000
+    "notes": "Cold Belt operation (Hartford, CT). Covered $24k baseline in M1 (May) and doubled in M2 ($49k). Delivered peak summer volume ($78k–$82k/mo in Jul–Aug) with consistent flow in Sep–Oct ($47k–$48k/mo). Tapered in Nov ($21k), paused operations in Dec ($0), and resumed at lower winter pace in Jan ($23k)."
   },
   {
     "id": "ACC-004",
@@ -83,12 +83,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 1,
     "daysActive": 34,
     "estimatesDelivered": 6,
-    "closedRevenue": 31000,
+    "closedRevenue": 25000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Onboarding ramp in Framingham, MA. Month 1 baseline covered at $31k with 6 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
+    "notes": "Onboarding ramp in Framingham, MA. Month 1 baseline covered at $25k with 6 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
   },
   {
     "id": "ACC-005",
@@ -101,12 +101,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 2,
     "daysActive": 57,
     "estimatesDelivered": 26,
-    "closedRevenue": 73000,
+    "closedRevenue": 58000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "60-Day Milestone reached in Salt Lake City, UT. Doubled direct homeowner contract volume from initial $27k ramp to $46k in Month 2 (17 estimates); operating 100% direct with zero builder cuts."
+    "notes": "60-Day Milestone reached in Salt Lake City, UT. Doubled direct homeowner contract volume from initial $22k ramp to $36k in Month 2 (17 estimates); operating 100% direct with zero builder cuts."
   },
   {
     "id": "ACC-006",
@@ -118,13 +118,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/03/2025",
     "monthsActive": 3,
     "daysActive": 101,
-    "estimatesDelivered": 36,
-    "closedRevenue": 109000,
+    "estimatesDelivered": 33,
+    "closedRevenue": 81000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$36k/mo direct contract volume ($109k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$27k/mo direct contract volume ($81k total)."
   },
   {
     "id": "ACC-007",
@@ -136,13 +136,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/10/2025",
     "monthsActive": 4,
     "daysActive": 125,
-    "estimatesDelivered": 48,
-    "closedRevenue": 145000,
+    "estimatesDelivered": 42,
+    "closedRevenue": 104000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$36k/mo direct contract volume ($145k total)."
+    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$26k/mo direct contract volume ($104k total)."
   },
   {
     "id": "ACC-008",
@@ -154,13 +154,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/17/2025",
     "monthsActive": 5,
     "daysActive": 148,
-    "estimatesDelivered": 82,
-    "closedRevenue": 239000,
+    "estimatesDelivered": 67,
+    "closedRevenue": 163000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Nashua, NH). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$48k/mo direct contract volume ($239k total)."
+    "notes": "Sunbelt operation (Nashua, NH). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$33k/mo direct contract volume ($163k total)."
   },
   {
     "id": "ACC-009",
@@ -172,13 +172,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/04/2025",
     "monthsActive": 6,
     "daysActive": 192,
-    "estimatesDelivered": 103,
-    "closedRevenue": 330000,
+    "estimatesDelivered": 87,
+    "closedRevenue": 220000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$55k/mo direct contract volume ($330k total)."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$37k/mo direct contract volume ($220k total)."
   },
   {
     "id": "ACC-010",
@@ -190,13 +190,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/11/2025",
     "monthsActive": 7,
     "daysActive": 215,
-    "estimatesDelivered": 132,
-    "closedRevenue": 328000,
+    "estimatesDelivered": 105,
+    "closedRevenue": 222000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$47k/mo direct contract volume ($328k total)."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$32k/mo direct contract volume ($222k total)."
   },
   {
     "id": "ACC-011",
@@ -208,13 +208,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/18/2025",
     "monthsActive": 8,
     "daysActive": 239,
-    "estimatesDelivered": 171,
-    "closedRevenue": 478000,
+    "estimatesDelivered": 137,
+    "closedRevenue": 323000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$60k/mo direct contract volume ($478k total)."
+    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$40k/mo direct contract volume ($323k total)."
   },
   {
     "id": "ACC-012",
@@ -227,12 +227,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 1,
     "daysActive": 38,
     "estimatesDelivered": 8,
-    "closedRevenue": 30000,
+    "closedRevenue": 24000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Onboarding ramp in Windermere, FL. Month 1 baseline covered at $30k with 8 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
+    "notes": "Onboarding ramp in Windermere, FL. Month 1 baseline covered at $24k with 8 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
   },
   {
     "id": "ACC-013",
@@ -245,12 +245,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 2,
     "daysActive": 61,
     "estimatesDelivered": 21,
-    "closedRevenue": 63000,
+    "closedRevenue": 49000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "60-Day Milestone reached in Baltimore, MD. Doubled direct homeowner contract volume from initial $24k ramp to $39k in Month 2 (14 estimates); operating 100% direct with zero builder cuts."
+    "notes": "60-Day Milestone reached in Baltimore, MD. Doubled direct homeowner contract volume from initial $19k ramp to $30k in Month 2 (14 estimates); operating 100% direct with zero builder cuts."
   },
   {
     "id": "ACC-014",
@@ -262,13 +262,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/19/2025",
     "monthsActive": 3,
     "daysActive": 85,
-    "estimatesDelivered": 40,
-    "closedRevenue": 126000,
+    "estimatesDelivered": 38,
+    "closedRevenue": 91000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$42k/mo direct contract volume ($126k total)."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$30k/mo direct contract volume ($91k total)."
   },
   {
     "id": "ACC-015",
@@ -280,13 +280,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/06/2025",
     "monthsActive": 4,
     "daysActive": 129,
-    "estimatesDelivered": 66,
-    "closedRevenue": 183000,
+    "estimatesDelivered": 55,
+    "closedRevenue": 132000,
     "monthlyPlan": 1600,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Cold Belt operation (Long Island, NY). Baseline covered in M1 ($25k), doubled in M2 ($47k). Averaging ~$46k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Long Island, NY). Baseline covered in M1 ($20k), doubled in M2 ($36k). Averaging ~$33k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-016",
@@ -298,13 +298,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/13/2025",
     "monthsActive": 5,
     "daysActive": 152,
-    "estimatesDelivered": 74,
-    "closedRevenue": 241000,
+    "estimatesDelivered": 62,
+    "closedRevenue": 167000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$48k/mo direct contract volume ($241k total)."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$33k/mo direct contract volume ($167k total)."
   },
   {
     "id": "ACC-017",
@@ -316,13 +316,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/20/2025",
     "monthsActive": 6,
     "daysActive": 176,
-    "estimatesDelivered": 127,
-    "closedRevenue": 344000,
+    "estimatesDelivered": 101,
+    "closedRevenue": 232000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Brockton, MA). Baseline covered in M1 ($24k), doubled in M2 ($41k). Averaging ~$57k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Brockton, MA). Baseline covered in M1 ($19k), doubled in M2 ($31k). Averaging ~$39k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-018",
@@ -334,13 +334,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/07/2025",
     "monthsActive": 7,
     "daysActive": 219,
-    "estimatesDelivered": 134,
-    "closedRevenue": 364000,
+    "estimatesDelivered": 110,
+    "closedRevenue": 248000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$52k/mo direct contract volume ($364k total)."
+    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$35k/mo direct contract volume ($248k total)."
   },
   {
     "id": "ACC-019",
@@ -352,13 +352,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/14/2025",
     "monthsActive": 8,
     "daysActive": 243,
-    "estimatesDelivered": 174,
-    "closedRevenue": 463000,
+    "estimatesDelivered": 141,
+    "closedRevenue": 309000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$58k/mo direct contract volume ($463k total)."
+    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$39k/mo direct contract volume ($309k total)."
   },
   {
     "id": "ACC-020",
@@ -371,12 +371,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 1,
     "daysActive": 42,
     "estimatesDelivered": 9,
-    "closedRevenue": 27000,
+    "closedRevenue": 22000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Onboarding ramp in Seattle, WA. Month 1 baseline covered at $27k with 9 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
+    "notes": "Onboarding ramp in Seattle, WA. Month 1 baseline covered at $22k with 9 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
   },
   {
     "id": "ACC-021",
@@ -389,12 +389,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 2,
     "daysActive": 65,
     "estimatesDelivered": 28,
-    "closedRevenue": 75000,
+    "closedRevenue": 57000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "60-Day Milestone reached in Raleigh, NC. Doubled direct homeowner contract volume from initial $27k ramp to $48k in Month 2 (19 estimates); operating 100% direct with zero builder cuts."
+    "notes": "60-Day Milestone reached in Raleigh, NC. Doubled direct homeowner contract volume from initial $21k ramp to $36k in Month 2 (19 estimates); operating 100% direct with zero builder cuts."
   },
   {
     "id": "ACC-022",
@@ -406,13 +406,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/15/2025",
     "monthsActive": 3,
     "daysActive": 89,
-    "estimatesDelivered": 29,
-    "closedRevenue": 111000,
+    "estimatesDelivered": 26,
+    "closedRevenue": 83000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Worcester, MA). Covered baseline in M1 ($23k), doubled in M2 ($42k). Scaled to $111k over 3 months (~$37k/mo); preparing for planned winter freeze pause."
+    "notes": "Northern climate operation (Worcester, MA). Covered baseline in M1 ($19k), doubled in M2 ($33k). Scaled to $83k over 3 months (~$28k/mo); preparing for planned winter freeze pause."
   },
   {
     "id": "ACC-023",
@@ -424,13 +424,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/02/2025",
     "monthsActive": 4,
     "daysActive": 133,
-    "estimatesDelivered": 54,
-    "closedRevenue": 153000,
+    "estimatesDelivered": 48,
+    "closedRevenue": 109000,
     "monthlyPlan": 1600,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($23k), doubled in M2 ($41k). Averaging ~$38k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($19k), doubled in M2 ($32k). Averaging ~$27k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-024",
@@ -442,13 +442,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/09/2025",
     "monthsActive": 5,
     "daysActive": 156,
-    "estimatesDelivered": 90,
-    "closedRevenue": 241000,
+    "estimatesDelivered": 78,
+    "closedRevenue": 166000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$48k/mo direct contract volume ($241k total)."
+    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$33k/mo direct contract volume ($166k total)."
   },
   {
     "id": "ACC-025",
@@ -460,13 +460,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/16/2025",
     "monthsActive": 6,
     "daysActive": 180,
-    "estimatesDelivered": 86,
-    "closedRevenue": 325000,
+    "estimatesDelivered": 72,
+    "closedRevenue": 219000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$54k/mo direct contract volume ($325k total)."
+    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$37k/mo direct contract volume ($219k total)."
   },
   {
     "id": "ACC-026",
@@ -478,13 +478,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/03/2025",
     "monthsActive": 7,
     "daysActive": 223,
-    "estimatesDelivered": 166,
-    "closedRevenue": 411000,
+    "estimatesDelivered": 134,
+    "closedRevenue": 273000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($25k), doubled in M2 ($42k). Averaging ~$59k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($19k), doubled in M2 ($30k). Averaging ~$39k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-027",
@@ -496,13 +496,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/10/2025",
     "monthsActive": 8,
     "daysActive": 247,
-    "estimatesDelivered": 154,
-    "closedRevenue": 346000,
+    "estimatesDelivered": 130,
+    "closedRevenue": 238000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$43k/mo direct contract volume ($346k total)."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$30k/mo direct contract volume ($238k total)."
   },
   {
     "id": "ACC-028",
@@ -515,12 +515,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 1,
     "daysActive": 26,
     "estimatesDelivered": 9,
-    "closedRevenue": 24000,
+    "closedRevenue": 19000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Onboarding ramp in Salt Lake City, UT. Month 1 baseline covered at $24k with 9 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
+    "notes": "Onboarding ramp in Salt Lake City, UT. Month 1 baseline covered at $19k with 9 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
   },
   {
     "id": "ACC-029",
@@ -533,12 +533,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 2,
     "daysActive": 69,
     "estimatesDelivered": 15,
-    "closedRevenue": 77000,
+    "closedRevenue": 58000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "60-Day Milestone reached in Nashua, NH. Doubled direct homeowner contract volume from initial $30k ramp to $47k in Month 2 (10 estimates); operating 100% direct with zero builder cuts."
+    "notes": "60-Day Milestone reached in Nashua, NH. Doubled direct homeowner contract volume from initial $23k ramp to $35k in Month 2 (10 estimates); operating 100% direct with zero builder cuts."
   },
   {
     "id": "ACC-030",
@@ -550,13 +550,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/11/2025",
     "monthsActive": 3,
     "daysActive": 93,
-    "estimatesDelivered": 30,
-    "closedRevenue": 94000,
+    "estimatesDelivered": 27,
+    "closedRevenue": 71000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$31k/mo direct contract volume ($94k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$24k/mo direct contract volume ($71k total)."
   },
   {
     "id": "ACC-031",
@@ -568,13 +568,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/18/2025",
     "monthsActive": 4,
     "daysActive": 117,
-    "estimatesDelivered": 57,
-    "closedRevenue": 158000,
+    "estimatesDelivered": 50,
+    "closedRevenue": 114000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$40k/mo direct contract volume ($158k total)."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$29k/mo direct contract volume ($114k total)."
   },
   {
     "id": "ACC-032",
@@ -586,13 +586,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/05/2025",
     "monthsActive": 5,
     "daysActive": 160,
-    "estimatesDelivered": 87,
-    "closedRevenue": 221000,
+    "estimatesDelivered": 70,
+    "closedRevenue": 152000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Worcester, MA). Baseline covered in M1 ($20k), doubled in M2 ($31k). Averaging ~$44k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Worcester, MA). Baseline covered in M1 ($16k), doubled in M2 ($24k). Averaging ~$30k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-033",
@@ -604,13 +604,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/12/2025",
     "monthsActive": 6,
     "daysActive": 184,
-    "estimatesDelivered": 104,
-    "closedRevenue": 292000,
+    "estimatesDelivered": 87,
+    "closedRevenue": 198000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$49k/mo direct contract volume ($292k total)."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$33k/mo direct contract volume ($198k total)."
   },
   {
     "id": "ACC-034",
@@ -622,13 +622,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/19/2025",
     "monthsActive": 7,
     "daysActive": 207,
-    "estimatesDelivered": 110,
-    "closedRevenue": 348000,
+    "estimatesDelivered": 91,
+    "closedRevenue": 231000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$50k/mo direct contract volume ($348k total)."
+    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$33k/mo direct contract volume ($231k total)."
   },
   {
     "id": "ACC-035",
@@ -640,13 +640,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/06/2025",
     "monthsActive": 8,
     "daysActive": 251,
-    "estimatesDelivered": 130,
-    "closedRevenue": 437000,
+    "estimatesDelivered": 106,
+    "closedRevenue": 291000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Sunbelt operation (Framingham, MA). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$55k/mo direct contract volume ($437k total)."
+    "notes": "Sunbelt operation (Framingham, MA). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$36k/mo direct contract volume ($291k total)."
   },
   {
     "id": "ACC-036",
@@ -659,12 +659,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 1,
     "daysActive": 30,
     "estimatesDelivered": 8,
-    "closedRevenue": 26000,
+    "closedRevenue": 20000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 8,
-    "notes": "Onboarding ramp in Boston, MA. Month 1 baseline covered at $26k with 8 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
+    "notes": "Onboarding ramp in Boston, MA. Month 1 baseline covered at $20k with 8 qualified direct homeowner estimates; currently scaling toward 60-day doubling milestone."
   },
   {
     "id": "ACC-037",
@@ -677,12 +677,12 @@ export const accountsData: ContractorAccount[] = [
     "monthsActive": 2,
     "daysActive": 53,
     "estimatesDelivered": 26,
-    "closedRevenue": 77000,
+    "closedRevenue": 60000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "60-Day Milestone reached in Boca Raton, FL. Doubled direct homeowner contract volume from initial $30k ramp to $47k in Month 2 (17 estimates); operating 100% direct with zero builder cuts."
+    "notes": "60-Day Milestone reached in Boca Raton, FL. Doubled direct homeowner contract volume from initial $24k ramp to $36k in Month 2 (17 estimates); operating 100% direct with zero builder cuts."
   },
   {
     "id": "ACC-038",
@@ -694,13 +694,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/07/2025",
     "monthsActive": 3,
     "daysActive": 97,
-    "estimatesDelivered": 30,
-    "closedRevenue": 112000,
+    "estimatesDelivered": 27,
+    "closedRevenue": 81000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$37k/mo direct contract volume ($112k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$27k/mo direct contract volume ($81k total)."
   },
   {
     "id": "ACC-039",
@@ -712,13 +712,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/14/2025",
     "monthsActive": 4,
     "daysActive": 121,
-    "estimatesDelivered": 63,
-    "closedRevenue": 172000,
+    "estimatesDelivered": 53,
+    "closedRevenue": 125000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Danbury, CT). Baseline covered in M1 ($26k), doubled in M2 ($49k). Averaging ~$43k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Danbury, CT). Baseline covered in M1 ($21k), doubled in M2 ($38k). Averaging ~$31k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-040",
@@ -730,13 +730,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/01/2025",
     "monthsActive": 5,
     "daysActive": 164,
-    "estimatesDelivered": 77,
-    "closedRevenue": 223000,
+    "estimatesDelivered": 67,
+    "closedRevenue": 156000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$45k/mo direct contract volume ($223k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$31k/mo direct contract volume ($156k total)."
   },
   {
     "id": "ACC-041",
@@ -748,13 +748,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/08/2025",
     "monthsActive": 6,
     "daysActive": 188,
-    "estimatesDelivered": 103,
-    "closedRevenue": 288000,
+    "estimatesDelivered": 87,
+    "closedRevenue": 199000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$48k/mo direct contract volume ($288k total)."
+    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$33k/mo direct contract volume ($199k total)."
   },
   {
     "id": "ACC-042",
@@ -766,13 +766,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/15/2025",
     "monthsActive": 7,
     "daysActive": 211,
-    "estimatesDelivered": 157,
-    "closedRevenue": 404000,
+    "estimatesDelivered": 125,
+    "closedRevenue": 273000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($21k), doubled in M2 ($40k). Averaging ~$58k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Framingham, MA). Baseline covered in M1 ($17k), doubled in M2 ($30k). Averaging ~$39k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-043",
@@ -784,13 +784,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/02/2025",
     "monthsActive": 8,
     "daysActive": 255,
-    "estimatesDelivered": 120,
-    "closedRevenue": 332000,
+    "estimatesDelivered": 101,
+    "closedRevenue": 230000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Boca Raton, FL). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$42k/mo direct contract volume ($332k total)."
+    "notes": "Sunbelt operation (Boca Raton, FL). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$29k/mo direct contract volume ($230k total)."
   },
   {
     "id": "ACC-044",
@@ -802,13 +802,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/09/2025",
     "monthsActive": 6,
     "daysActive": 187,
-    "estimatesDelivered": 114,
-    "closedRevenue": 261000,
+    "estimatesDelivered": 93,
+    "closedRevenue": 179000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$44k/mo direct contract volume ($261k total)."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$30k/mo direct contract volume ($179k total)."
   },
   {
     "id": "ACC-045",
@@ -820,13 +820,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/16/2025",
     "monthsActive": 10,
     "daysActive": 300,
-    "estimatesDelivered": 160,
-    "closedRevenue": 381000,
+    "estimatesDelivered": 138,
+    "closedRevenue": 264000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Nashua, NH). Operates on reduced winter emergency trickle in Jan–Feb ($7k–$15k/mo, 1–3 repair estimates); ramps aggressively into full Spring & Summer homeowner demand ($60k–$85k+/mo)."
+    "notes": "Northern climate operation (Nashua, NH). Operates on reduced winter emergency trickle in Jan–Feb ($5k–$11k/mo, 1–3 repair estimates); ramps into full Spring & Summer homeowner demand ($38k–$55k+/mo)."
   },
   {
     "id": "ACC-046",
@@ -838,13 +838,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/03/2024",
     "monthsActive": 12,
     "daysActive": 374,
-    "estimatesDelivered": 173,
-    "closedRevenue": 448000,
+    "estimatesDelivered": 147,
+    "closedRevenue": 314000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$37k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$26k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-047",
@@ -856,13 +856,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/10/2024",
     "monthsActive": 11,
     "daysActive": 337,
-    "estimatesDelivered": 181,
-    "closedRevenue": 485000,
+    "estimatesDelivered": 139,
+    "closedRevenue": 337000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$44k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$31k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-048",
@@ -874,13 +874,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/17/2024",
     "monthsActive": 11,
     "daysActive": 330,
-    "estimatesDelivered": 200,
-    "closedRevenue": 499000,
+    "estimatesDelivered": 163,
+    "closedRevenue": 342000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Cold Belt operation (Lowell, MA). Maintains steady interior project revenue through winter ($30k–$45k/mo baseline floor); scales to peak volume ($60k–$85k/mo) during Spring and Summer remodeling surge."
+    "notes": "Cold Belt operation (Lowell, MA). Maintains steady interior project revenue through winter ($20k–$28k/mo baseline floor); scales to peak volume ($38k–$52k/mo) during Spring and Summer remodeling surge."
   },
   {
     "id": "ACC-049",
@@ -892,31 +892,31 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/04/2025",
     "monthsActive": 10,
     "daysActive": 312,
-    "estimatesDelivered": 124,
-    "closedRevenue": 335000,
+    "estimatesDelivered": 106,
+    "closedRevenue": 230000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-050",
-    "companyName": "Sovereign Lone Star Framing",
-    "ownerName": "Roberto Faria",
-    "specialty": "Wood & Metal Framing",
-    "city": "Lowell",
+    "companyName": "JS Drywall & Painting LLC",
+    "ownerName": "Jean Silva",
+    "specialty": "Drywall, Level 5 & Paint",
+    "city": "Framingham",
     "state": "MA",
-    "onboardingDate": "06/11/2025",
-    "monthsActive": 5,
-    "daysActive": 154,
-    "estimatesDelivered": 82,
-    "closedRevenue": 256000,
+    "onboardingDate": "07/14/2024",
+    "monthsActive": 16,
+    "daysActive": 488,
+    "estimatesDelivered": 195,
+    "closedRevenue": 564000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Lowell, MA). Covered baseline in M1 ($25k), doubled in M2 ($43k). Scaled to $256k over 5 months (~$51k/mo); preparing for planned winter freeze pause."
+    "notes": "Cold Belt operation (Framingham, MA). Maintains steady interior project revenue through winter ($20k–$28k/mo baseline floor); scales to peak volume ($38k–$52k/mo) during Spring and Summer remodeling surge."
   },
   {
     "id": "ACC-051",
@@ -928,13 +928,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/18/2025",
     "monthsActive": 9,
     "daysActive": 267,
-    "estimatesDelivered": 131,
-    "closedRevenue": 380000,
+    "estimatesDelivered": 115,
+    "closedRevenue": 261000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$42k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$29k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-052",
@@ -946,13 +946,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/05/2025",
     "monthsActive": 4,
     "daysActive": 130,
-    "estimatesDelivered": 57,
-    "closedRevenue": 166000,
+    "estimatesDelivered": 49,
+    "closedRevenue": 119000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Framingham, MA). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$42k/mo direct contract volume ($166k total)."
+    "notes": "Sunbelt operation (Framingham, MA). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$30k/mo direct contract volume ($119k total)."
   },
   {
     "id": "ACC-053",
@@ -964,13 +964,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/12/2024",
     "monthsActive": 12,
     "daysActive": 365,
-    "estimatesDelivered": 164,
-    "closedRevenue": 398000,
+    "estimatesDelivered": 131,
+    "closedRevenue": 280000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Long Island, NY). Operates on reduced winter emergency trickle in Jan–Feb ($7k–$15k/mo, 1–3 repair estimates); ramps aggressively into full Spring & Summer homeowner demand ($60k–$85k+/mo)."
+    "notes": "Northern climate operation (Long Island, NY). Operates on reduced winter emergency trickle in Jan–Feb ($5k–$11k/mo, 1–3 repair estimates); ramps into full Spring & Summer homeowner demand ($38k–$55k+/mo)."
   },
   {
     "id": "ACC-054",
@@ -982,13 +982,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/19/2025",
     "monthsActive": 9,
     "daysActive": 266,
-    "estimatesDelivered": 153,
-    "closedRevenue": 434000,
+    "estimatesDelivered": 122,
+    "closedRevenue": 297000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$48k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$33k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-055",
@@ -1000,13 +1000,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/06/2024",
     "monthsActive": 16,
     "daysActive": 494,
-    "estimatesDelivered": 276,
-    "closedRevenue": 913000,
+    "estimatesDelivered": 233,
+    "closedRevenue": 610000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$57k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$38k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-056",
@@ -1018,13 +1018,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/13/2025",
     "monthsActive": 8,
     "daysActive": 244,
-    "estimatesDelivered": 157,
-    "closedRevenue": 416000,
+    "estimatesDelivered": 129,
+    "closedRevenue": 286000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Nashua, NH). Baseline covered in M1 ($31k), doubled in M2 ($58k). Averaging ~$52k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Nashua, NH). Baseline covered in M1 ($24k), doubled in M2 ($43k). Averaging ~$36k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-057",
@@ -1036,13 +1036,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/20/2025",
     "monthsActive": 6,
     "daysActive": 176,
-    "estimatesDelivered": 96,
-    "closedRevenue": 339000,
+    "estimatesDelivered": 81,
+    "closedRevenue": 229000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Newark, NJ). Scaled from $28k M1 ramp to ~$57k/mo direct homeowner flow; total $339k over 6 months with zero GC cuts."
+    "notes": "Northern climate operation (Newark, NJ). Scaled from $22k M1 ramp to ~$38k/mo direct homeowner flow; total $229k over 6 months with zero GC cuts."
   },
   {
     "id": "ACC-058",
@@ -1054,13 +1054,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/07/2025",
     "monthsActive": 8,
     "daysActive": 250,
-    "estimatesDelivered": 149,
-    "closedRevenue": 439000,
+    "estimatesDelivered": 116,
+    "closedRevenue": 289000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$55k/mo direct contract volume ($439k total)."
+    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$36k/mo direct contract volume ($289k total)."
   },
   {
     "id": "ACC-059",
@@ -1072,13 +1072,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/14/2024",
     "monthsActive": 14,
     "daysActive": 424,
-    "estimatesDelivered": 242,
-    "closedRevenue": 691000,
+    "estimatesDelivered": 204,
+    "closedRevenue": 474000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$49k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$34k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-060",
@@ -1090,13 +1090,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/01/2025",
     "monthsActive": 4,
     "daysActive": 134,
-    "estimatesDelivered": 64,
-    "closedRevenue": 181000,
+    "estimatesDelivered": 56,
+    "closedRevenue": 125000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Newark, NJ). Baseline covered in M1 ($27k), doubled in M2 ($46k). Averaging ~$45k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Newark, NJ). Baseline covered in M1 ($21k), doubled in M2 ($34k). Averaging ~$31k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-061",
@@ -1108,13 +1108,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/08/2025",
     "monthsActive": 7,
     "daysActive": 218,
-    "estimatesDelivered": 136,
-    "closedRevenue": 365000,
+    "estimatesDelivered": 114,
+    "closedRevenue": 244000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Boston, MA). Covered baseline in M1 ($27k), doubled in M2 ($44k). Scaled to $365k over 7 months (~$52k/mo); preparing for planned winter freeze pause."
+    "notes": "Cold Belt operation (Boston, MA). Baseline covered in M1 ($21k), doubled in M2 ($33k). Averaging ~$35k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-062",
@@ -1126,13 +1126,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/15/2025",
     "monthsActive": 10,
     "daysActive": 301,
-    "estimatesDelivered": 139,
-    "closedRevenue": 314000,
+    "estimatesDelivered": 117,
+    "closedRevenue": 217000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Brockton, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); Nivix surges qualified homeowner volume to ~3x in high season ($65k–$85k+/mo), allowing full annual revenue upfront."
+    "notes": "Northern climate operation (Brockton, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); qualified homeowner volume surges in high season ($40k–$58k+/mo), allowing full annual revenue upfront."
   },
   {
     "id": "ACC-063",
@@ -1144,13 +1144,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/02/2025",
     "monthsActive": 3,
     "daysActive": 102,
-    "estimatesDelivered": 38,
-    "closedRevenue": 111000,
+    "estimatesDelivered": 35,
+    "closedRevenue": 81000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$37k/mo direct contract volume ($111k total)."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$27k/mo direct contract volume ($81k total)."
   },
   {
     "id": "ACC-064",
@@ -1162,13 +1162,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/09/2025",
     "monthsActive": 3,
     "daysActive": 95,
-    "estimatesDelivered": 29,
-    "closedRevenue": 117000,
+    "estimatesDelivered": 26,
+    "closedRevenue": 88000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand. Scaled from $30k ramp to sustained ~$39k/mo direct contract volume ($117k total)."
+    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$29k/mo direct contract volume ($88k total)."
   },
   {
     "id": "ACC-065",
@@ -1180,13 +1180,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/16/2025",
     "monthsActive": 4,
     "daysActive": 119,
-    "estimatesDelivered": 66,
-    "closedRevenue": 168000,
+    "estimatesDelivered": 59,
+    "closedRevenue": 121000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$42k/mo direct contract volume ($168k total)."
+    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$30k/mo direct contract volume ($121k total)."
   },
   {
     "id": "ACC-066",
@@ -1198,13 +1198,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/03/2024",
     "monthsActive": 16,
     "daysActive": 497,
-    "estimatesDelivered": 249,
-    "closedRevenue": 824000,
+    "estimatesDelivered": 209,
+    "closedRevenue": 548000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$52k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$34k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-067",
@@ -1216,13 +1216,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/10/2025",
     "monthsActive": 5,
     "daysActive": 155,
-    "estimatesDelivered": 103,
-    "closedRevenue": 229000,
+    "estimatesDelivered": 85,
+    "closedRevenue": 158000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Worcester, MA). Baseline covered in M1 ($22k), doubled in M2 ($36k). Averaging ~$46k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Worcester, MA). Baseline covered in M1 ($18k), doubled in M2 ($28k). Averaging ~$32k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-068",
@@ -1234,13 +1234,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/17/2025",
     "monthsActive": 5,
     "daysActive": 148,
-    "estimatesDelivered": 79,
-    "closedRevenue": 201000,
+    "estimatesDelivered": 65,
+    "closedRevenue": 141000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$40k/mo direct contract volume ($201k total)."
+    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$28k/mo direct contract volume ($141k total)."
   },
   {
     "id": "ACC-069",
@@ -1252,13 +1252,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/04/2025",
     "monthsActive": 5,
     "daysActive": 161,
-    "estimatesDelivered": 73,
-    "closedRevenue": 266000,
+    "estimatesDelivered": 62,
+    "closedRevenue": 181000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$53k/mo direct contract volume ($266k total)."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$36k/mo direct contract volume ($181k total)."
   },
   {
     "id": "ACC-070",
@@ -1270,13 +1270,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/11/2024",
     "monthsActive": 12,
     "daysActive": 366,
-    "estimatesDelivered": 170,
-    "closedRevenue": 532000,
+    "estimatesDelivered": 142,
+    "closedRevenue": 366000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Long Island, NY). Maintains steady interior project revenue through winter ($30k–$45k/mo baseline floor); scales to peak volume ($60k–$85k/mo) during Spring and Summer remodeling surge."
+    "notes": "Cold Belt operation (Long Island, NY). Maintains steady interior project revenue through winter ($20k–$28k/mo baseline floor); scales to peak volume ($38k–$52k/mo) during Spring and Summer remodeling surge."
   },
   {
     "id": "ACC-071",
@@ -1288,13 +1288,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/18/2025",
     "monthsActive": 6,
     "daysActive": 178,
-    "estimatesDelivered": 101,
-    "closedRevenue": 361000,
+    "estimatesDelivered": 85,
+    "closedRevenue": 246000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Newark, NJ). Baseline covered in M1 ($29k), doubled in M2 ($50k). Averaging ~$60k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Newark, NJ). Baseline covered in M1 ($23k), doubled in M2 ($38k). Averaging ~$41k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-072",
@@ -1306,13 +1306,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/05/2025",
     "monthsActive": 3,
     "daysActive": 99,
-    "estimatesDelivered": 36,
-    "closedRevenue": 119000,
+    "estimatesDelivered": 33,
+    "closedRevenue": 88000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $30k ramp to sustained ~$40k/mo direct contract volume ($119k total)."
+    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$29k/mo direct contract volume ($88k total)."
   },
   {
     "id": "ACC-073",
@@ -1324,13 +1324,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/12/2025",
     "monthsActive": 6,
     "daysActive": 184,
-    "estimatesDelivered": 111,
-    "closedRevenue": 288000,
+    "estimatesDelivered": 89,
+    "closedRevenue": 202000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $31k ramp to sustained ~$48k/mo direct contract volume ($288k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$34k/mo direct contract volume ($202k total)."
   },
   {
     "id": "ACC-074",
@@ -1342,13 +1342,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/19/2025",
     "monthsActive": 8,
     "daysActive": 238,
-    "estimatesDelivered": 149,
-    "closedRevenue": 468000,
+    "estimatesDelivered": 115,
+    "closedRevenue": 316000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$59k/mo direct contract volume ($468k total)."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$40k/mo direct contract volume ($316k total)."
   },
   {
     "id": "ACC-075",
@@ -1360,13 +1360,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/06/2025",
     "monthsActive": 7,
     "daysActive": 220,
-    "estimatesDelivered": 113,
-    "closedRevenue": 344000,
+    "estimatesDelivered": 93,
+    "closedRevenue": 238000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Jersey City, NJ). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$49k/mo direct contract volume ($344k total)."
+    "notes": "Sunbelt operation (Jersey City, NJ). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$34k/mo direct contract volume ($238k total)."
   },
   {
     "id": "ACC-076",
@@ -1378,13 +1378,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/13/2025",
     "monthsActive": 8,
     "daysActive": 244,
-    "estimatesDelivered": 149,
-    "closedRevenue": 379000,
+    "estimatesDelivered": 125,
+    "closedRevenue": 265000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$47k/mo direct contract volume ($379k total)."
+    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$33k/mo direct contract volume ($265k total)."
   },
   {
     "id": "ACC-077",
@@ -1396,13 +1396,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/20/2024",
     "monthsActive": 11,
     "daysActive": 327,
-    "estimatesDelivered": 193,
-    "closedRevenue": 407000,
+    "estimatesDelivered": 167,
+    "closedRevenue": 285000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$37k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$26k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-078",
@@ -1414,13 +1414,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/07/2025",
     "monthsActive": 8,
     "daysActive": 250,
-    "estimatesDelivered": 172,
-    "closedRevenue": 407000,
+    "estimatesDelivered": 142,
+    "closedRevenue": 281000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Danbury, CT). Covered baseline in M1 ($25k), doubled in M2 ($39k). Scaled to $407k over 8 months (~$51k/mo); preparing for planned winter freeze pause."
+    "notes": "Northern climate operation (Danbury, CT). Covered baseline in M1 ($20k), doubled in M2 ($30k). Scaled to $281k over 8 months (~$35k/mo); preparing for planned winter freeze pause."
   },
   {
     "id": "ACC-079",
@@ -1432,13 +1432,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/14/2025",
     "monthsActive": 7,
     "daysActive": 212,
-    "estimatesDelivered": 116,
-    "closedRevenue": 309000,
+    "estimatesDelivered": 89,
+    "closedRevenue": 214000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$44k/mo direct contract volume ($309k total)."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$31k/mo direct contract volume ($214k total)."
   },
   {
     "id": "ACC-080",
@@ -1450,13 +1450,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/01/2024",
     "monthsActive": 16,
     "daysActive": 499,
-    "estimatesDelivered": 206,
-    "closedRevenue": 643000,
+    "estimatesDelivered": 166,
+    "closedRevenue": 441000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Brockton, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); Nivix surges qualified homeowner volume to ~3x in high season ($65k–$85k+/mo), allowing full annual revenue upfront."
+    "notes": "Northern climate operation (Brockton, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); qualified homeowner volume surges in high season ($40k–$58k+/mo), allowing full annual revenue upfront."
   },
   {
     "id": "ACC-081",
@@ -1468,13 +1468,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/08/2025",
     "monthsActive": 9,
     "daysActive": 277,
-    "estimatesDelivered": 175,
-    "closedRevenue": 405000,
+    "estimatesDelivered": 141,
+    "closedRevenue": 278000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$45k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$31k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-082",
@@ -1486,13 +1486,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/15/2025",
     "monthsActive": 8,
     "daysActive": 242,
-    "estimatesDelivered": 126,
-    "closedRevenue": 437000,
+    "estimatesDelivered": 103,
+    "closedRevenue": 295000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$55k/mo direct contract volume ($437k total)."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$37k/mo direct contract volume ($295k total)."
   },
   {
     "id": "ACC-083",
@@ -1504,13 +1504,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/02/2024",
     "monthsActive": 18,
     "daysActive": 559,
-    "estimatesDelivered": 207,
-    "closedRevenue": 689000,
+    "estimatesDelivered": 171,
+    "closedRevenue": 462000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Framingham, MA). Operates on reduced winter emergency trickle in Jan–Feb ($7k–$15k/mo, 1–3 repair estimates); ramps aggressively into full Spring & Summer homeowner demand ($60k–$85k+/mo)."
+    "notes": "Northern climate operation (Framingham, MA). Operates on reduced winter emergency trickle in Jan–Feb ($5k–$11k/mo, 1–3 repair estimates); ramps into full Spring & Summer homeowner demand ($38k–$55k+/mo)."
   },
   {
     "id": "ACC-084",
@@ -1522,13 +1522,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/09/2025",
     "monthsActive": 3,
     "daysActive": 95,
-    "estimatesDelivered": 35,
-    "closedRevenue": 113000,
+    "estimatesDelivered": 32,
+    "closedRevenue": 83000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Charleston, SC). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$38k/mo direct contract volume ($113k total)."
+    "notes": "Sunbelt operation (Charleston, SC). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$28k/mo direct contract volume ($83k total)."
   },
   {
     "id": "ACC-085",
@@ -1612,13 +1612,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/04/2025",
     "monthsActive": 9,
     "daysActive": 281,
-    "estimatesDelivered": 125,
-    "closedRevenue": 419000,
+    "estimatesDelivered": 106,
+    "closedRevenue": 289000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$47k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$32k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-090",
@@ -1630,13 +1630,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/11/2025",
     "monthsActive": 10,
     "daysActive": 305,
-    "estimatesDelivered": 133,
-    "closedRevenue": 533000,
+    "estimatesDelivered": 109,
+    "closedRevenue": 359000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$53k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$36k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-091",
@@ -1648,13 +1648,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/18/2025",
     "monthsActive": 5,
     "daysActive": 147,
-    "estimatesDelivered": 84,
-    "closedRevenue": 248000,
+    "estimatesDelivered": 70,
+    "closedRevenue": 172000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$50k/mo direct contract volume ($248k total)."
+    "notes": "Sunbelt operation (Lowell, MA). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$34k/mo direct contract volume ($172k total)."
   },
   {
     "id": "ACC-092",
@@ -1666,13 +1666,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/05/2024",
     "monthsActive": 12,
     "daysActive": 372,
-    "estimatesDelivered": 208,
-    "closedRevenue": 595000,
+    "estimatesDelivered": 166,
+    "closedRevenue": 400000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$50k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$33k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-093",
@@ -1684,13 +1684,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/12/2025",
     "monthsActive": 8,
     "daysActive": 245,
-    "estimatesDelivered": 176,
-    "closedRevenue": 410000,
+    "estimatesDelivered": 142,
+    "closedRevenue": 278000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $29k ramp to sustained ~$51k/mo direct contract volume ($410k total)."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$35k/mo direct contract volume ($278k total)."
   },
   {
     "id": "ACC-094",
@@ -1702,13 +1702,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/19/2024",
     "monthsActive": 11,
     "daysActive": 328,
-    "estimatesDelivered": 193,
-    "closedRevenue": 396000,
+    "estimatesDelivered": 159,
+    "closedRevenue": 280000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$36k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$25k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-095",
@@ -1720,13 +1720,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/06/2025",
     "monthsActive": 6,
     "daysActive": 190,
-    "estimatesDelivered": 106,
-    "closedRevenue": 257000,
+    "estimatesDelivered": 86,
+    "closedRevenue": 179000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$43k/mo direct contract volume ($257k total)."
+    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$30k/mo direct contract volume ($179k total)."
   },
   {
     "id": "ACC-096",
@@ -1738,13 +1738,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/13/2025",
     "monthsActive": 4,
     "daysActive": 122,
-    "estimatesDelivered": 45,
-    "closedRevenue": 151000,
+    "estimatesDelivered": 40,
+    "closedRevenue": 108000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Worcester, MA). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$38k/mo direct contract volume ($151k total)."
+    "notes": "Sunbelt operation (Worcester, MA). Steady year-round direct homeowner demand. Scaled from $16k ramp to sustained ~$27k/mo direct contract volume ($108k total)."
   },
   {
     "id": "ACC-097",
@@ -1756,13 +1756,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/20/2025",
     "monthsActive": 3,
     "daysActive": 84,
-    "estimatesDelivered": 46,
-    "closedRevenue": 104000,
+    "estimatesDelivered": 41,
+    "closedRevenue": 77000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Nashua, NH). Baseline covered in M1 ($24k), doubled in M2 ($41k). Averaging ~$35k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Nashua, NH). Baseline covered in M1 ($19k), doubled in M2 ($31k). Averaging ~$26k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-098",
@@ -1774,13 +1774,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/07/2025",
     "monthsActive": 8,
     "daysActive": 250,
-    "estimatesDelivered": 168,
-    "closedRevenue": 359000,
+    "estimatesDelivered": 135,
+    "closedRevenue": 251000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Boca Raton, FL). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$45k/mo direct contract volume ($359k total)."
+    "notes": "Sunbelt operation (Boca Raton, FL). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$31k/mo direct contract volume ($251k total)."
   },
   {
     "id": "ACC-099",
@@ -1792,13 +1792,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/14/2025",
     "monthsActive": 7,
     "daysActive": 212,
-    "estimatesDelivered": 135,
-    "closedRevenue": 431000,
+    "estimatesDelivered": 105,
+    "closedRevenue": 291000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Worcester, MA). Scaled from $28k M1 ramp to ~$62k/mo direct homeowner flow; total $431k over 7 months with zero GC cuts."
+    "notes": "Northern climate operation (Worcester, MA). Scaled from $22k M1 ramp to ~$42k/mo direct homeowner flow; total $291k over 7 months with zero GC cuts."
   },
   {
     "id": "ACC-100",
@@ -1810,13 +1810,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/01/2025",
     "monthsActive": 8,
     "daysActive": 256,
-    "estimatesDelivered": 182,
-    "closedRevenue": 448000,
+    "estimatesDelivered": 143,
+    "closedRevenue": 299000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Brockton, MA). Baseline covered in M1 ($20k), doubled in M2 ($35k). Averaging ~$56k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Brockton, MA). Baseline covered in M1 ($16k), doubled in M2 ($27k). Averaging ~$37k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-101",
@@ -1828,13 +1828,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/08/2025",
     "monthsActive": 4,
     "daysActive": 127,
-    "estimatesDelivered": 46,
-    "closedRevenue": 161000,
+    "estimatesDelivered": 40,
+    "closedRevenue": 115000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Newark, NJ). Covered baseline in M1 ($25k), doubled in M2 ($46k). Scaled to $161k over 4 months (~$40k/mo); preparing for planned winter freeze pause."
+    "notes": "Northern climate operation (Newark, NJ). Covered baseline in M1 ($20k), doubled in M2 ($35k). Scaled to $115k over 4 months (~$29k/mo); preparing for planned winter freeze pause."
   },
   {
     "id": "ACC-102",
@@ -1846,13 +1846,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/15/2025",
     "monthsActive": 4,
     "daysActive": 120,
-    "estimatesDelivered": 48,
-    "closedRevenue": 177000,
+    "estimatesDelivered": 42,
+    "closedRevenue": 124000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$44k/mo direct contract volume ($177k total)."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$31k/mo direct contract volume ($124k total)."
   },
   {
     "id": "ACC-103",
@@ -1864,13 +1864,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/02/2025",
     "monthsActive": 4,
     "daysActive": 133,
-    "estimatesDelivered": 66,
-    "closedRevenue": 159000,
+    "estimatesDelivered": 57,
+    "closedRevenue": 114000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$40k/mo direct contract volume ($159k total)."
+    "notes": "Sunbelt operation (Fort Lauderdale, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$29k/mo direct contract volume ($114k total)."
   },
   {
     "id": "ACC-104",
@@ -1882,13 +1882,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/09/2024",
     "monthsActive": 12,
     "daysActive": 368,
-    "estimatesDelivered": 215,
-    "closedRevenue": 580000,
+    "estimatesDelivered": 171,
+    "closedRevenue": 388000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$48k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$32k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-105",
@@ -1900,13 +1900,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/16/2024",
     "monthsActive": 11,
     "daysActive": 331,
-    "estimatesDelivered": 228,
-    "closedRevenue": 604000,
+    "estimatesDelivered": 195,
+    "closedRevenue": 401000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$55k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$36k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-106",
@@ -1918,13 +1918,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/03/2025",
     "monthsActive": 4,
     "daysActive": 132,
-    "estimatesDelivered": 60,
-    "closedRevenue": 165000,
+    "estimatesDelivered": 52,
+    "closedRevenue": 117000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$41k/mo direct contract volume ($165k total)."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$29k/mo direct contract volume ($117k total)."
   },
   {
     "id": "ACC-107",
@@ -1936,13 +1936,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/10/2025",
     "monthsActive": 5,
     "daysActive": 155,
-    "estimatesDelivered": 88,
-    "closedRevenue": 220000,
+    "estimatesDelivered": 74,
+    "closedRevenue": 155000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$44k/mo direct contract volume ($220k total)."
+    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$31k/mo direct contract volume ($155k total)."
   },
   {
     "id": "ACC-108",
@@ -1954,13 +1954,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/17/2024",
     "monthsActive": 16,
     "daysActive": 483,
-    "estimatesDelivered": 238,
-    "closedRevenue": 873000,
+    "estimatesDelivered": 190,
+    "closedRevenue": 596000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$55k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$37k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-109",
@@ -1972,13 +1972,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/04/2025",
     "monthsActive": 3,
     "daysActive": 100,
-    "estimatesDelivered": 43,
-    "closedRevenue": 119000,
+    "estimatesDelivered": 39,
+    "closedRevenue": 87000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Danbury, CT). Covered baseline in M1 ($31k), doubled in M2 ($57k). Scaled to $119k over 3 months (~$40k/mo); preparing for planned winter freeze pause."
+    "notes": "Northern climate operation (Danbury, CT). Covered baseline in M1 ($24k), doubled in M2 ($42k). Scaled to $87k over 3 months (~$29k/mo); preparing for planned winter freeze pause."
   },
   {
     "id": "ACC-110",
@@ -1990,13 +1990,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/11/2024",
     "monthsActive": 16,
     "daysActive": 489,
-    "estimatesDelivered": 241,
-    "closedRevenue": 587000,
+    "estimatesDelivered": 190,
+    "closedRevenue": 407000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Jersey City, NJ). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Jersey City, NJ). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-111",
@@ -2008,13 +2008,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/18/2025",
     "monthsActive": 5,
     "daysActive": 147,
-    "estimatesDelivered": 71,
-    "closedRevenue": 236000,
+    "estimatesDelivered": 60,
+    "closedRevenue": 163000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$47k/mo direct contract volume ($236k total)."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$33k/mo direct contract volume ($163k total)."
   },
   {
     "id": "ACC-112",
@@ -2026,13 +2026,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/05/2025",
     "monthsActive": 5,
     "daysActive": 160,
-    "estimatesDelivered": 87,
-    "closedRevenue": 217000,
+    "estimatesDelivered": 72,
+    "closedRevenue": 153000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $27k ramp to sustained ~$43k/mo direct contract volume ($217k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$31k/mo direct contract volume ($153k total)."
   },
   {
     "id": "ACC-113",
@@ -2044,13 +2044,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/12/2025",
     "monthsActive": 6,
     "daysActive": 184,
-    "estimatesDelivered": 131,
-    "closedRevenue": 320000,
+    "estimatesDelivered": 107,
+    "closedRevenue": 215000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Boston, MA). Scaled from $23k M1 ramp to ~$53k/mo direct homeowner flow; total $320k over 6 months with zero GC cuts."
+    "notes": "Northern climate operation (Boston, MA). Scaled from $18k M1 ramp to ~$36k/mo direct homeowner flow; total $215k over 6 months with zero GC cuts."
   },
   {
     "id": "ACC-114",
@@ -2062,13 +2062,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/19/2025",
     "monthsActive": 6,
     "daysActive": 177,
-    "estimatesDelivered": 100,
-    "closedRevenue": 348000,
+    "estimatesDelivered": 85,
+    "closedRevenue": 232000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$58k/mo direct contract volume ($348k total)."
+    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$39k/mo direct contract volume ($232k total)."
   },
   {
     "id": "ACC-115",
@@ -2080,13 +2080,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/06/2025",
     "monthsActive": 10,
     "daysActive": 310,
-    "estimatesDelivered": 165,
-    "closedRevenue": 578000,
+    "estimatesDelivered": 137,
+    "closedRevenue": 381000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$58k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$38k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-116",
@@ -2098,13 +2098,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/13/2025",
     "monthsActive": 10,
     "daysActive": 303,
-    "estimatesDelivered": 106,
-    "closedRevenue": 334000,
+    "estimatesDelivered": 90,
+    "closedRevenue": 231000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-117",
@@ -2116,13 +2116,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/20/2025",
     "monthsActive": 9,
     "daysActive": 265,
-    "estimatesDelivered": 102,
-    "closedRevenue": 293000,
+    "estimatesDelivered": 80,
+    "closedRevenue": 206000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-118",
@@ -2134,13 +2134,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/07/2024",
     "monthsActive": 11,
     "daysActive": 340,
-    "estimatesDelivered": 141,
-    "closedRevenue": 408000,
+    "estimatesDelivered": 118,
+    "closedRevenue": 276000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Cold Belt operation (Long Island, NY). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Long Island, NY). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-119",
@@ -2152,13 +2152,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/14/2025",
     "monthsActive": 4,
     "daysActive": 121,
-    "estimatesDelivered": 65,
-    "closedRevenue": 186000,
+    "estimatesDelivered": 56,
+    "closedRevenue": 131000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$47k/mo direct contract volume ($186k total)."
+    "notes": "Sunbelt operation (Alpharetta, GA). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$33k/mo direct contract volume ($131k total)."
   },
   {
     "id": "ACC-120",
@@ -2170,13 +2170,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/01/2025",
     "monthsActive": 9,
     "daysActive": 284,
-    "estimatesDelivered": 175,
-    "closedRevenue": 445000,
+    "estimatesDelivered": 141,
+    "closedRevenue": 305000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$49k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$34k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-121",
@@ -2188,13 +2188,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/08/2025",
     "monthsActive": 3,
     "daysActive": 96,
-    "estimatesDelivered": 36,
-    "closedRevenue": 107000,
+    "estimatesDelivered": 31,
+    "closedRevenue": 79000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$36k/mo direct contract volume ($107k total)."
+    "notes": "Sunbelt operation (Baltimore, MD). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$26k/mo direct contract volume ($79k total)."
   },
   {
     "id": "ACC-122",
@@ -2206,13 +2206,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/15/2025",
     "monthsActive": 7,
     "daysActive": 211,
-    "estimatesDelivered": 134,
-    "closedRevenue": 328000,
+    "estimatesDelivered": 108,
+    "closedRevenue": 227000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$47k/mo direct contract volume ($328k total)."
+    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$32k/mo direct contract volume ($227k total)."
   },
   {
     "id": "ACC-123",
@@ -2224,13 +2224,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/02/2025",
     "monthsActive": 7,
     "daysActive": 224,
-    "estimatesDelivered": 109,
-    "closedRevenue": 401000,
+    "estimatesDelivered": 91,
+    "closedRevenue": 267000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$57k/mo direct contract volume ($401k total)."
+    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$38k/mo direct contract volume ($267k total)."
   },
   {
     "id": "ACC-124",
@@ -2242,13 +2242,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/09/2025",
     "monthsActive": 9,
     "daysActive": 276,
-    "estimatesDelivered": 105,
-    "closedRevenue": 325000,
+    "estimatesDelivered": 86,
+    "closedRevenue": 223000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Jersey City, NJ). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); Nivix surges qualified homeowner volume to ~3x in high season ($65k–$85k+/mo), allowing full annual revenue upfront."
+    "notes": "Northern climate operation (Jersey City, NJ). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); qualified homeowner volume surges in high season ($40k–$58k+/mo), allowing full annual revenue upfront."
   },
   {
     "id": "ACC-125",
@@ -2260,13 +2260,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/16/2025",
     "monthsActive": 4,
     "daysActive": 119,
-    "estimatesDelivered": 61,
-    "closedRevenue": 184000,
+    "estimatesDelivered": 54,
+    "closedRevenue": 129000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$46k/mo direct contract volume ($184k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$32k/mo direct contract volume ($129k total)."
   },
   {
     "id": "ACC-126",
@@ -2278,13 +2278,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/03/2025",
     "monthsActive": 6,
     "daysActive": 193,
-    "estimatesDelivered": 115,
-    "closedRevenue": 302000,
+    "estimatesDelivered": 96,
+    "closedRevenue": 209000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$50k/mo direct contract volume ($302k total)."
+    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$35k/mo direct contract volume ($209k total)."
   },
   {
     "id": "ACC-127",
@@ -2296,13 +2296,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/10/2025",
     "monthsActive": 7,
     "daysActive": 216,
-    "estimatesDelivered": 114,
-    "closedRevenue": 408000,
+    "estimatesDelivered": 92,
+    "closedRevenue": 271000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Nashua, NH). Scaled from $23k M1 ramp to ~$58k/mo direct homeowner flow; total $408k over 7 months with zero GC cuts."
+    "notes": "Northern climate operation (Nashua, NH). Scaled from $18k M1 ramp to ~$39k/mo direct homeowner flow; total $271k over 7 months with zero GC cuts."
   },
   {
     "id": "ACC-128",
@@ -2314,13 +2314,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/17/2025",
     "monthsActive": 4,
     "daysActive": 118,
-    "estimatesDelivered": 55,
-    "closedRevenue": 164000,
+    "estimatesDelivered": 49,
+    "closedRevenue": 115000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$41k/mo direct contract volume ($164k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$29k/mo direct contract volume ($115k total)."
   },
   {
     "id": "ACC-129",
@@ -2332,13 +2332,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/04/2025",
     "monthsActive": 5,
     "daysActive": 161,
-    "estimatesDelivered": 83,
-    "closedRevenue": 224000,
+    "estimatesDelivered": 68,
+    "closedRevenue": 156000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$45k/mo direct contract volume ($224k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$31k/mo direct contract volume ($156k total)."
   },
   {
     "id": "ACC-130",
@@ -2350,13 +2350,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/11/2024",
     "monthsActive": 14,
     "daysActive": 427,
-    "estimatesDelivered": 251,
-    "closedRevenue": 613000,
+    "estimatesDelivered": 198,
+    "closedRevenue": 424000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$44k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Austin, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$30k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-131",
@@ -2368,13 +2368,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/18/2025",
     "monthsActive": 3,
     "daysActive": 86,
-    "estimatesDelivered": 30,
-    "closedRevenue": 104000,
+    "estimatesDelivered": 28,
+    "closedRevenue": 76000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$35k/mo direct contract volume ($104k total)."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $16k ramp to sustained ~$25k/mo direct contract volume ($76k total)."
   },
   {
     "id": "ACC-132",
@@ -2386,13 +2386,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/05/2024",
     "monthsActive": 18,
     "daysActive": 556,
-    "estimatesDelivered": 367,
-    "closedRevenue": 993000,
+    "estimatesDelivered": 288,
+    "closedRevenue": 665000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$55k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$37k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-133",
@@ -2404,13 +2404,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/12/2025",
     "monthsActive": 6,
     "daysActive": 184,
-    "estimatesDelivered": 93,
-    "closedRevenue": 239000,
+    "estimatesDelivered": 79,
+    "closedRevenue": 171000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$40k/mo direct contract volume ($239k total)."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand. Scaled from $18k ramp to sustained ~$29k/mo direct contract volume ($171k total)."
   },
   {
     "id": "ACC-134",
@@ -2422,13 +2422,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/19/2025",
     "monthsActive": 7,
     "daysActive": 207,
-    "estimatesDelivered": 129,
-    "closedRevenue": 297000,
+    "estimatesDelivered": 104,
+    "closedRevenue": 205000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$42k/mo direct contract volume ($297k total)."
+    "notes": "Sunbelt operation (Miami, FL). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$29k/mo direct contract volume ($205k total)."
   },
   {
     "id": "ACC-135",
@@ -2440,13 +2440,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/06/2024",
     "monthsActive": 18,
     "daysActive": 555,
-    "estimatesDelivered": 190,
-    "closedRevenue": 689000,
+    "estimatesDelivered": 153,
+    "closedRevenue": 458000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Boston, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Boston, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-136",
@@ -2458,13 +2458,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/13/2025",
     "monthsActive": 6,
     "daysActive": 183,
-    "estimatesDelivered": 84,
-    "closedRevenue": 269000,
+    "estimatesDelivered": 68,
+    "closedRevenue": 185000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Charleston, SC). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$45k/mo direct contract volume ($269k total)."
+    "notes": "Sunbelt operation (Charleston, SC). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$31k/mo direct contract volume ($185k total)."
   },
   {
     "id": "ACC-137",
@@ -2476,13 +2476,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/20/2025",
     "monthsActive": 6,
     "daysActive": 176,
-    "estimatesDelivered": 109,
-    "closedRevenue": 301000,
+    "estimatesDelivered": 93,
+    "closedRevenue": 210000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$50k/mo direct contract volume ($301k total)."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$35k/mo direct contract volume ($210k total)."
   },
   {
     "id": "ACC-138",
@@ -2494,13 +2494,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/07/2025",
     "monthsActive": 5,
     "daysActive": 158,
-    "estimatesDelivered": 80,
-    "closedRevenue": 256000,
+    "estimatesDelivered": 63,
+    "closedRevenue": 172000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Northern climate operation (Boston, MA). Covered baseline in M1 ($24k), doubled in M2 ($42k). Scaled to $256k over 5 months (~$51k/mo); preparing for planned winter freeze pause."
+    "notes": "Northern climate operation (Boston, MA). Covered baseline in M1 ($19k), doubled in M2 ($32k). Scaled to $172k over 5 months (~$34k/mo); preparing for planned winter freeze pause."
   },
   {
     "id": "ACC-139",
@@ -2512,13 +2512,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/14/2024",
     "monthsActive": 12,
     "daysActive": 363,
-    "estimatesDelivered": 166,
-    "closedRevenue": 559000,
+    "estimatesDelivered": 137,
+    "closedRevenue": 382000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$47k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Seattle, WA). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$32k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-140",
@@ -2530,13 +2530,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/01/2024",
     "monthsActive": 18,
     "daysActive": 560,
-    "estimatesDelivered": 299,
-    "closedRevenue": 886000,
+    "estimatesDelivered": 250,
+    "closedRevenue": 601000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$49k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$33k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-141",
@@ -2548,13 +2548,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/08/2024",
     "monthsActive": 14,
     "daysActive": 430,
-    "estimatesDelivered": 198,
-    "closedRevenue": 508000,
+    "estimatesDelivered": 149,
+    "closedRevenue": 344000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($8k–$14k) and late fall taper in Nov ($14k–$20k); compensates with massive 3x volume surge in Spring & Summer."
+    "notes": "Cold Belt operation (Worcester, MA). Shuts down 100% during sub-zero freeze (Jan–Feb), with small emergency repair trickle in Dec ($6k–$11k) and late fall taper in Nov ($11k–$17k); compensates with strong volume surge in Spring & Summer."
   },
   {
     "id": "ACC-142",
@@ -2566,13 +2566,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "11/15/2024",
     "monthsActive": 12,
     "daysActive": 362,
-    "estimatesDelivered": 187,
-    "closedRevenue": 566000,
+    "estimatesDelivered": 148,
+    "closedRevenue": 386000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Newark, NJ). Maintains steady interior project revenue through winter ($30k–$45k/mo baseline floor); scales to peak volume ($60k–$85k/mo) during Spring and Summer remodeling surge."
+    "notes": "Cold Belt operation (Newark, NJ). Maintains steady interior project revenue through winter ($20k–$28k/mo baseline floor); scales to peak volume ($38k–$52k/mo) during Spring and Summer remodeling surge."
   },
   {
     "id": "ACC-143",
@@ -2584,13 +2584,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "07/02/2025",
     "monthsActive": 4,
     "daysActive": 133,
-    "estimatesDelivered": 68,
-    "closedRevenue": 166000,
+    "estimatesDelivered": 58,
+    "closedRevenue": 117000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Jersey City, NJ). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$42k/mo direct contract volume ($166k total)."
+    "notes": "Sunbelt operation (Jersey City, NJ). Steady year-round direct homeowner demand. Scaled from $16k ramp to sustained ~$29k/mo direct contract volume ($117k total)."
   },
   {
     "id": "ACC-144",
@@ -2602,13 +2602,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "02/09/2025",
     "monthsActive": 9,
     "daysActive": 276,
-    "estimatesDelivered": 163,
-    "closedRevenue": 464000,
+    "estimatesDelivered": 127,
+    "closedRevenue": 319000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$52k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (San Antonio, TX). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$35k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-145",
@@ -2620,13 +2620,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/16/2025",
     "monthsActive": 8,
     "daysActive": 241,
-    "estimatesDelivered": 164,
-    "closedRevenue": 386000,
+    "estimatesDelivered": 129,
+    "closedRevenue": 262000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$48k/mo direct contract volume ($386k total)."
+    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$33k/mo direct contract volume ($262k total)."
   },
   {
     "id": "ACC-146",
@@ -2638,13 +2638,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/03/2025",
     "monthsActive": 7,
     "daysActive": 223,
-    "estimatesDelivered": 157,
-    "closedRevenue": 403000,
+    "estimatesDelivered": 123,
+    "closedRevenue": 270000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Cold Belt operation (Long Island, NY). Baseline covered in M1 ($22k), doubled in M2 ($35k). Averaging ~$58k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Long Island, NY). Baseline covered in M1 ($17k), doubled in M2 ($26k). Averaging ~$39k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-147",
@@ -2656,13 +2656,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/10/2025",
     "monthsActive": 8,
     "daysActive": 247,
-    "estimatesDelivered": 163,
-    "closedRevenue": 460000,
+    "estimatesDelivered": 126,
+    "closedRevenue": 306000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$58k/mo direct contract volume ($460k total)."
+    "notes": "Sunbelt operation (Salt Lake City, UT). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$38k/mo direct contract volume ($306k total)."
   },
   {
     "id": "ACC-148",
@@ -2674,13 +2674,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/17/2025",
     "monthsActive": 10,
     "daysActive": 299,
-    "estimatesDelivered": 137,
-    "closedRevenue": 332000,
+    "estimatesDelivered": 108,
+    "closedRevenue": 229000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Newark, NJ). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); Nivix surges qualified homeowner volume to ~3x in high season ($65k–$85k+/mo), allowing full annual revenue upfront."
+    "notes": "Northern climate operation (Newark, NJ). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); qualified homeowner volume surges in high season ($40k–$58k+/mo), allowing full annual revenue upfront."
   },
   {
     "id": "ACC-149",
@@ -2692,13 +2692,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/04/2025",
     "monthsActive": 8,
     "daysActive": 253,
-    "estimatesDelivered": 120,
-    "closedRevenue": 394000,
+    "estimatesDelivered": 98,
+    "closedRevenue": 264000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$49k/mo direct contract volume ($394k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $17k ramp to sustained ~$33k/mo direct contract volume ($264k total)."
   },
   {
     "id": "ACC-150",
@@ -2710,13 +2710,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/11/2024",
     "monthsActive": 14,
     "daysActive": 427,
-    "estimatesDelivered": 203,
-    "closedRevenue": 705000,
+    "estimatesDelivered": 166,
+    "closedRevenue": 476000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$50k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Raleigh, NC). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$34k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-151",
@@ -2728,13 +2728,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/18/2025",
     "monthsActive": 3,
     "daysActive": 86,
-    "estimatesDelivered": 45,
-    "closedRevenue": 135000,
+    "estimatesDelivered": 41,
+    "closedRevenue": 96000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $28k ramp to sustained ~$45k/mo direct contract volume ($135k total)."
+    "notes": "Sunbelt operation (Sarasota, FL). Steady year-round direct homeowner demand. Scaled from $22k ramp to sustained ~$32k/mo direct contract volume ($96k total)."
   },
   {
     "id": "ACC-152",
@@ -2746,13 +2746,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "08/05/2025",
     "monthsActive": 3,
     "daysActive": 99,
-    "estimatesDelivered": 37,
-    "closedRevenue": 110000,
+    "estimatesDelivered": 34,
+    "closedRevenue": 80000,
     "monthlyPlan": 2800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$37k/mo direct contract volume ($110k total)."
+    "notes": "Sunbelt operation (Houston, TX). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$27k/mo direct contract volume ($80k total)."
   },
   {
     "id": "ACC-153",
@@ -2764,13 +2764,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/12/2025",
     "monthsActive": 7,
     "daysActive": 214,
-    "estimatesDelivered": 130,
-    "closedRevenue": 376000,
+    "estimatesDelivered": 106,
+    "closedRevenue": 256000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Cold Belt operation (Lowell, MA). Baseline covered in M1 ($25k), doubled in M2 ($46k). Averaging ~$54k/mo with strong direct homeowner flow; winter maintenance plan in place."
+    "notes": "Cold Belt operation (Lowell, MA). Baseline covered in M1 ($20k), doubled in M2 ($35k). Averaging ~$37k/mo with strong direct homeowner flow; winter maintenance plan in place."
   },
   {
     "id": "ACC-154",
@@ -2782,13 +2782,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "03/19/2025",
     "monthsActive": 8,
     "daysActive": 238,
-    "estimatesDelivered": 170,
-    "closedRevenue": 416000,
+    "estimatesDelivered": 133,
+    "closedRevenue": 287000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$52k/mo direct contract volume ($416k total)."
+    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$36k/mo direct contract volume ($287k total)."
   },
   {
     "id": "ACC-155",
@@ -2800,13 +2800,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/06/2024",
     "monthsActive": 14,
     "daysActive": 432,
-    "estimatesDelivered": 248,
-    "closedRevenue": 698000,
+    "estimatesDelivered": 196,
+    "closedRevenue": 469000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$50k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (Windermere, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$34k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-156",
@@ -2818,13 +2818,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/13/2025",
     "monthsActive": 6,
     "daysActive": 183,
-    "estimatesDelivered": 123,
-    "closedRevenue": 326000,
+    "estimatesDelivered": 99,
+    "closedRevenue": 220000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $23k ramp to sustained ~$54k/mo direct contract volume ($326k total)."
+    "notes": "Sunbelt operation (Tampa, FL). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$37k/mo direct contract volume ($220k total)."
   },
   {
     "id": "ACC-157",
@@ -2836,13 +2836,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "09/20/2024",
     "monthsActive": 14,
     "daysActive": 418,
-    "estimatesDelivered": 188,
-    "closedRevenue": 637000,
+    "estimatesDelivered": 139,
+    "closedRevenue": 427000,
     "monthlyPlan": 3000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Northern climate operation (Boston, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); Nivix surges qualified homeowner volume to ~3x in high season ($65k–$85k+/mo), allowing full annual revenue upfront."
+    "notes": "Northern climate operation (Boston, MA). Pauses jobsite operations 100% for 3 winter months (Dec–Feb); qualified homeowner volume surges in high season ($40k–$58k+/mo), allowing full annual revenue upfront."
   },
   {
     "id": "ACC-158",
@@ -2854,13 +2854,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "12/07/2024",
     "monthsActive": 11,
     "daysActive": 340,
-    "estimatesDelivered": 214,
-    "closedRevenue": 594000,
+    "estimatesDelivered": 165,
+    "closedRevenue": 393000,
     "monthlyPlan": 2400,
     "status": "active",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$54k/mo without General Contractor commission cuts."
+    "notes": "Sunbelt operation (West Palm Beach, FL). Steady year-round direct homeowner demand with high-ticket surges during Spring and Summer. Averaging ~$36k/mo without General Contractor commission cuts."
   },
   {
     "id": "ACC-159",
@@ -2872,13 +2872,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/14/2025",
     "monthsActive": 5,
     "daysActive": 151,
-    "estimatesDelivered": 63,
-    "closedRevenue": 210000,
+    "estimatesDelivered": 53,
+    "closedRevenue": 147000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand. Scaled from $24k ramp to sustained ~$42k/mo direct contract volume ($210k total)."
+    "notes": "Sunbelt operation (Atlanta, GA). Steady year-round direct homeowner demand. Scaled from $19k ramp to sustained ~$29k/mo direct contract volume ($147k total)."
   },
   {
     "id": "ACC-160",
@@ -2890,13 +2890,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/01/2025",
     "monthsActive": 5,
     "daysActive": 164,
-    "estimatesDelivered": 81,
-    "closedRevenue": 264000,
+    "estimatesDelivered": 65,
+    "closedRevenue": 178000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Boston, MA). Scaled from $26k M1 ramp to ~$53k/mo direct homeowner flow; total $264k over 5 months with zero GC cuts."
+    "notes": "Northern climate operation (Boston, MA). Scaled from $20k M1 ramp to ~$36k/mo direct homeowner flow; total $178k over 5 months with zero GC cuts."
   },
   {
     "id": "ACC-161",
@@ -2908,13 +2908,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "01/08/2025",
     "monthsActive": 10,
     "daysActive": 308,
-    "estimatesDelivered": 106,
-    "closedRevenue": 332000,
+    "estimatesDelivered": 92,
+    "closedRevenue": 234000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Northern climate operation (Newark, NJ). Operates on reduced winter emergency trickle in Jan–Feb ($7k–$15k/mo, 1–3 repair estimates); ramps aggressively into full Spring & Summer homeowner demand ($60k–$85k+/mo)."
+    "notes": "Northern climate operation (Newark, NJ). Operates on reduced winter emergency trickle in Jan–Feb ($5k–$11k/mo, 1–3 repair estimates); ramps into full Spring & Summer homeowner demand ($38k–$55k+/mo)."
   },
   {
     "id": "ACC-162",
@@ -2926,13 +2926,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "04/15/2025",
     "monthsActive": 7,
     "daysActive": 211,
-    "estimatesDelivered": 138,
-    "closedRevenue": 325000,
+    "estimatesDelivered": 108,
+    "closedRevenue": 226000,
     "monthlyPlan": 1800,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$46k/mo direct contract volume ($325k total)."
+    "notes": "Sunbelt operation (Dallas, TX). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$32k/mo direct contract volume ($226k total)."
   },
   {
     "id": "ACC-163",
@@ -2944,13 +2944,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "05/02/2025",
     "monthsActive": 6,
     "daysActive": 194,
-    "estimatesDelivered": 98,
-    "closedRevenue": 258000,
+    "estimatesDelivered": 82,
+    "closedRevenue": 183000,
     "monthlyPlan": 2200,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $25k ramp to sustained ~$43k/mo direct contract volume ($258k total)."
+    "notes": "Sunbelt operation (San Diego, CA). Steady year-round direct homeowner demand. Scaled from $20k ramp to sustained ~$31k/mo direct contract volume ($183k total)."
   },
   {
     "id": "ACC-164",
@@ -2962,13 +2962,13 @@ export const accountsData: ContractorAccount[] = [
     "onboardingDate": "06/09/2025",
     "monthsActive": 5,
     "daysActive": 156,
-    "estimatesDelivered": 68,
-    "closedRevenue": 230000,
+    "estimatesDelivered": 57,
+    "closedRevenue": 161000,
     "monthlyPlan": 2000,
     "status": "active",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $26k ramp to sustained ~$46k/mo direct contract volume ($230k total)."
+    "notes": "Sunbelt operation (Charlotte, NC). Steady year-round direct homeowner demand. Scaled from $21k ramp to sustained ~$32k/mo direct contract volume ($161k total)."
   },
   {
     "id": "ACC-165",
@@ -2977,16 +2977,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Miami",
     "state": "FL",
-    "onboardingDate": "09/11/2024",
-    "monthsActive": 14,
-    "daysActive": 423,
-    "estimatesDelivered": 265,
-    "closedRevenue": 721000,
+    "onboardingDate": "10/16/2024",
+    "monthsActive": 7,
+    "daysActive": 215,
+    "estimatesDelivered": 96,
+    "closedRevenue": 204000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Miami, FL). Generated $721k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Miami, FL). Generated $204k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-166",
@@ -2995,16 +2995,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Granite & Quartz Fabrication",
     "city": "Windermere",
     "state": "FL",
-    "onboardingDate": "08/16/2024",
-    "monthsActive": 15,
-    "daysActive": 460,
-    "estimatesDelivered": 244,
-    "closedRevenue": 735000,
+    "onboardingDate": "09/03/2024",
+    "monthsActive": 8,
+    "daysActive": 246,
+    "estimatesDelivered": 113,
+    "closedRevenue": 234000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Windermere, FL). Generated $735k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Windermere, FL). Generated $234k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-167",
@@ -3013,16 +3013,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Finish Carpentry & Millwork",
     "city": "Austin",
     "state": "TX",
-    "onboardingDate": "07/21/2024",
-    "monthsActive": 16,
-    "daysActive": 497,
-    "estimatesDelivered": 237,
-    "closedRevenue": 740000,
+    "onboardingDate": "08/10/2024",
+    "monthsActive": 9,
+    "daysActive": 277,
+    "estimatesDelivered": 110,
+    "closedRevenue": 241000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Austin, TX). Generated $740k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Austin, TX). Generated $241k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-168",
@@ -3031,16 +3031,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Custom Closets & Cabinets",
     "city": "San Antonio",
     "state": "TX",
-    "onboardingDate": "08/02/2025",
+    "onboardingDate": "02/17/2025",
     "monthsActive": 3,
-    "daysActive": 96,
-    "estimatesDelivered": 37,
-    "closedRevenue": 108000,
+    "daysActive": 98,
+    "estimatesDelivered": 26,
+    "closedRevenue": 68000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Antonio, TX). Generated $108k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Antonio, TX). Generated $68k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-169",
@@ -3049,16 +3049,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Jersey City",
     "state": "NJ",
-    "onboardingDate": "07/07/2025",
+    "onboardingDate": "01/04/2025",
     "monthsActive": 4,
-    "daysActive": 133,
-    "estimatesDelivered": 35,
-    "closedRevenue": 84000,
+    "daysActive": 129,
+    "estimatesDelivered": 61,
+    "closedRevenue": 106000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $84k total across 4 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $106k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-170",
@@ -3067,16 +3067,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Austin",
     "state": "TX",
-    "onboardingDate": "06/12/2025",
+    "onboardingDate": "12/11/2024",
     "monthsActive": 5,
-    "daysActive": 152,
-    "estimatesDelivered": 99,
-    "closedRevenue": 230000,
+    "daysActive": 150,
+    "estimatesDelivered": 70,
+    "closedRevenue": 138000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Austin, TX). Generated $230k total across 5 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Austin, TX). Generated $138k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-171",
@@ -3085,16 +3085,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Commercial & Residential Roofing",
     "city": "Boca Raton",
     "state": "FL",
-    "onboardingDate": "05/17/2025",
+    "onboardingDate": "11/18/2024",
     "monthsActive": 6,
-    "daysActive": 189,
-    "estimatesDelivered": 74,
-    "closedRevenue": 223000,
+    "daysActive": 181,
+    "estimatesDelivered": 65,
+    "closedRevenue": 168000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $223k total across 6 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $168k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-172",
@@ -3103,16 +3103,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Roofing & Storm Restoration",
     "city": "Sarasota",
     "state": "FL",
-    "onboardingDate": "04/22/2025",
+    "onboardingDate": "10/05/2024",
     "monthsActive": 7,
-    "daysActive": 226,
-    "estimatesDelivered": 113,
-    "closedRevenue": 347000,
+    "daysActive": 212,
+    "estimatesDelivered": 95,
+    "closedRevenue": 221000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Sarasota, FL). Generated $347k total across 7 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Sarasota, FL). Generated $221k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-173",
@@ -3121,16 +3121,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Jersey City",
     "state": "NJ",
-    "onboardingDate": "03/03/2025",
+    "onboardingDate": "09/12/2024",
     "monthsActive": 8,
-    "daysActive": 245,
-    "estimatesDelivered": 117,
-    "closedRevenue": 368000,
+    "daysActive": 243,
+    "estimatesDelivered": 98,
+    "closedRevenue": 240000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $368k total across 8 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $240k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-174",
@@ -3139,16 +3139,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Boca Raton",
     "state": "FL",
-    "onboardingDate": "02/08/2025",
+    "onboardingDate": "08/19/2024",
     "monthsActive": 9,
-    "daysActive": 282,
-    "estimatesDelivered": 147,
-    "closedRevenue": 328000,
+    "daysActive": 274,
+    "estimatesDelivered": 111,
+    "closedRevenue": 212000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $328k total across 9 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $212k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-175",
@@ -3157,16 +3157,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Boca Raton",
     "state": "FL",
-    "onboardingDate": "01/13/2025",
-    "monthsActive": 10,
-    "daysActive": 301,
-    "estimatesDelivered": 176,
-    "closedRevenue": 539000,
+    "onboardingDate": "02/06/2025",
+    "monthsActive": 3,
+    "daysActive": 95,
+    "estimatesDelivered": 26,
+    "closedRevenue": 64000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $539k total across 10 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $64k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-176",
@@ -3175,16 +3175,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Granite & Quartz Fabrication",
     "city": "Windermere",
     "state": "FL",
-    "onboardingDate": "12/18/2024",
-    "monthsActive": 11,
-    "daysActive": 338,
-    "estimatesDelivered": 200,
-    "closedRevenue": 503000,
+    "onboardingDate": "01/13/2025",
+    "monthsActive": 4,
+    "daysActive": 126,
+    "estimatesDelivered": 55,
+    "closedRevenue": 93000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Windermere, FL). Generated $503k total across 11 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Windermere, FL). Generated $93k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-177",
@@ -3193,16 +3193,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Finish Carpentry & Millwork",
     "city": "Raleigh",
     "state": "NC",
-    "onboardingDate": "11/23/2024",
-    "monthsActive": 12,
-    "daysActive": 375,
-    "estimatesDelivered": 196,
-    "closedRevenue": 585000,
+    "onboardingDate": "12/20/2024",
+    "monthsActive": 5,
+    "daysActive": 157,
+    "estimatesDelivered": 65,
+    "closedRevenue": 148000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Raleigh, NC). Generated $585k total across 12 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Raleigh, NC). Generated $148k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-178",
@@ -3211,16 +3211,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Custom Closets & Cabinets",
     "city": "Danbury",
     "state": "CT",
-    "onboardingDate": "10/04/2024",
-    "monthsActive": 13,
-    "daysActive": 394,
-    "estimatesDelivered": 209,
-    "closedRevenue": 571000,
+    "onboardingDate": "11/07/2024",
+    "monthsActive": 6,
+    "daysActive": 188,
+    "estimatesDelivered": 81,
+    "closedRevenue": 159000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Danbury, CT). Generated $571k total across 13 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Danbury, CT). Generated $159k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-179",
@@ -3229,16 +3229,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Miami",
     "state": "FL",
-    "onboardingDate": "09/09/2024",
-    "monthsActive": 14,
-    "daysActive": 431,
-    "estimatesDelivered": 251,
-    "closedRevenue": 607000,
+    "onboardingDate": "10/14/2024",
+    "monthsActive": 7,
+    "daysActive": 219,
+    "estimatesDelivered": 101,
+    "closedRevenue": 186000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Miami, FL). Generated $607k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Miami, FL). Generated $186k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-180",
@@ -3247,16 +3247,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Framingham",
     "state": "MA",
-    "onboardingDate": "08/14/2024",
-    "monthsActive": 15,
-    "daysActive": 450,
-    "estimatesDelivered": 184,
-    "closedRevenue": 665000,
+    "onboardingDate": "09/01/2024",
+    "monthsActive": 8,
+    "daysActive": 240,
+    "estimatesDelivered": 103,
+    "closedRevenue": 283000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Framingham, MA). Generated $665k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Framingham, MA). Generated $283k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-181",
@@ -3265,16 +3265,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Commercial & Residential Roofing",
     "city": "Lowell",
     "state": "MA",
-    "onboardingDate": "07/19/2024",
-    "monthsActive": 16,
-    "daysActive": 487,
-    "estimatesDelivered": 236,
-    "closedRevenue": 667000,
+    "onboardingDate": "08/08/2024",
+    "monthsActive": 9,
+    "daysActive": 271,
+    "estimatesDelivered": 75,
+    "closedRevenue": 166000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Lowell, MA). Generated $667k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Lowell, MA). Generated $166k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-182",
@@ -3283,16 +3283,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Roofing & Storm Restoration",
     "city": "Framingham",
     "state": "MA",
-    "onboardingDate": "08/24/2025",
+    "onboardingDate": "02/15/2025",
     "monthsActive": 3,
-    "daysActive": 104,
-    "estimatesDelivered": 32,
-    "closedRevenue": 92000,
+    "daysActive": 92,
+    "estimatesDelivered": 28,
+    "closedRevenue": 63000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Framingham, MA). Generated $92k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Framingham, MA). Generated $63k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-183",
@@ -3301,16 +3301,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Worcester",
     "state": "MA",
-    "onboardingDate": "07/05/2025",
+    "onboardingDate": "01/02/2025",
     "monthsActive": 4,
     "daysActive": 123,
-    "estimatesDelivered": 58,
-    "closedRevenue": 134000,
+    "estimatesDelivered": 48,
+    "closedRevenue": 88000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Worcester, MA). Generated $134k total across 4 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Worcester, MA). Generated $88k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-184",
@@ -3319,16 +3319,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "San Diego",
     "state": "CA",
-    "onboardingDate": "06/10/2025",
+    "onboardingDate": "12/09/2024",
     "monthsActive": 5,
-    "daysActive": 160,
-    "estimatesDelivered": 64,
-    "closedRevenue": 179000,
+    "daysActive": 154,
+    "estimatesDelivered": 59,
+    "closedRevenue": 133000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Diego, CA). Generated $179k total across 5 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Diego, CA). Generated $133k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-185",
@@ -3337,16 +3337,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Raleigh",
     "state": "NC",
-    "onboardingDate": "05/15/2025",
+    "onboardingDate": "11/16/2024",
     "monthsActive": 6,
-    "daysActive": 197,
-    "estimatesDelivered": 104,
-    "closedRevenue": 249000,
+    "daysActive": 185,
+    "estimatesDelivered": 77,
+    "closedRevenue": 152000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Raleigh, NC). Generated $249k total across 6 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Raleigh, NC). Generated $152k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-186",
@@ -3355,16 +3355,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Finish Carpentry & Millwork",
     "city": "Charleston",
     "state": "SC",
-    "onboardingDate": "04/20/2025",
+    "onboardingDate": "10/03/2024",
     "monthsActive": 7,
     "daysActive": 216,
-    "estimatesDelivered": 87,
-    "closedRevenue": 218000,
+    "estimatesDelivered": 89,
+    "closedRevenue": 189000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Charleston, SC). Generated $218k total across 7 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Charleston, SC). Generated $189k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-187",
@@ -3373,16 +3373,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Custom Closets & Cabinets",
     "city": "Dallas",
     "state": "TX",
-    "onboardingDate": "03/25/2025",
+    "onboardingDate": "09/10/2024",
     "monthsActive": 8,
-    "daysActive": 253,
-    "estimatesDelivered": 145,
-    "closedRevenue": 425000,
+    "daysActive": 247,
+    "estimatesDelivered": 105,
+    "closedRevenue": 235000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Dallas, TX). Generated $425k total across 8 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Dallas, TX). Generated $235k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-188",
@@ -3391,16 +3391,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Atlanta",
     "state": "GA",
-    "onboardingDate": "02/06/2025",
+    "onboardingDate": "08/17/2024",
     "monthsActive": 9,
-    "daysActive": 272,
-    "estimatesDelivered": 117,
-    "closedRevenue": 284000,
+    "daysActive": 278,
+    "estimatesDelivered": 88,
+    "closedRevenue": 184000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Atlanta, GA). Generated $284k total across 9 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Atlanta, GA). Generated $184k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-189",
@@ -3409,16 +3409,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Framingham",
     "state": "MA",
-    "onboardingDate": "01/11/2025",
-    "monthsActive": 10,
-    "daysActive": 309,
-    "estimatesDelivered": 159,
-    "closedRevenue": 369000,
+    "onboardingDate": "02/04/2025",
+    "monthsActive": 3,
+    "daysActive": 99,
+    "estimatesDelivered": 36,
+    "closedRevenue": 69000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Framingham, MA). Generated $369k total across 10 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Framingham, MA). Generated $69k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-190",
@@ -3427,16 +3427,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Roofing & Storm Restoration",
     "city": "Alpharetta",
     "state": "GA",
-    "onboardingDate": "12/16/2024",
-    "monthsActive": 11,
-    "daysActive": 346,
-    "estimatesDelivered": 155,
-    "closedRevenue": 506000,
+    "onboardingDate": "01/11/2025",
+    "monthsActive": 4,
+    "daysActive": 120,
+    "estimatesDelivered": 39,
+    "closedRevenue": 106000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $506k total across 11 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $106k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-191",
@@ -3445,16 +3445,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Newark",
     "state": "NJ",
-    "onboardingDate": "11/21/2024",
-    "monthsActive": 12,
-    "daysActive": 365,
-    "estimatesDelivered": 149,
-    "closedRevenue": 496000,
+    "onboardingDate": "12/18/2024",
+    "monthsActive": 5,
+    "daysActive": 151,
+    "estimatesDelivered": 66,
+    "closedRevenue": 160000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Newark, NJ). Generated $496k total across 12 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Newark, NJ). Generated $160k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-192",
@@ -3463,16 +3463,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Seattle",
     "state": "WA",
-    "onboardingDate": "10/02/2024",
-    "monthsActive": 13,
-    "daysActive": 402,
-    "estimatesDelivered": 249,
-    "closedRevenue": 572000,
+    "onboardingDate": "11/05/2024",
+    "monthsActive": 6,
+    "daysActive": 182,
+    "estimatesDelivered": 86,
+    "closedRevenue": 158000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Seattle, WA). Generated $572k total across 13 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Seattle, WA). Generated $158k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-193",
@@ -3481,16 +3481,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Boca Raton",
     "state": "FL",
-    "onboardingDate": "09/07/2024",
-    "monthsActive": 14,
-    "daysActive": 421,
-    "estimatesDelivered": 214,
-    "closedRevenue": 633000,
+    "onboardingDate": "10/12/2024",
+    "monthsActive": 7,
+    "daysActive": 213,
+    "estimatesDelivered": 86,
+    "closedRevenue": 186000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $633k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $186k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-194",
@@ -3499,16 +3499,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Finish Carpentry & Millwork",
     "city": "Windermere",
     "state": "FL",
-    "onboardingDate": "08/12/2024",
-    "monthsActive": 15,
-    "daysActive": 458,
-    "estimatesDelivered": 274,
-    "closedRevenue": 639000,
+    "onboardingDate": "09/19/2024",
+    "monthsActive": 8,
+    "daysActive": 244,
+    "estimatesDelivered": 115,
+    "closedRevenue": 217000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Windermere, FL). Generated $639k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Windermere, FL). Generated $217k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-195",
@@ -3517,16 +3517,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Custom Closets & Cabinets",
     "city": "San Diego",
     "state": "CA",
-    "onboardingDate": "07/17/2024",
-    "monthsActive": 16,
-    "daysActive": 495,
-    "estimatesDelivered": 256,
-    "closedRevenue": 688000,
+    "onboardingDate": "08/06/2024",
+    "monthsActive": 9,
+    "daysActive": 275,
+    "estimatesDelivered": 96,
+    "closedRevenue": 186000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Diego, CA). Generated $688k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Diego, CA). Generated $186k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-196",
@@ -3535,16 +3535,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Nashua",
     "state": "NH",
-    "onboardingDate": "08/22/2025",
+    "onboardingDate": "02/13/2025",
     "monthsActive": 3,
-    "daysActive": 94,
-    "estimatesDelivered": 40,
-    "closedRevenue": 99000,
+    "daysActive": 96,
+    "estimatesDelivered": 35,
+    "closedRevenue": 63000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Nashua, NH). Generated $99k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Nashua, NH). Generated $63k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-197",
@@ -3553,16 +3553,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Atlanta",
     "state": "GA",
-    "onboardingDate": "07/03/2025",
+    "onboardingDate": "01/20/2025",
     "monthsActive": 4,
-    "daysActive": 131,
-    "estimatesDelivered": 67,
-    "closedRevenue": 201000,
+    "daysActive": 127,
+    "estimatesDelivered": 50,
+    "closedRevenue": 105000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Atlanta, GA). Generated $201k total across 4 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Atlanta, GA). Generated $105k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-198",
@@ -3571,16 +3571,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Roofing & Storm Restoration",
     "city": "Sarasota",
     "state": "FL",
-    "onboardingDate": "06/08/2025",
+    "onboardingDate": "12/07/2024",
     "monthsActive": 5,
-    "daysActive": 150,
-    "estimatesDelivered": 52,
-    "closedRevenue": 135000,
+    "daysActive": 158,
+    "estimatesDelivered": 60,
+    "closedRevenue": 122000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Sarasota, FL). Generated $135k total across 5 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Sarasota, FL). Generated $122k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-199",
@@ -3589,16 +3589,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Lowell",
     "state": "MA",
-    "onboardingDate": "05/13/2025",
+    "onboardingDate": "11/14/2024",
     "monthsActive": 6,
-    "daysActive": 187,
-    "estimatesDelivered": 103,
-    "closedRevenue": 280000,
+    "daysActive": 189,
+    "estimatesDelivered": 71,
+    "closedRevenue": 161000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Lowell, MA). Generated $280k total across 6 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Lowell, MA). Generated $161k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-200",
@@ -3607,16 +3607,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Baltimore",
     "state": "MD",
-    "onboardingDate": "04/18/2025",
+    "onboardingDate": "10/01/2024",
     "monthsActive": 7,
-    "daysActive": 224,
-    "estimatesDelivered": 79,
-    "closedRevenue": 232000,
+    "daysActive": 210,
+    "estimatesDelivered": 90,
+    "closedRevenue": 212000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Baltimore, MD). Generated $232k total across 7 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Baltimore, MD). Generated $212k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-201",
@@ -3625,16 +3625,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "West Palm Beach",
     "state": "FL",
-    "onboardingDate": "03/23/2025",
+    "onboardingDate": "09/08/2024",
     "monthsActive": 8,
-    "daysActive": 243,
-    "estimatesDelivered": 164,
-    "closedRevenue": 373000,
+    "daysActive": 241,
+    "estimatesDelivered": 123,
+    "closedRevenue": 217000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $373k total across 8 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $217k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-202",
@@ -3643,16 +3643,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Boston",
     "state": "MA",
-    "onboardingDate": "02/04/2025",
+    "onboardingDate": "08/15/2024",
     "monthsActive": 9,
-    "daysActive": 280,
-    "estimatesDelivered": 99,
-    "closedRevenue": 291000,
+    "daysActive": 272,
+    "estimatesDelivered": 77,
+    "closedRevenue": 170000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Boston, MA). Generated $291k total across 9 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boston, MA). Generated $170k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-203",
@@ -3661,16 +3661,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Jersey City",
     "state": "NJ",
-    "onboardingDate": "01/09/2025",
-    "monthsActive": 10,
-    "daysActive": 317,
-    "estimatesDelivered": 101,
-    "closedRevenue": 305000,
+    "onboardingDate": "02/02/2025",
+    "monthsActive": 3,
+    "daysActive": 93,
+    "estimatesDelivered": 31,
+    "closedRevenue": 59000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $305k total across 10 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $59k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-204",
@@ -3679,16 +3679,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Baltimore",
     "state": "MD",
-    "onboardingDate": "12/14/2024",
-    "monthsActive": 11,
-    "daysActive": 336,
-    "estimatesDelivered": 194,
-    "closedRevenue": 512000,
+    "onboardingDate": "01/09/2025",
+    "monthsActive": 4,
+    "daysActive": 124,
+    "estimatesDelivered": 42,
+    "closedRevenue": 108000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Baltimore, MD). Generated $512k total across 11 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Baltimore, MD). Generated $108k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-205",
@@ -3697,16 +3697,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Nashua",
     "state": "NH",
-    "onboardingDate": "11/19/2024",
-    "monthsActive": 12,
-    "daysActive": 373,
-    "estimatesDelivered": 205,
-    "closedRevenue": 495000,
+    "onboardingDate": "12/16/2024",
+    "monthsActive": 5,
+    "daysActive": 155,
+    "estimatesDelivered": 59,
+    "closedRevenue": 130000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Nashua, NH). Generated $495k total across 12 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Nashua, NH). Generated $130k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-206",
@@ -3715,16 +3715,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Jersey City",
     "state": "NJ",
-    "onboardingDate": "10/24/2024",
-    "monthsActive": 13,
-    "daysActive": 392,
-    "estimatesDelivered": 193,
-    "closedRevenue": 482000,
+    "onboardingDate": "11/03/2024",
+    "monthsActive": 6,
+    "daysActive": 186,
+    "estimatesDelivered": 88,
+    "closedRevenue": 150000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $482k total across 13 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Jersey City, NJ). Generated $150k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-207",
@@ -3733,16 +3733,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Worcester",
     "state": "MA",
-    "onboardingDate": "09/05/2024",
-    "monthsActive": 14,
-    "daysActive": 429,
-    "estimatesDelivered": 214,
-    "closedRevenue": 648000,
+    "onboardingDate": "10/10/2024",
+    "monthsActive": 7,
+    "daysActive": 217,
+    "estimatesDelivered": 102,
+    "closedRevenue": 222000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Worcester, MA). Generated $648k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Worcester, MA). Generated $222k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-208",
@@ -3751,16 +3751,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Long Island",
     "state": "NY",
-    "onboardingDate": "08/10/2024",
-    "monthsActive": 15,
-    "daysActive": 466,
-    "estimatesDelivered": 198,
-    "closedRevenue": 630000,
+    "onboardingDate": "09/17/2024",
+    "monthsActive": 8,
+    "daysActive": 248,
+    "estimatesDelivered": 111,
+    "closedRevenue": 237000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Long Island, NY). Generated $630k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Long Island, NY). Generated $237k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-209",
@@ -3769,16 +3769,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Boca Raton",
     "state": "FL",
-    "onboardingDate": "07/15/2024",
-    "monthsActive": 16,
-    "daysActive": 485,
-    "estimatesDelivered": 250,
-    "closedRevenue": 799000,
+    "onboardingDate": "08/04/2024",
+    "monthsActive": 9,
+    "daysActive": 279,
+    "estimatesDelivered": 95,
+    "closedRevenue": 229000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $799k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boca Raton, FL). Generated $229k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-210",
@@ -3787,16 +3787,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "San Antonio",
     "state": "TX",
-    "onboardingDate": "08/20/2025",
+    "onboardingDate": "02/11/2025",
     "monthsActive": 3,
-    "daysActive": 102,
-    "estimatesDelivered": 26,
-    "closedRevenue": 84000,
+    "daysActive": 90,
+    "estimatesDelivered": 27,
+    "closedRevenue": 68000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Antonio, TX). Generated $84k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Antonio, TX). Generated $68k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-211",
@@ -3805,16 +3805,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Raleigh",
     "state": "NC",
-    "onboardingDate": "07/25/2025",
+    "onboardingDate": "01/18/2025",
     "monthsActive": 4,
     "daysActive": 121,
-    "estimatesDelivered": 58,
-    "closedRevenue": 157000,
+    "estimatesDelivered": 38,
+    "closedRevenue": 86000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Raleigh, NC). Generated $157k total across 4 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Raleigh, NC). Generated $86k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-212",
@@ -3823,16 +3823,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Wood & Metal Framing",
     "city": "Austin",
     "state": "TX",
-    "onboardingDate": "06/06/2025",
+    "onboardingDate": "12/05/2024",
     "monthsActive": 5,
-    "daysActive": 158,
-    "estimatesDelivered": 56,
-    "closedRevenue": 172000,
+    "daysActive": 152,
+    "estimatesDelivered": 54,
+    "closedRevenue": 124000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Austin, TX). Generated $172k total across 5 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Austin, TX). Generated $124k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-213",
@@ -3841,16 +3841,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Dallas",
     "state": "TX",
-    "onboardingDate": "05/11/2025",
+    "onboardingDate": "11/12/2024",
     "monthsActive": 6,
-    "daysActive": 195,
-    "estimatesDelivered": 101,
-    "closedRevenue": 275000,
+    "daysActive": 183,
+    "estimatesDelivered": 78,
+    "closedRevenue": 165000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Dallas, TX). Generated $275k total across 6 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Dallas, TX). Generated $165k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-214",
@@ -3859,16 +3859,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Baltimore",
     "state": "MD",
-    "onboardingDate": "04/16/2025",
+    "onboardingDate": "10/19/2024",
     "monthsActive": 7,
     "daysActive": 214,
-    "estimatesDelivered": 99,
-    "closedRevenue": 288000,
+    "estimatesDelivered": 87,
+    "closedRevenue": 195000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Baltimore, MD). Generated $288k total across 7 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Baltimore, MD). Generated $195k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-215",
@@ -3877,16 +3877,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Alpharetta",
     "state": "GA",
-    "onboardingDate": "03/21/2025",
+    "onboardingDate": "09/06/2024",
     "monthsActive": 8,
-    "daysActive": 251,
-    "estimatesDelivered": 131,
-    "closedRevenue": 308000,
+    "daysActive": 245,
+    "estimatesDelivered": 113,
+    "closedRevenue": 210000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $308k total across 8 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $210k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-216",
@@ -3895,16 +3895,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "San Antonio",
     "state": "TX",
-    "onboardingDate": "02/02/2025",
+    "onboardingDate": "08/13/2024",
     "monthsActive": 9,
-    "daysActive": 270,
-    "estimatesDelivered": 158,
-    "closedRevenue": 435000,
+    "daysActive": 276,
+    "estimatesDelivered": 116,
+    "closedRevenue": 239000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (San Antonio, TX). Generated $435k total across 9 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Antonio, TX). Generated $239k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-217",
@@ -3913,16 +3913,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Windermere",
     "state": "FL",
-    "onboardingDate": "01/07/2025",
-    "monthsActive": 10,
-    "daysActive": 307,
-    "estimatesDelivered": 125,
-    "closedRevenue": 331000,
+    "onboardingDate": "02/20/2025",
+    "monthsActive": 3,
+    "daysActive": 97,
+    "estimatesDelivered": 28,
+    "closedRevenue": 59000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Windermere, FL). Generated $331k total across 10 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Windermere, FL). Generated $59k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-218",
@@ -3931,16 +3931,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "Boston",
     "state": "MA",
-    "onboardingDate": "12/12/2024",
-    "monthsActive": 11,
-    "daysActive": 344,
-    "estimatesDelivered": 123,
-    "closedRevenue": 400000,
+    "onboardingDate": "01/07/2025",
+    "monthsActive": 4,
+    "daysActive": 128,
+    "estimatesDelivered": 48,
+    "closedRevenue": 106000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Boston, MA). Generated $400k total across 11 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Boston, MA). Generated $106k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-219",
@@ -3949,16 +3949,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Sarasota",
     "state": "FL",
-    "onboardingDate": "11/17/2024",
-    "monthsActive": 12,
-    "daysActive": 363,
-    "estimatesDelivered": 196,
-    "closedRevenue": 527000,
+    "onboardingDate": "12/14/2024",
+    "monthsActive": 5,
+    "daysActive": 159,
+    "estimatesDelivered": 59,
+    "closedRevenue": 135000,
     "monthlyPlan": 2000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Sarasota, FL). Generated $527k total across 12 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Sarasota, FL). Generated $135k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-220",
@@ -3967,16 +3967,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Charleston",
     "state": "SC",
-    "onboardingDate": "10/22/2024",
-    "monthsActive": 13,
-    "daysActive": 400,
-    "estimatesDelivered": 201,
-    "closedRevenue": 657000,
+    "onboardingDate": "11/01/2024",
+    "monthsActive": 6,
+    "daysActive": 180,
+    "estimatesDelivered": 79,
+    "closedRevenue": 164000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Charleston, SC). Generated $657k total across 13 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Charleston, SC). Generated $164k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-221",
@@ -3985,16 +3985,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "San Antonio",
     "state": "TX",
-    "onboardingDate": "09/03/2024",
-    "monthsActive": 14,
-    "daysActive": 437,
-    "estimatesDelivered": 221,
-    "closedRevenue": 697000,
+    "onboardingDate": "10/08/2024",
+    "monthsActive": 7,
+    "daysActive": 211,
+    "estimatesDelivered": 94,
+    "closedRevenue": 201000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (San Antonio, TX). Generated $697k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Antonio, TX). Generated $201k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-222",
@@ -4003,16 +4003,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Kitchen & Bath Remodeling",
     "city": "San Diego",
     "state": "CA",
-    "onboardingDate": "08/08/2024",
-    "monthsActive": 15,
-    "daysActive": 456,
-    "estimatesDelivered": 301,
-    "closedRevenue": 780000,
+    "onboardingDate": "09/15/2024",
+    "monthsActive": 8,
+    "daysActive": 242,
+    "estimatesDelivered": 127,
+    "closedRevenue": 243000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Diego, CA). Generated $780k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Diego, CA). Generated $243k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-223",
@@ -4021,16 +4021,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "West Palm Beach",
     "state": "FL",
-    "onboardingDate": "07/13/2024",
-    "monthsActive": 16,
-    "daysActive": 493,
-    "estimatesDelivered": 243,
-    "closedRevenue": 719000,
+    "onboardingDate": "08/02/2024",
+    "monthsActive": 9,
+    "daysActive": 273,
+    "estimatesDelivered": 110,
+    "closedRevenue": 244000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $719k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $244k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-224",
@@ -4039,16 +4039,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Tampa",
     "state": "FL",
-    "onboardingDate": "08/18/2025",
+    "onboardingDate": "02/09/2025",
     "monthsActive": 3,
-    "daysActive": 92,
-    "estimatesDelivered": 45,
-    "closedRevenue": 99000,
+    "daysActive": 94,
+    "estimatesDelivered": 39,
+    "closedRevenue": 70000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Tampa, FL). Generated $99k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Tampa, FL). Generated $70k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-225",
@@ -4057,16 +4057,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "San Antonio",
     "state": "TX",
-    "onboardingDate": "07/23/2025",
+    "onboardingDate": "01/16/2025",
     "monthsActive": 4,
-    "daysActive": 129,
-    "estimatesDelivered": 64,
-    "closedRevenue": 167000,
+    "daysActive": 125,
+    "estimatesDelivered": 50,
+    "closedRevenue": 93000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (San Antonio, TX). Generated $167k total across 4 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (San Antonio, TX). Generated $93k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-226",
@@ -4075,16 +4075,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Framingham",
     "state": "MA",
-    "onboardingDate": "06/04/2025",
+    "onboardingDate": "12/03/2024",
     "monthsActive": 5,
-    "daysActive": 166,
-    "estimatesDelivered": 76,
-    "closedRevenue": 199000,
+    "daysActive": 156,
+    "estimatesDelivered": 57,
+    "closedRevenue": 122000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Framingham, MA). Generated $199k total across 5 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Framingham, MA). Generated $122k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-227",
@@ -4093,16 +4093,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Fort Lauderdale",
     "state": "FL",
-    "onboardingDate": "05/09/2025",
+    "onboardingDate": "11/10/2024",
     "monthsActive": 6,
-    "daysActive": 185,
-    "estimatesDelivered": 85,
-    "closedRevenue": 227000,
+    "daysActive": 187,
+    "estimatesDelivered": 79,
+    "closedRevenue": 174000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Fort Lauderdale, FL). Generated $227k total across 6 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Fort Lauderdale, FL). Generated $174k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-228",
@@ -4111,16 +4111,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Alpharetta",
     "state": "GA",
-    "onboardingDate": "04/14/2025",
+    "onboardingDate": "10/17/2024",
     "monthsActive": 7,
-    "daysActive": 222,
-    "estimatesDelivered": 112,
-    "closedRevenue": 321000,
+    "daysActive": 218,
+    "estimatesDelivered": 87,
+    "closedRevenue": 191000,
     "monthlyPlan": 2800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $321k total across 7 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Alpharetta, GA). Generated $191k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-229",
@@ -4129,16 +4129,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Luxury Bathroom Renovations",
     "city": "Atlanta",
     "state": "GA",
-    "onboardingDate": "03/19/2025",
+    "onboardingDate": "09/04/2024",
     "monthsActive": 8,
-    "daysActive": 241,
-    "estimatesDelivered": 129,
-    "closedRevenue": 306000,
+    "daysActive": 249,
+    "estimatesDelivered": 121,
+    "closedRevenue": 234000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Atlanta, GA). Generated $306k total across 8 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Atlanta, GA). Generated $234k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-230",
@@ -4147,16 +4147,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Miami",
     "state": "FL",
-    "onboardingDate": "02/24/2025",
+    "onboardingDate": "08/11/2024",
     "monthsActive": 9,
-    "daysActive": 278,
-    "estimatesDelivered": 194,
-    "closedRevenue": 466000,
+    "daysActive": 270,
+    "estimatesDelivered": 135,
+    "closedRevenue": 255000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Miami, FL). Generated $466k total across 9 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Miami, FL). Generated $255k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-231",
@@ -4165,16 +4165,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "West Palm Beach",
     "state": "FL",
-    "onboardingDate": "01/05/2025",
-    "monthsActive": 10,
-    "daysActive": 315,
-    "estimatesDelivered": 129,
-    "closedRevenue": 347000,
+    "onboardingDate": "02/18/2025",
+    "monthsActive": 3,
+    "daysActive": 91,
+    "estimatesDelivered": 29,
+    "closedRevenue": 72000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $347k total across 10 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (West Palm Beach, FL). Generated $72k total across 3 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-232",
@@ -4183,16 +4183,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Houston",
     "state": "TX",
-    "onboardingDate": "12/10/2024",
-    "monthsActive": 11,
-    "daysActive": 334,
-    "estimatesDelivered": 215,
-    "closedRevenue": 653000,
+    "onboardingDate": "01/05/2025",
+    "monthsActive": 4,
+    "daysActive": 122,
+    "estimatesDelivered": 50,
+    "closedRevenue": 115000,
     "monthlyPlan": 2400,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Houston, TX). Generated $653k total across 11 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Houston, TX). Generated $115k total across 4 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-233",
@@ -4201,16 +4201,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Atlanta",
     "state": "GA",
-    "onboardingDate": "11/15/2024",
-    "monthsActive": 12,
-    "daysActive": 371,
-    "estimatesDelivered": 202,
-    "closedRevenue": 505000,
+    "onboardingDate": "12/12/2024",
+    "monthsActive": 5,
+    "daysActive": 153,
+    "estimatesDelivered": 65,
+    "closedRevenue": 134000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Atlanta, GA). Generated $505k total across 12 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Atlanta, GA). Generated $134k total across 5 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-234",
@@ -4219,16 +4219,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Austin",
     "state": "TX",
-    "onboardingDate": "10/20/2024",
-    "monthsActive": 13,
-    "daysActive": 390,
-    "estimatesDelivered": 260,
-    "closedRevenue": 536000,
+    "onboardingDate": "11/19/2024",
+    "monthsActive": 6,
+    "daysActive": 184,
+    "estimatesDelivered": 89,
+    "closedRevenue": 147000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Austin, TX). Generated $536k total across 13 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Austin, TX). Generated $147k total across 6 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-235",
@@ -4237,16 +4237,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Windermere",
     "state": "FL",
-    "onboardingDate": "09/25/2024",
-    "monthsActive": 14,
-    "daysActive": 427,
-    "estimatesDelivered": 256,
-    "closedRevenue": 658000,
+    "onboardingDate": "10/06/2024",
+    "monthsActive": 7,
+    "daysActive": 215,
+    "estimatesDelivered": 97,
+    "closedRevenue": 201000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Windermere, FL). Generated $658k total across 14 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Windermere, FL). Generated $201k total across 7 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-236",
@@ -4255,16 +4255,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "Hardwood & LVP Flooring",
     "city": "Danbury",
     "state": "CT",
-    "onboardingDate": "08/06/2024",
-    "monthsActive": 15,
-    "daysActive": 464,
-    "estimatesDelivered": 239,
-    "closedRevenue": 691000,
+    "onboardingDate": "09/13/2024",
+    "monthsActive": 8,
+    "daysActive": 246,
+    "estimatesDelivered": 110,
+    "closedRevenue": 223000,
     "monthlyPlan": 3000,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 10,
-    "notes": "Completed agreed operational term (Danbury, CT). Generated $691k total across 15 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Danbury, CT). Generated $223k total across 8 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-237",
@@ -4273,16 +4273,16 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Dallas",
     "state": "TX",
-    "onboardingDate": "07/11/2024",
-    "monthsActive": 16,
-    "daysActive": 483,
-    "estimatesDelivered": 255,
-    "closedRevenue": 717000,
+    "onboardingDate": "08/20/2024",
+    "monthsActive": 9,
+    "daysActive": 277,
+    "estimatesDelivered": 112,
+    "closedRevenue": 252000,
     "monthlyPlan": 1800,
     "status": "churned",
     "healthScore": "excellent",
     "nps": 9,
-    "notes": "Completed agreed operational term (Dallas, TX). Generated $717k total across 16 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Dallas, TX). Generated $252k total across 9 months of direct homeowner campaigns."
   },
   {
     "id": "ACC-238",
@@ -4291,15 +4291,15 @@ export const accountsData: ContractorAccount[] = [
     "specialty": "General Contractor & Framing",
     "city": "Sarasota",
     "state": "FL",
-    "onboardingDate": "08/16/2025",
+    "onboardingDate": "02/07/2025",
     "monthsActive": 3,
-    "daysActive": 100,
-    "estimatesDelivered": 42,
-    "closedRevenue": 108000,
+    "daysActive": 98,
+    "estimatesDelivered": 30,
+    "closedRevenue": 59000,
     "monthlyPlan": 2200,
     "status": "churned",
     "healthScore": "stable",
     "nps": 9,
-    "notes": "Completed agreed operational term (Sarasota, FL). Generated $108k total across 3 months of direct homeowner campaigns."
+    "notes": "Completed agreed operational term (Sarasota, FL). Generated $59k total across 3 months of direct homeowner campaigns."
   }
 ];

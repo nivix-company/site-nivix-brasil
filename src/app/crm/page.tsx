@@ -123,43 +123,68 @@ function generateMonthlyHistory(account: ContractorAccount): MonthlyMetric[] {
   const idNum = parseInt(account.id.replace("ACC-", ""), 10) || 1;
   const s = account.specialty.toLowerCase();
   const subtype = getWinterSubtype(idNum, account.state, account.specialty);
+  const isShowcaseOrPartner = account.status === "partner";
+
+  // Dedicated 9-month curve for ACC-003 (JK Construction LLC): May -> Jan, ~$372k total,
+  // summer peak in Jul-Aug, steady average in Jun/Sep/Oct, lower in Nov & Jan, paused in Dec.
+  if (idNum === 3) {
+    const jkMonths: Array<{ label: string; phase: string; est: number; revK: number }> = [
+      { label: "M1 (May)", phase: "M1 30d Onboarding: Covers Baseline ($24k)", est: 7, revK: 24 },
+      { label: "M2 (Jun)", phase: "M2 60d Milestone: Doubled Direct Homeowner Pipeline", est: 15, revK: 49 },
+      { label: "M3 (Jul)", phase: "High Season Surge (Jul): Peak Summer Volume ($78k)", est: 25, revK: 78 },
+      { label: "M4 (Aug)", phase: "High Season Surge (Aug): Peak Summer Volume ($82k)", est: 26, revK: 82 },
+      { label: "M5 (Sep)", phase: "Steady Season (Sep): Consistent Homeowner Flow ($48k)", est: 15, revK: 48 },
+      { label: "M6 (Oct)", phase: "Steady Season (Oct): Consistent Homeowner Flow ($47k)", est: 14, revK: 47 },
+      { label: "M7 (Nov)", phase: "Winter Slowdown (Nov): Lower Pre-Winter Volume ($21k)", est: 6, revK: 21 },
+      { label: "M8 (Dec)", phase: "Winter Shutdown (Dec): Operations Paused", est: 0, revK: 0 },
+      { label: "M9 (Jan)", phase: "Winter Trickle (Jan): Lower Mid-Winter Restart ($23k)", est: 7, revK: 23 },
+    ];
+    return jkMonths.slice(0, monthsCount).map((item, idx) => {
+      const rev = item.revK * 1000;
+      return {
+        monthIndex: idx + 1,
+        monthLabel: item.label,
+        phase: item.phase,
+        estimates: item.est,
+        revenue: rev,
+        revenueK: item.revK,
+        hwDeals: item.est === 0 ? 0 : Math.max(1, Math.round(item.est * 0.23)),
+        gcCommissionSaved: Math.round(rev * 0.28),
+      };
+    });
+  }
 
   let startCalMonth = (idNum * 5 + 3) % 12;
-  if (idNum === 1) {
-    startCalMonth = 8; // Sep start for JS Drywall
-  } else if (idNum === 3) {
-    startCalMonth = 8; // Sep start for Chameleon presentation case
-  } else if (monthsCount <= 8) {
+  if (monthsCount <= 8) {
     startCalMonth = (10 - monthsCount + 12) % 12; // Recent 1-8 month leads end in current month (Oct)
   } else if (subtype === "total_freeze_3m" || subtype === "freeze_2m_trickle_shoulder" || subtype === "winter_trickle") {
     startCalMonth = (idNum % 3 === 0) ? 9 : (idNum % 3 === 1) ? 8 : 7;
   }
 
-  // Month 1: 5 to 9 estimates, covering $20k to $30k baseline
+  // Month 1: 5 to 9 estimates, covering $16k to $25k baseline
   const m1Est = 5 + Math.floor(deterministicHash(idNum, 1) * 5);
-  let minM1Rev = 20, maxM1Rev = 28;
+  let minM1Rev = isShowcaseOrPartner ? 20 : 16;
+  let maxM1Rev = isShowcaseOrPartner ? 28 : 22;
   if (s.includes("roof") || s.includes("whole home") || s.includes("addition") || s.includes("kitchen") || s.includes("pool")) {
-    minM1Rev = 22; maxM1Rev = 32;
+    minM1Rev = isShowcaseOrPartner ? 22 : 18;
+    maxM1Rev = isShowcaseOrPartner ? 32 : 25;
   }
   let m1RevK = Math.round(minM1Rev + deterministicHash(idNum, 2) * (maxM1Rev - minM1Rev));
-  if (idNum === 1) m1RevK = 26;
-  else if (idNum === 3) m1RevK = 24;
-  else if (account.status === "partner") m1RevK = 28 + Math.floor(deterministicHash(idNum, 3) * 6);
-  else if (account.status === "churned") m1RevK = 18 + Math.floor(deterministicHash(idNum, 3) * 6);
+  if (account.status === "partner") m1RevK = 28 + Math.floor(deterministicHash(idNum, 3) * 6);
+  else if (account.status === "churned") m1RevK = 14 + Math.floor(deterministicHash(idNum, 3) * 6);
 
-  const avgTicketK = 6.5 + deterministicHash(idNum, 4) * 6.5;
+  const avgTicketK = isShowcaseOrPartner
+    ? 6.5 + deterministicHash(idNum, 4) * 6.5
+    : 5.0 + deterministicHash(idNum, 4) * 5.0;
 
-  let baseScaleEst = 12 + Math.floor(deterministicHash(idNum, 6) * 6);
-  let baseScaleRevK = 32 + Math.floor(deterministicHash(idNum, 7) * 14);
-  if (idNum === 1) {
-    baseScaleEst = 18;
-    baseScaleRevK = 52;
-  } else if (idNum === 3) {
-    baseScaleEst = 15;
-    baseScaleRevK = 42;
-  } else if (account.status === "partner") {
+  let baseScaleEst = 10 + Math.floor(deterministicHash(idNum, 6) * 5);
+  let baseScaleRevK = 23 + Math.floor(deterministicHash(idNum, 7) * 9);
+  if (account.status === "partner") {
     baseScaleEst = 18 + Math.floor(deterministicHash(idNum, 6) * 5);
     baseScaleRevK = 48 + Math.floor(deterministicHash(idNum, 7) * 12);
+  } else if (account.status === "churned") {
+    baseScaleEst = 9 + Math.floor(deterministicHash(idNum, 6) * 4);
+    baseScaleRevK = 18 + Math.floor(deterministicHash(idNum, 7) * 7);
   }
 
   const months: MonthlyMetric[] = [];
@@ -177,7 +202,9 @@ function generateMonthlyHistory(account: ContractorAccount): MonthlyMetric[] {
       phase = `M1 30d Onboarding: Covers Baseline ($${m1RevK}k)`;
     } else if (m === 2) {
       est = Math.round(m1Est * (1.75 + deterministicHash(idNum, 12) * 0.40));
-      revK = Math.round(m1RevK * (1.55 + deterministicHash(idNum, 13) * 0.35));
+      revK = isShowcaseOrPartner
+        ? Math.round(m1RevK * (1.55 + deterministicHash(idNum, 13) * 0.35))
+        : Math.round(m1RevK * (1.50 + deterministicHash(idNum, 13) * 0.30));
       phase = "M2 60d Milestone: Doubled Direct Homeowner Pipeline";
     } else {
       const isNov = calMonth === 10;
@@ -187,25 +214,7 @@ function generateMonthlyHistory(account: ContractorAccount): MonthlyMetric[] {
       const isHighSeason = calMonth >= 3 && calMonth <= 8;
       const isPeakSummer = calMonth >= 4 && calMonth <= 7;
 
-      if (idNum === 3 && (isJan || isFeb)) {
-        est = 0;
-        revK = 0;
-        phase = `Winter Shutdown (${monthName}): Sub-Zero Freeze Pause`;
-      } else if (idNum === 3 && isDec) {
-        est = 3;
-        revK = 12;
-        phase = `Winter Slowdown (${monthName}): Emergency Trickle & Tarping ($12k)`;
-      } else if (idNum === 3 && isNov) {
-        est = 5;
-        revK = 20;
-        phase = `Late Fall Taper (${monthName}): Finishing Pre-Winter Jobs ($20k)`;
-      } else if (idNum === 3 && isHighSeason) {
-        const highFactors = [0, 0, 0, 0.90, 1.05, 1.12, 1.08, 0.96, 0.80];
-        const hf = highFactors[calMonth] || 1.0;
-        revK = Math.round(75 * hf);
-        est = Math.round(28 * hf);
-        phase = `High Season Surge (${monthName}): 3x Volume Delivery`;
-      } else if (subtype === "total_freeze_3m" && (isDec || isJan || isFeb)) {
+      if (subtype === "total_freeze_3m" && (isDec || isJan || isFeb)) {
         est = 0;
         revK = 0;
         phase = `Winter Shutdown (${monthName}): 100% Freeze Pause`;
@@ -215,41 +224,43 @@ function generateMonthlyHistory(account: ContractorAccount): MonthlyMetric[] {
         phase = `Winter Shutdown (${monthName}): Sub-Zero Freeze Pause`;
       } else if (subtype === "freeze_2m_trickle_shoulder" && isDec) {
         est = 2 + Math.floor(deterministicHash(idNum * 13 + m, 80) * 2);
-        revK = 8 + Math.floor(deterministicHash(idNum * 17 + m, 81) * 6);
+        revK = (isShowcaseOrPartner ? 8 : 6) + Math.floor(deterministicHash(idNum * 17 + m, 81) * (isShowcaseOrPartner ? 6 : 5));
         phase = `Winter Slowdown (${monthName}): Tarping & Emergency Repairs ($${revK}k)`;
       } else if (subtype === "freeze_2m_trickle_shoulder" && isNov) {
         est = 3 + Math.floor(deterministicHash(idNum * 13 + m, 82) * 3);
-        revK = 14 + Math.floor(deterministicHash(idNum * 17 + m, 83) * 7);
+        revK = (isShowcaseOrPartner ? 14 : 11) + Math.floor(deterministicHash(idNum * 17 + m, 83) * (isShowcaseOrPartner ? 7 : 6));
         phase = `Late Fall Taper (${monthName}): Finishing Pre-Winter Jobs ($${revK}k)`;
       } else if (subtype === "winter_trickle" && (isJan || isFeb)) {
         est = 1 + Math.floor(deterministicHash(idNum * 13 + m, 84) * 3);
-        revK = 7 + Math.floor(deterministicHash(idNum * 17 + m, 85) * 8);
+        revK = (isShowcaseOrPartner ? 7 : 5) + Math.floor(deterministicHash(idNum * 17 + m, 85) * (isShowcaseOrPartner ? 8 : 6));
         phase = `Winter Trickle (${monthName}): Small Service & Ice Emergency Jobs ($${revK}k)`;
       } else if (subtype === "winter_trickle" && (isNov || isDec)) {
         est = 3 + Math.floor(deterministicHash(idNum * 13 + m, 86) * 3);
-        revK = 12 + Math.floor(deterministicHash(idNum * 17 + m, 87) * 8);
+        revK = (isShowcaseOrPartner ? 12 : 10) + Math.floor(deterministicHash(idNum * 17 + m, 87) * (isShowcaseOrPartner ? 8 : 6));
         phase = `Pre-Winter Slowdown (${monthName}): Late Season Jobs ($${revK}k)`;
       } else if (isDec || isJan || isFeb) {
         const factor = subtype === "winter_interior" ? (0.65 + deterministicHash(idNum * 19 + m, 20) * 0.18) : (0.72 + deterministicHash(idNum * 19 + m, 20) * 0.20);
         est = Math.max(6, Math.round(baseScaleEst * factor));
-        const dealSwingK = Math.round((deterministicHash(idNum * 23 + m, 21) - 0.48) * avgTicketK * 1.2);
-        revK = Math.max(18, Math.round(baseScaleRevK * factor + dealSwingK));
+        const dealSwingK = Math.round((deterministicHash(idNum * 23 + m, 21) - 0.48) * avgTicketK * (isShowcaseOrPartner ? 1.2 : 1.0));
+        revK = Math.max(isShowcaseOrPartner ? 18 : 14, Math.round(baseScaleRevK * factor + dealSwingK));
         phase = `Low Season (${monthName}): Winter Baseline Maintenance`;
       } else if (isHighSeason) {
-        const highBoost = (subtype === "total_freeze_3m" || subtype === "freeze_2m_trickle_shoulder") ? 1.62 : (subtype === "winter_trickle" ? 1.50 : 1.38);
-        const peakExtra = isPeakSummer ? 0.20 : 0.05;
-        const monthSwing = (deterministicHash(idNum * 31 + m, 30) - 0.45) * 0.40;
-        const factor = Math.max(1.15, highBoost + peakExtra + monthSwing);
+        const highBoost = isShowcaseOrPartner
+          ? ((subtype === "total_freeze_3m" || subtype === "freeze_2m_trickle_shoulder") ? 1.62 : (subtype === "winter_trickle" ? 1.50 : 1.38))
+          : ((subtype === "total_freeze_3m" || subtype === "freeze_2m_trickle_shoulder") ? 1.52 : (subtype === "winter_trickle" ? 1.42 : 1.32));
+        const peakExtra = isPeakSummer ? (isShowcaseOrPartner ? 0.20 : 0.16) : 0.05;
+        const monthSwing = (deterministicHash(idNum * 31 + m, 30) - 0.45) * (isShowcaseOrPartner ? 0.40 : 0.32);
+        const factor = Math.max(1.12, highBoost + peakExtra + monthSwing);
 
-        est = Math.max(15, Math.round(baseScaleEst * factor));
-        const jobSwingK = Math.round((deterministicHash(idNum * 37 + m, 31) - 0.45) * avgTicketK * 1.5);
-        revK = Math.max(44, Math.round(baseScaleRevK * factor + jobSwingK));
+        est = Math.max(isShowcaseOrPartner ? 15 : 13, Math.round(baseScaleEst * factor));
+        const jobSwingK = Math.round((deterministicHash(idNum * 37 + m, 31) - 0.45) * avgTicketK * (isShowcaseOrPartner ? 1.5 : 1.1));
+        revK = Math.max(isShowcaseOrPartner ? 44 : 30, Math.round(baseScaleRevK * factor + jobSwingK));
         phase = `High Season Surge (${monthName}): 3x Volume Delivery`;
       } else {
-        const shoulderFactor = 0.90 + deterministicHash(idNum * 41 + m, 40) * 0.35;
-        est = Math.max(9, Math.round(baseScaleEst * shoulderFactor));
-        const jobSwingK = Math.round((deterministicHash(idNum * 43 + m, 41) - 0.5) * avgTicketK * 1.3);
-        revK = Math.max(26, Math.round(baseScaleRevK * shoulderFactor + jobSwingK));
+        const shoulderFactor = (isShowcaseOrPartner ? 0.90 : 0.88) + deterministicHash(idNum * 41 + m, 40) * (isShowcaseOrPartner ? 0.35 : 0.30);
+        est = Math.max(isShowcaseOrPartner ? 9 : 8, Math.round(baseScaleEst * shoulderFactor));
+        const jobSwingK = Math.round((deterministicHash(idNum * 43 + m, 41) - 0.5) * avgTicketK * (isShowcaseOrPartner ? 1.3 : 1.1));
+        revK = Math.max(isShowcaseOrPartner ? 26 : 20, Math.round(baseScaleRevK * shoulderFactor + jobSwingK));
         phase = `Shoulder Season (${monthName}): Steady Homeowner Flow`;
       }
     }
@@ -281,70 +292,73 @@ interface ChameleonProfile {
   notes: string;
 }
 
+const JK_BASE_NOTES =
+  "Cold Belt operation (Hartford, CT). Covered $24k baseline in M1 (May) and doubled in M2 ($49k). Delivered peak summer volume ($78k–$82k/mo in Jul–Aug) with consistent flow in Sep–Oct ($47k–$48k/mo). Tapered in Nov ($21k), paused operations in Dec ($0), and resumed at lower winter pace in Jan ($23k).";
+
 const CHAMELEON_CONFIG: Record<string, ChameleonProfile> = {
   roofing: {
-    companyName: "Summit Peak Roofing & Restoration LLC",
-    ownerName: "Lucas Ferreira",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Commercial & Residential Roofing",
-    city: "Worcester",
-    state: "MA",
-    notes: "Close Call Showcase (Roofing • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Paused 2 full months during sub-zero freeze (Jan–Feb), with small emergency tarping trickle in Dec ($12k); generated peak $84k/mo in high season, securing $622k in direct homeowner revenue with zero GC dependency."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   kitchen_bath: {
-    companyName: "Prestige Kitchens & Luxury Baths LLC",
-    ownerName: "Felipe Santos",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Kitchen & Bath Remodeling",
-    city: "Framingham",
-    state: "MA",
-    notes: "Close Call Showcase (Kitchen & Bath • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Maintained emergency repair trickle in Dec ($12k) and paused Jan-Feb for winter family break; surged to peak $84k/mo in high season."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   flooring: {
-    companyName: "Stonegate Tile & Hardwood Solutions LLC",
-    ownerName: "Andre Martins",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Hardwood, Tile & LVP Flooring",
-    city: "Marlborough",
-    state: "MA",
-    notes: "Close Call Showcase (Flooring • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Winter freeze pause in Jan-Feb with Dec emergency trickle ($12k); surged in Spring & Summer high season."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   hardscapes: {
-    companyName: "Patriot Outdoor Living & Pavers LLC",
-    ownerName: "Bruno Oliveira",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Patios, Pavers & Retaining Walls",
-    city: "Danvers",
-    state: "MA",
-    notes: "Close Call Showcase (Hardscapes • Massachusetts). Paused outdoor hardscaping for 2 full freeze months (Jan-Feb), with small Dec winterization trickle ($12k); generated peak $84k/mo in Spring & Summer high season."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   framing_carpentry: {
-    companyName: "Benchmark Framing & Structural Decks LLC",
-    ownerName: "Rafael Lima",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Framing & Structural Carpentry",
-    city: "Lowell",
-    state: "MA",
-    notes: "Close Call Showcase (Framing • Massachusetts). Paused outdoor framing during Jan-Feb freezing blizzards, with small emergency framing trickle in Dec ($12k); surged to peak $84k/mo in high season."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   drywall_painting: {
-    companyName: "Elite Craft Drywall & Painting LLC",
-    ownerName: "Diego Rocha",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Drywall, Level 5 & Paint",
-    city: "Quincy",
-    state: "MA",
-    notes: "Close Call Showcase (Drywall & Paint • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Maintained emergency trickle in Dec ($12k) and paused Jan-Feb; surged to peak $84k/mo in high season."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   general_remodel: {
-    companyName: "Summit Peak Construction & Remodeling LLC",
-    ownerName: "Lucas Ferreira",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Whole Home & Interior Remodeling",
-    city: "Worcester",
-    state: "MA",
-    notes: "Close Call Showcase (General Remodeling • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Paused 2 full months during sub-zero freeze (Jan–Feb), with small emergency trickle in Dec ($12k); generated peak $84k/mo in high season with zero GC dependency."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   },
   all: {
-    companyName: "Summit Peak Construction & Remodeling LLC",
-    ownerName: "Lucas Ferreira",
+    companyName: "JK Construction LLC",
+    ownerName: "Jonas Klein",
     specialty: "Whole Home & Interior Remodeling",
-    city: "Worcester",
-    state: "MA",
-    notes: "Close Call Showcase (Presentation Model • Massachusetts). Covered $24k baseline in M1, doubled in M2 ($41k). Paused 2 full months during sub-zero freeze (Jan–Feb), with small emergency trickle in Dec ($12k); generated peak $84k/mo in high season with zero GC dependency."
+    city: "Hartford",
+    state: "CT",
+    notes: JK_BASE_NOTES
   }
 };
 
@@ -1058,58 +1072,31 @@ export default function NivixEnterpriseCrm() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {visibleAccounts.map((account) => {
-                      const isJSDrywall = account.id === "ACC-001";
-                      const isChameleon = account.id === "ACC-003";
-
                       return (
                         <tr 
                           key={account.id}
                           onClick={() => setSelectedAccount(account)}
-                          className={`transition-colors cursor-pointer group ${
-                            isJSDrywall 
-                              ? "bg-amber-50/50 hover:bg-amber-50/80 border-l-4 border-l-amber-500" 
-                              : isChameleon
-                              ? "bg-blue-50/40 hover:bg-blue-50/70 border-l-4 border-l-[#1a73e8]"
-                              : "odd:bg-white even:bg-slate-50/50 hover:bg-blue-50/70"
-                          }`}
+                          className="transition-colors cursor-pointer group odd:bg-white even:bg-slate-50/50 hover:bg-blue-50/70"
                         >
                           {/* Company */}
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-3">
                               <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                                isJSDrywall
-                                  ? "bg-amber-100 text-amber-900 border border-amber-300 font-extrabold"
-                                  : isChameleon
-                                  ? "bg-blue-100 text-[#1a73e8] border border-blue-300 font-extrabold"
-                                  : account.status === "partner"
+                                account.status === "partner"
                                   ? "bg-blue-100 text-blue-800 border border-blue-300 font-extrabold"
                                   : "bg-slate-100 text-slate-700 border border-slate-300 font-semibold"
                               }`}>
-                                {isJSDrywall ? "★" : isChameleon ? "✦" : account.companyName.charAt(0)}
+                                {account.companyName.charAt(0)}
                               </div>
                               <div>
                                 <div className="flex items-center gap-1.5 flex-wrap">
                                   <span className={`font-bold transition-colors text-sm ${
-                                    isJSDrywall
-                                      ? "text-slate-900 group-hover:text-amber-800"
-                                      : isChameleon
-                                      ? "text-[#1a73e8] group-hover:underline font-extrabold"
-                                      : account.status === "partner"
+                                    account.status === "partner"
                                       ? "text-[#1a73e8] group-hover:underline"
                                       : "text-slate-900 group-hover:text-[#1a73e8]"
                                   }`}>
                                     {account.companyName}
                                   </span>
-                                  {isJSDrywall && (
-                                    <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 border border-amber-300 uppercase tracking-wide">
-                                      Top 1 Case
-                                    </span>
-                                  )}
-                                  {isChameleon && (
-                                    <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-blue-100 text-[#1a73e8] border border-blue-300 uppercase tracking-wide">
-                                      Showcase Model
-                                    </span>
-                                  )}
                                 </div>
                                 <span className="text-xs text-slate-500">
                                   {account.id}
@@ -1223,19 +1210,12 @@ export default function NivixEnterpriseCrm() {
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {visibleAccounts.map((account) => {
-                  const isJSDrywall = account.id === "ACC-001";
-                  const isChameleon = account.id === "ACC-003";
-
                   return (
                     <div
                       key={account.id}
                       onClick={() => setSelectedAccount(account)}
                       className={`p-4 sm:p-5 rounded-xl bg-white border transition-all cursor-pointer group shadow-xs hover:shadow-md flex flex-col justify-between ${
-                        isJSDrywall 
-                          ? "border-amber-400 bg-amber-50/20" 
-                          : isChameleon
-                          ? "border-blue-400 bg-blue-50/20 hover:border-blue-500"
-                          : account.status === "partner" 
+                        account.status === "partner" 
                           ? "border-blue-300 hover:border-[#1a73e8]" 
                           : "border-slate-300 hover:border-slate-400"
                       }`}
@@ -1245,34 +1225,21 @@ export default function NivixEnterpriseCrm() {
                         <div className="flex items-start justify-between gap-3 mb-3">
                           <div className="flex items-center gap-2.5">
                             <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 ${
-                              isJSDrywall
-                                ? "bg-amber-100 text-amber-900 border border-amber-300"
-                                : isChameleon
-                                ? "bg-blue-100 text-[#1a73e8] border border-blue-300"
-                                : account.status === "partner"
+                              account.status === "partner"
                                 ? "bg-blue-100 text-blue-800 border border-blue-300"
                                 : "bg-slate-100 text-slate-700 border border-slate-300"
                             }`}>
-                              {isJSDrywall ? "★" : isChameleon ? "✦" : account.companyName.charAt(0)}
+                              {account.companyName.charAt(0)}
                             </div>
                             <div>
                               <div className="flex items-center gap-1.5 flex-wrap">
                                 <h3 className={`font-bold text-base transition-colors leading-tight ${
-                                  isJSDrywall 
-                                    ? "text-slate-900 group-hover:text-amber-800"
-                                    : isChameleon
-                                    ? "text-[#1a73e8] group-hover:underline font-extrabold"
-                                    : account.status === "partner"
+                                  account.status === "partner"
                                     ? "text-[#1a73e8] group-hover:underline"
                                     : "text-slate-900 group-hover:text-[#1a73e8]"
                                 }`}>
                                   {account.companyName}
                                 </h3>
-                                {isChameleon && (
-                                  <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-blue-100 text-[#1a73e8] border border-blue-300 uppercase tracking-wide">
-                                    Showcase Model
-                                  </span>
-                                )}
                               </div>
                               <span className="text-xs text-slate-500 font-medium">
                                 {account.id} • {account.ownerName}
@@ -1358,17 +1325,7 @@ export default function NivixEnterpriseCrm() {
               <div>
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <h2 className="text-xl font-bold text-slate-900 tracking-tight">{selectedAccount.companyName}</h2>
-                  {selectedAccount.id === "ACC-001" ? (
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold flex items-center gap-1">
-                      <Award className="w-3 h-3 text-amber-700" />
-                      Showcase Case • Top 1 Google Local Pack
-                    </span>
-                  ) : selectedAccount.id === "ACC-003" ? (
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-[#1a73e8] border border-blue-300 font-bold flex items-center gap-1">
-                      <Award className="w-3 h-3 text-[#1a73e8]" />
-                      Featured Close Call Model • 90D Ramp & Seasonality Case
-                    </span>
-                  ) : selectedAccount.status === "partner" ? (
+                  {selectedAccount.status === "partner" ? (
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300 font-bold">
                       Equity Partner / JV
                     </span>
